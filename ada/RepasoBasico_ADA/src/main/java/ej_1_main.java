@@ -1,11 +1,5 @@
-
 import java.util.Scanner;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author amrsin
@@ -14,18 +8,17 @@ public class ej_1_main {
 
     public static void main(String[] args) {
 
-        // TODO code application logic here
         //var
         String tipo_conductor;
         double tasa = 0;
         boolean puede = false;
-
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduzca el tipo de condutor: ");
+        //datos user
+        System.out.print("Introduzca el tipo de condutor: ");
         tipo_conductor = sc.nextLine();
-        System.out.println("Introduzca la tasa: ");
+        System.out.print("Introduzca la tasa: ");
         tasa = sc.nextDouble();
-
+        //llamamos a subclase llamda puede_conducir
         puede = puede_conducir(tipo_conductor, tasa);
 
         if (puede) {
@@ -35,13 +28,12 @@ public class ej_1_main {
             System.out.println("No puede seguir conduciendo.");
 
         }
-
     }
 
+    //para averiguar si la tasa segun conductor es correcta o no.
     public static boolean puede_conducir(String tipo_conductor, double tasa) {
 
         boolean puede = false;
-
         if ((tipo_conductor.equalsIgnoreCase("autobus") || tipo_conductor.equalsIgnoreCase("taxi")
                 || tipo_conductor.equalsIgnoreCase("ambulancia")) && tasa <= 0.3) {
 
@@ -50,7 +42,6 @@ public class ej_1_main {
             if ((tipo_conductor.equalsIgnoreCase("conductor") || tipo_conductor.equalsIgnoreCase("ciclista")) && tasa <= 0.5) {
 
                 puede = true;
-
             }
         }
         return puede;
