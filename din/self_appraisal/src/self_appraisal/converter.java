@@ -14,33 +14,33 @@ public class converter extends JFrame {
     JPanel panel = new JPanel();
 
     public converter() {
-
+        //title for app
         setTitle("Converter");
-        setSize(300, 200);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        panel.setLayout(new GridLayout(3, 2));
-     
+        setSize(300, 200); //window size
+        setDefaultCloseOperation(EXIT_ON_CLOSE); 
+        panel.setLayout(new GridLayout(3, 2)); //3 rows, 2 colums
+        //Celsius label
         JLabel lb_celsius = new JLabel(" Celsius Grades");
-        textField1 = new JTextField("", 20);
-        textField1.setBorder(BorderFactory.createLineBorder(Color.red));
-        textField1.addActionListener(new TextFieldListener());
-        panel.add(lb_celsius);
-        panel.add(textField1);
-
+        textField1 = new JTextField("", 20); //textfield for celsius
+        textField1.setBorder(BorderFactory.createLineBorder(Color.red)); //bg color red
+        textField1.addActionListener(new tokelvin()); //calling tokelvin listener 
+        panel.add(lb_celsius); //adding celsius label to panel
+        panel.add(textField1); //adding celsius textfield to panel
+        //kelvin label
         JLabel lb_kelvin = new JLabel(" Kelvin Grades");
-        textField2 = new JTextField("", 20);
-        textField2.setBorder(BorderFactory.createLineBorder(Color.red));
-        textField2.addActionListener(new TextFieldListener2());
-        panel.add(lb_kelvin);
-        panel.add(textField2);
-
+        textField2 = new JTextField("", 20); //textfield for kelvin
+        textField2.setBorder(BorderFactory.createLineBorder(Color.red)); //bg color red
+        textField2.addActionListener(new tocelsius()); //calling tocelsius listener
+        panel.add(lb_kelvin); //adding kelvin label to panel
+        panel.add(textField2);  //adding kelvin textfield to panel
+        //clean button
         JButton bt_clean = new JButton("Clean");
-        bt_clean.addActionListener(new ButtonListener());
-        panel.add(bt_clean);
-        add(panel);
+        bt_clean.addActionListener(new ButtonListener()); //caling buttonListener
+        panel.add(bt_clean); //adding button to panel
+        add(panel); //adding panel
     }
-
-    class TextFieldListener implements ActionListener {
+    //tokevin listener
+    class tokelvin implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
@@ -52,8 +52,8 @@ public class converter extends JFrame {
 
         }
     }
-
-    class TextFieldListener2 implements ActionListener {
+    //tocelsius listener
+    class tocelsius implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
@@ -64,7 +64,7 @@ public class converter extends JFrame {
             textField1.setText(text);
         }
     }
-
+    //buttonlistener
     class ButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
