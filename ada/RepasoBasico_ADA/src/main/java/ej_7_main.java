@@ -74,6 +74,7 @@ public class ej_7_main {
          Scanner sc = new Scanner(System.in);
          String nom;
          String nom_aux;
+         boolean encontrado = false;
          Estudiante e;
          Iterator iter = lista_estudiantes.iterator();
 
@@ -92,16 +93,17 @@ public class ej_7_main {
              if (nom_aux.equalsIgnoreCase(nom)) {
                  
                  lista_estudiantes.remove(e);
+                 encontrado = true;
                  break;
-             }else{
-                 System.out.println("No hay alumno de nombre" + nom + "en la bd");
-             }
+             } 
          }
-         
+         if (!encontrado) {
+          System.out.println("No hay alumno de nombre " + nom + " en la bd");
+
+         }
+ 
     }
-     
-     
-     
+       
      public static void lista_alumnos(ArrayList lista_estudiantes) {
          
          Iterator iter = lista_estudiantes.iterator();
