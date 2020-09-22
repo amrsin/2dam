@@ -21,6 +21,7 @@ public class radio_check extends JFrame {
     private String m;
     private String f;
     private String family_status;
+    
 
     public radio_check() {
         //app name
@@ -43,9 +44,9 @@ public class radio_check extends JFrame {
 
         daughters = new JCheckBox("Daughters");
         sons = new JCheckBox("Sons");
-       // ListenerCheckBox maneger = new ListenerCheckBox();
-       // daughters.addItemListener(maneger);
-       // sons.addItemListener(maneger);
+        ListenerCheckBox maneger = new ListenerCheckBox();
+        daughters.addItemListener(maneger);
+        sons.addItemListener(maneger);
         panel.add(daughters);
         panel.add(sons);
         result = new JLabel("");
@@ -56,8 +57,7 @@ public class radio_check extends JFrame {
 
     private class Radio_listener implements ItemListener {
 
-           private String genere;
-
+        private String genere;
 
         public Radio_listener(String g) {
             
@@ -70,32 +70,35 @@ public class radio_check extends JFrame {
         }
     }
 
-    /*private class ListenerCheckBox implements ItemListener {
+    private class ListenerCheckBox implements ItemListener {
         
        
         
         public void itemStateChanged(ItemEvent event) {
             
-            
+                String aux = result.getText();
+                
            
             if (event.getSource() == daughters) {
                 
-                family_status = genere + " ,you have daughters";
+                family_status = " ,you have daughters";
+                aux = aux + family_status;
             }
             if (event.getSource() == sons) {
                 
-                family_status = genere + ",you have sons";
-                        
+                family_status = ",you have sons";
+                aux = aux + family_status;        
             }
             
             if (event.getSource() == daughters && event.getSource() == sons) {
                 
-                family_status = genere + ",you have daughters and sons";
+                family_status = ",you have daughters and sons";
+                aux = aux + family_status;
             }
             
             
-            result.setText(family_status);
-            
+            result.setText(aux);
+           
         }
-      }*/
+      }
     }
