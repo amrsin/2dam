@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package act_radio_checkbox;
 
 import javax.swing.*;
@@ -22,12 +17,16 @@ public class radio_check extends JFrame {
     private JRadioButton female;
     private JCheckBox daughters;
     private JCheckBox sons;
+    private JLabel result;
+    private String m;
+    private String f;
+    private String family_status;
     
 
     public radio_check() {
         //app name
         setTitle("radio_checkbox");
-        setSize(300, 250);//window size
+        setSize(500, 250);//window size
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         panel.setLayout(new GridLayout(4, 2));
         male = new JRadioButton("Male");
@@ -35,14 +34,71 @@ public class radio_check extends JFrame {
         ButtonGroup bt_group = new ButtonGroup();
         bt_group.add(male);
         bt_group.add(female);
+
+        m = "male";
+        f = "female";
+        male.addItemListener(new Radio_listener(m));
+        female.addItemListener(new Radio_listener(f));
         panel.add(male);
         panel.add(female);
+
         daughters = new JCheckBox("Daughters");
         sons = new JCheckBox("Sons");
+        ListenerCheckBox maneger = new ListenerCheckBox();
+        daughters.addItemListener(maneger);
+        sons.addItemListener(maneger);
         panel.add(daughters);
         panel.add(sons);
-        JLabel resutl = new JLabel("hello");
-        panel.add(resutl);
+        result = new JLabel("");
+        panel.add(result);
         add(panel);
+
     }
-}
+
+    private class Radio_listener implements ItemListener {
+
+        private String genere;
+
+        public Radio_listener(String g) {
+            
+            genere = " You are " + g;
+        }
+
+        public void itemStateChanged(ItemEvent evento) {
+           
+            result.setText(genere);
+        }
+    }
+
+    private class ListenerCheckBox implements ItemListener {
+        
+       
+        
+        public void itemStateChanged(ItemEvent event) {
+            
+                String aux = result.getText();
+                
+           
+            if (event.getSource() == daughters) {
+                
+                family_status = " ,you have daughters";
+                aux = aux + family_status;
+            }
+            if (event.getSource() == sons) {
+                
+                family_status = ",you have sons";
+                aux = aux + family_status;        
+            }
+            
+            if (event.getSource() == daughters && event.getSource() == sons) {
+                
+                family_status = ",you have daughters and sons";
+                aux = aux + family_status;
+            }
+            
+            
+            result.setText(aux);
+           
+        }
+      }
+    }

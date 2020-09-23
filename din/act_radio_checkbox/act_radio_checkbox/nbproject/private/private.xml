@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/amrsin/2dam/din/act_radio_checkbox/act_radio_checkbox/src/act_radio_checkbox/Act_radio_checkbox.java</file>
             <file>file:/home/amrsin/2dam/din/act_radio_checkbox/act_radio_checkbox/src/act_radio_checkbox/radio_check.java</file>
+=======
+            <file>file:/home/amrit/2dam/din/act_radio_checkbox/act_radio_checkbox/src/act_radio_checkbox/radio_check.java</file>
+>>>>>>> 63ed213d75f75861cb0243d83c4dd21ce4dd106b
         </group>
     </open-files>
 </project-private>
