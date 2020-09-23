@@ -20,12 +20,12 @@ public class radio_check extends JFrame {
     private JLabel result;
     private String m;
     private String f;
-    private String family_status;
+    private String aux;
 
     public radio_check() {
         //app name
         setTitle("radio_checkbox");
-        setSize(500, 250);//window size
+        setSize(610, 250);//window size
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         panel.setLayout(new GridLayout(4, 2));
         male = new JRadioButton("Male");
@@ -49,7 +49,7 @@ public class radio_check extends JFrame {
 
         panel.add(daughters);
         panel.add(sons);
-        result = new JLabel("");
+        result = new JLabel(" ");
         panel.add(result);
         add(panel);
 
@@ -65,27 +65,48 @@ public class radio_check extends JFrame {
         }
 
         public void itemStateChanged(ItemEvent evento) {
+            
+            String parts2[];
+            if (aux!= null) {
+                parts2 = aux.split(",");
+                
+                if (parts2.length <= 1) {
+                    
+                  result.setText(genere);
 
-            result.setText(genere);
+                }
+                if (parts2.length > 1) {
+                 result.setText(genere + "," + parts2[1]);
+
+                }
+                if (parts2.length > 2) {
+                  result.setText(genere + "," + parts2[1]  + "," + parts2[2]);
+
+                }
+            }else {
+                result.setText(genere);
+            }
         }
     }
 
     private class ListenerCheckBox implements ItemListener {
 
         public void itemStateChanged(ItemEvent event) {
-
-            String aux = result.getText();
-            String[] parts = aux.split(",");
-               
             
+            String[] parts;
+            String family_status;
+            aux = result.getText();
+            parts = aux.split(",");
+               
             if (event.getSource() == daughters) {
 
                 family_status = ", you have daughters";
                 aux = aux + family_status;
                 
-                if (!daughters.isSelected()) {
-                    
-                    aux = parts[0];
+                
+                if (!daughters.isSelected() && sons.isSelected()) {
+                        
+                    aux = parts[0] + "," + " you have sons";
                 }
 
             }
@@ -97,10 +118,15 @@ public class radio_check extends JFrame {
                 
                  if (!sons.isSelected()) {
                     
-                    aux = parts[0] + "," +  parts[1];
+                    aux = parts[0] + "," +  "you have daughters";
                 }
-            } 
+                 
+            }
             
+            if (!sons.isSelected() && !daughters.isSelected()) {
+                    
+                    aux = parts[0];
+                }
             result.setText(aux);
         } 
     }
