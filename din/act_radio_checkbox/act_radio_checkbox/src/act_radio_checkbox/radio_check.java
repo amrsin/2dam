@@ -102,7 +102,6 @@ public class radio_check extends JFrame {
             } 
             
             result.setText(aux);
-        }
-        
+        } 
     }
 }
