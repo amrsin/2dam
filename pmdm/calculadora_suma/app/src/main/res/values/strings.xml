@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">calculadora_suma</string>
+    <string name="txt_num1">Introduzca num1</string>
+    <string name="txt_num2">Introduzca num2</string>
+    <string name="button_suma">SUMAR</string>
+    <string name="resultado">resultado</string>
+
+
+
+
+</resources>
