@@ -17,7 +17,7 @@ public class Estudiante {
         this.apellido = apellido;
         this.di = di;
         this.nota_numero = nota_numero;
-        nota_letra = clasificacion_nota(this.nota_numero);
+        this.nota_letra = clasificacion_nota(this.nota_numero);
     }
 
     public String clasificacion_nota(int nota_numero) {
@@ -38,4 +38,17 @@ public class Estudiante {
         }
         return nt_letra;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    
+    
+    
+    public String toString() {
+        return "Nombre: " + nom + ", Apellido: " + apellido 
+               + ", Direccion: " + di + ", Nota numero: " + nota_numero + ", Nota letra: " + nota_letra;
+    }
+    
 }

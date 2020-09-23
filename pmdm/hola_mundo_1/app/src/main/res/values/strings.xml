@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">hola_mundo_1</string>
+    <string name="primerSaludo">Bienvenido/a</string>
+    <string name="miTxt">""</string>
+    <string name="escribe">""</string>
+    <string name="pulsar">"Saludar"</string>
+
+
+
+</resources>

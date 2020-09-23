@@ -28,10 +28,10 @@ public class First_window {
         //jt.setVisible(true);
         //j_label jl = new j_label();
         //jl.setVisible(true);
-        //j_checkbox jc = new j_checkbox();
-        //jc.setVisible(true);
-        j_radio jr = new j_radio();
-        jr.setVisible(true);
+        j_checkbox jc = new j_checkbox();
+        jc.setVisible(true);
+        //j_radio jr = new j_radio();
+        //jr.setVisible(true);
        
         
         

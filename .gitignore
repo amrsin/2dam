@@ -21,3 +21,10 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
+/din/act_radio_checkbox/act_radio_checkbox/nbproject/private/
+/din/act_radio_checkbox/act_radio_checkbox/build/
+=======
+/din/serveral_buttons/nbproject/private/
+/din/serveral_buttons/build/
+>>>>>>> 63ed213d75f75861cb0243d83c4dd21ce4dd106b
