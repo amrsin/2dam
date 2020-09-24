@@ -25,8 +25,10 @@ public class radio_check extends JFrame {
     public radio_check() {
         //app name
         setTitle("radio_checkbox");
-        setSize(610, 250);//window size
+        setSize(600, 250);//window size
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
         panel.setLayout(new GridLayout(4, 2));
         male = new JRadioButton("Male");
         female = new JRadioButton("Female");

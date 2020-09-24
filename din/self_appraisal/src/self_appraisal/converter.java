@@ -16,7 +16,8 @@ public class converter extends JFrame {
     public converter() {
         //title for app
         setTitle("Converter");
-        setSize(300, 200); //window size
+        setSize(300, 160); //window size
+        setResizable(false); //disabled resizing window op
         setDefaultCloseOperation(EXIT_ON_CLOSE); 
         panel.setLayout(new GridLayout(3, 2)); //3 rows, 2 colums
         //Celsius label
