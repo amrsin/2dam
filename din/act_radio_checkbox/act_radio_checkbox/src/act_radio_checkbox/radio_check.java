@@ -11,7 +11,7 @@ import java.awt.event.*;
  * @author amrsin
  */
 public class radio_check extends JFrame {
-
+    //var
     JPanel panel = new JPanel();
     private JRadioButton male;
     private JRadioButton female;
@@ -25,47 +25,48 @@ public class radio_check extends JFrame {
     public radio_check() {
         //app name
         setTitle("radio_checkbox");
-        setSize(600, 250);//window size
+        setSize(750, 300);//window size
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+        //4rows, 2colums layout
         panel.setLayout(new GridLayout(4, 2));
-        male = new JRadioButton("Male");
-        female = new JRadioButton("Female");
-        ButtonGroup bt_group = new ButtonGroup();
+        male = new JRadioButton("Male"); //Created JradioButton male
+        female = new JRadioButton("Female"); //Created JradioButton female
+        ButtonGroup bt_group = new ButtonGroup();//Created ButtonGroup
+        //added male and female radio buttons to bt_group
         bt_group.add(male);
         bt_group.add(female);
-
+        
         m = "male";
         f = "female";
-        male.addItemListener(new Radio_listener(m));
-        female.addItemListener(new Radio_listener(f));
-        panel.add(male);
-        panel.add(female);
-
+        male.addItemListener(new Radio_listener(m));//called radio_listener passing male string
+        female.addItemListener(new Radio_listener(f));//called radio_listener passing female string
+        panel.add(male);//added male to paenl
+        panel.add(female);//added male to paenl
+        //created Jcheckbox daughters and sons
         daughters = new JCheckBox("Daughters");
         sons = new JCheckBox("Sons");
-        ListenerCheckBox maneger = new ListenerCheckBox();
-        daughters.addItemListener(maneger);
-        sons.addItemListener(maneger);
+        ListenerCheckBox maneger = new ListenerCheckBox();//created listener for checkbox
+        daughters.addItemListener(maneger);//added daughters to listener item>
+        sons.addItemListener(maneger);//added sons to listener item>
 
-        panel.add(daughters);
-        panel.add(sons);
-        result = new JLabel(" ");
-        panel.add(result);
-        add(panel);
+        panel.add(daughters);//added daughters to panel
+        panel.add(sons);//added daughters to panel
+        result = new JLabel(" ");//created Jlabel named result
+        panel.add(result);//added result to paenl
+        add(panel);//added panel
 
     }
-
+    //class for radio witch implements ItemListener
     private class Radio_listener implements ItemListener {
 
         private String genere;
-
+        //method Radio_listener with have string genere
         public Radio_listener(String g) {
 
             genere = " You are " + g;
         }
-
+        //method for change item state
         public void itemStateChanged(ItemEvent evento) {
             
             String parts2[];
@@ -90,9 +91,9 @@ public class radio_check extends JFrame {
             }
         }
     }
-
+    //class for checkbox listener
     private class ListenerCheckBox implements ItemListener {
-
+        //method for change item state
         public void itemStateChanged(ItemEvent event) {
             
             String[] parts;
@@ -120,7 +121,7 @@ public class radio_check extends JFrame {
                 
                  if (!sons.isSelected()) {
                     
-                    aux = parts[0] + "," +  "you have daughters";
+                    aux = parts[0] + "," +  " you have daughters";
                 }
                  
             }
