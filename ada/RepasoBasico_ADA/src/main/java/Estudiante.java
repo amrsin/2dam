@@ -43,6 +43,10 @@ public class Estudiante {
         return nom;
     }
 
+    public int getNota_numero() {
+        return nota_numero;
+    }
+
     
     
     

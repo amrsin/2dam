@@ -16,7 +16,7 @@ public class ej_7_main {
          
          while(op_menu!=7) {
              
-         
+         System.out.println("---------------------------------");
          System.out.println("Bienvenido/a al menu");
          System.out.println("1. Dar de alta alumno");
          System.out.println("2. Dar de baja alumno");
@@ -26,7 +26,8 @@ public class ej_7_main {
          System.out.println("6. Info extra");
          System.out.print("Indroduzca op menu: ");
          op_menu = sc.nextInt();
-         
+         System.out.println("---------------------------------");
+
          switch(op_menu) {
              
              case 1:
@@ -41,7 +42,13 @@ public class ej_7_main {
                  break;
              case 4:
                  lista_alumnos(lista_estudiantes);
-                 break;      
+                 break;
+             case 5:
+                 
+                 break;
+             case 6: 
+                 extra_info(lista_estudiantes);
+                 break;
          }
        }
      }
@@ -117,4 +124,41 @@ public class ej_7_main {
              
          }
        }
+     
+     public static void extra_info(ArrayList lista_estudiantes){
+         
+         
+                  Iterator iter = lista_estudiantes.iterator();
+         Estudiante e;
+         
+         int nota;
+         String aprobados = "";
+         String suspendidos = "";
+         while (iter.hasNext()) {
+
+         e = (Estudiante) iter.next();
+         
+             nota = e.getNota_numero();
+             
+             if (nota <=4 ) {
+                 
+                 suspendidos = suspendidos + e.getNom() + "\n";
+             }else if (nota >=5) {
+                 
+                 aprobados = aprobados + e.getNom() + "\n";
+             }
+             
+             
+             
+         }
+         
+         aprobados = "Lista de alumnos aprobados \n" + aprobados;
+         suspendidos = "Lista de alumnos suspendidos \n" + suspendidos;
+         
+         System.out.println(aprobados);
+         System.out.println(suspendidos);
+         
+     }
+             
+             
      } 
