@@ -75,7 +75,7 @@ public class radio_check extends JFrame {
                 
                 if (parts2.length <= 1) {
                     
-                  result.setText(genere);
+                  result.setText(genere + " you don't have children's");
 
                 }
                 if (parts2.length > 1) {
@@ -87,7 +87,7 @@ public class radio_check extends JFrame {
 
                 }
             }else {
-                result.setText(genere);
+                result.setText(genere + " you don't have children's");
             }
         }
     }
@@ -104,6 +104,7 @@ public class radio_check extends JFrame {
             if (event.getSource() == daughters) {
 
                 family_status = ", you have daughters";
+                aux = aux.replace(" you don't have children's", "");
                 aux = aux + family_status;
                 
                 
@@ -117,6 +118,7 @@ public class radio_check extends JFrame {
             if (event.getSource() == sons) {
 
                 family_status = ", you have sons";
+                aux = aux.replace(" you don't have children's", "");
                 aux = aux + family_status;
                 
                  if (!sons.isSelected()) {
@@ -128,7 +130,7 @@ public class radio_check extends JFrame {
             
             if (!sons.isSelected() && !daughters.isSelected()) {
                     
-                    aux = parts[0];
+                    aux = parts[0] + " you don't have children's";
                 }
             result.setText(aux);
         } 
