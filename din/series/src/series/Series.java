@@ -25,16 +25,34 @@ public class Series {
         
         //create an instance of one serie:
         
-        show sh = new show("Breaking Bad", "Vicent Guilligan", 5, "Drama", 5);
+        /*show sh = new show("Breaking Bad", "Vicent Guilligan", 5, "Drama", 5);
         //create a list:
         listShow ls = new listShow();
         //add the serie:
         ls.setShow(sh);
-        //sabe it in a file
+        //create second serie:
+        sh = new show("JGame of thrones", "David Benioff", 6, "1", 6);
+        ls.setShow(sh);
+        //save it in a file
         access.saveLS(ls);
         System.out.println("saved series");
+          */
         
+        listShow ls = new listShow();
+        //read file
+        ls = access.loadLS();
+        //create a serie
+        show sh = new show();
+        //obtain first element of aratList;
+        sh=ls.getShow(0);
+        //get the title
+        System.out.print("title: ");
+        System.out.println(sh.getTitle());
+        //obtain secound element:
         
+        sh = ls.getShow(1);
+        System.out.print("title: ");
+        System.out.println(sh.getTitle());
         
     }
     
