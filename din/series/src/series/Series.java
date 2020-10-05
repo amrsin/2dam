@@ -15,12 +15,12 @@ import model.show;
  */
 public class Series {
 
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
         
         
         //create an instance of one serie:
@@ -55,5 +55,4 @@ public class Series {
         System.out.println(sh.getTitle());
         
     }
-    
 }
