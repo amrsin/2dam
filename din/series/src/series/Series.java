@@ -8,6 +8,7 @@ package series;
 import model.access;
 import model.listShow;
 import model.show;
+import view.Frame_series;
 
 /**
  *
@@ -22,6 +23,8 @@ public class Series {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        Frame_series fs = new Frame_series();
+        fs.setVisible(true);
         
         //create an instance of one serie:
         
