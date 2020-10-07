@@ -30,7 +30,7 @@ public class segunda_pantalla extends AppCompatActivity {
 
                 Intent intent = new Intent(segunda_pantalla.this, MainActivity.class);
                 startActivity(intent);
-               
+
             }
         });
 
@@ -50,6 +50,7 @@ public class segunda_pantalla extends AppCompatActivity {
                 num_2 = Integer.parseInt(edit_t2.getText().toString());
                 suma = num_1 + num_2;
                 text_v.setText(String.valueOf(num_1 + " + " + num_2 + " = " +  suma));
+
             }
         });
     }

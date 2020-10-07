@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,10 +19,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageButton img_btn = (ImageButton) findViewById(R.id.img_btn);
+        TextView result = (TextView) findViewById(R.id.result);
 
         Toast.makeText(this, "el texto", Toast.LENGTH_SHORT).show();
 
-
+        //Bundle miBundleRecoger = getIntent().getExtras();
+        //result.setText(miBundleRecoger.getString("resultado"));
 
         img_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,8 +35,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, segunda_pantalla.class);
                 startActivity(intent);
 
+
+
             }
         });
+
+
 
 
 
