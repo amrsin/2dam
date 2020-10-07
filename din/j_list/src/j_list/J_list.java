@@ -21,4 +21,5 @@ public class J_list {
         frame_list.setVisible(true);
     }
     
+    
 }

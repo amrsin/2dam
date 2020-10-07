@@ -31,7 +31,7 @@ public class listShow implements Serializable{
        seriesList.add(s);
    }
    
-   public int longuitud(){
+   public int longitud(){
        return seriesList.size();
    }
     

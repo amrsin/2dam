@@ -5,6 +5,7 @@
  */
 package series;
 
+import controller.controller;
 import model.access;
 import model.listShow;
 import model.show;
@@ -23,7 +24,8 @@ public class Series {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Frame_series fs = new Frame_series();
+        controller control = new controller();
+        Frame_series fs = new Frame_series(control);
         fs.setVisible(true);
         
         //create an instance of one serie:
@@ -39,7 +41,7 @@ public class Series {
         //save it in a file
         access.saveLS(ls);
         System.out.println("saved series");
-          */
+          
         
         listShow ls = new listShow();
         //read file
@@ -47,15 +49,15 @@ public class Series {
         //create a serie
         show sh = new show();
         //obtain first element of aratList;
-        sh=ls.getShow(0);
+        //sh=ls.getShow(0);
         //get the title
         System.out.print("title: ");
         System.out.println(sh.getTitle());
         //obtain secound element:
         
-        sh = ls.getShow(1);
+        //sh = ls.getShow(1);
         System.out.print("title: ");
-        System.out.println(sh.getTitle());
+        System.out.println(sh.getTitle());*/
         
     }
 }
