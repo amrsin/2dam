@@ -23,7 +23,6 @@ public class pantalla_2 extends AppCompatActivity {
         Bundle bundle_recoge = getIntent().getExtras();
         saludo2.setText(bundle_recoge.getString("saludo"));
         final String completarSaludo=bundle_recoge.getString("saludo_completa");
-        Toast.makeText(getApplicationContext(), "hola", Toast.LENGTH_LONG ).show();
         btn_volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

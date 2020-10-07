@@ -1,5 +1,6 @@
 package com.example.hola_mundo3;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,9 +12,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    final TextView vuelve = (TextView)findViewById(R.id.vuelve);
+   public static int cod_respuesta = 0;
+   final TextView volve = (TextView)findViewById(R.id.vuelve);
 
-    public static int cod_respuesta = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,17 +44,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, cod_respuesta);
             }
 
-
         });
     }
 
+    @Override
+    protected void onActivityResult(int cod_resp, int cod_result, Intent intent) {
 
-   protected void onActivityResult (int cod_resp, int cod_result, Intent intent){
 
-        if(cod_result == RESULT_OK){
+        super.onActivityResult(cod_resp, cod_result, intent);
+        if (cod_result == RESULT_OK) {
 
             Bundle bundel2 = intent.getExtras();
-            vuelve.setText(bundel2.getString("Devuelto"));
+            volve.setText(bundel2.getString("saludo"));
         }
     }
 }
