@@ -16,15 +16,15 @@ public class pantalla_2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_2);
 
-        final TextView saludo2 = (TextView)findViewById(R.id.saludo2);
-        final Button btn_volver = (Button)findViewById(R.id.btn_volver);
+         final TextView saludo2 = (TextView)findViewById(R.id.saludo2);
+         final Button btn_volver = (Button)findViewById(R.id.btn_volver);
 
 
-        Bundle bundle_recoge = getIntent().getExtras();
-        saludo2.setText(bundle_recoge.getString("saludo"));
-        final String completarSaludo=bundle_recoge.getString("saludo_completa");
+         Bundle bundle_recoge = getIntent().getExtras();
+         saludo2.setText(bundle_recoge.getString("saludo"));
+         final String completarSaludo=bundle_recoge.getString("saludo");
 
-        btn_volver.setOnClickListener(new View.OnClickListener() {
+         btn_volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent_vuelve = new Intent();

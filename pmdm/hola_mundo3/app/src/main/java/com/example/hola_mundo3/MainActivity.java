@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-   public static int cod_respuesta = 0;
-   final TextView volve = (TextView)findViewById(R.id.vuelve);
+      public static int cod_respuesta = 0;
+      private TextView vuelve;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText escribe_saludo = (EditText)findViewById(R.id.escibe_saludo);
         final Button btn_pulsar = (Button)findViewById(R.id.btn_pulsar);
-
+        vuelve = (TextView)findViewById(R.id.vuelve);
 
         escribe_saludo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         if (cod_result == RESULT_OK) {
 
             Bundle bundel2 = intent.getExtras();
-            volve.setText(bundel2.getString("Devuelto"));
+            vuelve.setText(bundel2.getString("Devuelto"));
         }
     }
 }
