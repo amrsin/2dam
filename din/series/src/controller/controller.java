@@ -48,11 +48,17 @@ public class controller {
         }
        return ls.getShow(position);
     }
+    
     public show last() {
         
-        position = ls.longitud() -1 ;
+        position = ls.longitud() -1;
        return ls.getShow(position);
     }
+    
+    
+    
+   
+   
     
 }
 
