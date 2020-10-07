@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
     }
 
-    protected void onStart() {
+    /*protected void onStart() {
         super.onStart();
         Toast.makeText(this, "A1:onStart", Toast.LENGTH_LONG).show();
     }
@@ -72,6 +72,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Toast.makeText(this, "A1:onDestroy", Toast.LENGTH_LONG).show();
-    }
+    }*/
 
 }

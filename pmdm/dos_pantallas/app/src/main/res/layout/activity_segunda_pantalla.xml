@@ -9,11 +9,42 @@
     android:layout_height="match_parent"
     tools:context=".segunda_pantalla">
 
-    <TextView
+    <EditText
+        android:id="@+id/txt_num1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Estas en la pantalla 2"
+        android:ems="10"
+        android:hint="@string/txt_num1"
+        android:inputType="number"
+        android:textSize="18sp"
+        />
+
+    <EditText
+        android:id="@+id/txt_num2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/txt_num2"
+        android:inputType="number"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/button_suma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_suma"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:id="@+id/resultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/resultado"
+        android:textColor="#3F51B5"
+        android:textSize="18sp"
         />
 
     <Button
