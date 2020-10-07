@@ -23,6 +23,7 @@ public class pantalla_2 extends AppCompatActivity {
         Bundle bundle_recoge = getIntent().getExtras();
         saludo2.setText(bundle_recoge.getString("saludo"));
         final String completarSaludo=bundle_recoge.getString("saludo_completa");
+
         btn_volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,7 +33,6 @@ public class pantalla_2 extends AppCompatActivity {
                 bundle_vuelve.putString("Devuelto", msg);
                 intent_vuelve.putExtras(bundle_vuelve);
                 setResult(RESULT_OK, intent_vuelve);
-
                 finish();
             }
         });

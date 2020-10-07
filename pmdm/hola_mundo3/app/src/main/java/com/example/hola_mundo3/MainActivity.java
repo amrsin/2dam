@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
+   @Override
     protected void onActivityResult(int cod_resp, int cod_result, Intent intent) {
 
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         if (cod_result == RESULT_OK) {
 
             Bundle bundel2 = intent.getExtras();
-            volve.setText(bundel2.getString("saludo"));
+            volve.setText(bundel2.getString("Devuelto"));
         }
     }
 }
