@@ -114,6 +114,7 @@ public class Frame_series extends JFrame{
        public void actionPerformed(ActionEvent e){
            
            show s=new show();
+           
            if (e.getSource()==btn1) {
                s = c.first();
            }
@@ -133,8 +134,9 @@ public class Frame_series extends JFrame{
                
            }
             
-            if (e.getSource()==btn5) {
+           if (e.getSource()==btn5) {
                
+               if (btn5.getText().equals("+")) {
                 text_title.setText("");
                 text_screenwriter.setText("");
                 text_season.setText("");
@@ -156,8 +158,8 @@ public class Frame_series extends JFrame{
                 text_season.setEditable(true);
                 text_genre.setEditable(true);
                 text_seen_season.setEditable(true);
-                
-           }else{
+                   
+               }else{
                 
                 btn1.setEnabled(true);
                 btn2.setEnabled(true);
@@ -169,13 +171,11 @@ public class Frame_series extends JFrame{
                 btn5.setText("+");
                      
                 s=fillShow();
-                
+                //c.new_s(s);
                 
             }
+           }
             
-            
-           
-          
            updating(s);
        }
    }
@@ -198,4 +198,4 @@ public class Frame_series extends JFrame{
                 Integer.parseInt(text_seen_season.getText()));
         return s;
     }
-}
+  }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package series;
 
 import controller.controller;
@@ -30,7 +26,7 @@ public class Series {
         
         //create an instance of one serie:
         
-        /*show sh = new show("Breaking Bad", "Vicent Guilligan", 5, "Drama", 5);
+       /*show sh = new show("Breaking Bad", "Vicent Guilligan", 5, "Drama", 5);
         //create a list:
         listShow ls = new listShow();
         //add the serie:
@@ -43,7 +39,7 @@ public class Series {
         System.out.println("saved series");
           
         
-        listShow ls = new listShow();
+        /*listShow ls = new listShow();
         //read file
         ls = access.loadLS();
         //create a serie

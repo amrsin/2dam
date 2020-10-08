@@ -55,6 +55,14 @@ public class controller {
        return ls.getShow(position);
     }
     
+    
+    public void new_s(show s){
+        
+        ls.setShow(s);
+        position = ls.longitud()-1;
+        acc.saveLS(ls);
+    }
+    
    
     
     
