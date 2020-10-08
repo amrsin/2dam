@@ -2,8 +2,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-
+import java.util.*;
 /**
  *
  * @author amrsin
@@ -34,5 +33,21 @@ public class listShow implements Serializable{
    public int longitud(){
        return seriesList.size();
    }
-    
+   public void delete_s(String t){
+       
+        show s;
+        String aux_titulo;
+       	Iterator iter = seriesList.iterator();
+        
+        while (iter.hasNext()) {           
+           
+            s = (show) iter.next();
+            aux_titulo = s.getTitle();
+            
+            if (aux_titulo.equalsIgnoreCase(t)) {
+                seriesList.remove(s);
+                break;
+           }   
+    }
+  }
 }

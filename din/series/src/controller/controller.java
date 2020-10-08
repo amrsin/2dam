@@ -63,6 +63,14 @@ public class controller {
         acc.saveLS(ls);
     }
     
+    public void delete(String t){
+        
+        ls.delete_s(t);
+        acc.saveLS(ls);
+      
+    }
+    
+    
    
     
     

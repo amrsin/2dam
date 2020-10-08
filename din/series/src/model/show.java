@@ -71,5 +71,5 @@ public class show implements Serializable {
 
     public void setViews(int views) {
         this.views = views;
-    }
+    }  
 }

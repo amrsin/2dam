@@ -171,9 +171,16 @@ public class Frame_series extends JFrame{
                 btn5.setText("+");
                      
                 s=fillShow();
-                //c.new_s(s);
+                c.new_s(s);
                 
             }
+           }
+           
+           if (e.getSource()==btn6) {
+               
+               String t = text_title.getText();
+               c.delete(t);
+               
            }
             
            updating(s);
