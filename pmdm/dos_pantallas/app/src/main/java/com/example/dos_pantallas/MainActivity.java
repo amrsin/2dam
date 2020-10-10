@@ -19,12 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         ImageButton img_btn = (ImageButton) findViewById(R.id.img_btn);
-        TextView result = (TextView) findViewById(R.id.result);
+        final TextView result = (TextView) findViewById(R.id.result);
 
         Toast.makeText(this, "el texto", Toast.LENGTH_SHORT).show();
 
-        //Bundle miBundleRecoger = getIntent().getExtras();
-        //result.setText(miBundleRecoger.getString("resultado"));
 
         img_btn.setOnClickListener(new View.OnClickListener() {
             @Override

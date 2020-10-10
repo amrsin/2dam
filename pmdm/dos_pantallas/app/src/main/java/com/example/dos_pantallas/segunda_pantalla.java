@@ -15,7 +15,7 @@ public class segunda_pantalla extends AppCompatActivity {
     private EditText edit_t1, edit_t2;
     private TextView text_v;
     private Button bt_suma;
-
+    String result = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +49,8 @@ public class segunda_pantalla extends AppCompatActivity {
                 num_1 = Integer.parseInt(edit_t1.getText().toString());
                 num_2 = Integer.parseInt(edit_t2.getText().toString());
                 suma = num_1 + num_2;
-                text_v.setText(String.valueOf(num_1 + " + " + num_2 + " = " +  suma));
+                result = num_1 + " + " + num_2 + " = " +  suma;
+                text_v.setText(String.valueOf(result));
 
             }
         });
