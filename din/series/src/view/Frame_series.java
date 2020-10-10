@@ -188,10 +188,10 @@ public class Frame_series extends JFrame{
            if (e.getSource()==btn7) {
                   
               String t = text_title.getText();
-                
+                s = c.copy_d(t);
+
                  if (btn7.getText().equals("*")) {
                    
-                 s = c.copy_d(t);
                  text_title.setEditable(true);
                  text_screenwriter.setEditable(true);
                  text_season.setEditable(true);
@@ -206,13 +206,9 @@ public class Frame_series extends JFrame{
                  btn6.setEnabled(false);
                 
                  btn7.setText("***");
-                 
-                 
-              
-
-                 
+                  
                }else{
-                     
+                
                  String title = text_title.getText();
                  String screenwriter = text_screenwriter.getText();
                  int season = Integer.parseInt(text_season.getText());
@@ -236,11 +232,9 @@ public class Frame_series extends JFrame{
                  text_seen_season.setEditable(false);
                  
                  btn7.setText("*");
-                 //s = c.copy_d(title);
-                 }  
-                }
                 
-            
+                 }  
+                } 
            updating(s);
        }
    }
