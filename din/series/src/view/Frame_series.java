@@ -111,6 +111,7 @@ public class Frame_series extends JFrame{
    
    class buttonsListener implements ActionListener {
        
+         String t = "";
        public void actionPerformed(ActionEvent e){
            
            show s=new show();
@@ -182,16 +183,19 @@ public class Frame_series extends JFrame{
                c.delete(t);
                
            }
-           
-
-           
+        
            if (e.getSource()==btn7) {
+                
+            
+               if (!text_title.isEditable()) {
+                    t = text_title.getText();
+               }
+             
+              s = c.copy_d(t);
+              
+                if (btn7.getText().equals("*")) {
+                 
                   
-              String t = text_title.getText();
-                s = c.copy_d(t);
-
-                 if (btn7.getText().equals("*")) {
-                   
                  text_title.setEditable(true);
                  text_screenwriter.setEditable(true);
                  text_season.setEditable(true);
@@ -214,7 +218,6 @@ public class Frame_series extends JFrame{
                  int season = Integer.parseInt(text_season.getText());
                  String genre = text_genre.getText();
                  int seen_season = Integer.parseInt(text_seen_season.getText());
-                 
                  c.modify_d(s, title, screenwriter, season, genre, seen_season);
                      
                  
