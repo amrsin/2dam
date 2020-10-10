@@ -182,6 +182,64 @@ public class Frame_series extends JFrame{
                c.delete(t);
                
            }
+           
+
+           
+           if (e.getSource()==btn7) {
+                  
+              String t = text_title.getText();
+                
+                 if (btn7.getText().equals("*")) {
+                   
+                 s = c.copy_d(t);
+                 text_title.setEditable(true);
+                 text_screenwriter.setEditable(true);
+                 text_season.setEditable(true);
+                 text_genre.setEditable(true);
+                 text_seen_season.setEditable(true);
+                 
+                 btn1.setEnabled(false);
+                 btn2.setEnabled(false);
+                 btn3.setEnabled(false);
+                 btn4.setEnabled(false);
+                 btn5.setEnabled(false);
+                 btn6.setEnabled(false);
+                
+                 btn7.setText("***");
+                 
+                 
+              
+
+                 
+               }else{
+                     
+                 String title = text_title.getText();
+                 String screenwriter = text_screenwriter.getText();
+                 int season = Integer.parseInt(text_season.getText());
+                 String genre = text_genre.getText();
+                 int seen_season = Integer.parseInt(text_seen_season.getText());
+                 
+                 c.modify_d(s, title, screenwriter, season, genre, seen_season);
+                     
+                 
+                 btn1.setEnabled(true);
+                 btn2.setEnabled(true);
+                 btn3.setEnabled(true);
+                 btn4.setEnabled(true);
+                 btn5.setEnabled(true);
+                 btn6.setEnabled(true);
+                
+                 text_title.setEditable(false);
+                 text_screenwriter.setEditable(false);
+                 text_season.setEditable(false);
+                 text_genre.setEditable(false);
+                 text_seen_season.setEditable(false);
+                 
+                 btn7.setText("*");
+                 //s = c.copy_d(title);
+                 }  
+                }
+                
             
            updating(s);
        }
@@ -193,7 +251,7 @@ public class Frame_series extends JFrame{
        text_screenwriter.setText(s.getScriptwriter());
        text_season.setText(String.valueOf(s.getSeasons()));
        text_genre.setText(s.getGenere());
-       text_seen_season.setText(String.valueOf(s.getTitle()));
+       text_seen_season.setText(String.valueOf(s.getViews()));
    }
    
     private show fillShow(){

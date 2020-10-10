@@ -51,7 +51,7 @@ public class controller {
     
     public show last() {
         
-        position = ls.longitud() -1;
+        position = ls.longitud() -1; 
        return ls.getShow(position);
     }
     
@@ -68,6 +68,24 @@ public class controller {
         ls.delete_s(t);
         acc.saveLS(ls);
       
+    }
+    
+    public show copy_d(String t) {
+        return ls.find_show(t);
+            
+}
+    
+    public void modify_d (show s, String title, String screenwriter, int season, String genre, int seen_season ) {
+        
+         ls.modify(s, title, screenwriter, season, genre, seen_season);
+         /*s.setTitle(title);
+         s.setScriptwriter(screenwriter);
+         s.setSeasons(season);
+         s.setGenere(genre);
+         s.setViews(seen_season);*/
+         acc.saveLS(ls);
+
+
     }
     
     

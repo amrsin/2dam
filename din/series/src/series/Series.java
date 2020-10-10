@@ -26,7 +26,7 @@ public class Series {
         
         //create an instance of one serie:
         
-      /*show sh = new show("Breaking Bad", "Vicent Guilligan", 5, "Drama", 5);
+        /*show sh = new show("Breaking Bad", "Vicent Guilligan", 5, "Drama", 5);
         //create a list:
         listShow ls = new listShow();
         //add the serie:
