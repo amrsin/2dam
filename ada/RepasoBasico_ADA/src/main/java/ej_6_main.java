@@ -1,11 +1,6 @@
 
 import java.util.Scanner;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author amrit
@@ -17,18 +12,16 @@ public class ej_6_main {
         Scanner sc = new Scanner(System.in);
         int op_menu = 0;
         int[][] array_ingresos = new int[20][10];
-        
-        while (op_menu != 4) {
-            
-        System.out.println("Bienvenido/a al menu");
-        System.out.println("1- Introducir ingresos por cada vendedor");
-        System.out.println("2- Total de cada vendedor");
-        System.out.println("3- Total");
-        System.out.println("4- Salir");
-        System.out.print("Introduzca op_menu: ");
-        op_menu = sc.nextInt();
 
-     
+        while (op_menu != 3) {
+            System.out.println("-------------------------");
+            System.out.println("Bienvenido/a al menu");
+            System.out.println("1- Introducir ingresos por cada vendedor");
+            System.out.println("2- Total de cada vendedor");
+            System.out.println("3- Salir");
+            System.out.print("Introduzca op_menu: ");
+            op_menu = sc.nextInt();
+            System.out.println("-------------------------");
 
             switch (op_menu) {
 
@@ -49,16 +42,6 @@ public class ej_6_main {
 
         }
 
-        for (int i = 0; i < 5; i++) {
-
-            for (int j = 0; j < 10; j++) {
-
-                System.out.println(array_ingresos[i][j]);
-
-            }
-
-        }
-
     }
 
     public static void almacenar(int[][] array_ingresos) {
@@ -66,7 +49,7 @@ public class ej_6_main {
         Scanner sc = new Scanner(System.in);
         int ingreso = 0;
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 20; i++) {
 
             System.out.println("Introduzca productos del vendedor " + (i + 1));
 
@@ -84,20 +67,20 @@ public class ej_6_main {
 
     public static void total_individual(int[][] array_ingresos) {
 
-          int total = 0;
-        for (int i = 0; i < 20; i++) {
+        int total = 0;
+        for (int i = 0; i < 2; i++) {
 
-          
+            System.out.println("Vendedor " + (i + 1) + ":");
 
             for (int j = 0; j < 10; j++) {
 
                 total = total + array_ingresos[i][j];
-
-                System.out.println("Vendedor " + (i + 1));
-                System.out.println("Ingresos total: " + total);
-
+                System.out.print("[ " + array_ingresos[i][j] + "]");
             }
-                total = 0;
+            System.out.println("\n-----------------------------");
+            System.out.println("Total ingresos vendedor " + (i + 1) + ": " + total);
+
+            total = 0;
         }
     }
 }
