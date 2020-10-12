@@ -128,7 +128,7 @@ public class ej_7_main {
      public static void extra_info(ArrayList lista_estudiantes){
          
          
-                  Iterator iter = lista_estudiantes.iterator();
+         Iterator iter = lista_estudiantes.iterator();
          Estudiante e;
          
          int nota;
@@ -146,10 +146,7 @@ public class ej_7_main {
              }else if (nota >=5) {
                  
                  aprobados = aprobados + e.getNom() + "\n";
-             }
-             
-             
-             
+             }   
          }
          
          aprobados = "Lista de alumnos aprobados \n" + aprobados;
@@ -158,7 +155,5 @@ public class ej_7_main {
          System.out.println(aprobados);
          System.out.println(suspendidos);
          
-     }
-             
-             
-     } 
+     }          
+ } 
