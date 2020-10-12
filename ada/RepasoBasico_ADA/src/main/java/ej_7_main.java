@@ -24,6 +24,7 @@ public class ej_7_main {
          System.out.println("4. Lista alumnos");
          System.out.println("5. Cambiar nota");
          System.out.println("6. Info extra");
+         System.out.println("7. Salir");
          System.out.print("Indroduzca op menu: ");
          op_menu = sc.nextInt();
          System.out.println("---------------------------------");
@@ -48,6 +49,10 @@ public class ej_7_main {
                  break;
              case 6: 
                  extra_info(lista_estudiantes);
+                 break;
+             case 7: 
+                 System.out.println("Gracias por usar el programa");
+                 Curso c = new Curso(lista_estudiantes);
                  break;
          }
        }
