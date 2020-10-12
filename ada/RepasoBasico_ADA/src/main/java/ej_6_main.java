@@ -11,7 +11,7 @@ public class ej_6_main {
 
         Scanner sc = new Scanner(System.in);
         int op_menu = 0;
-        int[][] array_ingresos = new int[20][10];
+        int[][] array_ingresos = new int[18][10];
 
         while (op_menu != 3) {
             System.out.println("-------------------------");
@@ -49,7 +49,7 @@ public class ej_6_main {
         Scanner sc = new Scanner(System.in);
         int ingreso = 0;
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 18; i++) {
 
             System.out.println("Introduzca productos del vendedor " + (i + 1));
 
@@ -68,7 +68,7 @@ public class ej_6_main {
     public static void total_individual(int[][] array_ingresos) {
 
         int total = 0;
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 18; i++) {
 
             System.out.println("Vendedor " + (i + 1) + ":");
 
