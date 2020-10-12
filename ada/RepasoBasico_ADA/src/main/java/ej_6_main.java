@@ -32,11 +32,9 @@ public class ej_6_main {
                     total_individual(array_ingresos);
                     break;
                 case 3:
-
+                    System.out.println("Gracias por usar el programa");
                     break;
-                case 4:
-
-                    break;
+              
 
             }
 
