@@ -14,17 +14,16 @@ public class ej_7_main {
          Estudiante e;
          int op_menu = 0;
          
-         while(op_menu!=7) {
+         while(op_menu!=6) {
              
          System.out.println("---------------------------------");
          System.out.println("Bienvenido/a al menu");
          System.out.println("1. Dar de alta alumno");
          System.out.println("2. Dar de baja alumno");
-         System.out.println("3. Cambiar datos del alumno");
+         System.out.println("3. Cambiar nota del alumno");
          System.out.println("4. Lista alumnos");
-         System.out.println("5. Cambiar nota");
-         System.out.println("6. Info extra");
-         System.out.println("7. Salir");
+         System.out.println("5. Info extra");
+         System.out.println("6. Salir");
          System.out.print("Indroduzca op menu: ");
          op_menu = sc.nextInt();
          System.out.println("---------------------------------");
@@ -39,18 +38,15 @@ public class ej_7_main {
                  baja_alumno(lista_estudiantes);
                  break;
              case 3: 
-                 
+                 cambiar_nota(lista_estudiantes);
                  break;
              case 4:
                  lista_alumnos(lista_estudiantes);
                  break;
              case 5:
-                 
-                 break;
-             case 6: 
                  extra_info(lista_estudiantes);
                  break;
-             case 7: 
+             case 6: 
                  System.out.println("Gracias por usar el programa");
                  Curso c = new Curso(lista_estudiantes);
                  break;
@@ -106,6 +102,7 @@ public class ej_7_main {
                  
                  lista_estudiantes.remove(e);
                  encontrado = true;
+                 System.out.println("Se ha dado de baja al alumno " + nom);
                  break;
              } 
          }
@@ -115,6 +112,47 @@ public class ej_7_main {
          }
  
     }
+     
+     public static void cambiar_nota(ArrayList lista_estudiantes){
+         
+         //var
+         Scanner sc = new Scanner(System.in);
+         String nom;
+         String nom_aux;
+         int new_nota;
+         boolean encontrado = false;
+         Estudiante e;
+         Iterator iter = lista_estudiantes.iterator();
+
+         //datos user
+         System.out.print("Introduzca nombre: ");
+         nom = sc.nextLine();
+         
+        
+         while (iter.hasNext()) {             
+            
+             
+            e = (Estudiante) iter.next();
+            
+            nom_aux = e.getNom();
+            
+             if (nom_aux.equalsIgnoreCase(nom)) {
+                 
+                 System.out.print("Introduzca nueva nota: ");
+                 new_nota = sc.nextInt();
+                 e.setNota_numero(new_nota);
+                 e.setNota_letra(new_nota);
+                 encontrado = true;
+             } 
+         }
+         if (!encontrado) {
+          System.out.println("No hay alumno de nombre " + nom + " en la bd");
+
+         }
+ 
+    }
+     
+     
        
      public static void lista_alumnos(ArrayList lista_estudiantes) {
          
@@ -139,6 +177,13 @@ public class ej_7_main {
          int nota;
          String aprobados = "";
          String suspendidos = "";
+         int size_array = lista_estudiantes.size();
+         int cont_aprobados = 0;
+         int cont_suspendidos = 0;     
+         double procentaje_aprobados_d = 0;
+         double procentaje_suspendidos_d = 0;
+         
+         
          while (iter.hasNext()) {
 
          e = (Estudiante) iter.next();
@@ -148,17 +193,32 @@ public class ej_7_main {
              if (nota <=4 ) {
                  
                  suspendidos = suspendidos + e.getNom() + "\n";
-             }else if (nota >=5) {
+                 cont_suspendidos++;
                  
+             }else if (nota >=5) {
+    
                  aprobados = aprobados + e.getNom() + "\n";
+                 cont_aprobados++;
              }   
          }
          
          aprobados = "Lista de alumnos aprobados \n" + aprobados;
          suspendidos = "Lista de alumnos suspendidos \n" + suspendidos;
          
+         if (cont_aprobados !=0 || cont_suspendidos !=0) {
+             
+            procentaje_aprobados_d = (double) cont_aprobados / (double) size_array * 100;
+            procentaje_suspendidos_d = (double) cont_suspendidos / (double) size_array * 100;
+             
+         }
+           
          System.out.println(aprobados);
          System.out.println(suspendidos);
+         System.out.println("---------------------------------");
+         System.out.println(procentaje_aprobados_d + "% aprobados");
+         System.out.println(procentaje_suspendidos_d + "% suspendidos");
+       
+         
          
      }          
  } 

@@ -47,9 +47,17 @@ public class Estudiante {
         return nota_numero;
     }
 
+    public void setNota_numero(int nota_numero) {
+        this.nota_numero = nota_numero;
+    }
+
+    public void setNota_letra(int nota) {
+        
+        
+        this.nota_letra = clasificacion_nota(nota);
+    }
     
-    
-    
+ 
     public String toString() {
         return "Nombre: " + nom + ", Apellido: " + apellido 
                + ", Direccion: " + di + ", Nota numero: " + nota_numero + ", Nota letra: " + nota_letra;
