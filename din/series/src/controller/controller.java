@@ -63,17 +63,17 @@ public class controller {
         acc.saveLS(ls);
     }
     
-    public void delete(String t){
+    public void delete(show s){
         
-        ls.delete_s(t);
+        ls.delete(s);
         acc.saveLS(ls);
         
     }
     
-    public show copy_d(String t) {
+    /*public show copy_d(String t) {
         return ls.find_show(t);
             
-}
+}*/
     
     public void modify_d (show s, String title, String screenwriter, int season, String genre, int seen_season, String platform ) {
         
