@@ -28,7 +28,7 @@ public class Frame_series extends JFrame{
     private JTextField text_genre;
     private JTextField text_seen_season;
     private JTextField text_platform;
-    private String[] platform_names = { "", "Netflix", "HBO", "Amazon", "Sky"};
+    private String[] platform_names = { "None", "Netflix", "HBO", "Amazon", "Sky"};
     private JComboBox combo_platform;
     
     private controller c = null;
@@ -212,6 +212,7 @@ public class Frame_series extends JFrame{
                
                String t = text_title.getText();
                c.delete(t);
+               s = c.last();
                
            }
         
@@ -226,13 +227,14 @@ public class Frame_series extends JFrame{
               
                 if (btn7.getText().equals("*")) {
                  
-                  
+                 String platform = text_platform.getText();
+
                  text_title.setEditable(true);
                  text_screenwriter.setEditable(true);
                  text_season.setEditable(true);
                  text_genre.setEditable(true);
                  text_seen_season.setEditable(true);
-                 
+                 combo_platform.setSelectedItem(platform);
                  btn1.setEnabled(false);
                  btn2.setEnabled(false);
                  btn3.setEnabled(false);
@@ -261,7 +263,7 @@ public class Frame_series extends JFrame{
                  btn4.setEnabled(true);
                  btn5.setEnabled(true);
                  btn6.setEnabled(true);
-                
+                 
                  text_title.setEditable(false);
                  text_screenwriter.setEditable(false);
                  text_season.setEditable(false);
@@ -301,12 +303,13 @@ public class Frame_series extends JFrame{
     }
     
     private class ListenerCombo implements ItemListener {
-        
+          
+     
         
         public void itemStateChanged (ItemEvent e) {
             
             int indice = combo_platform.getSelectedIndex();
-            
+           
             String s = platform_names[indice];
             
             text_platform.setText(s);

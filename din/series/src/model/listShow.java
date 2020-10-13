@@ -34,7 +34,6 @@ public class listShow implements Serializable{
        return seriesList.size();
    }
    
-   
    public void delete_s(String t){
        
         show s;
