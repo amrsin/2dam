@@ -77,7 +77,7 @@ public class listShow implements Serializable{
   }
       
       public void modify(show s, String title, 
-      String screenwriter, int season, String genre, int seen_season) {
+      String screenwriter, int season, String genre, int seen_season, String platform) {
       
         
       /*s.setTitle(title);
@@ -107,6 +107,7 @@ public class listShow implements Serializable{
              s1.setSeasons(season);
              s1.setGenere(genre);
              s1.setViews(seen_season);
+             s1.setPlatform(platform);
 
           }
              

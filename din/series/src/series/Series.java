@@ -26,13 +26,13 @@ public class Series {
         
         //create an instance of one serie:
         
-        /*show sh = new show("Breaking Bad", "Vicent Guilligan", 5, "Drama", 5);
+        /*show sh = new show("Breaking Bad", "Vicent Guilligan", 5, "Drama", 5, "Netflix");
         //create a list:
         listShow ls = new listShow();
         //add the serie:
         ls.setShow(sh);
         //create second serie:
-        sh = new show("JGame of thrones", "David Benioff", 6, "1", 6);
+        sh = new show("JGame of thrones", "David Benioff", 6, "1", 6, "Netflix");
         ls.setShow(sh);
         //save it in a file
         access.saveLS(ls);

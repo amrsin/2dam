@@ -14,6 +14,7 @@ public class show implements Serializable {
     private int seasons;
     private String genere;
     private int views;
+    private String platform;
 
     public show() {
 
@@ -22,15 +23,17 @@ public class show implements Serializable {
         this.seasons = 0;
         this.genere = "";
         this.views = 0;
+        this.platform = "";
 
     }
 
-    public show(String title, String scriptwriter, int seasons, String genere, int views) {
+    public show(String title, String scriptwriter, int seasons, String genere, int views, String platform) {
         this.title = title;
         this.scriptwriter = scriptwriter;
         this.seasons = seasons;
         this.genere = genere;
         this.views = views;
+        this.platform = platform;
     }
 
     public String getTitle() {
@@ -71,5 +74,13 @@ public class show implements Serializable {
 
     public void setViews(int views) {
         this.views = views;
+    }  
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
     }  
 }

@@ -21,11 +21,15 @@ public class Frame_series extends JFrame{
     private JLabel lbl_season;
     private JLabel lbl_genre;
     private JLabel lbl_seen_seasons;
+    private JLabel lbl_platform;
     private JTextField text_title;
     private JTextField text_screenwriter;
     private JTextField text_season;
     private JTextField text_genre;
     private JTextField text_seen_season;
+    private JTextField text_platform;
+    private String[] platform_names = { "", "Netflix", "HBO", "Amazon", "Sky"};
+    private JComboBox combo_platform;
     
     private controller c = null;
     
@@ -97,6 +101,16 @@ public class Frame_series extends JFrame{
        panel2.add(lbl_seen_seasons);
        panel2.add(text_seen_season);
        
+       lbl_platform = new JLabel(" Platform");
+       text_platform = new JTextField();
+       text_platform.setEditable(false);
+       panel2.add(lbl_platform);
+       panel2.add(text_platform);
+       
+       combo_platform = new JComboBox(platform_names);
+       panel2.add(combo_platform);
+       combo_platform.setVisible(false);
+
       //adding listener to buttons 
       buttonsListener bl = new buttonsListener();
       btn1.addActionListener(bl);
@@ -106,6 +120,9 @@ public class Frame_series extends JFrame{
       btn5.addActionListener(bl);
       btn6.addActionListener(bl);
       btn7.addActionListener(bl);
+      
+      combo_platform.addItemListener(new ListenerCombo());
+
    }
 
    
@@ -159,6 +176,10 @@ public class Frame_series extends JFrame{
                 text_season.setEditable(true);
                 text_genre.setEditable(true);
                 text_seen_season.setEditable(true);
+                lbl_platform.setVisible(false);
+                text_platform.setVisible(false);
+                combo_platform.setVisible(true);
+
                    
                }else{
                 
@@ -169,8 +190,18 @@ public class Frame_series extends JFrame{
                 btn6.setEnabled(true);
                 btn7.setEnabled(true);
                 
+                text_title.setEditable(false);
+                text_screenwriter.setEditable(false);
+                text_season.setEditable(false);
+                text_genre.setEditable(false);
+                text_seen_season.setEditable(false);
                 btn5.setText("+");
-                     
+                
+                lbl_platform.setVisible(true);
+                text_platform.setVisible(true);
+                combo_platform.setVisible(false);
+                
+                
                 s=fillShow();
                 c.new_s(s);
                 
@@ -208,7 +239,9 @@ public class Frame_series extends JFrame{
                  btn4.setEnabled(false);
                  btn5.setEnabled(false);
                  btn6.setEnabled(false);
-                
+                 lbl_platform.setVisible(false);
+                 text_platform.setVisible(false);
+                 combo_platform.setVisible(true);
                  btn7.setText("***");
                   
                }else{
@@ -218,9 +251,10 @@ public class Frame_series extends JFrame{
                  int season = Integer.parseInt(text_season.getText());
                  String genre = text_genre.getText();
                  int seen_season = Integer.parseInt(text_seen_season.getText());
-                 c.modify_d(s, title, screenwriter, season, genre, seen_season);
+                 String platform = text_platform.getText();
+                 c.modify_d(s, title, screenwriter, season, genre, seen_season, platform);
                      
-                 
+               
                  btn1.setEnabled(true);
                  btn2.setEnabled(true);
                  btn3.setEnabled(true);
@@ -234,6 +268,9 @@ public class Frame_series extends JFrame{
                  text_genre.setEditable(false);
                  text_seen_season.setEditable(false);
                  
+                 lbl_platform.setVisible(true);
+                 text_platform.setVisible(true);
+                 combo_platform.setVisible(false);
                  btn7.setText("*");
                 
                  }  
@@ -249,6 +286,7 @@ public class Frame_series extends JFrame{
        text_season.setText(String.valueOf(s.getSeasons()));
        text_genre.setText(s.getGenere());
        text_seen_season.setText(String.valueOf(s.getViews()));
+       text_platform.setText(s.getPlatform());
    }
    
     private show fillShow(){
@@ -257,7 +295,22 @@ public class Frame_series extends JFrame{
                 text_screenwriter.getText(),
                 Integer.parseInt(text_season.getText()),
                 text_genre.getText(),
-                Integer.parseInt(text_seen_season.getText()));
+                Integer.parseInt(text_seen_season.getText()), 
+                text_platform.getText());
         return s;
     }
+    
+    private class ListenerCombo implements ItemListener {
+        
+        
+        public void itemStateChanged (ItemEvent e) {
+            
+            int indice = combo_platform.getSelectedIndex();
+            
+            String s = platform_names[indice];
+            
+            text_platform.setText(s);
+            
+         }
+    }  
   }
