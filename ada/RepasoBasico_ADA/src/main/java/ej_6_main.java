@@ -13,12 +13,13 @@ public class ej_6_main {
         int op_menu = 0;
         int[][] array_ingresos = new int[18][10];
 
-        while (op_menu != 3) {
+        while (op_menu != 4) {
             System.out.println("-------------------------");
             System.out.println("Bienvenido/a al menu");
             System.out.println("1- Introducir ingresos por cada vendedor");
             System.out.println("2- Total de cada vendedor");
-            System.out.println("3- Salir");
+            System.out.println("3- Total de todos los vendedores");
+            System.out.println("4- Salir");
             System.out.print("Introduzca op_menu: ");
             op_menu = sc.nextInt();
             System.out.println("-------------------------");
@@ -32,6 +33,10 @@ public class ej_6_main {
                     total_individual(array_ingresos);
                     break;
                 case 3:
+                    total(array_ingresos);
+                    
+                    break;
+                case 4:
                     System.out.println("Gracias por usar el programa");
                     break;
               
@@ -47,7 +52,7 @@ public class ej_6_main {
         Scanner sc = new Scanner(System.in);
         int ingreso = 0;
 
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 2; i++) {
 
             System.out.println("Introduzca productos del vendedor " + (i + 1));
 
@@ -80,5 +85,20 @@ public class ej_6_main {
 
             total = 0;
         }
+    }
+    
+    public static void total(int[][] array_ingresos) {
+
+        int total = 0;
+        for (int i = 0; i < 18; i++) {
+
+
+            for (int j = 0; j < 10; j++) {
+
+                total = total + array_ingresos[i][j];
+                
+            }   
+        }
+            System.out.println("Total ingresos de los vendedores: " + total);
     }
 }
