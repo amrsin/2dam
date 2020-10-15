@@ -52,7 +52,7 @@ public class ej_6_main {
         Scanner sc = new Scanner(System.in);
         int ingreso = 0;
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 18; i++) {
 
             System.out.println("Introduzca productos del vendedor " + (i + 1));
 

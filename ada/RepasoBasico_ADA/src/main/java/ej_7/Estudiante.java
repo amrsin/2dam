@@ -32,7 +32,7 @@ public class Estudiante {
             nt_letra = "Suspens";
         } else if (nota_numero < 7) {
             nt_letra = "Approved";
-        } else if (nota_numero < 9) {
+        } else if (nota_numero < 9 || nota_numero == 9) {
             nt_letra = "Outstanding";
         } else if (nota_numero == 10) {
             nt_letra = "Honors";

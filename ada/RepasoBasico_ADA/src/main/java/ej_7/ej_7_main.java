@@ -211,7 +211,9 @@ public class ej_7_main {
              
             procentaje_aprobados_d = (double) cont_aprobados / (double) size_array * 100;
             procentaje_suspendidos_d = (double) cont_suspendidos / (double) size_array * 100;
-             
+            
+            procentaje_aprobados_d = Math.round(procentaje_aprobados_d);
+            procentaje_suspendidos_d = Math.round(procentaje_suspendidos_d);
          }
            
          System.out.println(aprobados);
