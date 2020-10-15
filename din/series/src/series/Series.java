@@ -6,7 +6,6 @@ import model.access;
 import model.listShow;
 import model.show;
 import view.Frame_series;
-import view.Frame_series_v2;
 
 /**
  *
@@ -22,14 +21,8 @@ public class Series {
         // TODO code application logic here
         
         controller control = new controller();
-        /*Frame_series fs = new Frame_series(control);
-        fs.setVisible(true);*/
-        
-        Frame_series_v2 fs_v2 = new Frame_series_v2(control);
-        fs_v2.setVisible(true);
-        
-        
-        
+        Frame_series fs = new Frame_series(control);
+        fs.setVisible(true);
         
         //create an instance of one serie:
         

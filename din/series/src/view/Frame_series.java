@@ -150,6 +150,7 @@ public class Frame_series extends JFrame {
                 
                 s = new show();
                 if (btn5.getText().equals("+")) {
+                    
                     text_title.setText("");
                     text_screenwriter.setText("");
                     text_season.setText("");
@@ -283,7 +284,7 @@ public class Frame_series extends JFrame {
                 text_platform.getText());
         return s;
     }
-    //listener for combo
+    //listener for combo 
     private class ListenerCombo implements ItemListener {
 
         public void itemStateChanged(ItemEvent e) {
