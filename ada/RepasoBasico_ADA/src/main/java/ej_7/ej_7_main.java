@@ -1,3 +1,5 @@
+package ej_7;
+
 import java.util.*;
 
 /**

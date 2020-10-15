@@ -1,3 +1,5 @@
+package ej_7;
+
 /**
  *
  * @author amrit
