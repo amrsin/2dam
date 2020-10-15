@@ -192,11 +192,14 @@ public class ej_7_main {
          
              nota = e.getNota_numero();
              
-             if (nota <=4 ) {
+             if (nota < 0) {
+                     
+                 suspendidos = suspendidos + e.getNom() + "(not presented)\n";
+             }else if (nota <=4) {
                  
                  suspendidos = suspendidos + e.getNom() + "\n";
                  cont_suspendidos++;
-                 
+                                      
              }else if (nota >=5) {
     
                  aprobados = aprobados + e.getNom() + "\n";
@@ -221,8 +224,5 @@ public class ej_7_main {
          System.out.println("---------------------------------");
          System.out.println(procentaje_aprobados_d + "% aprobados");
          System.out.println(procentaje_suspendidos_d + "% suspendidos");
-       
-         
-         
      }          
  } 
