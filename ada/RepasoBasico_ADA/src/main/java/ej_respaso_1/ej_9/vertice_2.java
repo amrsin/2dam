@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ej_9;
+package ej_respaso_1.ej_9;
 
 /**
  *

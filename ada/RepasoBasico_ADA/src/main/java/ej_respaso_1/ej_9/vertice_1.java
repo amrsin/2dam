@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ej_9;
+package ej_respaso_1.ej_9;
 
 /**
  *
  * @author amrsin
  */
-public class vertice_3 extends Triangulo{
+public class vertice_1 extends Triangulo{
     
-    public vertice_3(int x, int y) {
+    public vertice_1(int x, int y) {
         super(x, y);
     }
+    
+    
     
 }

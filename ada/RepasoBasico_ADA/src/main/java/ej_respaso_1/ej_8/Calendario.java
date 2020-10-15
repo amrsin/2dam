@@ -1,7 +1,6 @@
-package ej_8;
+package ej_respaso_1.ej_8;
 
 
-import ej_8.Contactos;
 import java.util.ArrayList;
 
 /*
