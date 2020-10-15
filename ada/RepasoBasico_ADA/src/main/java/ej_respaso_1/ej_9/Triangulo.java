@@ -53,15 +53,12 @@ public class Triangulo extends Punto{
         
         double distancia = 0;
         
-        // v1 and v2
+        //distancia v1 a v2
         distancia = Math.sqrt(Math.pow(2, v1.getX()- (v2.getX())) + Math.pow(2, (v1.getY()) - (v2.getY())));
-
-        System.out.println("1" + distancia);
+        //distancia v2 a v3
         distancia = distancia + Math.sqrt(Math.pow(2, v2.getX()- (v3.getX())) + Math.pow(2, (v2.getY()) - (v3.getY())));
-         System.out.println("2" + distancia);
-        
+        //distancia v3 a v1
         distancia = distancia + Math.sqrt(Math.pow(2, v3.getX()- (v1.getX())) + Math.pow(2, (v3.getY()) - (v1.getY())));
-         System.out.println("3" + distancia);
         distancia = Math.round(distancia);
         return distancia;
         
