@@ -104,6 +104,7 @@ public class Frame_series extends JFrame {
         panel2.add(lbl_platform);
         panel2.add(text_platform);
 
+        //creating combo_platform with plaform_names array
         combo_platform = new JComboBox(platform_names);
         panel2.add(combo_platform);
         combo_platform.setVisible(false);
@@ -117,11 +118,12 @@ public class Frame_series extends JFrame {
         btn5.addActionListener(bl);
         btn6.addActionListener(bl);
         btn7.addActionListener(bl);
-
+        //adding listener to combo_platform;
         combo_platform.addItemListener(new ListenerCombo());
 
     }
-
+    
+    //listener for buttons
     class buttonsListener implements ActionListener {
 
         show s = new show();
@@ -148,6 +150,7 @@ public class Frame_series extends JFrame {
                 
                 s = new show();
                 if (btn5.getText().equals("+")) {
+                    
                     text_title.setText("");
                     text_screenwriter.setText("");
                     text_season.setText("");
@@ -260,7 +263,7 @@ public class Frame_series extends JFrame {
             updating(s);
         }
     }
-
+    //method for update data from actual show
     private void updating(show s) {
 
         text_title.setText(s.getTitle());
@@ -270,7 +273,7 @@ public class Frame_series extends JFrame {
         text_seen_season.setText(String.valueOf(s.getViews()));
         text_platform.setText(s.getPlatform());
     }
-
+    //method for create new show
     private show fillShow() {
 
         show s = new show(text_title.getText(),
@@ -281,7 +284,7 @@ public class Frame_series extends JFrame {
                 text_platform.getText());
         return s;
     }
-
+    //listener for combo 
     private class ListenerCombo implements ItemListener {
 
         public void itemStateChanged(ItemEvent e) {
