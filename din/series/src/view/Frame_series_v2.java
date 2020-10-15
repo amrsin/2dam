@@ -11,7 +11,7 @@ import model.show;
  * @author amrsin
  */
 public class Frame_series extends JFrame {
-
+    
     private JPanel panel1, panel2, panel3;
     private JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7;
     private JLabel lbl_title;
@@ -28,11 +28,11 @@ public class Frame_series extends JFrame {
     private JTextField text_platform;
     private String[] platform_names = {"None", "Netflix", "HBO", "Amazon", "Sky"};
     private JComboBox combo_platform;
-
+    
     private controller c = null;
-
+    
     public Frame_series(controller control) {
-
+        
         c = control;
         panel1 = new JPanel();
         panel2 = new JPanel();
@@ -73,31 +73,31 @@ public class Frame_series extends JFrame {
         text_title.setEditable(false);
         panel2.add(lbl_title);
         panel2.add(text_title);
-
+        
         lbl_screenwriter = new JLabel(" Screenwriter");
         text_screenwriter = new JTextField();
         text_screenwriter.setEditable(false);
         panel2.add(lbl_screenwriter);
         panel2.add(text_screenwriter);
-
+        
         lbl_season = new JLabel(" Season");
         text_season = new JTextField();
         text_season.setEditable(false);
         panel2.add(lbl_season);
         panel2.add(text_season);
-
+        
         lbl_genre = new JLabel(" Genre");
         text_genre = new JTextField();
         text_genre.setEditable(false);
         panel2.add(lbl_genre);
         panel2.add(text_genre);
-
+        
         lbl_seen_seasons = new JLabel(" Seen seasons");
         text_seen_season = new JTextField();
         text_seen_season.setEditable(false);
         panel2.add(lbl_seen_seasons);
         panel2.add(text_seen_season);
-
+        
         lbl_platform = new JLabel(" Platform");
         text_platform = new JTextField();
         text_platform.setEditable(false);
@@ -107,7 +107,6 @@ public class Frame_series extends JFrame {
         //creating combo_platform with plaform_names array
         combo_platform = new JComboBox(platform_names);
         panel2.add(combo_platform);
-        combo_platform.setVisible(false);
 
         //adding listener to buttons 
         buttonsListener bl = new buttonsListener();
@@ -119,21 +118,21 @@ public class Frame_series extends JFrame {
         btn6.addActionListener(bl);
         btn7.addActionListener(bl);
         //adding listener to combo_platform;
-        combo_platform.addItemListener(new ListenerCombo());
+        //combo_platform.addItemListener(new ListenerCombo());
 
     }
-    
+
     //listener for buttons
     class buttonsListener implements ActionListener {
-
+        
         show s = new show();
-
+        
         public void actionPerformed(ActionEvent e) {
-
+            
             if (e.getSource() == btn1) {
                 s = c.first();
             }
-
+            
             if (e.getSource() == btn2) {
                 s = c.previous();
             }
@@ -141,150 +140,146 @@ public class Frame_series extends JFrame {
             if (e.getSource() == btn3) {
                 s = c.next();
             }
-
+            
             if (e.getSource() == btn4) {
                 s = c.last();
             }
-
+            
             if (e.getSource() == btn5) {
                 
                 s = new show();
                 if (btn5.getText().equals("+")) {
+                    
                     text_title.setText("");
                     text_screenwriter.setText("");
                     text_season.setText("");
                     text_genre.setText("");
                     text_seen_season.setText("");
-
+                    
                     btn1.setEnabled(false);
                     btn2.setEnabled(false);
                     btn3.setEnabled(false);
                     btn4.setEnabled(false);
                     btn6.setEnabled(false);
                     btn7.setEnabled(false);
-
+                    
                     btn5.setText("+++");
-
+                    
                     text_title.setEditable(true);
                     text_screenwriter.setEditable(true);
                     text_season.setEditable(true);
                     text_genre.setEditable(true);
                     text_seen_season.setEditable(true);
-                    lbl_platform.setVisible(false);
-                    text_platform.setVisible(false);
-                    combo_platform.setVisible(true);
-
+                    lbl_platform.setVisible(true);
+                    combo_platform.setEnabled(true);
+                    
                 } else {
-
+                    
                     btn1.setEnabled(true);
                     btn2.setEnabled(true);
                     btn3.setEnabled(true);
                     btn4.setEnabled(true);
                     btn6.setEnabled(true);
                     btn7.setEnabled(true);
-
+                    
                     text_title.setEditable(false);
                     text_screenwriter.setEditable(false);
                     text_season.setEditable(false);
                     text_genre.setEditable(false);
                     text_seen_season.setEditable(false);
                     btn5.setText("+");
-
+                    
                     lbl_platform.setVisible(true);
-                    text_platform.setVisible(true);
-                    combo_platform.setVisible(false);
-
+                    combo_platform.setEnabled(false);
                     s = fillShow();
                     c.new_s(s);
-
+                    
                 }
             }
-
+            
             if (e.getSource() == btn6) {
-
+                
                 c.delete(s);
                 s = c.last();
             }
-
+            
             if (e.getSource() == btn7) {
-
+                
                 if (btn7.getText().equals("*")) {
-
-                    String platform = text_platform.getText();
-
+                    
                     text_title.setEditable(true);
                     text_screenwriter.setEditable(true);
                     text_season.setEditable(true);
                     text_genre.setEditable(true);
                     text_seen_season.setEditable(true);
-                    combo_platform.setSelectedItem(platform);
+                    //combo_platform.setSelectedItem(s.getPlatform());
                     btn1.setEnabled(false);
                     btn2.setEnabled(false);
                     btn3.setEnabled(false);
                     btn4.setEnabled(false);
                     btn5.setEnabled(false);
                     btn6.setEnabled(false);
-                    lbl_platform.setVisible(false);
-                    text_platform.setVisible(false);
-                    combo_platform.setVisible(true);
+                    combo_platform.setEnabled(true);
                     btn7.setText("***");
-
+                    
                 } else {
-
+                    
                     String title = text_title.getText();
                     String screenwriter = text_screenwriter.getText();
                     int season = Integer.parseInt(text_season.getText());
                     String genre = text_genre.getText();
                     int seen_season = Integer.parseInt(text_seen_season.getText());
-                    String platform = text_platform.getText();
+                    String platform = platform_names[combo_platform.getSelectedIndex()];
                     c.modify_d(s, title, screenwriter, season, genre, seen_season, platform);
-
+                    
                     btn1.setEnabled(true);
                     btn2.setEnabled(true);
                     btn3.setEnabled(true);
                     btn4.setEnabled(true);
                     btn5.setEnabled(true);
                     btn6.setEnabled(true);
-
+                    
                     text_title.setEditable(false);
                     text_screenwriter.setEditable(false);
                     text_season.setEditable(false);
                     text_genre.setEditable(false);
                     text_seen_season.setEditable(false);
-
-                    lbl_platform.setVisible(true);
-                    text_platform.setVisible(true);
-                    combo_platform.setVisible(false);
+                    
+                    combo_platform.setEnabled(false);
                     btn7.setText("*");
-
+                    
                 }
             }
             updating(s);
         }
     }
+
     //method for update data from actual show
     private void updating(show s) {
-
+        
         text_title.setText(s.getTitle());
         text_screenwriter.setText(s.getScriptwriter());
         text_season.setText(String.valueOf(s.getSeasons()));
         text_genre.setText(s.getGenere());
         text_seen_season.setText(String.valueOf(s.getViews()));
-        text_platform.setText(s.getPlatform());
+        combo_platform.setSelectedItem(s.getPlatform());
+        ;
+        
     }
+
     //method for create new show
     private show fillShow() {
-
+        
         show s = new show(text_title.getText(),
                 text_screenwriter.getText(),
                 Integer.parseInt(text_season.getText()),
                 text_genre.getText(),
                 Integer.parseInt(text_seen_season.getText()),
-                text_platform.getText());
+                platform_names[combo_platform.getSelectedIndex()]);
         return s;
     }
-    //listener for combo
-    private class ListenerCombo implements ItemListener {
+    //listener for combo 
+    /*private class ListenerCombo implements ItemListener {
 
         public void itemStateChanged(ItemEvent e) {
 
@@ -295,5 +290,5 @@ public class Frame_series extends JFrame {
             text_platform.setText(s);
 
         }
-    }
+    }*/
 }
