@@ -11,8 +11,6 @@ public class ej_10_main {
 
     public static void main(String[] args) {
 
-        
-        
         CuentaCorriente c;
 
         c = rellenarCuenta();
@@ -23,8 +21,6 @@ public class ej_10_main {
         System.out.println("-----------------------------------");
         System.out.println("Cambia el saldo");
         System.out.println("Cambiamos el saldo y ahora es: " + c.cambiarSaldo(Saldo()) + "€");
-
-        
 
     }
 
@@ -37,23 +33,21 @@ public class ej_10_main {
         boolean cuenta_bien = false;
         Titular t1;
         Titular t2;
-        
+
         CuentaCorriente cuenta = null;
 
         while (!cuenta_bien) {
 
             System.out.print("Introduzca numero cuenta(20 numero): ");
             num_cuenta = sc.nextLine();
-            
-            
 
             if (num_cuenta.length() == 20) {
-                 
+
                 try {
-                    
+
                     BigInteger n_c = new BigInteger(num_cuenta);
                     cuenta_bien = true;
-                    
+
                 } catch (NumberFormatException e) {
                     cuenta_bien = false;
                 }
@@ -63,9 +57,9 @@ public class ej_10_main {
         System.out.print("Cuantos titulares va tener la cuenta(1/2): ");
         titulares = sc.nextInt();
         sc.nextLine();
-        
+
         if (titulares == 2) {
-            
+
             System.out.println("Titular 1");
             t1 = alta_titular();
             System.out.println("Titular 2");
@@ -88,7 +82,6 @@ public class ej_10_main {
     public static Titular alta_titular() {
 
         Scanner sc = new Scanner(System.in);
-
         String nom;
         String apellidos;
         String dir;
@@ -120,13 +113,11 @@ public class ej_10_main {
             System.out.print("Introduzca el saldo(en positivo): ");
             saldo = sc.nextDouble();
 
-            if (saldo >=0) {
+            if (saldo >= 0) {
 
                 saldo_bien = true;
             }
         }
         return saldo;
-
     }
-    
 }
