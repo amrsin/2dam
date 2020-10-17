@@ -1,5 +1,6 @@
 package ej_respaso_1.ej_10;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -15,12 +16,13 @@ public class ej_10_main {
         CuentaCorriente c;
 
         c = rellenarCuenta();
-        
+        System.out.println("-------------------------------------------------");
         System.out.println(c.toString());
         System.out.println("-------------------------------------------------");
-        System.out.println("Saldo actual " + c.getSaldo());
+        System.out.println("Saldo actual " + c.getSaldo() + "€");
+        System.out.println("-----------------------------------");
         System.out.println("Cambia el saldo");
-        System.out.println("Cambiamos saldo " + c.cambiarSaldo(Saldo()));
+        System.out.println("Cambiamos el saldo y ahora es: " + c.cambiarSaldo(Saldo()) + "€");
 
         
 
@@ -42,10 +44,19 @@ public class ej_10_main {
 
             System.out.print("Introduzca numero cuenta(20 numero): ");
             num_cuenta = sc.nextLine();
+            
+            
 
             if (num_cuenta.length() == 20) {
-
-                cuenta_bien = true;
+                 
+                try {
+                    
+                    BigInteger n_c = new BigInteger(num_cuenta);
+                    cuenta_bien = true;
+                    
+                } catch (NumberFormatException e) {
+                    cuenta_bien = false;
+                }
             }
         }
 

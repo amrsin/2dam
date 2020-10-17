@@ -57,10 +57,10 @@ public class CuentaCorriente {
     public String toString() {
         
         if (t2 == null) {
-          return  "t1=" + t1 + ", num_cuenta=" + num_cuenta + ", saldo=" + saldo + '}';
+          return  " Titular: " + t1 + " Numero cuenta: " + num_cuenta + ", Saldo: " + saldo + "€";
  
         }else{
-          return  "t1=" + t1 + ", t2=" + t2 + ", num_cuenta=" + num_cuenta + ", saldo=" + saldo + '}';
+          return  " Titular_1: " + t1 + " Titular_2: " + t2 + " Numero cuenta: " + num_cuenta + ", Saldo: " + saldo  + "€";
   
         }
     }    

@@ -25,7 +25,7 @@ public class Titular {
 
     @Override
     public String toString() {
-        return "Titular{" + "nom=" + nom + ", apellidos=" + apellidos + ", dir=" + dir + ", dni=" + dni + '}';
+        return " Nombre: " + nom + ", Apellidos: " + apellidos + ", Direccion: " + dir + ", DNI: " + dni +"\n";
     }
     
 }
