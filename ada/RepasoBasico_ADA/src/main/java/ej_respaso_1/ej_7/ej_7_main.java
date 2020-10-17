@@ -1,7 +1,5 @@
 package ej_respaso_1.ej_7;
 
-import ej_respaso_1.ej_7.Estudiante;
-import ej_respaso_1.ej_7.Curso;
 import java.util.*;
 
 /**
