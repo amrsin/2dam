@@ -45,18 +45,23 @@ public class CuentaCorriente {
     public double getSaldo() {
         return saldo;
     }
-    
-    
-    
-    public double rellenarCuenta(double s) {
-        
-        this.saldo = this.saldo + s;
-        return saldo;
-    }
-    
+     
     public double cambiarSaldo(double s) {
         
         this.saldo = s;
         return saldo;
     }
+
+    
+    @Override
+    public String toString() {
+        
+        if (t2 == null) {
+          return  "t1=" + t1 + ", num_cuenta=" + num_cuenta + ", saldo=" + saldo + '}';
+ 
+        }else{
+          return  "t1=" + t1 + ", t2=" + t2 + ", num_cuenta=" + num_cuenta + ", saldo=" + saldo + '}';
+  
+        }
+    }    
 }

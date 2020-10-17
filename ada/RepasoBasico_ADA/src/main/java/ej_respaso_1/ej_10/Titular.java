@@ -21,7 +21,13 @@ public class Titular {
         this.apellidos = apellidos;
         this.dir = dir;
         this.dni = dni;
-    }   
+    }  
+
+    @Override
+    public String toString() {
+        return "Titular{" + "nom=" + nom + ", apellidos=" + apellidos + ", dir=" + dir + ", dni=" + dni + '}';
+    }
+    
 }
 
 
