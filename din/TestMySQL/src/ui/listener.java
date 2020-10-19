@@ -50,7 +50,8 @@ public class listener implements ActionListener {
                 Connection with = DB_Connection.OpenConnection();
                 Connection_DB customerDAO = new Connection_DB();
                 c.setId(idSearch.getText());
-                c = ClientDAO.findById(with, c);
+                ClientDAO c_dao = new ClientDAO();
+                c_dao.findByIdclient(with, c);
                 DB_Connection.CloseConnection(with);
             } catch (Exception ex) {
                 ex.printStackTrace();

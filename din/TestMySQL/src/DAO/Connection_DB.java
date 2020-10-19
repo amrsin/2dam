@@ -14,7 +14,7 @@ public class Connection_DB {
         
         try {
             String urlOdbc = "jdbc:mysql://localhost:3306/di?";
-            con = (java.sql.DriverManager.getConnection(urlOdbc, "root", ""));
+            con = (java.sql.DriverManager.getConnection(urlOdbc, "root", "din123"));
             return con;
         } catch (Exception e) {// SQLException and ClassNotFoundException
             e.printStackTrace();
