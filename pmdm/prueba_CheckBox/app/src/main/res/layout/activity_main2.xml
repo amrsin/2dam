@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -31,27 +32,14 @@
         android:text="Blogging"
         />
 
+    
     <Button
-        android:id="@+id/btn_hobby"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get Hobby"
-        />
-
-    <TextView
-        android:id="@+id/tv_hobby"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ELIGE TU HOBBY"
-        android:layout_gravity="center"
-        />
-
-    <Button
-        android:id="@+id/btn_chk_v2"
+        android:id="@+id/btn_chk_v1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="CheckBox_v2"
+        android:text="CheckBox_v1"
         />
+
 
 </LinearLayout>
