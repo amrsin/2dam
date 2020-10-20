@@ -1,4 +1,4 @@
-package ej_respaso_1.ej_10;
+package ej_repaso_1.ej_10;
 
 import java.math.BigInteger;
 import java.util.Scanner;

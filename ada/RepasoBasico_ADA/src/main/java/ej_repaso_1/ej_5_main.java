@@ -1,4 +1,4 @@
-package ej_respaso_1;
+package ej_repaso_1;
 
 /**
  *

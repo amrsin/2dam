@@ -1,5 +1,5 @@
 
-package ej_respaso_1.ej_9;
+package ej_repaso_1.ej_9;
 
 /**
  *

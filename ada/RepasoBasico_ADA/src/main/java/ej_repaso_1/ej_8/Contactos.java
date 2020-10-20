@@ -1,4 +1,4 @@
-package ej_respaso_1.ej_8;
+package ej_repaso_1.ej_8;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
