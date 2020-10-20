@@ -5,6 +5,8 @@
  */
 package testmysql;
 
+import ui.frame;
+
 /**
  *
  * @author amrsin
@@ -16,6 +18,9 @@ public class TestMySQL {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        frame f = new frame();
+        f.setVisible(true);
     }
     
 }
