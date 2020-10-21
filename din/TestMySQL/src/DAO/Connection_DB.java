@@ -13,7 +13,7 @@ public class Connection_DB {
         Connection con = null; // install a connection
         
         try {
-            String urlOdbc = "jdbc:mysql://localhost:3306/di";
+            String urlOdbc = "jdbc:mysql://localhost:3306/di?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
             con = (java.sql.DriverManager.getConnection(urlOdbc, "root", "din123"));
             return con;
         } catch (Exception e) {// SQLException and ClassNotFoundException

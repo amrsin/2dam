@@ -22,7 +22,7 @@ public class listener implements ActionListener {
     private JTextField id, idSearch;
     private JTextArea notes;
     private JButton backwards, forward, search, all;
-    private List<client> clients;
+    private List<client> clients_list;
     private int position;
 
     public listener(JTextField id, JTextArea notes, JTextField idSearch,
@@ -38,10 +38,10 @@ public class listener implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-       client c = new client();
+        client c = new client();
         // FIND A CLIENT
         if (e.getSource() == this.search) {
-        // in searches disabled movement buttons
+            // in searches disabled movement buttons
             forward.setEnabled(false);
             backwards.setEnabled(false);
             try {
@@ -51,11 +51,56 @@ public class listener implements ActionListener {
                 Connection_DB customerDAO = new Connection_DB();
                 c.setId(idSearch.getText());
                 ClientDAO c_dao = new ClientDAO();
-                c_dao.findByIdclient(with, c);
+                c = c_dao.findByIdclient(with, c);
                 DB_Connection.CloseConnection(with);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
+
+        // LOAD ALL CLIENTS
+        if (e.getSource() == this.all) {
+            // on all motion buttons enabled
+            idSearch.setText("");
+            forward.setEnabled(true);
+            backwards.setEnabled(true);
+            position = 0;
+            // All clients:
+            try {
+                Connection_DB DB_Connection = new Connection_DB();
+                Connection with = DB_Connection.OpenConnection();
+                ClientDAO customerDAO = new ClientDAO();
+                clients_list = customerDAO.findAll(with);
+                DB_Connection.CloseConnection(with);
+                // charge the first customer
+                position = 0;
+                c = clients_list.get(position);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        //AHEAD
+        if (e.getSource() == this.forward) {
+            position++;
+            if (position == clients_list.size()) {
+                position--;
+            }
+            c = clients_list.get(position);
+
+        }
+        //BEHIND
+        if (e.getSource() == this.backwards) {
+            if (position > 0) {
+                position--;
+            }
+            c = clients_list.get(position);
+        }
+        update(c);
+
+    }
+
+    private void update(client c) {
+        this.id.setText(c.getId());
+        this.notes.setText(c.getNotes());
     }
 }
