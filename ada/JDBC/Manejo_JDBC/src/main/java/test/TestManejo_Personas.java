@@ -12,28 +12,58 @@ import java.util.*;
 public class TestManejo_Personas {
 
     public static void main(String[] args) throws SQLException {
-
+        
+        Scanner sc = new Scanner(System.in);
         PersonaDAO personaDao = new PersonaDAO();
-
+        int id_persona_dlt;
+        int id_persona_up;
+        String nombre;
+        String apellido;
+        String email;
+        int edad;
+        List<Persona> list_personas;
+        
+        //insertar persona
         Persona p = new Persona("Carlos", "perez", "carlos@gmail.com", 54);
-        System.out.println(personaDao.insertar(p));
-
-        List<Persona> list_personas = personaDao.seleccionar();
-        list_personas.forEach(Persona -> {
-
-            System.out.println("Persona = " + Persona);
-        });
-        
-        //poner el id adecuado a la hora de ejecutar
-        
-        /*Persona p1 = new Persona(9);
-        System.out.println(personaDao.delete(p1));
+        System.out.println("Registros ingresados: " + personaDao.insertar(p));
         list_personas = personaDao.seleccionar();
-
-        list_personas.forEach(Persona -> {
-
-            System.out.println("Persona = " + Persona);
-        });*/
+        listar_personas(list_personas);
+        //Eliminando persona con determinado id
+        System.out.println("-----------------------------------------------------");
+        System.out.print("Introduzca el id persona a eliminar: ");
+        id_persona_dlt = sc.nextInt();
+        Persona p_dlt = new Persona(id_persona_dlt);
+        System.out.println("Registro eliminado: " + personaDao.delete(p_dlt));
+        list_personas = personaDao.seleccionar();
+        listar_personas(list_personas);
+        //Actualizar datos persona
+        System.out.println("-----------------------------------------------------");
+        System.out.print("Introduzca el id persona a actualizar: ");
+        id_persona_up = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Introduzca nombre: ");
+        nombre = sc.nextLine();
+        System.out.print("Introduzca apellidos: ");
+        apellido = sc.nextLine();
+        System.out.print("Introduzca email: ");
+        email = sc.nextLine();
+        System.out.print("Introduzca edad: ");
+        edad = sc.nextInt();
+       
+        Persona p_modificar = new Persona(id_persona_up, nombre, apellido, email, edad);
+        
+        personaDao.update(p_modificar);
+        list_personas = personaDao.seleccionar();
+        listar_personas(list_personas);
 
     }
+    
+    public static void listar_personas(List<Persona> list_personas) {
+        
+        list_personas.forEach(Persona -> {
+
+            System.out.println("Persona = " + Persona);
+        });   
+    }
+    
 }

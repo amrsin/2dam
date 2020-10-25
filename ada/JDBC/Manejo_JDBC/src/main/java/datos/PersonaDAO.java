@@ -16,6 +16,8 @@ public class PersonaDAO {
     private static final String sql_SELECT = "Select id_persona, nombre, apellidos, edad, email FROM persona";
     private static final String sql_INSERT = "INSERT INTO persona(nombre, apellidos,email,edad) VALUES (?,?,?,?)";
     private static final String sql_DELETE = "DELETE FROM persona where id_persona = ?";
+    private static final String sql_UPDATE = "UPDATE persona SET nombre = ?, apellidos = ?, email = ?, edad = ? "
+                                                + "WHERE id_persona = ?";
 
     public List<Persona> seleccionar() throws SQLException {
 
@@ -117,4 +119,29 @@ public class PersonaDAO {
         }
         return registros;
     }
+    
+    public int update(Persona p) {
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+        
+        try {
+            
+            con = Conexion.getConnection();
+            stmt = con.prepareStatement(sql_UPDATE);
+            stmt.setString(1, p.getNombre());
+            stmt.setString(2, p.getApellidos());
+            stmt.setString(3, p.getEmail());
+            stmt.setInt(4, p.getEdad());
+            stmt.setInt(5, p.getId_persona());
+            registros = stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace(System.out);
+        }
+      return registros;
+    }
+    
 }
