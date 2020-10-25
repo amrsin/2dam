@@ -65,5 +65,4 @@ public class TestManejo_Personas {
             System.out.println("Persona = " + Persona);
         });   
     }
-    
 }
