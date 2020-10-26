@@ -15,6 +15,7 @@ public class Manejo_Usuarios {
 
     public static void main(String[] args) {
 
+
         int op_menu = 0;
 
         while (op_menu != 5) {
@@ -60,7 +61,7 @@ public class Manejo_Usuarios {
         System.out.println("|------------------------------------------|");
         System.out.print("|        Introduza opcion del menu:        |");
         op_menu = sc.nextInt();
-        System.out.println("-----------------------------------------------------");
+        System.out.println("--------------------------------------------");
         return op_menu;
     }
 
