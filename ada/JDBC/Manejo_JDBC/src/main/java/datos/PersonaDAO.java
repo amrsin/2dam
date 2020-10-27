@@ -19,7 +19,7 @@ public class PersonaDAO {
     private static final String sql_UPDATE = "UPDATE persona SET nombre = ?, apellidos = ?, email = ?, edad = ? "
                                                 + "WHERE id_persona = ?";
 
-    public List<Persona> seleccionar() throws SQLException {
+    public List<Persona> seleccionar() {
 
         Connection con = null;
         PreparedStatement stmt = null;
@@ -50,10 +50,16 @@ public class PersonaDAO {
             ex.printStackTrace(System.out);
 
         } finally {
-
-            Conexion.close(con);
+            try {
+                
             Conexion.close(rs);
             Conexion.close(stmt);
+            Conexion.close(con);
+                
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+          
 
         }
         return list_personas;

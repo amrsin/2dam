@@ -1,4 +1,4 @@
-domain\Persona.class
-datos\Conexion.class
-datos\PersonaDAO.class
-test\TestManejo_Personas.class
+domain/Persona.class
+datos/PersonaDAO.class
+datos/Conexion.class
+test/TestManejo_Personas.class

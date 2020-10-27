@@ -10,11 +10,13 @@ import java.util.*;
  * @author singh
  */
 public class TestManejo_Personas {
+    
+    private static PersonaDAO personaDao = new PersonaDAO();
+
 
     public static void main(String[] args) throws SQLException {
         
         Scanner sc = new Scanner(System.in);
-        PersonaDAO personaDao = new PersonaDAO();
         int id_persona_dlt;
         int id_persona_up;
         String nombre;
@@ -22,11 +24,12 @@ public class TestManejo_Personas {
         String email;
         int edad;
         List<Persona> list_personas;
+        list_personas = personaDao.seleccionar();
+
         
         //insertar persona
         Persona p = new Persona("Carlos", "perez", "carlos@gmail.com", 54);
         System.out.println("Registros ingresados: " + personaDao.insertar(p));
-        list_personas = personaDao.seleccionar();
         listar_personas(list_personas);
         //Eliminando persona con determinado id
         System.out.println("-----------------------------------------------------");
@@ -34,7 +37,6 @@ public class TestManejo_Personas {
         id_persona_dlt = sc.nextInt();
         Persona p_dlt = new Persona(id_persona_dlt);
         System.out.println("Registro eliminado: " + personaDao.delete(p_dlt));
-        list_personas = personaDao.seleccionar();
         listar_personas(list_personas);
         //Actualizar datos persona
         System.out.println("-----------------------------------------------------");
@@ -53,12 +55,13 @@ public class TestManejo_Personas {
         Persona p_modificar = new Persona(id_persona_up, nombre, apellido, email, edad);
         
         personaDao.update(p_modificar);
-        list_personas = personaDao.seleccionar();
         listar_personas(list_personas);
 
     }
     
     public static void listar_personas(List<Persona> list_personas) {
+        
+         list_personas = personaDao.seleccionar();
         
         list_personas.forEach(Persona -> {
 
