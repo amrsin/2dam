@@ -1,21 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
 /**
  *
  * @author amrsin
  */
+public class Client {
 
-public class client {
+   
 
         private String id;
         private String notes;
 
-        public client() {
+        public Client() {
             this.id = "";
 
             this.notes = "";
