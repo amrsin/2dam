@@ -5,8 +5,6 @@ import DAO.ClientDao;
 import java.util.List;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -115,9 +113,7 @@ public class Frame_JList_printer extends JFrame {
 
                     list_model.remove(index);
                     list1_model.addElement(element);
-
                 }
-
             }
 
             if (e.getSource() == btn2) {
