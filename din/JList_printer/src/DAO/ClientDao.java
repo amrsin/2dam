@@ -9,30 +9,34 @@ import java.util.*;
  */
 public class ClientDao {
 
-    public List<Client> findAll(Connection con) throws Exception {
+    public List<Client> findAll() throws Exception {
         
         List<Client> listClients = new ArrayList();
-        Statement st = null;
+        Connection con = null;
+        Statement stmt = null;
         ResultSet rs = null;
-        Client cli = null;
+        Client c = null;
 
         try {
-            st = con.createStatement();
-            rs = st.executeQuery("Select * from clients");
+            
+            con = Connection_BD.OpenConnection();
+            stmt = con.createStatement();
+            rs = stmt.executeQuery("Select * from clients");
             while (rs.next()) {
-                cli = new Client();
-                getClientRow(rs, cli);
-                listClients.add(cli);
+                c = new Client();
+                getClientRow(rs, c);
+                listClients.add(c);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
             throw new Exception("There was a problem searching the client “" + ex.getMessage());
         } finally {
+            
             if (rs != null) {
                 rs.close(); // We close the result
             }
-            if (st != null) {
-                st.close(); // We close the Statement
+            if (stmt != null) {
+                stmt.close(); // We close the Statement
             }
         }
         return listClients;
