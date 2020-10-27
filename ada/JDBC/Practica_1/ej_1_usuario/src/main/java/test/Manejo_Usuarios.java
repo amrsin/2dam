@@ -73,8 +73,9 @@ public class Manejo_Usuarios {
 
         u1 = teclado(); //llamando metodo teclado
         registros = usuarioDao.insert(u1);//llamando metodo insert donde de verdad agregaremos a la bd el user
-
-        if (registros == 1) {
+        
+        //si registros es distinto 0 es que se ha insetado user bien, sino algo ha fallado
+        if (registros != 0) {
 
             System.out.println("Se ha agregado a la bd el user con nombre " + u1.getUsr());
         } else {
@@ -95,8 +96,9 @@ public class Manejo_Usuarios {
         //objeto tipo user con id
         Usuario u1 = new Usuario(id_usuario);
         registros = usuarioDao.delete(u1);//metodo donde realmente se eliminar el user de bd
-        //si registros es 1 es que se ha eliminado bien sino algo ha fallado
-        if (registros == 1) {
+        
+        //si registros es distinto 0 es que se ha eliminado user bien, sino algo ha fallado
+        if (registros != 0) {
 
             System.out.println("Se ha eliminado de la bd el user con id " + id_usuario);
         } else {
@@ -112,8 +114,9 @@ public class Manejo_Usuarios {
 
         u1 = teclado(); //llamando metodo teclado
         registros = usuarioDao.update(u1);//llamando metodo update donde de verdad actualizaremos datos user
-        //si registros es 1 es que se ha actualizado datos bien sino algo ha fallado
-        if (registros == 1) {
+        
+        //si registros es distinto 0 es que se ha actualizado user bien ,sino algo ha fallado
+        if (registros != 0) {
 
             System.out.println("Se ha actualizado datos user con nombre " + u1.getUsr());
         } else {
