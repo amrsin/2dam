@@ -131,7 +131,7 @@ public class Manejo_Usuarios {
             System.out.println("Usuario = " + Usuario);
         });
     }
-
+    //metodo para crear objeto tipo Usuario con los datos introducidos por user 
     public static Usuario teclado() {
         //variables
         Scanner sc = new Scanner(System.in);
