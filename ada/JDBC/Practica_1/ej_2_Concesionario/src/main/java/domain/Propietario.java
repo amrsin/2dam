@@ -63,6 +63,6 @@ public class Propietario {
     //metodo toString
     @Override
     public String toString() {
-        return "DNI; " + DNI + ", Nombre: " + Nombre + ", Edad: " + Edad;
+        return "DNI: " + DNI + ", Nombre: " + Nombre + ", Edad: " + Edad;
     }
 }

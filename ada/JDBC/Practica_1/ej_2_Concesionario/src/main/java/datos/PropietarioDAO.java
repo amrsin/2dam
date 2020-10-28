@@ -15,7 +15,7 @@ public class PropietarioDAO {
     private static final String SQL_SELECT = "SELECT * FROM propietarios";
     private static final String SQL_INSERT = "INSERT INTO propietarios VALUES (?, ?, ?)";
     private static final String SQL_DELETE = "DELETE FROM propietarios where DNI = ?";
-    private static final String sql_UPDATE = "UPDATE propietarios SET Nombre = ? Edad = ? WHERE DNI = ?";
+    private static final String sql_UPDATE = "UPDATE propietarios SET Nombre = ?, Edad = ? WHERE DNI = ?";
 
     public List<Propietario> select() {
         
@@ -90,6 +90,15 @@ public class PropietarioDAO {
                 ex.printStackTrace(System.out);
 
             }
+            
+            //si registros es distinto 0 es que se ha insetado user bien, sino algo ha fallado
+        if (registros != 0) {
+
+            System.out.println("Se ha agregado a la bd el propietario con nombre " + p.getNombre());
+        } else {
+
+            System.out.println("Ha habido fallo a la hora de insertar el propietario");
+        }
         }
         return registros;
     }
@@ -122,7 +131,60 @@ public class PropietarioDAO {
                 ex.printStackTrace(System.out);
             }
         }
+        
+         //si registros es distinto 0 es que se ha eliminado propietario bien, sino algo ha fallado
+        if (registros != 0) {
+
+            System.out.println("Se ha eliminado de la bd el propietario con DNI " + p.getDNI());
+        } else {
+
+            System.out.println("Ha habido fallo a la hora de eliminar el propietario");
+        }
 
         return registros;
     }
+     
+      public int update(Propietario p) {
+
+        //variables
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+
+        try {
+
+            con = Conexion.getConnection(); //establecemos connecion con la bd
+            stmt = con.prepareStatement(sql_UPDATE); //indicamos la consulta a hacer
+            //indicamos cada ? en orden de la consulta SQL_UPDATE
+            stmt.setString(1, p.getNombre());
+            stmt.setInt(2, p.getEdad());
+            stmt.setString(3, p.getDNI());
+            
+            registros = stmt.executeUpdate(); //ejecutamos quary
+  
+        } catch (SQLException ex) {           
+            ex.printStackTrace(System.out);
+        } finally {
+
+            try {
+                
+                Conexion.close(stmt); //cerramos statament
+                Conexion.close(con); //cerramos connexion
+
+            } catch (SQLException ex) {
+
+                ex.printStackTrace(System.out);
+            }
+        }
+        
+         //si registros es distinto 0 es que se ha actualizado user bien ,sino algo ha fallado
+        if (registros != 0) {
+
+            System.out.println("Se ha actualizado datos propietario con DNI " + p.getDNI());
+        } else {
+
+            System.out.println("Ha habido fallo a la hora de actualizar el propietario");
+        }
+        return registros;
+     }
 }
