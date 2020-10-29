@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Suma</string>
+    <string name="num_1">Introduzca num_1</string>
+    <string name="num_2">Introduzca num_2</string>
+    <string name="result">Resultado</string>
+    <string name="btn_suma">SUMAR</string>
+
+
+</resources>
