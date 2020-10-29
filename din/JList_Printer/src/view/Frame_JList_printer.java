@@ -1,7 +1,7 @@
 package view;
 
 import DAO.Client;
-import DAO.ClientDao;
+import DAO.ClientDAO;
 import java.util.List;
 import java.awt.*;
 import java.awt.event.*;
@@ -78,7 +78,7 @@ public class Frame_JList_printer extends JFrame {
     class list_clients {
 
         private List<Client> clients_list;
-        ClientDao clientDao = new ClientDao();
+        ClientDAO clientDao = new ClientDAO();
 
         public void list_clients(JList j) {
 
