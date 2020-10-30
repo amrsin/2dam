@@ -1,8 +1,5 @@
 
 package computer_budget;
-
-
-
 /**
  *
  * @author amrsin
@@ -16,7 +13,6 @@ import javax.swing.border.TitledBorder;
 
 public class frame_computer extends JFrame {
     
-  //algunos paneles necesarios
     JPanel panel_position = new JPanel();
     JPanel panel_general = new JPanel();
     JPanel panel_micros = new JPanel();
@@ -134,14 +130,9 @@ public class frame_computer extends JFrame {
                     
                    text_micro = rb.getText();
                    
-                   
-                    for (int j = 0; j < micros.length; j++) {
-                    
-                            if (micros[j][0].equals(text_micro)) {
-                                
-                                text_micro = text_micro + " " + micros[j][1];
-                            }     
-                    }          
+                   text_micro = text_micro + " " + micros[i][1];
+
+                              
                 }        
      
             }
@@ -161,15 +152,7 @@ public class frame_computer extends JFrame {
                 if (rb.isSelected()) {
                     
                    text_RAM = rb.getText();
-                   
-                   
-                    for (int j = 0; j < RAM.length; j++) {
-                    
-                            if (RAM[j][0].equals(text_RAM)) {
-                                
-                                text_RAM = text_RAM + " " + RAM[j][1];
-                            }     
-                    }          
+                   text_RAM = text_RAM + " " + RAM[i][1];
                 }        
      
             }
@@ -189,17 +172,8 @@ public class frame_computer extends JFrame {
                 if (rb.isSelected()) {
                     
                    text_monitor = rb.getText();
-                   
-                   
-                    for (int j = 0; j < Monitors.length; j++) {
-                    
-                            if (Monitors[j][0].equals(text_monitor)) {
-                                
-                                text_monitor = text_monitor + " " + Monitors[j][1];
-                            }     
-                    }          
+                   text_monitor = text_monitor + " " + Monitors[i][1];
                 }        
-     
             }
         }
     }
@@ -217,14 +191,7 @@ public class frame_computer extends JFrame {
                    
                   aux_txt = ck.getText();
                   //text_miscellanea = ck.getText();
-                   
-                    for (int j = 0; j < Miscellanea.length; j++) {
-                    
-                            if (Miscellanea[j][0].equals(aux_txt)) {
-                                
-                                text_miscellanea = text_miscellanea + " " + aux_txt + " " + Miscellanea[j][1];
-                            }     
-                    }    
+                  text_miscellanea = text_miscellanea + " " + aux_txt + " " + Miscellanea[i][1];    
                 } 
             }  
         }
