@@ -43,7 +43,6 @@ public class PropietarioDAO {
                 list_propietarios.add(p);
             }
         } catch (SQLException ex) {
-            
             ex.printStackTrace(System.out);
         }finally {
             
@@ -53,7 +52,8 @@ public class PropietarioDAO {
                 Conexion.close(stmt); //cerramos statement
                 Conexion.close(con); //cerramos conexion
                 
-            } catch (Exception e) {
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
            }
         }
         
@@ -86,9 +86,7 @@ public class PropietarioDAO {
                 Conexion.close(con);
                 
             } catch (SQLException ex) {
-
                 ex.printStackTrace(System.out);
-
             }
             
             //si registros es distinto 0 es que se ha insetado user bien, sino algo ha fallado
@@ -127,7 +125,6 @@ public class PropietarioDAO {
                 Conexion.close(con); //cerramos connexion
 
             } catch (SQLException ex) {
-
                 ex.printStackTrace(System.out);
             }
         }
@@ -172,7 +169,6 @@ public class PropietarioDAO {
                 Conexion.close(con); //cerramos connexion
 
             } catch (SQLException ex) {
-
                 ex.printStackTrace(System.out);
             }
         }

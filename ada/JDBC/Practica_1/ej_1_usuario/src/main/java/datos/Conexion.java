@@ -13,7 +13,7 @@ public class Conexion {
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD= "din123";
   
-    //metodo para establecer connexion con la bd
+    //metodo para establecer conexion con la bd
     public static Connection getConnection() throws SQLException {
               
         return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);

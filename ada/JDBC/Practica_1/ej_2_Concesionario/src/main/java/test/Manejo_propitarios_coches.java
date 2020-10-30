@@ -11,7 +11,7 @@ import java.util.*;
  * @author singh
  */
 public class Manejo_propitarios_coches {
-
+    //var
     private static PropietarioDAO propietarioDao = new PropietarioDAO();
     private static CocheDAO cocheDao = new CocheDAO();
     private static List<Propietario> list_propietarios;
@@ -19,12 +19,13 @@ public class Manejo_propitarios_coches {
 
     //metodo main        
     public static void main(String[] args) {
+        //var
         Scanner sc = new Scanner(System.in);
         String result = null;
         String DNI = null;
         int op_menu = 0;
-
-        while (op_menu != 11) {
+        //bucle hasta que tecle op_menu 10
+        while (op_menu != 10) {
             op_menu = menu();
 
             switch (op_menu) {
@@ -35,10 +36,8 @@ public class Manejo_propitarios_coches {
                 case 2:
                     insert_coche();
                     break;
-                case 3:
-                    System.out.print("Introduzca DNI: ");
-                    DNI = sc.nextLine();
-                    delete_propietario(DNI);
+                case 3: 
+                    delete_propietario();
                     break;
                 case 4:
                     delete_coche();
@@ -58,7 +57,7 @@ public class Manejo_propitarios_coches {
                 case 9:
                     result = listar_por_DNI(list_propietarios, list_coches);
                     if (result != null) {
-                        System.out.println(result);
+                        System.out.println(result); 
                     }
                     break;
                 case 10:
@@ -100,7 +99,7 @@ public class Manejo_propitarios_coches {
         //var 
         Propietario p1;
 
-        p1 = teclado_propietario(); //llamando metodo teclado
+        p1 = teclado_propietario(); //llamando metodo teclado_propietario
         propietarioDao.insert(p1);//llamando metodo insert donde de verdad agregaremos a la bd el propietario
    
     }
@@ -112,27 +111,32 @@ public class Manejo_propitarios_coches {
         boolean existe = false;
         Coche c1;
 
-        c1 = teclado_coche(); //llamando metodo teclado
+        c1 = teclado_coche(); //llamando metodo teclado_coche
         DNI = c1.getDNI();
         existe = existe_DNI(list_propietarios, DNI);
         //si existe propietario con DNI proporcionado avanzara para añadir coche
         if (existe) {
 
           cocheDao.insert(c1);//llamando metodo insert donde de verdad agregaremos a la bd el user
-           
+         //sino indicara que no existe el propietario en la bd  
         }else {
             System.out.println("No existe el propietario con DNI " + DNI);
         }
     }
 
     //metodo para eliminar propietario
-    public static void delete_propietario(String DNI) {
+    public static void delete_propietario() {
         //variables
         Scanner sc = new Scanner(System.in);
+        String DNI;
         String DNI_aux;
         
+        //dato necesario por user
+        System.out.print("Introduzca DNI: ");
+        DNI = sc.nextLine();
+        
             list_coches = cocheDao.select();
-
+            //antes de eliminar el propitario, eliminamos coches que tenga el propietario
             for (Coche c : list_coches) {
 
             DNI_aux = c.getDNI();
@@ -153,12 +157,12 @@ public class Manejo_propitarios_coches {
         //variables
         Scanner sc = new Scanner(System.in);
         String Matricula;
-        //datos por user
+        //datos necesario por user
         System.out.print("Introduzca matricula: ");
         Matricula = sc.nextLine();
         //objeto tipo coche con matricula
         Coche c1 = new Coche(Matricula);
-        cocheDao.delete(c1);//metodo donde realmente se eliminar el coche de bd
+        cocheDao.delete(c1);//llamamos metodo donde realmente se eliminara el coche de bd
     }
 
     //metodo para actualizaar datos_propietario
@@ -174,9 +178,17 @@ public class Manejo_propitarios_coches {
     public static void update_coche() {
         //var
         Coche c1;
-
+        boolean existe = false;
+        
         c1 = teclado_coche(); //llamando metodo teclado_coche
-        cocheDao.update(c1);//llamando metodo update donde de verdad actualizaremos datos coche    
+        existe = existe_DNI(list_propietarios, c1.getDNI());
+        
+        if (existe) {
+           
+            cocheDao.update(c1);//llamando metodo update donde de verdad actualizaremos datos coche    
+        }else {
+            System.out.println("No existe el propietario con DNI " + c1.getDNI());
+        }
     }
 
     //listar propietarios actuales en la bd
@@ -198,12 +210,12 @@ public class Manejo_propitarios_coches {
             System.out.println("Coche: " + Coche);
         });
     }
-
+    //listar por DNI
     public static String listar_por_DNI(List<Propietario> list_propietarios, List<Coche> list_coches) {
 
         list_propietarios = propietarioDao.select();
         list_coches = cocheDao.select();
-
+        //var
         Scanner sc = new Scanner(System.in);
         String DNI;
         String DNI_aux;
@@ -220,6 +232,8 @@ public class Manejo_propitarios_coches {
 
                 result = " Propietario: " + p;
 
+            }else{
+                result = "No exite datos del DNI " + DNI;
             }
         }
 
@@ -234,7 +248,7 @@ public class Manejo_propitarios_coches {
         }
         return result;
     }
-
+    //metodo para comprobar si el propietario con x DNI existe
     public static boolean existe_DNI(List<Propietario> list_propietarios, String DNI) {
 
         list_propietarios = propietarioDao.select();

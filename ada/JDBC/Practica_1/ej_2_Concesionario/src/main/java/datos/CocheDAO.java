@@ -53,7 +53,8 @@ public class CocheDAO {
                 Conexion.close(stmt); //cerramos statement
                 Conexion.close(con); //cerramos conexion
 
-            } catch (Exception e) {
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
             }
         }
 
