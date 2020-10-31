@@ -18,6 +18,8 @@ public class Frame extends JFrame {
     JPanel panel_checkbox_radio = new JPanel();
     JLabel check_label;
     JCheckBox check_bold, check_italic;
+    ButtonGroup bg = new ButtonGroup();
+    JRadioButton radio_24, radio_34;
 
     public Frame() {
 
@@ -27,6 +29,8 @@ public class Frame extends JFrame {
 
         panel_general.setLayout(new BorderLayout());
         panel_combo.setLayout(new GridLayout(1, 2));
+        panel_checkbox_radio.setLayout(new GridLayout(1, 2));
+
         add(panel_general);
 
         JLabel combo_label = new JLabel(" Choose backgroud color: ");
@@ -36,17 +40,27 @@ public class Frame extends JFrame {
         panel_combo.add(combo);
         panel_general.add(panel_combo, BorderLayout.NORTH);
 
-        check_label = new JLabel(" Choose text font: ");
+        check_label = new JLabel(" text ");
         check_label.setFont(new Font("serif", Font.PLAIN, 14));
 
         check_bold = new JCheckBox("Bold text");
         check_italic = new JCheckBox("Italic text");
         check_bold.addItemListener(new listener_check());
         check_italic.addItemListener(new listener_check());
-
         panel_checkbox_radio.add(check_label);
         panel_checkbox_radio.add(check_bold);
         panel_checkbox_radio.add(check_italic);
+        
+        radio_24 = new JRadioButton("24");
+        radio_34 = new JRadioButton("34");
+        bg.add(radio_24);
+        bg.add(radio_34);
+        radio_24.addItemListener(new listener_radio());
+        radio_34.addItemListener(new listener_radio());
+
+        panel_checkbox_radio.add(radio_24);
+        panel_checkbox_radio.add(radio_34);
+        
         panel_general.add(panel_checkbox_radio, BorderLayout.SOUTH);
 
     }
@@ -67,7 +81,8 @@ public class Frame extends JFrame {
 
         @Override
         public void itemStateChanged(ItemEvent e) {
-
+            
+              Font f = check_label.getFont();
             int font_type = Font.PLAIN;
 
             if (check_bold.isSelected()) {
@@ -82,8 +97,32 @@ public class Frame extends JFrame {
 
             }
 
-            check_label.setFont(new Font("Serif", font_type, 14));
+            check_label.setFont(new Font("Serif", font_type, f.getSize()));
 
         }
+    }
+    
+    class listener_radio implements ItemListener {
+
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            
+            Font f = check_label.getFont();
+            
+            if (radio_24.isSelected()) {
+                
+                check_label.setFont(new Font("Serif", f.getStyle(), 24)); 
+                
+            }
+            
+            if (radio_34.isSelected()) {
+                
+                check_label.setFont(new Font("Serif", f.getStyle(), 34)); 
+                
+            }
+        }
+        
+        
+        
     }
 }
