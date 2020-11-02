@@ -8,27 +8,28 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <!--TextView que tiene como texto Prueba de saludo/-->
     <TextView
         android:id="@+id/saludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/saludo"
         />
-
+    <!--EditText en cual user tiene que introducir nombre-->
     <EditText
         android:id="@+id/escibe_saludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/escribe_saludo"
         />
-
+    <!--Button en cual al hacer click se ira a la otra actividad-->
     <Button
         android:id="@+id/btn_pulsar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_pulsar"
         />
-
+    <!--TextView que mostrara saludo al volver de activity_pantalla_2-->
     <TextView
         android:id="@+id/vuelve"
         android:layout_width="wrap_content"

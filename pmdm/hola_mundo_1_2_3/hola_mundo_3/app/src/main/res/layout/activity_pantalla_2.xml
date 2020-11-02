@@ -9,13 +9,14 @@
     android:orientation="vertical"
     tools:context=".pantalla_2">
 
+    <!--TextView en cual se mostrara el saludo-->
     <TextView
         android:id="@+id/saludo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
         />
-
+    <!--Button en cual al hacer click se ira a la actividad principal-->
     <Button
         android:id="@+id/btn_volver"
         android:layout_width="wrap_content"
