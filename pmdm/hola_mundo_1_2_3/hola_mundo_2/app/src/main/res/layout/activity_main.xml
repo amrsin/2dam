@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--TextView que tiene como texto Prueba de saludo/-->
+    <TextView
+        android:id="@+id/saludo_tview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/saludo"
+        />
+    <!--EditText en cual user tiene que introducir nombre-->
+    <EditText
+        android:id="@+id/escribe_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/escribe"
+        />
+    <!--Button en cual al hacer click se ira a la otra actividad-->
+    <Button
+        android:id="@+id/pulsar_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pulsar"
+        />
+</LinearLayout>
