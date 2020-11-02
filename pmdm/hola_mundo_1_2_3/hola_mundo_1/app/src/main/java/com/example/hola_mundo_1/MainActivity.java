@@ -15,10 +15,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //var
         final EditText miTexto = (EditText) findViewById(R.id.miTxt);
         final Button miButton = (Button) findViewById(R.id.miBtn);
         final TextView elSaludos = (TextView) findViewById(R.id.miLbl);
 
+        //al hacer click en miButton se hace un setText Te saludo + el texto puesto en miTexto
         miButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

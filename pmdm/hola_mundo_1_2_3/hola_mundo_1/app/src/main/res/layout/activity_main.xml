@@ -10,25 +10,27 @@
     tools:context=".MainActivity">
 
 
+    <!--TextView que tiene como texto Bienvenido/-->
     <TextView
-
-        android:text="@string/primerSaludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:text="@string/primerSaludo"
 
+        />
+    <!--EditText en cual user tiene que introducir nombre-->
     <EditText
         android:id="@+id/miTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hint="@string/hintSaludo"
         android:text="@string/escribe" />
-
+    <!--Button en cual al hacer click se saldara al user con su nombre en miLbl-->
     <Button
         android:id="@+id/miBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/pulsar" />
-
+    <!--TextView en cual se mostrara el saludo-->
     <TextView
         android:id="@+id/miLbl"
         android:layout_width="wrap_content"
