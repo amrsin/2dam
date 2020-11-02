@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">hola_mundo3</string>
-    <string name="saludo"> Prueba de saludo!</string>
-    <string name="escribe_saludo">Escribe saludo</string>
-    <string name="btn_pulsar">Pulsa aqui</string>
-    <string name="btn_volver">Volver</string>
-
-
-</resources>
