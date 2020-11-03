@@ -9,6 +9,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <!--TextView informativo-->
     <TextView
         android:id="@+id/lbl_radios"
         android:layout_width="fill_parent"
@@ -17,7 +18,7 @@
         android:layout_marginTop="20dp"
         android:text="ID opción  seleccionada: ninguna"
         />
-
+    <!--RadioGroup con dos RadioButton-->
     <RadioGroup
         android:id="@+id/group_radio"
         android:layout_width="fill_parent"
@@ -39,6 +40,5 @@
         android:layout_gravity="center"
         android:text="Opción 2"
         />
-
     </RadioGroup>
 </LinearLayout>
