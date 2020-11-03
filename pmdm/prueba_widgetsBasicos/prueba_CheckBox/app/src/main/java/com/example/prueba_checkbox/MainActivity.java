@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //var
         chkbox_Cycling = (CheckBox)findViewById(R.id.chkbox_Cycling);
         chkbox_Teaching = (CheckBox)findViewById(R.id.chkbox_Teaching);
         chkbox_Blogging = (CheckBox)findViewById(R.id.chkbox_Blogging);
@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
         Button btn_checbox_v2 = (Button)findViewById(R.id.btn_chk_v2);
 
         final TextView tv_hobby = (TextView)findViewById(R.id.tv_hobby);
-
+        //al hacer click en btn_hobby
         btn_hobby.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String msg = "";
-
+                //deteminando cual esta checked concatena en variable msg hobby
                 if (chkbox_Cycling.isChecked()) {
 
                     msg = msg + "Cycling ";
@@ -54,16 +54,14 @@ public class MainActivity extends AppCompatActivity {
                 tv_hobby.setText(msg);
             }
         });
-
+        //al hacer click en btn_checkbox_v2 pasa a MainActivity2
         btn_checbox_v2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent_activity2 = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent_activity2);
-
             }
         });
-
     }
 }

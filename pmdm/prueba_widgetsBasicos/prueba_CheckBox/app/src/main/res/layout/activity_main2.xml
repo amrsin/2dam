@@ -9,30 +9,29 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <!--CheckBox con texto Cycling-->
     <CheckBox
         android:id="@+id/chkbox_Cycling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cycling"
-
         android:layout_marginTop="20dp"
         />
-
+    <!--CheckBox con texto Teaching-->
     <CheckBox
         android:id="@+id/chkbox_Teaching"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Teaching"
         />
-
+    <!--CheckBox con texto Blogging-->
     <CheckBox
         android:id="@+id/chkbox_Blogging"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Blogging"
         />
-
-    
+    <!--Button al hacer click volvera a MainActivity-->
     <Button
         android:id="@+id/btn_chk_v1"
         android:layout_width="wrap_content"
@@ -40,6 +39,4 @@
         android:layout_gravity="center"
         android:text="CheckBox_v1"
         />
-
-
 </LinearLayout>
