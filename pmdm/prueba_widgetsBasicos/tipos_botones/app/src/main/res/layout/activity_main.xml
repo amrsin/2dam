@@ -9,6 +9,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <!--TextView en cual indicara en que boton se ha hecho click-->
     <TextView
         android:id="@+id/lbl_msg"
         android:layout_width="wrap_content"
@@ -17,15 +18,15 @@
         android:layout_gravity="center"
         android:textSize="15dp"
         />
-
+    <!--Boton simple-->
     <Button
         android:id="@+id/btn_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pulsame"
         android:layout_gravity="center"
-
         />
+    <!--Boton tipo ON OFF-->
     <ToggleButton
         android:id="@+id/btn_2"
         android:layout_width="wrap_content"
@@ -33,18 +34,16 @@
         android:textOn="ON"
         android:textOff="OFF"
         android:layout_gravity="center"
-
         />
-
+    <!--Boton con imagen-->
     <ImageButton
         android:id="@+id/btn_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/done"
         android:layout_gravity="center"
-
         />
-
+    <!--Boton tipo ON OFF-->
     <ToggleButton
         android:id="@+id/btn_4"
         android:layout_width="wrap_content"
@@ -53,6 +52,5 @@
         android:textOff="OFF"
         android:padding="10dp"
         android:layout_gravity="center"
-
         />
 </LinearLayout>
