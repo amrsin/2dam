@@ -23,12 +23,9 @@ public class PersonaDAO {
         this.conexionTrasaccional = conexionTrasaccional;
 
     }
-    
-   
-    
-    public List<Persona> seleccionar() {
-        
-        
+
+    public List<Persona> seleccionar() throws SQLException {
+
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -36,9 +33,9 @@ public class PersonaDAO {
         List<Persona> list_personas = new ArrayList<>();
 
         try {
-            
-            con = this.conexionTrasaccional!=null ? 
-            this.conexionTrasaccional : Conexion.getConnection();
+
+            con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
             //con = getConnection();
             stmt = con.prepareStatement(sql_SELECT);
             rs = stmt.executeQuery();
@@ -54,20 +51,15 @@ public class PersonaDAO {
                 list_personas.add(persona);
 
             }
-
-        } catch (SQLException ex) {
-
-            ex.printStackTrace(System.out);
-
         } finally {
             try {
 
                 Conexion.close(rs);
                 Conexion.close(stmt);
                 if (conexionTrasaccional == null) {
-                    
+
                     Conexion.close(con);
-                    
+
                 }
 
             } catch (SQLException ex) {
@@ -78,7 +70,7 @@ public class PersonaDAO {
 
     }
 
-    public int insertar(Persona p) {
+    public int insertar(Persona p) throws SQLException {
 
         Connection con = null;
         PreparedStatement stmt = null;
@@ -86,8 +78,8 @@ public class PersonaDAO {
 
         try {
 
-            con = this.conexionTrasaccional!=null ? 
-            this.conexionTrasaccional : Conexion.getConnection();
+            con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
             //con = Conexion.getConnection();
             stmt = con.prepareStatement(sql_INSERT);
             stmt.setString(1, p.getNombre());
@@ -96,17 +88,13 @@ public class PersonaDAO {
             stmt.setInt(4, p.getEdad());
             registros = stmt.executeUpdate();
 
-        } catch (SQLException ex) {
-
-            ex.printStackTrace(System.out);
-
         } finally {
             try {
                 Conexion.close(stmt);
                 if (conexionTrasaccional == null) {
-                    
+
                     Conexion.close(con);
-                    
+
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace(System.out);
@@ -115,7 +103,7 @@ public class PersonaDAO {
         return registros;
     }
 
-    public int delete(Persona p) {
+    public int delete(Persona p) throws SQLException {
 
         Connection con = null;
         PreparedStatement stmt = null;
@@ -123,24 +111,21 @@ public class PersonaDAO {
 
         try {
 
-            con = this.conexionTrasaccional!=null ? 
-            this.conexionTrasaccional : Conexion.getConnection();
+            con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
             //con = Conexion.getConnection();
             stmt = con.prepareStatement(sql_DELETE);
             stmt.setInt(1, p.getId_persona());
             registros = stmt.executeUpdate();
 
-        } catch (SQLException ex) {
-
-            ex.printStackTrace(System.out);
         } finally {
 
             try {
                 Conexion.close(stmt);
-               if (conexionTrasaccional == null) {
-                    
+                if (conexionTrasaccional == null) {
+
                     Conexion.close(con);
-                    
+
                 }
             } catch (SQLException ex) {
 
@@ -150,7 +135,7 @@ public class PersonaDAO {
         return registros;
     }
 
-    public int update(Persona p) {
+    public int update(Persona p) throws SQLException {
 
         Connection con = null;
         PreparedStatement stmt = null;
@@ -158,8 +143,8 @@ public class PersonaDAO {
 
         try {
 
-            con = this.conexionTrasaccional!=null ? 
-            this.conexionTrasaccional : Conexion.getConnection();
+            con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
             //con = Conexion.getConnection();
             stmt = con.prepareStatement(sql_UPDATE);
             stmt.setString(1, p.getNombre());
@@ -169,17 +154,14 @@ public class PersonaDAO {
             stmt.setInt(5, p.getId_persona());
             registros = stmt.executeUpdate();
 
-        } catch (SQLException ex) {
-
-            ex.printStackTrace(System.out);
-        }finally {
+        } finally {
 
             try {
                 Conexion.close(stmt);
-               if (conexionTrasaccional == null) {
-                    
+                if (conexionTrasaccional == null) {
+
                     Conexion.close(con);
-                    
+
                 }
             } catch (SQLException ex) {
 

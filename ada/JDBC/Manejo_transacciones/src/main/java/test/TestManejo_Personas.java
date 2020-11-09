@@ -4,7 +4,6 @@ import datos.Conexion;
 import datos.PersonaDAO;
 import domain.Persona;
 import java.sql.*;
-import java.util.*;
 
 /**
  *
