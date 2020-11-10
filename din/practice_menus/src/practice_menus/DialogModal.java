@@ -17,7 +17,7 @@ public class DialogModal extends JDialog {
 
     private JTextField textField;
     
-
+    
     public DialogModal(JFrame padre) {
 
         super(padre, true);
