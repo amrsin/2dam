@@ -1,67 +1,57 @@
-
 package escritor_main;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author amrit
- * 
+ *
  */
 
-
-class Escribir implements Runnable {
-    
-   
-    public synchronized void boli() throws InterruptedException {
-        
-       
-        System.out.println(Thread.currentThread().getName() + "Tengo boli");
-        Thread.sleep(1000);
-    }
-    
-    public synchronized void libreta() throws InterruptedException {
-        
-       
-        System.out.println(Thread.currentThread().getName() + "Tengo libreta");
-        Thread.sleep(1000);
-    }
-    
-   
- 
-    @Override
-    public void run() {
-        
-        for (int i = 0; i < 10; i++) {
-            
-            try {
-                boli();
-                libreta();
-
-            } catch (InterruptedException ex) {
-            }
-            
-        }
-        
-        
-    }
-    
-    
-}
 public class Escritor_Main {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
+        final Object boligrafo = "boligrafo";
+        final Object libreta = "Libreta";
+
+        Thread escritor1 = new Thread("Escritor 1") {
+
+            public void run() {
+
+                for (int i = 0; i < 5; i++) {
+
+                    synchronized (boligrafo) {
+                        System.out.println("El escritor 1: bloquea el boligrafo");
+                        synchronized (libreta) {
+                        System.out.println("El escritor 1: bloquea la libreta");
+                        }
+                      System.out.println("El escritor 1: escribe");
+                    }
+                }
+            }
+
+        };
         
-        Escribir escribir = new Escribir();
-        Thread escritor1 = new Thread(escribir, "Escritor 1");
-        Thread escritor2 = new Thread(escribir, "Escritor 2");
-        
+        Thread escritor2 = new Thread("Escritor 2") {
+
+            public void run() {
+
+                for (int i = 0; i < 5; i++) {
+
+                    synchronized (boligrafo) {
+                        System.out.println("El escritor 2: bloquea el boligrafo");
+                        synchronized (libreta) {
+                        System.out.println("El escritor 2: bloquea la libreta");
+                        }
+                      System.out.println("El escritor 2: escribe");
+                    }
+                }
+            }
+
+        };
         escritor1.start();
         escritor2.start();
     }
-    
 }
