@@ -13,11 +13,10 @@ public class TestManejo_Personas {
 
     public static void main(String[] args) throws SQLException {
 
-        Connection conexion = null;
+        Connection conexion = Conexion.getConnection();
 
         try {
             
-            conexion = Conexion.getConnection();
             if (conexion.getAutoCommit()) {
 
                 conexion.setAutoCommit(false);
@@ -28,7 +27,7 @@ public class TestManejo_Personas {
 
             Persona cambioPersona = new Persona();
             cambioPersona.setId_persona(2);
-            cambioPersona.setNombre("Karla Ivonne");
+            cambioPersona.setNombre("Karla Ivonne11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
             cambioPersona.setApellidos("Gomez");
             cambioPersona.setEmail("kgomez@mail.com");
             personaDao.update(cambioPersona);
