@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">prueba_ListView</string>
-
+    <string name="tv_informativo">Seleccione una opcion</string>
 </resources>
