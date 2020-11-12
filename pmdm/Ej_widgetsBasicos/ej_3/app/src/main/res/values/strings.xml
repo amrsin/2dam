@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ej_3</string>
+    <string name="rb_rojo">Rojo</string>
+    <string name="rb_verde">Rojo</string>
+    <string name="rb_Azul">Rojo</string>
+    <string name="bt_color">COLOR</string>
+
+
+</resources>
