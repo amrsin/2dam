@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ej_1</string>
+    <string name="tv_LinearLayout">LinearLayout</string>
+    <string name="tv_TableLayout">TableLayout</string>
+    <string name="tv_ConstraintLayout">ConstraintLayout</string>
+    <string name="tv_GridLayout">GridLayout</string>
 </resources>

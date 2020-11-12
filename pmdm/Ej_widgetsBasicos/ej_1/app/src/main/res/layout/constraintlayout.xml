@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--Relog analogico-->
     <AnalogClock
         android:id="@+id/reloj"
         android:layout_width="wrap_content"
@@ -17,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <!--CheckBox de prueba-->
     <CheckBox
         android:id="@+id/chk_prueba"
         android:layout_width="wrap_content"
@@ -32,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reloj" />
-
+    <!--Button para volver a MainActivity-->
     <Button
         android:id="@+id/btn_vuelveMain"
         android:layout_width="wrap_content"
@@ -43,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etiquetaPrueba" />
-
+    <!--TextView de prueba-->
     <TextView
         android:id="@+id/etiquetaPrueba"
         android:layout_width="fill_parent"
@@ -55,5 +56,4 @@
         android:text="Test label."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chk_prueba" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

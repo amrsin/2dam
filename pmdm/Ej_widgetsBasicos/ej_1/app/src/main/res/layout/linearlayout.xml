@@ -4,25 +4,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--Relog analogico-->
     <AnalogClock
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
-
+    <!--CheckBox de prueba-->
     <CheckBox
         android:id="@+id/chk_prueba"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test checkBox"
         />
-
+    <!--Button para volver a MainActivity-->
     <Button
         android:id="@+id/btn_vuelveMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="BACK TO MAIN"
         />
-
+    <!--TextView de prueba-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
