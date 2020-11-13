@@ -9,7 +9,7 @@ import java.sql.*;
 public class Conexion {
     
     //datos necesarios para poder conectar a la bd
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/test_ada?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/supercomprin?useSSL=false&useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String JDBC_USER = "root";
     private static final String JDBC_PASSWORD= "din123";
   
