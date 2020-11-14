@@ -29,7 +29,6 @@ public class adminDAO {
                 if (rs.next()) {
 
                     exist = true;
-                    JOptionPane.showMessageDialog(null, "Username and Password matched");
                 } else {
                     JOptionPane.showMessageDialog(null, "Username and Password are not correct");
                 }

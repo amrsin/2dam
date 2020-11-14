@@ -78,6 +78,7 @@ public class Frame_autodealer extends JFrame {
         model = cardao.fillTable(model);
     }
 
+
     class btn_listener implements ActionListener {
 
         @Override
@@ -113,6 +114,16 @@ public class Frame_autodealer extends JFrame {
                 if (table.getSelectedRowCount() == 1) {
                     
                     String license_plate = table.getValueAt(table.getSelectedRow(), 0).toString();
+                    String Brand = table.getValueAt(table.getSelectedRow(), 0).toString();
+                    String Model = table.getValueAt(table.getSelectedRow(), 1).toString();
+                    String Year = table.getValueAt(table.getSelectedRow(), 2).toString();
+                    String Color = table.getValueAt(table.getSelectedRow(), 3).toString();
+                    String Kilometres = table.getValueAt(table.getSelectedRow(), 4).toString();
+                    String Fuel = table.getValueAt(table.getSelectedRow(), 5).toString();
+                    String Doors = table.getValueAt(table.getSelectedRow(), 6).toString();
+                    String Gear_change = table.getValueAt(table.getSelectedRow(), 7).toString();
+                    String Seats = table.getValueAt(table.getSelectedRow(), 8).toString();
+                    String Price = table.getValueAt(table.getSelectedRow(), 9).toString();
                     
                     
                     
