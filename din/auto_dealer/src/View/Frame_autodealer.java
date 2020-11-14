@@ -59,6 +59,10 @@ public class Frame_autodealer extends JFrame {
         btn_refresh = new JButton("REFRESH");
 
         btn_delete.addActionListener(new btn_listener());
+        
+        btn_refresh.addActionListener(new btn_listener());
+
+       
         panel_btn.add(btn_new);
         panel_btn.add(btn_delete);
         panel_btn.add(btn_update);
@@ -102,6 +106,27 @@ public class Frame_autodealer extends JFrame {
 
                     }
                 }
+            }
+            
+            if (source == btn_update) {
+                
+                if (table.getSelectedRowCount() == 1) {
+                    
+                    String license_plate = table.getValueAt(table.getSelectedRow(), 0).toString();
+                    
+                    
+                    
+                    
+                    
+                    
+                }
+                
+            }
+            
+            if (source == btn_refresh) {
+                
+                model.setRowCount(0);
+                model = cardao.fillTable(model);
             }
         }
     }
