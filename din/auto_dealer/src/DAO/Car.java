@@ -21,6 +21,11 @@ public class Car {
 
     public Car() {
     }
+    
+    public Car(String License_plate) {
+        
+       this.License_plate = License_plate;
+    }
 
     public Car(String License_plate, String Brand, String Model, String Year, String Color, String Kilometres, String Fuel,String Doors, String Gear_change, String Seats, String price) {
         this.License_plate = License_plate;

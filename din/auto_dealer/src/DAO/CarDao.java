@@ -57,4 +57,32 @@ public class CarDao {
         }
         return model;
     }
+    
+    public int delete(Car c) {
+        
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int registry= 0;
+        try {
+            
+            con = Connection_BD.OpenConnection();
+            stmt = con.prepareStatement("DELETE FROM car WHERE license_plate = ?");
+            stmt.setString(1, c.getLicense_plate());
+            registry = stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Deleted car with " + c.getLicense_plate() + " license plate");
+        } catch (Exception e) {// SQLException and ClassNotFoundException
+            JOptionPane.showMessageDialog(null, e, "ERROR", JOptionPane.ERROR_MESSAGE);
+        } finally {
+
+            try {
+                stmt.close();
+                Connection_BD.CloseConnection(con);
+
+            } catch (Exception e) {
+               JOptionPane.showMessageDialog(null, e, "ERROR", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+        return registry;
+    }
 }
