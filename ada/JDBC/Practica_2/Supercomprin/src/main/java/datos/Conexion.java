@@ -1,4 +1,3 @@
-
 package datos;
 
 import java.sql.*;
