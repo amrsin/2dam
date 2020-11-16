@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Perrito</string>
+    <string name="btn_mascota">Mostrar mascota</string>
+    <string name="tv_autores">Autores</string>
+
+
+</resources>
