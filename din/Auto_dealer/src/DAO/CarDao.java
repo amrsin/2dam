@@ -9,6 +9,12 @@ import javax.swing.table.DefaultTableModel;
  * @author singh
  */
 public class CarDao {
+    
+    private static String sql_select = "select * from car"; 
+    private static String sql_insert = "INSERT INTO car VALUES (?,?,?,?,?,?,?,?,?,?,?)"; 
+    private static String sql_delete = "DELETE FROM car WHERE license_plate = ?";
+    private static String sql_update = "UPDATE car SET Brand = ?, Model = ?, Year = ?, Color = ?, Kilometres = ?, Fuel = ?, Doors = ?, Gear_change = ?, Seats = ?, Price = ? WHERE license_plate = ?";
+
 
     public DefaultTableModel fillTable(DefaultTableModel model) {
 
@@ -20,11 +26,11 @@ public class CarDao {
 
             con = Connection_BD.OpenConnection();
             stmt = con.createStatement();
-            rs = stmt.executeQuery("select * from car");
+            rs = stmt.executeQuery(sql_select);
 
             while (rs.next()) {
 
-                c = new Car(rs.getString("License_plate"), rs.getString("Brand"), rs.getString("Model"), rs.getString("Year"), rs.getString("Color"), rs.getString("Kilometres"), rs.getString("Fuel"), rs.getString("Doors"), rs.getString("Gear change"), rs.getString("Seats"), rs.getString("Price"));
+                c = new Car(rs.getString("License_plate"), rs.getString("Brand"), rs.getString("Model"), rs.getString("Year"), rs.getString("Color"), rs.getString("Kilometres"), rs.getString("Fuel"), rs.getString("Doors"), rs.getString("Gear_change"), rs.getString("Seats"), rs.getString("Price"));
                 Object[] rowData = new Object[model.getColumnCount()];
                 rowData[0] = c.getLicense_plate();
                 rowData[1] = c.getBrand();
@@ -65,7 +71,7 @@ public class CarDao {
         try {
 
             con = Connection_BD.OpenConnection();
-            stmt = con.prepareStatement("INSERT INTO car VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            stmt = con.prepareStatement(sql_insert);
             stmt.setString(1, c.getLicense_plate());
             stmt.setString(2, c.getBrand());
             stmt.setString(3, c.getModel());
@@ -107,11 +113,52 @@ public class CarDao {
         try {
 
             con = Connection_BD.OpenConnection();
-            stmt = con.prepareStatement("DELETE FROM car WHERE license_plate = ?");
+            stmt = con.prepareStatement(sql_delete);
             stmt.setString(1, c.getLicense_plate());
             registry = stmt.executeUpdate();
             if (registry > 0) {
                 JOptionPane.showMessageDialog(null, "Deleted car with " + c.getLicense_plate() + " license plate");
+
+            }
+        } catch (Exception e) {// SQLException and ClassNotFoundException
+            JOptionPane.showMessageDialog(null, e, "ERROR", JOptionPane.ERROR_MESSAGE);
+        } finally {
+
+            try {
+                stmt.close();
+                Connection_BD.CloseConnection(con);
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e, "ERROR", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+        return registry;
+    }
+    
+    public int update(Car c) {
+
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int registry = 0;
+        try {
+            con = Connection_BD.OpenConnection();
+            stmt = con.prepareStatement(sql_update);
+            stmt.setString(1, c.getBrand());
+            stmt.setString(2, c.getModel());
+            stmt.setString(3, c.getYear());
+            stmt.setString(4, c.getColor());
+            stmt.setString(5, c.getKilometres());
+            stmt.setString(6, c.getFuel());
+            stmt.setString(7, c.getDoors());
+            stmt.setString(8, c.getGear_change());
+            stmt.setString(9, c.getSeats());
+            stmt.setString(10, c.getPrice());
+            stmt.setString(11, c.getLicense_plate());
+            
+            registry = stmt.executeUpdate();
+            if (registry > 0) {
+                JOptionPane.showMessageDialog(null, "Updated car with " + c.getLicense_plate() + " license plate");
 
             }
         } catch (Exception e) {// SQLException and ClassNotFoundException

@@ -45,9 +45,10 @@ public class Frame_login extends JFrame{
         password = new JPasswordField(10);
         c.gridx = 1; c.gridy = 1;
         panel.add(password, c);
-        btn_login = new JButton("Login");
+        btn_login = new JButton("Login");      
+        
+        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1; c.gridy = 2;
-        btn_login.setPreferredSize(new Dimension(110, 25));
         btn_login.addActionListener(new btnLogin_listener());//adding listener to btn_login
         panel.add(btn_login, c);
         add(panel);

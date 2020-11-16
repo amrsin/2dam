@@ -1,7 +1,10 @@
 package View;
 
 import DAO.Car;
-import java.awt.HeadlessException;
+import DAO.CarDao;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
@@ -16,32 +19,136 @@ public class Frame_Update extends JDialog{
     private JTextField txt_License_plate, txt_Brand, txt_Model, txt_Year, txt_Color,
              txt_Kilometres, txt_Fuel, txt_Doors, txt_Gear_change, txt_Seats, txt_price;
    
-    private String[] headers = {"License plate", "Brand", "Model", "Year", "Color", "Kilometres",
-        "Fuel", "Doors", "Gear Change", "Seats", "Price"};
+    private JComboBox combo_gear;
+    private String[] headers = {"License plate: ", "Brand: ", "Model: ", "Year: ", "Color: ", "Kilometres: ",
+        "Fuel: ", "Doors: ", "Gear Change: ", "Seats: ", "Price: "};
     
+    String [] type_gear = {"Manual", "Automatic", "Other"};
+    
+    private JPanel panel;
+    private JButton btn_save;
     
     public Frame_Update(JFrame father, Car c) {
 
         
         super(father, true);
-        setTitle("Update car");        
-        setLocationRelativeTo(null);
+        panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        setTitle("Update car"); 
+        
+        String old_license_plate = c.getLicense_plate();
+        GridBagConstraints cons = new GridBagConstraints();
+        cons.insets= new Insets(10, 5, 5, 5); 
+        cons.anchor = GridBagConstraints.LINE_START;
+
+        
         lbl_License_plate = new JLabel(headers[0]);
+        cons.gridx = 0; cons.gridy = 0;
+        panel.add(lbl_License_plate, cons);
+       
         lbl_Brand = new JLabel(headers[1]);
+        cons.gridx = 0; cons.gridy = 1;
+        panel.add(lbl_Brand, cons);
+        
         lbl_Model = new JLabel(headers[2]);
+        cons.gridx = 0; cons.gridy = 2;
+        panel.add(lbl_Model, cons);
         lbl_Year = new JLabel(headers[3]);
+        cons.gridx = 0; cons.gridy = 3;
+        panel.add(lbl_Year, cons);
         lbl_Color = new JLabel(headers[4]);
+        cons.gridx = 0; cons.gridy = 4;
+        panel.add(lbl_Color, cons);
         lbl_Kilometres = new JLabel(headers[5]);
+         cons.gridx = 0; cons.gridy = 5;
+        panel.add(lbl_Kilometres, cons);
         lbl_Fuel = new JLabel(headers[6]);
+         cons.gridx = 0; cons.gridy = 6;
+        panel.add(lbl_Fuel, cons);
         lbl_Doors = new JLabel(headers[7]);
+         cons.gridx = 0; cons.gridy = 7;
+        panel.add(lbl_Doors, cons);
         lbl_Gear_change = new JLabel(headers[8]);
+         cons.gridx = 0; cons.gridy = 8;
+        panel.add(lbl_Gear_change, cons);
         lbl_Seats = new JLabel(headers[9]);
+         cons.gridx = 0; cons.gridy = 9;
+        panel.add(lbl_Seats, cons);
         lbl_price = new JLabel(headers[10]);
-
-        txt_License_plate = new JTextField(c.getLicense_plate());
+         cons.gridx = 0; cons.gridy = 10;
+        panel.add(lbl_price, cons);
         
-        add(txt_License_plate);
         
+        txt_License_plate = new JTextField(c.getLicense_plate(), 8);
+        txt_License_plate.setEditable(false);
+        cons.gridx = 1; cons.gridy = 0;
+        panel.add(txt_License_plate, cons);
+        
+        txt_Brand = new JTextField(c.getBrand(), 8);
+        cons.gridx = 1; cons.gridy = 1;
+        panel.add(txt_Brand, cons);
+        
+        txt_Model = new JTextField(c.getModel(), 8);
+        cons.gridx = 1; cons.gridy = 2;
+        panel.add(txt_Model, cons);
+         
+        txt_Year = new JTextField(c.getYear(), 8);
+        cons.gridx = 1; cons.gridy = 3;
+        panel.add(txt_Year, cons);
+        
+        txt_Color = new JTextField(c.getColor(), 8);
+        cons.gridx = 1; cons.gridy = 4;
+        panel.add(txt_Color, cons);
+        
+        txt_Kilometres = new JTextField(c.getKilometres(), 8);
+        cons.gridx = 1; cons.gridy = 5;
+        panel.add(txt_Kilometres, cons);
+        
+        txt_Fuel = new JTextField(c.getFuel(), 8);
+        cons.gridx = 1; cons.gridy = 6;
+        panel.add(txt_Fuel, cons);
+        
+        txt_Doors = new JTextField(c.getDoors(), 8);
+        cons.gridx = 1; cons.gridy = 7;
+        panel.add(txt_Doors, cons);
+        
+        //txt_Gear_change = new JTextField(c.getGear_change(), 8);
+        combo_gear = new JComboBox(type_gear);
+        String gear = c.getGear_change();
+        combo_gear.setSelectedItem(gear);
 
-    }    
+        cons.gridx = 1; cons.gridy = 8;
+        panel.add(combo_gear, cons);
+        
+        txt_Seats = new JTextField(c.getSeats(), 8);
+        cons.gridx = 1; cons.gridy = 9;
+        panel.add(txt_Seats, cons);
+        
+        txt_price = new JTextField(c.getPrice(), 8);
+        cons.gridx = 1; cons.gridy = 10;
+        panel.add(txt_price, cons);
+        
+        btn_save = new JButton("Save");
+        cons.fill = GridBagConstraints.HORIZONTAL;
+        cons.gridx = 0; cons.gridwidth = 2; cons.gridy = 11; 
+        btn_save.addActionListener(new btn_listener());
+        panel.add(btn_save, cons);
+        add(panel);
+       
+    }
+
+    class btn_listener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            CarDao cardao = new CarDao();
+            Car c = new Car(txt_License_plate.getText(), txt_Brand.getText(), txt_Model.getText(), txt_Year.getText(), 
+                    txt_Color.getText(), txt_Kilometres.getText(), txt_Fuel.getText(), txt_Doors.getText(), combo_gear.getSelectedItem().toString(),
+                    txt_Seats.getText(), txt_price.getText());
+            
+            cardao.update(c);
+            setVisible(false);
+        }
+    }
 }

@@ -3,8 +3,7 @@ package View;
 import DAO.Car;
 import DAO.CarDao;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -105,7 +104,7 @@ public class Frame_autodealer extends JFrame {
                             || Color.equals("") || Kilometres.equals("") || Fuel.equals("") || Doors.equals("")
                             || Gear_change.equals("") || Seats.equals("") || Price.equals("")) {
 
-                        JOptionPane.showMessageDialog(null, "Nothing will be added, you must enter all the data ", "WARNING", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Nothing is added, you must enter all the data ");
                     } else {
 
                         Object rowData[] = {license_plate, Brand, Model, Year, Color, Kilometres, Fuel, Doors, Gear_change, Seats, Price};
@@ -116,25 +115,28 @@ public class Frame_autodealer extends JFrame {
                             model.addRow(rowData);
 
                         }
-
                     }
                 } catch (java.lang.NullPointerException ex) {
 
-                    JOptionPane.showMessageDialog(null, "Nothing will be added, you must enter all the data ", "WARNING", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Nothing is added, you must enter all the data ");
 
                 }
-
             }
             if (source == btn_delete) {
 
                 if (table.getSelectedRowCount() == 1) {
 
-                    String license_plate = table.getValueAt(table.getSelectedRow(), 0).toString();
-                    model.removeRow(table.getSelectedRow());
-
-                    System.out.println(license_plate);
-                    Car c = new Car(license_plate);
-                    cardao.delete(c);
+                    int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?", "YES O NO", JOptionPane.YES_NO_OPTION);
+                       if (reply == JOptionPane.YES_OPTION) {
+                           
+                           String license_plate = table.getValueAt(table.getSelectedRow(), 0).toString();
+                           model.removeRow(table.getSelectedRow());
+                           Car c = new Car(license_plate);
+                           cardao.delete(c);
+                           
+                        } else {
+                        JOptionPane.showMessageDialog(null, "Nothing has been removed");
+                    }
                 } else {
 
                     if (table.getRowCount() == 0) {
@@ -171,7 +173,7 @@ public class Frame_autodealer extends JFrame {
         public void actionPerformed(ActionEvent ae) {
 
             if (table.getSelectedRowCount() == 1) {
-                
+
                 Car c = null;
                 String license_plate = table.getValueAt(table.getSelectedRow(), 0).toString();
                 String Brand = table.getValueAt(table.getSelectedRow(), 1).toString();
@@ -183,20 +185,27 @@ public class Frame_autodealer extends JFrame {
                 String Doors = table.getValueAt(table.getSelectedRow(), 7).toString();
                 String Gear_change = table.getValueAt(table.getSelectedRow(), 8).toString();
                 String Seats = table.getValueAt(table.getSelectedRow(), 9).toString();
-                String Price = table.getValueAt(table.getSelectedRow(), 10).toString();  
+                String Price = table.getValueAt(table.getSelectedRow(), 10).toString();
                 c = new Car(license_plate, Brand, Model, Year, Color, Kilometres, Fuel, Doors, Gear_change, Seats, Price);
-                
+
                 Frame_Update f = new Frame_Update(miFrame, c);
                 f.pack();
-                f.setSize(500,500);
+                f.setSize(350, 470);
                 f.setVisible(true);
-                
+                model.setRowCount(0);
+                showTable();
 
-                
+            } else {
 
+                if (table.getRowCount() == 0) {
+
+                    JOptionPane.showMessageDialog(null, "Table is Empty");
+                } else {
+
+                    JOptionPane.showMessageDialog(null, "Please select only single row for delete");
+
+                }
             }
-
         }
-
     }
 }
