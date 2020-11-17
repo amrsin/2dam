@@ -87,7 +87,7 @@ public class CarDao {
             registry = stmt.executeUpdate();
             if (registry > 0) {
 
-                JOptionPane.showMessageDialog(null, "Inserted car with " + c.getLicense_plate() + " license plate");
+                JOptionPane.showMessageDialog(null, "Inserted car with \"" + c.getLicense_plate() + "\" license plate");
             }
         } catch (Exception e) {// SQLException and ClassNotFoundException
             JOptionPane.showMessageDialog(null, e, "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -117,7 +117,7 @@ public class CarDao {
             stmt.setString(1, c.getLicense_plate());
             registry = stmt.executeUpdate();
             if (registry > 0) {
-                JOptionPane.showMessageDialog(null, "Deleted car with " + c.getLicense_plate() + " license plate");
+                JOptionPane.showMessageDialog(null, "Deleted car with \"" + c.getLicense_plate() + "\" license plate");
 
             }
         } catch (Exception e) {// SQLException and ClassNotFoundException
@@ -158,7 +158,7 @@ public class CarDao {
             
             registry = stmt.executeUpdate();
             if (registry > 0) {
-                JOptionPane.showMessageDialog(null, "Updated car with " + c.getLicense_plate() + " license plate");
+                JOptionPane.showMessageDialog(null, "Updated car with \"" + c.getLicense_plate() + "\" license plate");
 
             }
         } catch (Exception e) {// SQLException and ClassNotFoundException
