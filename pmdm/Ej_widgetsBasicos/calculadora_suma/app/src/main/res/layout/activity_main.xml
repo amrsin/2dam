@@ -7,12 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        />
-
+    <!--EditText para introducir num_1-->
     <EditText
         android:id="@+id/txt_num1"
         android:layout_width="wrap_content"
@@ -22,7 +17,7 @@
         android:inputType="number"
         android:textSize="18sp"
         />
-
+    <!--EditText para introducir num_2-->
     <EditText
         android:id="@+id/txt_num2"
         android:layout_width="wrap_content"
@@ -32,7 +27,7 @@
         android:inputType="number"
         android:textSize="18sp"
          />
-
+    <!--Button al hacer click sumar los dos numeros-->
     <Button
         android:id="@+id/button_suma"
         android:layout_width="wrap_content"
@@ -41,7 +36,7 @@
         android:textColor="#000000"
         android:textSize="15sp"
          />
-
+    <!--TextView para el resultado suma-->
     <TextView
         android:id="@+id/resultado"
         android:layout_width="wrap_content"
