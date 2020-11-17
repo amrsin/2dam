@@ -29,7 +29,7 @@ public class prueba_main {
             Date date = Date.valueOf(str);
             CompraDAO compradao = new CompraDAO(conexion);
 
-            Compra c = new Compra("123456789", 1, date, 5, 1);
+            Compra c = new Compra(null,"123456789", 1, date, 5, 1);
 
             if (c.getId_producto() == 1) {
                 
