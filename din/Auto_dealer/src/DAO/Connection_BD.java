@@ -8,8 +8,7 @@ import java.sql.*;
  * @author singh
  */
 public class Connection_BD {
-    
-    
+    //method for openConnection to bd
     public static Connection OpenConnection() throws Exception {
         Connection con = null; // install a connection
         
@@ -22,7 +21,7 @@ public class Connection_BD {
             throw new Exception("Connection could not be established" + e.getMessage());
         }
     }
-
+    //mothoed for close Connection
     public static void CloseConnection(Connection con) throws Exception {
         
         try {

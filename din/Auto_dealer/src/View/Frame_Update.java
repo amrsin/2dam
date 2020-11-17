@@ -12,36 +12,31 @@ import javax.swing.*;
  * @author amrsin
  */
 public class Frame_Update extends JDialog{
-    
+    //elements and variables
     private JLabel lbl_License_plate, lbl_Brand, lbl_Model, lbl_Year, lbl_Color,
              lbl_Kilometres, lbl_Fuel, lbl_Doors, lbl_Gear_change, lbl_Seats, lbl_price;
-   
     private JTextField txt_License_plate, txt_Brand, txt_Model, txt_Year, txt_Color,
-             txt_Kilometres, txt_Fuel, txt_Doors, txt_Gear_change, txt_Seats, txt_price;
-   
+             txt_Kilometres, txt_Fuel, txt_Doors, txt_Seats, txt_price;
     private JComboBox combo_gear;
     private String[] headers = {"License plate: ", "Brand: ", "Model: ", "Year: ", "Color: ", "Kilometres: ",
         "Fuel: ", "Doors: ", "Gear Change: ", "Seats: ", "Price: "};
-    
-    String [] type_gear = {"Manual", "Automatic", "Other"};
+    private String [] type_gear = {"Manual", "Automatic", "Other"};
     
     private JPanel panel;
     private JButton btn_save;
     
     public Frame_Update(JFrame father, Car c) {
-
         
         super(father, true);
+        //basic config
         panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         setTitle("Update car"); 
-        
-        String old_license_plate = c.getLicense_plate();
+        //adding elemnts to panel with gridLayout
         GridBagConstraints cons = new GridBagConstraints();
         cons.insets= new Insets(10, 5, 5, 5); 
         cons.anchor = GridBagConstraints.LINE_START;
 
-        
         lbl_License_plate = new JLabel(headers[0]);
         cons.gridx = 0; cons.gridy = 0;
         panel.add(lbl_License_plate, cons);
@@ -53,32 +48,39 @@ public class Frame_Update extends JDialog{
         lbl_Model = new JLabel(headers[2]);
         cons.gridx = 0; cons.gridy = 2;
         panel.add(lbl_Model, cons);
+        
         lbl_Year = new JLabel(headers[3]);
         cons.gridx = 0; cons.gridy = 3;
         panel.add(lbl_Year, cons);
+        
         lbl_Color = new JLabel(headers[4]);
         cons.gridx = 0; cons.gridy = 4;
         panel.add(lbl_Color, cons);
+        
         lbl_Kilometres = new JLabel(headers[5]);
          cons.gridx = 0; cons.gridy = 5;
         panel.add(lbl_Kilometres, cons);
+        
         lbl_Fuel = new JLabel(headers[6]);
          cons.gridx = 0; cons.gridy = 6;
         panel.add(lbl_Fuel, cons);
+        
         lbl_Doors = new JLabel(headers[7]);
          cons.gridx = 0; cons.gridy = 7;
         panel.add(lbl_Doors, cons);
+        
         lbl_Gear_change = new JLabel(headers[8]);
          cons.gridx = 0; cons.gridy = 8;
         panel.add(lbl_Gear_change, cons);
+        
         lbl_Seats = new JLabel(headers[9]);
          cons.gridx = 0; cons.gridy = 9;
         panel.add(lbl_Seats, cons);
+        
         lbl_price = new JLabel(headers[10]);
          cons.gridx = 0; cons.gridy = 10;
         panel.add(lbl_price, cons);
-        
-        
+         
         txt_License_plate = new JTextField(c.getLicense_plate(), 8);
         txt_License_plate.setEditable(false);
         cons.gridx = 1; cons.gridy = 0;
@@ -112,7 +114,6 @@ public class Frame_Update extends JDialog{
         cons.gridx = 1; cons.gridy = 7;
         panel.add(txt_Doors, cons);
         
-        //txt_Gear_change = new JTextField(c.getGear_change(), 8);
         combo_gear = new JComboBox(type_gear);
         String gear = c.getGear_change();
         combo_gear.setSelectedItem(gear);
@@ -136,7 +137,7 @@ public class Frame_Update extends JDialog{
         add(panel);
        
     }
-
+    //listener for btn_save
     class btn_listener implements ActionListener {
 
         @Override
@@ -147,7 +148,7 @@ public class Frame_Update extends JDialog{
                     txt_Color.getText(), txt_Kilometres.getText(), txt_Fuel.getText(), txt_Doors.getText(), combo_gear.getSelectedItem().toString(),
                     txt_Seats.getText(), txt_price.getText());
             
-            cardao.update(c);
+            cardao.update(c);//calling method update for update data from bd
             setVisible(false);
         }
     }

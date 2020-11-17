@@ -10,7 +10,7 @@ import javax.swing.*;
  * @author singh
  */
 public class Frame_login extends JFrame{
-
+    //elements
     JLabel lbl_usermane, lbl_password;
     JTextField txt_username;
     JPasswordField password;
@@ -24,10 +24,10 @@ public class Frame_login extends JFrame{
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
         panel.setBackground(Color.WHITE);
 
         //panel with GridBagLayout
+        //adding elemnts to panel
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets= new Insets(10, 5, 5, 5); 
@@ -52,7 +52,8 @@ public class Frame_login extends JFrame{
         c.gridx = 1; c.gridy = 2;
         btn_login.addActionListener(new btnLogin_listener());//adding listener to btn_login
         panel.add(btn_login, c);
-        add(panel);
+        
+        add(panel);//adding panel
     }  
     //listener btn_loging
     class btnLogin_listener implements ActionListener {
@@ -62,7 +63,7 @@ public class Frame_login extends JFrame{
             boolean exist = false;
             adminDAO admindao = new adminDAO();
             try {
-                exist = admindao.verify_login(txt_username, password);//calling verify _loging metohod to verify 
+                exist = admindao.verify_login(txt_username, password);//calling verify _loging metohod to verify account
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex, "ERROR", JOptionPane.ERROR_MESSAGE);
             }

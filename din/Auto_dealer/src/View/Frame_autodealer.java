@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
  * @author singh
  */
 public class Frame_autodealer extends JFrame {
-
+    //elements and varibles
     CarDao cardao = new CarDao();
     JTable table = new JTable();
     DefaultTableModel model;
@@ -24,7 +24,7 @@ public class Frame_autodealer extends JFrame {
     JPanel panel_btn = new JPanel();
 
     public Frame_autodealer() {
-
+        //table cannot be edited
          model = new DefaultTableModel() {
 
             @Override
@@ -33,12 +33,11 @@ public class Frame_autodealer extends JFrame {
                 return false;
             }
         };
-
-        panel_general.setLayout(new BorderLayout());
+         
+        //basic config
+        panel_general.setLayout(new BorderLayout()); 
         panel_btn.setLayout(new FlowLayout());
         panel_general.setBackground(Color.WHITE);
-
-
         setTitle("Auto Dealer");
         setSize(1100, 550);
         setLocationRelativeTo(null);
@@ -46,16 +45,15 @@ public class Frame_autodealer extends JFrame {
 
         JLabel label = new JLabel("\n");
         panel_general.add(label, BorderLayout.NORTH);
+        //table && scrollpanel configuration and customization 
         model.setColumnIdentifiers(headers);
-        showTable();
+        showTable(); //callig method add rows to table
         table.setModel(model);
         table.setRowHeight(30);
-
         table.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 13));
         table.getTableHeader().setBackground(Color.DARK_GRAY);
         table.getTableHeader().setForeground(Color.WHITE);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
         tcr.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -64,11 +62,10 @@ public class Frame_autodealer extends JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(tcr);
 
         }
-
         JScrollPane jScrollPane1 = new JScrollPane(table);
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         panel_general.add(jScrollPane1, BorderLayout.CENTER);
-
+        //Creating and customizating elements
         btn_new = new JButton("NEW");
         btn_new.setBackground(Color.DARK_GRAY);
         btn_new.setForeground(Color.WHITE);
@@ -84,29 +81,29 @@ public class Frame_autodealer extends JFrame {
         btn_exit = new JButton("EXIT");
         btn_exit.setBackground(Color.DARK_GRAY);
         btn_exit.setForeground(Color.WHITE);
-
-
+        //adding listener to btn's
         btn_new.addActionListener(new btn_listener());
         btn_delete.addActionListener(new btn_listener());
         btn_update.addActionListener(new btn_update(this));
         btn_refresh.addActionListener(new btn_listener());
         btn_exit.addActionListener(new btn_listener());
+        //adding butons to panel_btn
         panel_btn.add(btn_new);
         panel_btn.add(btn_delete);
         panel_btn.add(btn_update);
         panel_btn.add(btn_refresh);
         panel_btn.add(btn_exit);
         panel_btn.setBackground(Color.WHITE);
-        panel_general.add(panel_btn, BorderLayout.SOUTH);
-
+        panel_general.add(panel_btn, BorderLayout.SOUTH);//adding panel_btn in panel_general in south position
+        //adding panel_general
         add(panel_general);
     }
-
+    //method for call select_fillTable to collect data from db and add to table
     public void showTable() {
 
-        model = cardao.fillTable(model);
+        model = cardao.select_fillTable(model);
     }
-
+    //listens for btn's
     class btn_listener implements ActionListener {
 
         @Override
@@ -194,7 +191,7 @@ public class Frame_autodealer extends JFrame {
             }
         }
     }
-
+    //listener for btn_update
     class btn_update implements ActionListener {
 
         JFrame miFrame;

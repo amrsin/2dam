@@ -15,8 +15,8 @@ public class CarDao {
     private static String sql_delete = "DELETE FROM car WHERE license_plate = ?";
     private static String sql_update = "UPDATE car SET Brand = ?, Model = ?, Year = ?, Color = ?, Kilometres = ?, Fuel = ?, Doors = ?, Gear_change = ?, Seats = ?, Price = ? WHERE license_plate = ?";
 
-
-    public DefaultTableModel fillTable(DefaultTableModel model) {
+    //method for select data from bd and add rows to table
+    public DefaultTableModel select_fillTable(DefaultTableModel model) {
 
         Connection con = null;
         Statement stmt = null;
@@ -62,7 +62,7 @@ public class CarDao {
         }
         return model;
     }
-
+    //method for insert at bd
     public int insert(Car c) {
 
         Connection con = null;
@@ -104,7 +104,7 @@ public class CarDao {
         }
         return registry;
     }
-
+    //method for delete from bd
     public int delete(Car c) {
 
         Connection con = null;
@@ -135,7 +135,7 @@ public class CarDao {
         }
         return registry;
     }
-    
+    //method for update in bd
     public int update(Car c) {
 
         Connection con = null;
