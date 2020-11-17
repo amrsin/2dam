@@ -16,7 +16,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public final static int OPINION_REQUEST_CODE = 1;
-    public final static String EXTRA_NOMBRE = "com.example.perrito.NOMBRE";
     private TextView tv_autores;
     private Button btn_mascota;
     private TextView tv_opnion;
@@ -33,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
         btn_mascota = (Button) findViewById(R.id.btn_mascota);
         btn_mascota.setOnClickListener(new click_listener());
         tv_opnion = (TextView) findViewById(R.id.tv_opinion);
-
-
     }
 
     //class listener para al hacer click
@@ -52,11 +49,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (v == btn_mascota) {
+                //bundle para pasar el string
+                Bundle bundle = new Bundle();
+                String imgName_pet = "pet1.jpg";
+                bundle.putString("img_name", imgName_pet);
 
                 //Iniciando la actividad Visor
                 Intent intent = new Intent(MainActivity.this, ActivityVisor.class);
-                //Adhesion de nuestra cadena
-                intent.putExtra(EXTRA_NOMBRE, "pet1.jpg");
+                intent.putExtras(bundle);
                 //Inicio de la actividad esperando un resultado
                 startActivityForResult(intent,OPINION_REQUEST_CODE);
             }
@@ -89,9 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
 
-                String result=data.getStringExtra("opinion");
-
-                tv_opnion.setText("Tu opinion fué "+result);
+                Bundle bundel2 = data.getExtras();
+                tv_opnion.setText("Tu opinion fué " + bundel2.getString("opnion"));
 
             }
         }

@@ -21,12 +21,13 @@
         app:srcCompat="@drawable/pet1" />
 
     <TextView
-        android:id="@+id/tv_opinion"
+        android:id="@+id/tv_pet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        android:text=" "
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/img_pet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,34 +40,34 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toStartOf="@+id/img_pet"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radioButton_hermoso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="@string/radioButton_hermoso" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/radioButton_lindo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="@string/radioButton_lindo" />
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/radioButton_normal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="@string/radioButton_normal" />
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/radioButton_horroroso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="@string/radioButton_horroroso" />
     </RadioGroup>
 
     <Button
@@ -74,10 +75,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:text="Button"
+        android:text="@string/btn_send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_pet"
         app:layout_constraintVertical_bias="1.0" />

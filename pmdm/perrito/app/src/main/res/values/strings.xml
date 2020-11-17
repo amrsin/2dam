@@ -3,5 +3,11 @@
     <string name="btn_mascota">Mostrar mascota</string>
     <string name="tv_autores">Autores</string>
 
+    <!--para Activity visor-->
+    <string name="radioButton_hermoso">Hermoso</string>
+    <string name="radioButton_lindo">Lindo</string>
+    <string name="radioButton_normal">Normal</string>
+    <string name="radioButton_horroroso">Horroroso</string>
+    <string name="btn_send">Send</string>
 
 </resources>
