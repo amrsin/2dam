@@ -31,7 +31,7 @@ public class Frame_Update extends JDialog{
         //basic config
         panel = new JPanel();
         panel.setLayout(new GridBagLayout());
-        setTitle("Update car"); 
+        setTitle("Update car");
         //adding elemnts to panel with gridLayout
         GridBagConstraints cons = new GridBagConstraints();
         cons.insets= new Insets(10, 5, 5, 5); 
@@ -132,6 +132,8 @@ public class Frame_Update extends JDialog{
         btn_save = new JButton("Save");
         cons.fill = GridBagConstraints.HORIZONTAL;
         cons.gridx = 0; cons.gridwidth = 2; cons.gridy = 11; 
+        btn_save.setBackground(Color.DARK_GRAY);
+        btn_save.setForeground(Color.WHITE);
         btn_save.addActionListener(new btn_listener());
         panel.add(btn_save, cons);
         add(panel);

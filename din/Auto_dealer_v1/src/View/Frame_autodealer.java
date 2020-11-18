@@ -39,7 +39,7 @@ public class Frame_autodealer extends JFrame {
         panel_btn.setLayout(new FlowLayout());
         panel_general.setBackground(Color.WHITE);
         setTitle("Auto Dealer");
-        setSize(1100, 550);
+        setSize(1150, 550);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
