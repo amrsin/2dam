@@ -1,7 +1,7 @@
 package View;
 
-import DAO.Car;
-import DAO.CarDao;
+import Model.Car;
+import Controller.CarDao;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -53,6 +53,9 @@ public class Frame_autodealer extends JFrame {
         table.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 13));
         table.getTableHeader().setBackground(Color.DARK_GRAY);
         table.getTableHeader().setForeground(Color.WHITE);
+        table.setSelectionBackground(new Color(143,21,0));
+        table.setSelectionForeground(Color.WHITE);
+
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
         tcr.setHorizontalAlignment(SwingConstants.CENTER);
