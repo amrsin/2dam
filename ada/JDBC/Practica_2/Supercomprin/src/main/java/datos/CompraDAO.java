@@ -10,6 +10,7 @@ import java.sql.*;
 public class CompraDAO {
     
     private static final String sql_INSERT = "INSERT INTO Compra VALUES (?,?,?,?,?)"; 
+   
     private Connection conexionTrasaccional;
      
 
@@ -21,6 +22,7 @@ public class CompraDAO {
 
      public int insertar(Compra c) throws SQLException {
 
+        //var
         Connection con = null;
         PreparedStatement stmt = null;
         int registros = 0;
@@ -30,7 +32,8 @@ public class CompraDAO {
             con = this.conexionTrasaccional != null
                     ? this.conexionTrasaccional : Conexion.getConnection();
 
-            stmt = con.prepareStatement(sql_INSERT);
+            stmt = con.prepareStatement(sql_INSERT);//consulta
+            //identificamos los ? segun la consulta
             stmt.setString(1, c.getDNI_cliente());
             stmt.setInt(2, c.getId_producto());
             stmt.setDate(3, c.getFehca());
@@ -38,10 +41,10 @@ public class CompraDAO {
             stmt.setDouble(5, c.getImporte());
             
             registros = stmt.executeUpdate();
-
+           //cerramos la conecion
         } finally {
             try {
-                Conexion.close(stmt);
+                Conexion.close(stmt);//cerramos stmt
                 if (conexionTrasaccional == null) {
 
                     Conexion.close(con);
