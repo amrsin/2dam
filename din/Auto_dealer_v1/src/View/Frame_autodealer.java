@@ -171,19 +171,27 @@ public class Frame_autodealer extends JFrame {
                     String Kilometres = JOptionPane.showInputDialog(null, "Enter Kilometres");
                     String Fuel = JOptionPane.showInputDialog(null, "Enter Fuel");
                     String Doors = JOptionPane.showInputDialog(null, "Enter Doors");
-                    String Gear_change = JOptionPane.showInputDialog(null, "Enter Gear change");
+                    Object Gear_change = JOptionPane.showInputDialog (
+                            null,
+                            "Select option",
+                            "Options Selector",
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            new Object[]{"", "Manual", "Automatic", "Other"},
+                            "");
+                    
                     String Seats = JOptionPane.showInputDialog(null, "Enter Seats");
                     String Price = JOptionPane.showInputDialog(null, "Enter Price");
 
                     if (license_plate.equals("") || Brand.equals("") || Model.equals("") || Year.equals("")
                             || Color.equals("") || Kilometres.equals("") || Fuel.equals("") || Doors.equals("")
-                            || Gear_change.equals("") || Seats.equals("") || Price.equals("")) {
+                            || Gear_change.toString().equals("") || Seats.equals("") || Price.equals("")) {
 
                         JOptionPane.showMessageDialog(null, "Nothing is added, you must enter all the data ");
                     } else {
 
                         Object rowData[] = {license_plate, Brand, Model, Year, Color, Kilometres, Fuel, Doors, Gear_change, Seats, Price};
-                        Car c = new Car(license_plate, Brand, Model, Year, Color, Kilometres, Fuel, Doors, Gear_change, Seats, Price);
+                        Car c = new Car(license_plate, Brand, Model, Year, Color, Kilometres, Fuel, Doors, Gear_change.toString(), Seats, Price);
                         int registro = cardao.insert(c);
 
                         if (registro > 0) {
