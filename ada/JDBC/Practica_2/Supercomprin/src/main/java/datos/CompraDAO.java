@@ -20,7 +20,8 @@ public class CompraDAO {
 
     }
 
-     public int insertar(Compra c) throws SQLException {
+    //metodo para insertar
+    public int insertar(Compra c) throws SQLException {
 
         //var
         Connection con = null;

@@ -22,7 +22,19 @@ public class Cliente {
         
         this.DNI = DNI;
     }
-    //Constructor con todos los datos para insert / update
+    
+    //Constructor para insert 
+    public Cliente(String DNI, String Nombre, String Apellidos, String Email, Date Fecha_nacimineto) {
+        
+        this.DNI = DNI;
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Email = Email;
+        this.Fecha_nacimineto = Fecha_nacimineto;
+        this.Puntos = 0;
+        this.Saldos = 0;
+    }
+    //Constructor con todos los datos para update
     public Cliente(String DNI, String Nombre, String Apellidos, String Email, Date Fecha_nacimineto, int Puntos, double Saldos) {
         this.DNI = DNI;
         this.Nombre = Nombre;
