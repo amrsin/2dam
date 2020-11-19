@@ -27,12 +27,11 @@ public class Frame_login extends JFrame{
         panel.setBackground(Color.WHITE);
 
         //panel with GridBagLayout
-        //adding elemnts to panel
         panel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets= new Insets(10, 5, 5, 5); 
         c.anchor = GridBagConstraints.LINE_START;
-        //adding elements
+        //adding elements to panel
         lbl_usermane= new JLabel("Username");  
         c.gridx = 0; c.gridy = 0;
         panel.add(lbl_usermane, c);
@@ -48,14 +47,32 @@ public class Frame_login extends JFrame{
         btn_login = new JButton("Login");
         btn_login.setBackground(Color.DARK_GRAY);
         btn_login.setForeground(Color.WHITE);
+        btn_login.setFocusable(false);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0; c.gridwidth = 2; c.gridy = 2;
-        btn_login.addActionListener(new btnLogin_listener());//adding listener to btn_login
+        btn_login.addMouseListener(new btn_mouse_adapter()); //adding mouse lister to btn_login
+        btn_login.addActionListener(new btnLogin_listener());//adding action listener to btn_login
         panel.add(btn_login, c);
         
         add(panel);//adding panel
-    }  
-    //listener btn_loging
+    } 
+    
+      //listener MouseAdapter to change background color when entred and exited
+    class btn_mouse_adapter extends MouseAdapter {
+
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            
+            btn_login.setBackground(new Color(143,21,0));   
+        }
+        
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            
+            btn_login.setBackground(Color.DARK_GRAY);   
+        }
+    }
+    
+  
+    //action listener btn_loging
     class btnLogin_listener implements ActionListener {
 
         @Override

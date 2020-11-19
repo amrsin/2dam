@@ -5,6 +5,7 @@ import Controller.CarDao;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import javax.swing.*;
 
 /**
@@ -134,12 +135,26 @@ public class Frame_Update extends JDialog{
         cons.gridx = 0; cons.gridwidth = 2; cons.gridy = 11; 
         btn_save.setBackground(Color.DARK_GRAY);
         btn_save.setForeground(Color.WHITE);
+        btn_save.addMouseListener(new btn_mouse_adapter());
         btn_save.addActionListener(new btn_listener());
         panel.add(btn_save, cons);
         add(panel);
-       
     }
-    //listener for btn_save
+      //listener MouseAdapter to change background color when entred and exited
+    class btn_mouse_adapter extends MouseAdapter {
+
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            
+            btn_save.setBackground(new Color(143,21,0));   
+        }
+        
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            
+            btn_save.setBackground(Color.DARK_GRAY);   
+        }
+    }
+    
+    //action listener for btn_save
     class btn_listener implements ActionListener {
 
         @Override

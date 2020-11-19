@@ -42,7 +42,6 @@ public class Frame_autodealer extends JFrame {
         setSize(1150, 550);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
         JLabel label = new JLabel("\n");
         panel_general.add(label, BorderLayout.NORTH);
         //table && scrollpanel configuration and customization 
@@ -55,7 +54,6 @@ public class Frame_autodealer extends JFrame {
         table.getTableHeader().setForeground(Color.WHITE);
         table.setSelectionBackground(new Color(143,21,0));
         table.setSelectionForeground(Color.WHITE);
-
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
         tcr.setHorizontalAlignment(SwingConstants.CENTER);
@@ -72,19 +70,29 @@ public class Frame_autodealer extends JFrame {
         btn_new = new JButton("NEW");
         btn_new.setBackground(Color.DARK_GRAY);
         btn_new.setForeground(Color.WHITE);
+        btn_new.setFocusable(false);
+        btn_new.addMouseListener(new btn_mouse_adapter());
         btn_delete = new JButton("DELETE");
         btn_delete.setBackground(Color.DARK_GRAY);
         btn_delete.setForeground(Color.WHITE);
+        btn_delete.setFocusable(false);
+        btn_delete.addMouseListener(new btn_mouse_adapter());
         btn_update = new JButton("UPDATE");
         btn_update.setBackground(Color.DARK_GRAY);
         btn_update.setForeground(Color.WHITE);
+        btn_update.setFocusable(false);
+        btn_update.addMouseListener(new btn_mouse_adapter());
         btn_refresh = new JButton("REFRESH");
         btn_refresh.setBackground(Color.DARK_GRAY);
         btn_refresh.setForeground(Color.WHITE);
+        btn_refresh.setFocusable(false);
+        btn_refresh.addMouseListener(new btn_mouse_adapter());
         btn_exit = new JButton("EXIT");
         btn_exit.setBackground(Color.DARK_GRAY);
         btn_exit.setForeground(Color.WHITE);
-        //adding listener to btn's
+        btn_exit.setFocusable(false);
+        btn_exit.addMouseListener(new btn_mouse_adapter());
+        //adding action listener to btn's
         btn_new.addActionListener(new btn_listener());
         btn_delete.addActionListener(new btn_listener());
         btn_update.addActionListener(new btn_update(this));
@@ -106,7 +114,44 @@ public class Frame_autodealer extends JFrame {
 
         model = cardao.select_fillTable(model);
     }
-    //listens for btn's
+    //listener MouseAdapter to change background color when entred and exited
+    class btn_mouse_adapter extends MouseAdapter {
+
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            
+            Object source = evt.getSource();
+            
+            if (source == btn_new) {
+                btn_new.setBackground(new Color(143,21,0));   
+            }else if (source == btn_delete) {
+                btn_delete.setBackground(new Color(143,21,0));
+            }else if (source == btn_update) {
+                btn_update.setBackground(new Color(143,21,0));
+            }else if (source == btn_refresh) {
+                btn_refresh.setBackground(new Color(143,21,0));
+            }else if (source == btn_exit) {
+                btn_exit.setBackground(new Color(143,21,0));
+            }
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            
+            Object source = evt.getSource();
+
+            if (source == btn_new) {
+                btn_new.setBackground(Color.DARK_GRAY);   
+            }else if (source == btn_delete) {
+                btn_delete.setBackground(Color.DARK_GRAY);
+            }else if (source == btn_update) {
+                btn_update.setBackground(Color.DARK_GRAY);
+            }else if (source == btn_refresh) {
+                btn_refresh.setBackground(Color.DARK_GRAY);
+            }else if (source == btn_exit) {
+                btn_exit.setBackground(Color.DARK_GRAY);
+            }            
+        }      
+    }
+    //action listen for btn's
     class btn_listener implements ActionListener {
 
         @Override
@@ -166,6 +211,7 @@ public class Frame_autodealer extends JFrame {
 
                     } else {
                         JOptionPane.showMessageDialog(null, "Nothing has been removed");
+                        
                     }
                 } else {
                     
@@ -196,7 +242,7 @@ public class Frame_autodealer extends JFrame {
             }
         }
     }
-    //listener for btn_update
+    //action listener for btn_update
     class btn_update implements ActionListener {
 
         JFrame miFrame;
