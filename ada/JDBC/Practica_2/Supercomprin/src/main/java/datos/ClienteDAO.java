@@ -38,9 +38,7 @@ public class ClienteDAO {
 
         try {
             //get connection si conexionTrasaccional es null
-            con = this.conexionTrasaccional != null
-                    ? this.conexionTrasaccional : Conexion.getConnection();
-
+            con = Conexion.getConnection();
             stmt = con.prepareStatement(SQL_SELECT); //indicamos la consulta a hacer
             rs = stmt.executeQuery(); //ejecutamos la consulta
             //mientras tengamos obejetos en resultSet
@@ -64,9 +62,10 @@ public class ClienteDAO {
 
             try {
 
-                Conexion.close(con); //cerramos connexion
                 Conexion.close(rs); //cerramos resultSet
                 Conexion.close(stmt); //cerramos statament
+                Conexion.close(con); //cerramos connexion
+
 
             } catch (SQLException ex) {
 
@@ -88,8 +87,7 @@ public class ClienteDAO {
 
         try {
             //get connection si conexionTrasaccional es null
-            con = this.conexionTrasaccional != null
-                    ? this.conexionTrasaccional : Conexion.getConnection();
+            con = Conexion.getConnection();
 
             stmt = con.prepareStatement(SQL_SELECT_DNI); //indicamos la consulta a hacer
             stmt.setString(1, c_aux.getDNI());
@@ -106,6 +104,8 @@ public class ClienteDAO {
                 int puntos = rs.getInt("Puntos");
                 double Saldo = rs.getDouble("Saldo");
                 c = new Cliente(DNI, Nombre, Apellidos, Email, Fecha_nacimiento, puntos, Saldo);
+                
+                System.out.println("dao puntos" + c.getPuntos());
             }
         } catch (SQLException ex) {
 
@@ -277,14 +277,10 @@ public class ClienteDAO {
 
             con = this.conexionTrasaccional != null
                     ? this.conexionTrasaccional : Conexion.getConnection();
-
-            stmt = con.prepareStatement(SQL_UPDATE);//consulta
+            stmt = con.prepareStatement(SQL_UPDATE_PUNTOS);//consulta
             //identificamos los ? segun la consulta
-            
             stmt.setInt(1, c.getPuntos());
             stmt.setString(2, c.getDNI());
-
-            
             registros = stmt.executeUpdate();
             //si registros es distinto 0 es que se ha actualizado cliente bien, sino algo ha fallado
             if (registros != 0) {

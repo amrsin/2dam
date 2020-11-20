@@ -16,19 +16,21 @@ import java.util.Scanner;
 public class Manejo_Supercomprin {
 
     private static Connection conexion;
-    private static ClienteDAO clientedao = new ClienteDAO(conexion);
-    private static CompraDAO compradao = new CompraDAO(conexion);
+    private static ClienteDAO clientedao;
+    private static CompraDAO compradao;
 
     public static void main(String[] args) throws SQLException {
-
-        Connection conexion = Conexion.getConnection();
 
         int op_menu = 0;
 
         try {
 
             while (op_menu != 8) {
-
+                
+            conexion = Conexion.getConnection();
+            clientedao = new ClienteDAO(conexion);
+            compradao = new CompraDAO(conexion);
+                
                 op_menu = menu();
 
                 switch (op_menu) {
@@ -149,51 +151,42 @@ public class Manejo_Supercomprin {
         //var
         Compra compra_1;
         Cliente c_aux;
+        boolean transaction_ok = false;
         
         try {
             //autocommit a false
             if (con.getAutoCommit()) {
                 
-                System.out.println("conexion es : " + con.getAutoCommit());
                 con.setAutoCommit(false);
-               System.out.println("conexion es : " + con.getAutoCommit());
-
 
             }
             compra_1 = teclado_compra();//llamamos al metodo teclado_compra en el cual el usaurio introducira datos 
-            compradao.insert(compra_1);//insert de la compra 
-            System.out.println("importe " + compra_1.getImporte());
-          
-
+            compradao.insert(compra_1);//insert de la compra  
             c_aux = new Cliente(compra_1.getDNI_cliente());//cliente con el DNI de la compra
             c_aux = clientedao.select_DNI(c_aux);//cogemos todos los datos del cliente con el DNI que tenga la compra
-            //si la compra es mayor de 5 euros
-            if (compra_1.getImporte() < 5) {
-                System.out.println("mayor 5");
-                //si la resta de puntos es menos a 5 
-                if (c_aux.getPuntos() - compra_1.getPuntos() < 5) {
-                    System.out.println("estoy aqui");
-                    //entramos rollback
-                   // try {
-                        con.rollback();
-                        System.out.println("Entramos al rollback ya que la resta de putos es menos a 5");
-                    //} catch (SQLException ex1) {
-                       // ex1.printStackTrace(System.out);
-                    //}
-                    //sino insertamos en la tabla y actualizamos saldo / puntos
-                }else {
-                   System.out.println("Se ha hecho el commit");
+            
+            //si la compra es mayor de 5 euros            
+            if (compra_1.getImporte() > 5) {
+                //si la resta de puntos es mayor a 5 
+                if (c_aux.getPuntos() - compra_1.getPuntos() > 5) {
                    c_aux.setPuntos(c_aux.getPuntos() - compra_1.getPuntos());
+                   System.out.println(c_aux.toString());
                    clientedao.update_puntos(c_aux);
-                   conexion.commit();
+                   con.commit();
+                   transaction_ok = true;
+                   System.out.println("Se ha hecho el commit");
                 }
             }
-
+            if (!transaction_ok) {
+                System.out.println("conexion dentro ok " + con);
+                con.rollback();
+                System.out.println("Entramos al rollback, la compra tiene que ser superior a 5 euros y al hacer resta puntos tiene que haber 5 puntos");
+            }
+ 
 
         } catch (SQLException e) {
             
             e.printStackTrace(System.out);
-
         }
     }
 

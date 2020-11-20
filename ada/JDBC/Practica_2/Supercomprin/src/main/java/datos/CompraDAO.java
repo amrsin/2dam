@@ -32,10 +32,11 @@ public class CompraDAO {
         int registros = 0;
 
         try {
-
+            
+            
             con = this.conexionTrasaccional != null
                     ? this.conexionTrasaccional : Conexion.getConnection();
-
+            
             stmt = con.prepareStatement(SQL_INSERT);//consulta
             //identificamos los ? segun la consulta
             stmt.setString(1, c.getDNI_cliente());
