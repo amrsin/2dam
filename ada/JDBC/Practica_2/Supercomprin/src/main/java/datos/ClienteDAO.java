@@ -12,9 +12,11 @@ import java.util.List;
 public class ClienteDAO {
 
     private static final String SQL_SELECT = "SELECT * FROM Cliente";
+    private static final String SQL_SELECT_DNI = "SELECT * FROM Cliente WHERE DNI = ?";
     private static final String SQL_INSERT = "INSERT INTO Cliente VALUES (?,?,?,?,?,?,?)";
     private static final String SQL_DELETE = "DELETE FROM Cliente where DNI = ?";
     private static final String SQL_UPDATE = "UPDATE Cliente SET Nombre = ?, Apellidos = ?, Email = ?, Fecha_nacimiento =?, Puntos =?, Saldo =? WHERE DNI = ?";
+    private static final String SQL_UPDATE_PUNTOS = "UPDATE cliente SET Puntos = ? WHERE DNI = ?";
 
     private Connection conexionTrasaccional;
 
@@ -73,6 +75,56 @@ public class ClienteDAO {
             }
         }
         return list_clientes;
+    }
+    
+    public Cliente select_DNI(Cliente c_aux) {
+
+        //variables
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Cliente c = null;
+        
+
+        try {
+            //get connection si conexionTrasaccional es null
+            con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
+
+            stmt = con.prepareStatement(SQL_SELECT_DNI); //indicamos la consulta a hacer
+            stmt.setString(1, c_aux.getDNI());
+            rs = stmt.executeQuery(); //ejecutamos la consulta
+            //mientras tengamos obejetos en resultSet
+            //creando Objeto Usuario y lo agregamos en list_usuarios
+            while (rs.next()) {
+
+                String DNI = rs.getString("DNI");
+                String Nombre = rs.getString("Nombre");
+                String Apellidos = rs.getString("Apellidos");
+                String Email = rs.getString("Email");
+                Date Fecha_nacimiento = rs.getDate("Fecha_nacimiento");
+                int puntos = rs.getInt("Puntos");
+                double Saldo = rs.getDouble("Saldo");
+                c = new Cliente(DNI, Nombre, Apellidos, Email, Fecha_nacimiento, puntos, Saldo);
+            }
+        } catch (SQLException ex) {
+
+            ex.printStackTrace(System.out);
+        } finally {
+
+            try {
+
+                Conexion.close(con); //cerramos connexion
+                Conexion.close(rs); //cerramos resultSet
+                Conexion.close(stmt); //cerramos statament
+
+            } catch (SQLException ex) {
+
+                ex.printStackTrace(System.out);
+
+            }
+        }
+        return c;
     }
 
     //metodo para insertar
@@ -188,6 +240,51 @@ public class ClienteDAO {
             stmt.setInt(5, c.getPuntos());
             stmt.setDouble(6, c.getSaldos());
             stmt.setString(7, c.getDNI());
+            registros = stmt.executeUpdate();
+            //si registros es distinto 0 es que se ha actualizado cliente bien, sino algo ha fallado
+            if (registros != 0) {
+
+                System.out.println("Se han actualizado datos del cliente con DNI " + c.getDNI());
+            } else {
+
+                System.out.println("Ha habido fallo a la hora de actualizar datos del cliente");
+            }
+            //cerramos la conecion
+        } finally {
+            try {
+                Conexion.close(stmt);//cerramos stmt
+                if (conexionTrasaccional == null) {
+
+                    Conexion.close(con);
+
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros;
+    }
+    
+    //metodo para actualizar puntos / saldos
+    public int update_puntos(Cliente c) throws SQLException {
+
+        //var
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+
+        try {
+
+            con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
+
+            stmt = con.prepareStatement(SQL_UPDATE);//consulta
+            //identificamos los ? segun la consulta
+            
+            stmt.setInt(1, c.getPuntos());
+            stmt.setString(2, c.getDNI());
+
+            
             registros = stmt.executeUpdate();
             //si registros es distinto 0 es que se ha actualizado cliente bien, sino algo ha fallado
             if (registros != 0) {

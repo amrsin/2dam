@@ -34,7 +34,7 @@ public class prueba_main {
             if (c.getId_producto() == 1) {
                 
                 System.out.println("Estamos en el if" + c.getId_producto());
-                int registro = compradao.insertar(c);
+                int registro = compradao.insert(c);
 
                 conexion.rollback();
 
