@@ -103,9 +103,7 @@ public class ClienteDAO {
                 Date Fecha_nacimiento = rs.getDate("Fecha_nacimiento");
                 int puntos = rs.getInt("Puntos");
                 double Saldo = rs.getDouble("Saldo");
-                c = new Cliente(DNI, Nombre, Apellidos, Email, Fecha_nacimiento, puntos, Saldo);
-                
-                System.out.println("dao puntos" + c.getPuntos());
+                c = new Cliente(DNI, Nombre, Apellidos, Email, Fecha_nacimiento, puntos, Saldo);                
             }
         } catch (SQLException ex) {
 

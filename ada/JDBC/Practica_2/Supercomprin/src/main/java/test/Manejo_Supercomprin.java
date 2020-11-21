@@ -21,51 +21,45 @@ public class Manejo_Supercomprin {
 
     public static void main(String[] args) throws SQLException {
 
+        conexion = Conexion.getConnection();
+        clientedao = new ClienteDAO(conexion);
+        compradao = new CompraDAO(conexion);
+
         int op_menu = 0;
 
-        try {
+        while (op_menu != 8) {
 
-            while (op_menu != 8) {
-                
-            conexion = Conexion.getConnection();
-            clientedao = new ClienteDAO(conexion);
-            compradao = new CompraDAO(conexion);
-                
-                op_menu = menu();
+            op_menu = menu();
 
-                switch (op_menu) {
+            switch (op_menu) {
 
-                    case 1:
-                        insert_cliente();
-                        break;
-                    case 2:
-                        delete_cliente();
-                        break;
-                    case 3:
-                        update_cliente();
-                        break;
-                    case 4:
-                        listar_clientes();
-                        break;
-                    case 5:
-                        pagar_compra();
-                        break;
-                    case 6:
-                        pagar_con_puntos(conexion);
-                        break;
-                    case 7:
-                        
-                        break;
-                    case 8:
-                        System.out.println("Gracias por usar el menu");
-                        break;
-                    default:
-                        System.out.println("La opcion menu no es valida intente de nuevo, porfavor");
-                }
+                case 1:
+                    insert_cliente();
+                    break;
+                case 2:
+                    delete_cliente();
+                    break;
+                case 3:
+                    update_cliente();
+                    break;
+                case 4:
+                    listar_clientes();
+                    break;
+                case 5:
+                    pagar_compra();
+                    break;
+                case 6:
+                    pagar_con_puntos(conexion);
+                    break;
+                case 7:
+
+                    break;
+                case 8:
+                    System.out.println("Gracias por usar el menu");
+                    break;
+                default:
+                    System.out.println("La opcion menu no es valida intente de nuevo, porfavor");
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-
         }
     }
 
@@ -91,38 +85,53 @@ public class Manejo_Supercomprin {
         System.out.println("--------------------------------------------");
         return op_menu;
     }
-    //metodo para insertar nuevo registro en bd
-
+    
+    //metodo para insertar nuevo cliente en bd
     public static void insert_cliente() throws SQLException {
-        //var 
-        Cliente c1;
 
-        c1 = teclado_cliente(); //llamando metodo teclado_cliente
-        clientedao.insert(c1);//llamando metodo insert donde de verdad agregaremos a la bd el cliente
+        try {
+            //var 
+            Cliente c1;
+
+            c1 = teclado_cliente(); //llamando metodo teclado_cliente
+            clientedao.insert(c1);//llamando metodo insert donde de verdad agregaremos a la bd el cliente
+
+        } catch (SQLException ex) {
+
+            ex.printStackTrace(System.out);
+        }
 
     }
 
     public static void delete_cliente() throws SQLException {
-        //var 
-        Scanner sc = new Scanner(System.in);
-        Cliente c1;
-        String DNI;
-        //dato necesario por user
-        System.out.print("Introduzca DNI: ");
-        DNI = sc.nextLine();
 
-        c1 = new Cliente(DNI); //Creamos cliente con DNI introducido por user
-        clientedao.delete(c1);//llamando metodo delete donde de verdad eliminaremos de la bd el cliente
+        try {
+            //var 
+            Scanner sc = new Scanner(System.in);
+            Cliente c1;
+            String DNI;
+            //dato necesario por user
+            System.out.print("Introduzca DNI: ");
+            DNI = sc.nextLine();
+            c1 = new Cliente(DNI); //Creamos cliente con DNI introducido por user
+            clientedao.delete(c1);//llamando metodo delete donde de verdad eliminaremos de la bd el cliente
 
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
     }
 
     public static void update_cliente() throws SQLException {
-        //var 
-        Cliente c1;
+        try {
+            //var    
+            Cliente c1;
+            
+            c1 = teclado_cliente(); //llamando metodo teclado_cliente
+            clientedao.update(c1);//llamando metodo update donde de verdad actulizamos datos cliente
 
-        c1 = teclado_cliente(); //llamando metodo teclado_cliente
-        clientedao.update(c1);//llamando metodo update donde de verdad actulizamos datos cliente
-
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
     }
 
     public static void listar_clientes() {
@@ -135,28 +144,32 @@ public class Manejo_Supercomprin {
         });
     }
 
+    //metodo para pagar compra con euros
     public static void pagar_compra() throws SQLException {
-        
-         //var 
-        Compra compra_1;
 
-        compra_1 = teclado_compra(); //llamando metodo teclado_compra
-        compradao.insert(compra_1);//llamando metodo insert donde de verdad agregaremos a la bd la compra
-        
+        try {
+            //var 
+            Compra compra_1;
+            
+            compra_1 = teclado_compra(); //llamando metodo teclado_compra
+            compradao.insert(compra_1);//llamando metodo insert donde de verdad agregaremos a la bd la compra
 
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
     }
 
-    //metodo para pagar con puntos 
+    //metodo para pagar compra con puntos 
     public static void pagar_con_puntos(Connection con) {
         //var
         Compra compra_1;
         Cliente c_aux;
         boolean transaction_ok = false;
-        
+
         try {
             //autocommit a false
             if (con.getAutoCommit()) {
-                
+
                 con.setAutoCommit(false);
 
             }
@@ -164,28 +177,25 @@ public class Manejo_Supercomprin {
             compradao.insert(compra_1);//insert de la compra  
             c_aux = new Cliente(compra_1.getDNI_cliente());//cliente con el DNI de la compra
             c_aux = clientedao.select_DNI(c_aux);//cogemos todos los datos del cliente con el DNI que tenga la compra
-            
+
             //si la compra es mayor de 5 euros            
             if (compra_1.getImporte() > 5) {
                 //si la resta de puntos es mayor a 5 
                 if (c_aux.getPuntos() - compra_1.getPuntos() > 5) {
-                   c_aux.setPuntos(c_aux.getPuntos() - compra_1.getPuntos());
-                   System.out.println(c_aux.toString());
-                   clientedao.update_puntos(c_aux);
-                   con.commit();
-                   transaction_ok = true;
-                   System.out.println("Se ha hecho el commit");
+                    c_aux.setPuntos(c_aux.getPuntos() - compra_1.getPuntos());
+                    clientedao.update_puntos(c_aux);
+                    con.commit();
+                    transaction_ok = true;
+                    System.out.println("Se ha hecho el commit");
                 }
             }
             if (!transaction_ok) {
-                System.out.println("conexion dentro ok " + con);
                 con.rollback();
                 System.out.println("Entramos al rollback, la compra tiene que ser superior a 5 euros y al hacer resta puntos tiene que haber 5 puntos");
             }
- 
 
         } catch (SQLException e) {
-            
+
             e.printStackTrace(System.out);
         }
     }
@@ -252,7 +262,7 @@ public class Manejo_Supercomprin {
         System.out.print("Introduzca id_producto: ");
         id_producto = sc.nextInt();
         sc.nextLine();
-        
+
         while (!fecha_bien) {
             try {
 

@@ -1,15 +1,13 @@
-
 package domain;
-
 import java.sql.Date;
 
 /**
  *
  * @author singh
  */
-public class Compra {
+public class Devuelve {
     
-    private int id_compra;
+    private int id_devuelve;
     private String DNI_cliente;
     private int id_producto;
     private Date Fehca;
@@ -17,16 +15,16 @@ public class Compra {
     private double Importe;
 
     //Constructor por defecto
-    public Compra() {
+    public Devuelve() {
     }
     
     //Constructor con solo id_compra para delete
-    public Compra (int id_compra) {
+    public Devuelve(int id_devuelve) {
         
-        this.id_compra = id_compra;   
+        this.id_devuelve = id_devuelve;   
     }
     //Constructor con todos los datos menos id_compra para insert
-    public Compra(String DNI_cliente, int id_producto, Date Fehca, int Puntos, double Importe) {
+    public Devuelve(String DNI_cliente, int id_producto, Date Fehca, int Puntos, double Importe) {
         
         this.DNI_cliente = DNI_cliente;
         this.id_producto = id_producto;
@@ -35,9 +33,9 @@ public class Compra {
         this.Importe = Importe;
     }
     //Constructor con todos los datos para update
-    public Compra(int id_compra, String DNI_cliente, int id_producto, Date Fehca, int Puntos, double Importe) {
+    public Devuelve(int id_devuelve, String DNI_cliente, int id_producto, Date Fehca, int Puntos, double Importe) {
         
-        this.id_compra = id_compra;
+        this.id_devuelve = id_devuelve;
         this.DNI_cliente = DNI_cliente;
         this.id_producto = id_producto;
         this.Fehca = Fehca;
@@ -45,12 +43,12 @@ public class Compra {
         this.Importe = Importe;
     }
     //getters and setters
-    public int getId_compra() {
-        return id_compra;
+    public int getId_devuelve() {
+        return id_devuelve;
     }
 
-    public void setId_compra(int id_compra) {
-        this.id_compra = id_compra;
+    public void setId_devuelve(int id_devuelve) {
+        this.id_devuelve = id_devuelve;
     }
     
     public String getDNI_cliente() {
