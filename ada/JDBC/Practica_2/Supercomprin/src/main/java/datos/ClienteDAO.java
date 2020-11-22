@@ -17,6 +17,8 @@ public class ClienteDAO {
     private static final String SQL_DELETE = "DELETE FROM Cliente where DNI = ?";
     private static final String SQL_UPDATE = "UPDATE Cliente SET Nombre = ?, Apellidos = ?, Email = ?, Fecha_nacimiento =?, Puntos =?, Saldo =? WHERE DNI = ?";
     private static final String SQL_UPDATE_PUNTOS = "UPDATE cliente SET Puntos = ? WHERE DNI = ?";
+    private static final String SQL_UPDATE_SALDO= "UPDATE cliente SET Saldo = ? WHERE DNI = ?";
+
 
     private Connection conexionTrasaccional;
 
@@ -263,7 +265,7 @@ public class ClienteDAO {
         return registros;
     }
     
-    //metodo para actualizar puntos / saldos
+    //metodo para actualizar puntos
     public int update_puntos(Cliente c) throws SQLException {
 
         //var
@@ -287,6 +289,46 @@ public class ClienteDAO {
             } else {
 
                 System.out.println("Ha habido fallo a la hora de actualizar datos del cliente");
+            }
+            //cerramos la conecion
+        } finally {
+            try {
+                Conexion.close(stmt);//cerramos stmt
+                if (conexionTrasaccional == null) {
+
+                    Conexion.close(con);
+
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return registros;
+    }
+    //metodo para actualizar puntos
+    public int update_saldo(Cliente c) throws SQLException {
+
+        //var
+        Connection con = null;
+        PreparedStatement stmt = null;
+        int registros = 0;
+
+        try {
+
+            con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
+            stmt = con.prepareStatement(SQL_UPDATE_SALDO);//consulta
+            //identificamos los ? segun la consulta
+            stmt.setDouble(1, c.getSaldos());
+            stmt.setString(2, c.getDNI());
+            registros = stmt.executeUpdate();
+            //si registros es distinto 0 es que se ha actualizado cliente bien, sino algo ha fallado
+            if (registros != 0) {
+
+                System.out.println("Se ha recargado cuenta cliente " + c.getDNI());
+            } else {
+
+                System.out.println("Ha habido fallo a la hora de recargar");
             }
             //cerramos la conecion
         } finally {
