@@ -1,16 +1,13 @@
 package test;
-import datos.ClienteDAO;
-import datos.CompraDAO;
-import datos.Conexion;
-import datos.DevuelveDAO;
-import domain.Cliente;
-import domain.Compra;
-import domain.Devuelve;
+
+import datos.*;
+import domain.*;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Scanner;
+
 /**
  *
  * @author singh
@@ -49,16 +46,17 @@ public class Manejo_Supercomprin {
                     listar_clientes();
                     break;
                 case 5:
-                    pagar_compra();
+                    recagar_euros(conexion);
                     break;
                 case 6:
-                    pagar_con_puntos(conexion);
+                    pagar_compra();
                     break;
                 case 7:
+                    pagar_con_puntos(conexion);
+                    break;
+                case 8:
                     devolver_compra();
                     break;
-                case 8: 
-                    recagar_euros(conexion);
                 case 9:
                     System.out.println("Gracias por usar el menu");
                     break;
@@ -80,10 +78,10 @@ public class Manejo_Supercomprin {
         System.out.println("|        2. Eliminar cliente               |");
         System.out.println("|        3. Actualizar datos               |");
         System.out.println("|        4. Listar los cliente             |");
-        System.out.println("|        5. Pagar compra                   |");
-        System.out.println("|        6. Pagar compra con puntos        |");
-        System.out.println("|        7. Devolver producto              |");
-        System.out.println("|        8. Recargar euros                 |");
+        System.out.println("|        5. Recargar euros                 |");
+        System.out.println("|        6. Pagar compra                   |");
+        System.out.println("|        7. Pagar compra con puntos        |");
+        System.out.println("|        8. Devolver producto              |");
         System.out.println("|        9. Salir                          |");
         System.out.println("|------------------------------------------|");
         System.out.print("|        Introduza opcion del menu:        |");
@@ -91,7 +89,7 @@ public class Manejo_Supercomprin {
         System.out.println("--------------------------------------------");
         return op_menu;
     }
-    
+
     //metodo para insertar nuevo cliente en bd
     public static void insert_cliente() throws SQLException {
 
@@ -99,7 +97,7 @@ public class Manejo_Supercomprin {
             //var 
             Cliente c1;
 
-            c1 = teclado_cliente(); //llamando metodo teclado_cliente
+            c1 = teclado_cliente("insert"); //llamando metodo teclado_cliente
             clientedao.insert(c1);//llamando metodo insert donde de verdad agregaremos a la bd el cliente
 
         } catch (SQLException ex) {
@@ -108,6 +106,7 @@ public class Manejo_Supercomprin {
         }
 
     }
+
     //metodo para eliminar cliente de bd
     public static void delete_cliente() throws SQLException {
 
@@ -115,10 +114,20 @@ public class Manejo_Supercomprin {
             //var 
             Scanner sc = new Scanner(System.in);
             Cliente c1;
-            String DNI;
+            String DNI = null;
+            boolean existe_dni = false;
             //dato necesario por user
-            System.out.print("Introduzca DNI: ");
-            DNI = sc.nextLine();
+            while (!existe_dni) {
+
+                System.out.print("Introduzca el DNI: ");
+                DNI = sc.nextLine();
+                existe_dni = existe_DNI(DNI);
+
+                if (!existe_dni) {
+                    System.out.print("El DNI " + DNI + " no existe en la bd |");
+                }
+            }
+
             c1 = new Cliente(DNI); //Creamos cliente con DNI introducido por user
             clientedao.delete(c1);//llamando metodo delete donde de verdad eliminaremos de la bd el cliente
 
@@ -126,19 +135,21 @@ public class Manejo_Supercomprin {
             ex.printStackTrace(System.out);
         }
     }
+
     //metodo para actualizar datos cliente
     public static void update_cliente() throws SQLException {
         try {
             //var    
             Cliente c1;
-            
-            c1 = teclado_cliente(); //llamando metodo teclado_cliente
+
+            c1 = teclado_cliente("update"); //llamando metodo teclado_cliente
             clientedao.update(c1);//llamando metodo update donde de verdad actulizamos datos cliente
 
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
         }
     }
+
     //metodo para listar_clientes
     public static void listar_clientes() {
 
@@ -150,13 +161,32 @@ public class Manejo_Supercomprin {
         });
     }
 
+    public static boolean existe_DNI(String DNI) {
+
+        List<Cliente> list_cliente;
+        list_cliente = clientedao.select();
+
+        String DNI_aux;
+        boolean existe = false;
+
+        for (Cliente c : list_cliente) {
+
+            DNI_aux = c.getDNI();
+
+            if (DNI.equals(DNI_aux)) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
     //metodo para pagar compra con euros
     public static void pagar_compra() throws SQLException {
 
         try {
             //var 
             Compra compra_1;
-            
+
             compra_1 = (Compra) teclado_compra_devuelve("compra"); //llamando metodo teclado_compra_devuelve
             compradao.insert(compra_1);//llamando metodo insert donde de verdad agregaremos a la bd la compra
 
@@ -206,14 +236,14 @@ public class Manejo_Supercomprin {
             e.printStackTrace(System.out);
         }
     }
-      
+
     //metodo para devolver compra
     public static void devolver_compra() throws SQLException {
 
         try {
             //var 
             Devuelve devuelve_1;
-            
+
             devuelve_1 = (Devuelve) teclado_compra_devuelve("devuelve"); //llamando metodo teclado_compra_devuelve
             devuelvedao.insert(devuelve_1);//llamando metodo insert donde de verdad agregaremos a la bd la compra
 
@@ -221,22 +251,33 @@ public class Manejo_Supercomprin {
             ex.printStackTrace(System.out);
         }
     }
-        //metodo para pagar compra con puntos 
+
+    //metodo para pagar compra con puntos 
     public static void recagar_euros(Connection con) {
         //var
         Scanner sc = new Scanner(System.in);
         Cliente c;
-        String DNI;
+        String DNI = null;
+        Boolean existe = false;
         double recarga;
         boolean transaction_ok = false;
         Calendar fecha = Calendar.getInstance();
-        
+
         //dato necesario por user
-        System.out.print("Introduzca el DNI: ");
-        DNI = sc.nextLine();
+        while (!existe) {
+
+            System.out.print("Introduzca el DNI: ");
+            DNI = sc.nextLine();
+            existe = existe_DNI(DNI);
+
+            if (!existe) {
+                System.out.print("El DNI " + DNI + " no existe en la bd |");
+            }
+        }
+
         System.out.print("Introduzca cantidad a recargar: ");
         recarga = sc.nextDouble();
-        
+
         try {
             //autocommit a false
             if (con.getAutoCommit()) {
@@ -247,13 +288,13 @@ public class Manejo_Supercomprin {
             c = clientedao.select_DNI(c);//cogemos todos los datos del cliente con el DNI introducido user
             c.setSaldos(c.getSaldos() + recarga);
             clientedao.update_saldo(c);
-                    
+
             //si dia mes esta entre 1 y 5            
             if (fecha.get(Calendar.DAY_OF_MONTH) <= 5) {
-                    
-                    con.commit();
-                    transaction_ok = true;
-                    System.out.println("Se ha hecho el commit");    
+
+                con.commit();
+                transaction_ok = true;
+                System.out.println("Se ha hecho el commit");
             }
             //si no se ha hecho bien la transaction hacemos rollback
             if (!transaction_ok) {
@@ -265,12 +306,13 @@ public class Manejo_Supercomprin {
             e.printStackTrace(System.out);
         }
     }
-    
+
     //metodo para leer datos cliente por teclado
-    public static Cliente teclado_cliente() {
+    public static Cliente teclado_cliente(String aux) {
         //variables
         Scanner sc = new Scanner(System.in);
-        String DNI;
+        String DNI = null;
+        Boolean existe_dni = false;
         String Nombre;
         String Apellidos;
         String Email;
@@ -281,9 +323,25 @@ public class Manejo_Supercomprin {
         boolean fecha_bien = false;
 
         //datos requeridos por user
-        System.out.print("Introduzca DNI: ");
-        DNI = sc.nextLine();
+        if (aux.equals("update")) {
+            
+            while (!existe_dni) {
 
+            System.out.print("Introduzca el DNI: ");
+            DNI = sc.nextLine();
+            existe_dni = existe_DNI(DNI);
+
+            if (!existe_dni) {
+                System.out.print("El DNI " + DNI + " no existe en la bd |");
+            }
+        }   
+      }
+        if (aux.equals("insert")) {
+            
+            System.out.print("Introduzca el DNI: ");
+            DNI = sc.nextLine();    
+        }
+        
         System.out.print("Introduzca Nombre: ");
         Nombre = sc.nextLine();
 
@@ -309,12 +367,13 @@ public class Manejo_Supercomprin {
         }
         return c1;
     }
-    
+
     //leer por teclado datos compra o devulve por teclado
     public static Object teclado_compra_devuelve(String aux) {
         //variables
         Scanner sc = new Scanner(System.in);
-        String DNI_cliente;
+        String DNI_cliente = null;
+        boolean existe_dni = false;
         int id_producto;
         String Fecha_str;
         int Puntos;
@@ -323,48 +382,45 @@ public class Manejo_Supercomprin {
         Object ob_aux = null;
         Compra compra_1 = null;
         Devuelve devuelve_1 = null;
-        boolean fecha_bien = false;
 
         //datos requeridos por user
-        System.out.print("Introduzca DNI_cliente: ");
-        DNI_cliente = sc.nextLine();
+        while (!existe_dni) {
+
+            System.out.print("Introduzca el DNI: ");
+            DNI_cliente = sc.nextLine();
+            existe_dni = existe_DNI(DNI_cliente);
+
+            if (!existe_dni) {
+                System.out.print("El DNI " + DNI_cliente + " no existe en la bd |");
+            }
+        }
 
         System.out.print("Introduzca id_producto: ");
         id_producto = sc.nextInt();
         sc.nextLine();
 
-        while (!fecha_bien) {
-            try {
-
-                System.out.print("Introduzca Fecha (yyyy-mm-dd): ");
-                Fecha_str = sc.nextLine();
-                Fecha = Date.valueOf(Fecha_str);
-                fecha_bien = true;
-
-            } catch (Exception e) {
-
-            }
-        }
+        LocalDate now = LocalDate.now();
+        Fecha = Date.valueOf(now);
 
         System.out.print("Introduzca Puntos: ");
         Puntos = sc.nextInt();
 
         System.out.print("Introduzca Importe: ");
         Importe = sc.nextDouble();
-        if (fecha_bien) {
-            //creando nuevo objeto de tipo compra con los datos proporcionados por teclado
-            if (aux.equals("compra")) {
-                
-              compra_1 = new Compra(DNI_cliente, id_producto, Fecha, Puntos, Importe);
-              ob_aux = compra_1;
-            }
-            
-            if (aux.equals("devuelve")) {
-                
-              devuelve_1 = new Devuelve(DNI_cliente, id_producto, Fecha, Puntos, Importe);
-              ob_aux = devuelve_1;
-            }
+
+        //creando nuevo objeto de tipo compra con los datos proporcionados por teclado
+        if (aux.equals("compra")) {
+
+            compra_1 = new Compra(DNI_cliente, id_producto, Fecha, Puntos, Importe);
+            ob_aux = compra_1;
         }
+
+        if (aux.equals("devuelve")) {
+
+            devuelve_1 = new Devuelve(DNI_cliente, id_producto, Fecha, Puntos, Importe);
+            ob_aux = devuelve_1;
+        }
+
         return ob_aux;
     }
 }
