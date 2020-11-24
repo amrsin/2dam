@@ -17,6 +17,8 @@ public class Manejo_Supercomprin {
     private static Connection conexion;
     private static ClienteDAO clientedao;
     private static CompraDAO compradao;
+    private static Compra_puntosDAO compra_puntosdao;
+
     private static DevuelveDAO devuelvedao;
 
     public static void main(String[] args) throws SQLException {
@@ -198,7 +200,7 @@ public class Manejo_Supercomprin {
     //metodo para pagar compra con puntos 
     public static void pagar_con_puntos(Connection con) {
         //var
-        Compra compra_1;
+        Compra_puntos compra_puntos_1;
         Cliente c_aux;
         boolean transaction_ok = false;
 
@@ -209,16 +211,16 @@ public class Manejo_Supercomprin {
                 con.setAutoCommit(false);
 
             }
-            compra_1 = (Compra) teclado_compra_devuelve("compra");//llamamos al metodo teclado_compra_devuelve en el cual el usaurio introducira datos 
-            compradao.insert(compra_1);//insert de la compra  
-            c_aux = new Cliente(compra_1.getDNI_cliente());//cliente con el DNI de la compra
+            compra_puntos_1 = (Compra_puntos) teclado_compra_devuelve("compra_puntos");//llamamos al metodo teclado_compra_devuelve en el cual el usaurio introducira datos 
+            compra_puntosdao.insert(compra_puntos_1);//insert a compra_puntos  
+            c_aux = new Cliente(compra_puntos_1.getDNI_cliente());//cliente con el DNI de la compra
             c_aux = clientedao.select_DNI(c_aux);//cogemos todos los datos del cliente con el DNI que tenga la compra
 
             //si la compra es mayor de 5 euros            
-            if (compra_1.getImporte() > 5) {
+            if (compra_puntos_1.getImporte() > 5) {
                 //si la resta de puntos es mayor a 5 
-                if (c_aux.getPuntos() - compra_1.getPuntos() > 5) {
-                    c_aux.setPuntos(c_aux.getPuntos() - compra_1.getPuntos());
+                if (c_aux.getPuntos() - compra_puntos_1.getPuntos() > 5) {
+                    c_aux.setPuntos(c_aux.getPuntos() - compra_puntos_1.getPuntos());
                     clientedao.update_puntos(c_aux);
                     con.commit();
                     transaction_ok = true;
@@ -381,6 +383,7 @@ public class Manejo_Supercomprin {
         Date Fecha = null;
         Object ob_aux = null;
         Compra compra_1 = null;
+        Compra_puntos compra_puntos_1 = null;
         Devuelve devuelve_1 = null;
 
         //datos requeridos por user
@@ -408,10 +411,16 @@ public class Manejo_Supercomprin {
         System.out.print("Introduzca Importe: ");
         Importe = sc.nextDouble();
 
-        //creando nuevo objeto de tipo compra con los datos proporcionados por teclado
+        //creando nuevo objeto de tipo segun aux
         if (aux.equals("compra")) {
 
             compra_1 = new Compra(DNI_cliente, id_producto, Fecha, Puntos, Importe);
+            ob_aux = compra_1;
+        }
+        
+        if (aux.equals("compra_puntos")) {
+
+            compra_puntos_1 = new Compra_puntos(DNI_cliente, id_producto, Fecha, Puntos, Importe);
             ob_aux = compra_1;
         }
 

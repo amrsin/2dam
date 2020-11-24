@@ -1,27 +1,28 @@
 package datos;
 
 import domain.Compra;
+import domain.Compra_puntos;
 import java.sql.*;
 
 /**
  *
  * @author singh
  */
-public class CompraDAO {
+public class Compra_puntosDAO {
     
-    private static final String SQL_INSERT = "INSERT INTO Compra(DNI_cliente, id_producto, Fecha, Puntos, Importe) VALUES (?,?,?,?,?)"; 
+    private static final String SQL_INSERT = "INSERT INTO Compra_puntos(DNI_cliente, id_producto, Fecha, Puntos, Importe) VALUES (?,?,?,?,?)"; 
 
     private Connection conexionTrasaccional;
      
 
-    public CompraDAO(Connection conexionTrasaccional) {
+    public Compra_puntosDAO(Connection conexionTrasaccional) {
 
         this.conexionTrasaccional = conexionTrasaccional;
 
     }
 
     //metodo para insertar
-    public int insert(Compra c) throws SQLException {
+    public int insert(Compra_puntos c) throws SQLException {
 
         //var
         Connection con = null;
