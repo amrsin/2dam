@@ -18,7 +18,7 @@ public class Manejo_Supercomprin {
     private static ClienteDAO clientedao;
     private static CompraDAO compradao;
     private static Compra_puntosDAO compra_puntosdao;
-
+    private static ProductoDAO productodao;
     private static DevuelveDAO devuelvedao;
 
     public static void main(String[] args) throws SQLException {
@@ -26,10 +26,12 @@ public class Manejo_Supercomprin {
         conexion = Conexion.getConnection();
         clientedao = new ClienteDAO(conexion);
         compradao = new CompraDAO(conexion);
+        productodao = new ProductoDAO(conexion);
+        compra_puntosdao = new Compra_puntosDAO(conexion);
 
         int op_menu = 0;
 
-        while (op_menu != 9) {
+        while (op_menu != 10) {
 
             op_menu = menu();
 
@@ -49,17 +51,20 @@ public class Manejo_Supercomprin {
                     break;
                 case 5:
                     recagar_euros(conexion);
-                    break;
+                    break; 
                 case 6:
+                    listar_productos();
+                    break;    
+                case 7:
                     pagar_compra();
                     break;
-                case 7:
+                case 8:
                     pagar_con_puntos(conexion);
                     break;
-                case 8:
+                case 9:
                     devolver_compra();
                     break;
-                case 9:
+                case 10:
                     System.out.println("Gracias por usar el menu");
                     break;
                 default:
@@ -81,10 +86,11 @@ public class Manejo_Supercomprin {
         System.out.println("|        3. Actualizar datos               |");
         System.out.println("|        4. Listar los cliente             |");
         System.out.println("|        5. Recargar euros                 |");
-        System.out.println("|        6. Pagar compra                   |");
-        System.out.println("|        7. Pagar compra con puntos        |");
-        System.out.println("|        8. Devolver producto              |");
-        System.out.println("|        9. Salir                          |");
+        System.out.println("|        6. Listar los productos           |");
+        System.out.println("|        7. Pagar compra                   |");
+        System.out.println("|        8. Pagar compra con puntos        |");
+        System.out.println("|        9. Devolver producto              |");
+        System.out.println("|        10. Salir                          |");
         System.out.println("|------------------------------------------|");
         System.out.print("|        Introduza opcion del menu:        |");
         op_menu = sc.nextInt();
@@ -162,6 +168,16 @@ public class Manejo_Supercomprin {
             System.out.println("Cliente: " + Cliente);
         });
     }
+    //metodo para listar_producto
+    public static void listar_productos() {
+
+        List<Producto> list_Productos;
+        list_Productos = productodao.select();
+        list_Productos.forEach(Producto -> {
+
+            System.out.println("Producto: " + Producto);
+        });
+    }
 
     public static boolean existe_DNI(String DNI) {
 
@@ -211,7 +227,7 @@ public class Manejo_Supercomprin {
                 con.setAutoCommit(false);
 
             }
-            compra_puntos_1 = (Compra_puntos) teclado_compra_devuelve("compra_puntos");//llamamos al metodo teclado_compra_devuelve en el cual el usaurio introducira datos 
+            compra_puntos_1 = (Compra_puntos) teclado_compra_devuelve("compra_puntos");//llamamos al metodo teclado_compra_devuelve en el cual el usaurio introducira datos
             compra_puntosdao.insert(compra_puntos_1);//insert a compra_puntos  
             c_aux = new Cliente(compra_puntos_1.getDNI_cliente());//cliente con el DNI de la compra
             c_aux = clientedao.select_DNI(c_aux);//cogemos todos los datos del cliente con el DNI que tenga la compra
@@ -326,24 +342,24 @@ public class Manejo_Supercomprin {
 
         //datos requeridos por user
         if (aux.equals("update")) {
-            
+
             while (!existe_dni) {
+
+                System.out.print("Introduzca el DNI: ");
+                DNI = sc.nextLine();
+                existe_dni = existe_DNI(DNI);
+
+                if (!existe_dni) {
+                    System.out.print("El DNI " + DNI + " no existe en la bd |");
+                }
+            }
+        }
+        if (aux.equals("insert")) {
 
             System.out.print("Introduzca el DNI: ");
             DNI = sc.nextLine();
-            existe_dni = existe_DNI(DNI);
-
-            if (!existe_dni) {
-                System.out.print("El DNI " + DNI + " no existe en la bd |");
-            }
-        }   
-      }
-        if (aux.equals("insert")) {
-            
-            System.out.print("Introduzca el DNI: ");
-            DNI = sc.nextLine();    
         }
-        
+
         System.out.print("Introduzca Nombre: ");
         Nombre = sc.nextLine();
 
@@ -376,12 +392,14 @@ public class Manejo_Supercomprin {
         Scanner sc = new Scanner(System.in);
         String DNI_cliente = null;
         boolean existe_dni = false;
+        boolean existe_producto = false;
         int id_producto;
         String Fecha_str;
         int Puntos;
         double Importe;
         Date Fecha = null;
         Object ob_aux = null;
+        Producto p = null;
         Compra compra_1 = null;
         Compra_puntos compra_puntos_1 = null;
         Devuelve devuelve_1 = null;
@@ -398,38 +416,46 @@ public class Manejo_Supercomprin {
             }
         }
 
-        System.out.print("Introduzca id_producto: ");
-        id_producto = sc.nextInt();
-        sc.nextLine();
-
         LocalDate now = LocalDate.now();
         Fecha = Date.valueOf(now);
 
-        System.out.print("Introduzca Puntos: ");
-        Puntos = sc.nextInt();
+        while (!existe_producto) {
 
-        System.out.print("Introduzca Importe: ");
-        Importe = sc.nextDouble();
+            System.out.print("Introduzca id_producto: ");
+            id_producto = sc.nextInt();
+            sc.nextLine();
+            p = productodao.select_id(id_producto);
+            
+            
+            if (p != null) {
+                existe_producto = true;
+                Puntos = p.getPuntos();
+                Importe = p.getPrecio();
+                //creando nuevo objeto de tipo segun aux
+                if (aux.equals("compra")) {
 
-        //creando nuevo objeto de tipo segun aux
-        if (aux.equals("compra")) {
+                    compra_1 = new Compra(DNI_cliente, id_producto, Fecha, Puntos, Importe);
+                    ob_aux = compra_1;
+                }
 
-            compra_1 = new Compra(DNI_cliente, id_producto, Fecha, Puntos, Importe);
-            ob_aux = compra_1;
+                if (aux.equals("compra_puntos")) {
+
+                    compra_puntos_1 = new Compra_puntos(DNI_cliente, id_producto, Fecha, Puntos, Importe);
+                    ob_aux = compra_puntos_1;
+                }
+
+                if (aux.equals("devuelve")) {
+
+                    devuelve_1 = new Devuelve(DNI_cliente, id_producto, Fecha, Puntos, Importe);
+                    ob_aux = devuelve_1;
+                }
+                
+            }
+            
+            if (!existe_producto) {
+                System.out.print("El producto con id " + id_producto + " no existe en la bd |");
+            }
         }
-        
-        if (aux.equals("compra_puntos")) {
-
-            compra_puntos_1 = new Compra_puntos(DNI_cliente, id_producto, Fecha, Puntos, Importe);
-            ob_aux = compra_1;
-        }
-
-        if (aux.equals("devuelve")) {
-
-            devuelve_1 = new Devuelve(DNI_cliente, id_producto, Fecha, Puntos, Importe);
-            ob_aux = devuelve_1;
-        }
-
         return ob_aux;
     }
 }

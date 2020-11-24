@@ -90,4 +90,11 @@ public class Compra_puntos {
     public void setImporte(double Importe) {
         this.Importe = Importe;
     }
+
+    @Override
+    public String toString() {
+        return "Compra_puntos{" + "id_compra=" + id_compra + ", DNI_cliente=" + DNI_cliente + ", id_producto=" + id_producto + ", Fehca=" + Fehca + ", Puntos=" + Puntos + ", Importe=" + Importe + '}';
+    }
+    
+    
 }

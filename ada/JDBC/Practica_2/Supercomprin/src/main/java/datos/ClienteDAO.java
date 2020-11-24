@@ -77,7 +77,7 @@ public class ClienteDAO {
         }
         return list_clientes;
     }
-    
+    //metodo para selecte segun DNI
     public Cliente select_DNI(Cliente c_aux) {
 
         //variables

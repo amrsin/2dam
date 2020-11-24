@@ -1,6 +1,6 @@
 package datos;
 
-import domain.Compra;
+
 import domain.Compra_puntos;
 import java.sql.*;
 
@@ -10,7 +10,7 @@ import java.sql.*;
  */
 public class Compra_puntosDAO {
     
-    private static final String SQL_INSERT = "INSERT INTO Compra_puntos(DNI_cliente, id_producto, Fecha, Puntos, Importe) VALUES (?,?,?,?,?)"; 
+    private static final String SQL_INSERT = "INSERT INTO compra_puntos(DNI_cliente, id_producto, Fecha, Puntos, Importe) VALUES (?,?,?,?,?)"; 
 
     private Connection conexionTrasaccional;
      
@@ -34,7 +34,6 @@ public class Compra_puntosDAO {
             
             con = this.conexionTrasaccional != null
                     ? this.conexionTrasaccional : Conexion.getConnection();
-            
             stmt = con.prepareStatement(SQL_INSERT);//consulta
             //identificamos los ? segun la consulta
             stmt.setString(1, c.getDNI_cliente());
@@ -47,10 +46,10 @@ public class Compra_puntosDAO {
             //si registros es distinto 0 es que se ha insetado cliente bien, sino algo ha fallado
             if (registros != 0) {
 
-                System.out.println("Se ha agregado a la bd la compra");
+                System.out.println("Se ha agregado a la bd la compra con puntos");
             } else {
 
-                System.out.println("Ha habido fallo a la hora de insertar la compra");
+                System.out.println("Ha habido fallo a la hora de insertar la compra con puntos");
             }
            //cerramos la conecion
         } finally {
