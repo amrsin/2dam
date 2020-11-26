@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Calculadora</string>
+    <string name="btn_clear">C</string>
+    <string name="btn_dividir">/</string>
+    <string name="btn_multi">X</string>
+    <string name="btn_borrar">BORARA</string>
+    <string name="btn_num_7">7</string>
+    <string name="btn_num_8">8</string>
+    <string name="btn_num_9">9</string>
+    <string name="btn_resta">-</string>
+    <string name="btn_num_4">4</string>
+    <string name="btn_num_5">5</string>
+    <string name="btn_num_6">6</string>
+    <string name="btn_suma">+</string>
+    <string name="btn_num_1">1</string>
+    <string name="btn_num_2">2</string>
+    <string name="btn_num_3">3</string>
+    <string name="btn_igual">=</string>
+    <string name="btn_num_0">0</string>
+    <string name="btn_punto">.</string>
 </resources>
