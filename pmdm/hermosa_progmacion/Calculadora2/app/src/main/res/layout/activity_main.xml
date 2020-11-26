@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:layout_alignParentStart="true"
     android:layout_alignParentTop="true"
-    android:background=""
     tools:context=".MainActivity"
     android:layout_alignParentLeft="true">
 
@@ -18,9 +17,8 @@
         android:layout_above="@+id/GridLayout"
         android:layout_marginBottom="14dp"
         android:height="180dp"
-        android:textAlignment="textEnd"
         android:text="Hello World!"
-        android:gravity="end" />
+       />
 
     <GridLayout
         android:id="@+id/GridLayout"
