@@ -12,9 +12,10 @@ public class MainActivity extends AppCompatActivity {
 
     String txt = "";
     double num_1 = 0;
+    int cont_igual = 0;
+    int cont_punto = 0;
     double num_2 = 0;
     double num_result = 0;
-    int index = 0;
     char signo;
     private TextView tv_numero;
     private Button btn_clear, btn_dividir, btn_multi, bnt_borar, btn_num_7,
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //identificamos elementos segun id
         tv_numero = (TextView) findViewById(R.id.tv_numero);
         btn_clear = (Button) findViewById(R.id.btn_clear);
         btn_dividir = (Button) findViewById(R.id.btn_dividir);
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btn_igual = (Button) findViewById(R.id.btn_igual);
         btn_num_0 = (Button) findViewById(R.id.btn_num_0);
         btn_punto = (Button) findViewById(R.id.btn_punto);
-
+        //añadimos listener a los button's
         btn_clear.setOnClickListener(new btn_listener());
         btn_dividir.setOnClickListener(new btn_listener());
         btn_multi.setOnClickListener(new btn_listener());
@@ -67,20 +68,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    //class listener para los btn's
     class btn_listener implements View.OnClickListener {
-
         boolean clicked_igual = false;
 
         @Override
         public void onClick(View view) {
+
             try {
                 btn(view);
             } catch (Exception e) {
 
             }
-
-
         }
 
         public void btn(View v) {
@@ -88,23 +87,23 @@ public class MainActivity extends AppCompatActivity {
             if (txt.equals("0 ")) {
                 txt = "";
             }
-
             if (v == btn_clear) {
                 txt = "0 ";
             }
             if (v == btn_dividir) {
-                txt = txt + "/";
-                num_1 = Double.parseDouble(txt.substring(0, txt.length() - 1));
-                index = txt.length();
                 signo = '/';
-
+                num_1 = Double.parseDouble(txt);
+                txt = " ";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_multi) {
-                txt = txt + "x";
-                num_1 = Double.parseDouble(txt.substring(0, txt.length() - 1));
-                index = txt.length();
+                Toast.makeText(MainActivity.this, txt, Toast.LENGTH_SHORT).show();
                 signo = 'x';
-
+                num_1 = Double.parseDouble(txt);
+                txt = " ";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == bnt_borar) {
 
@@ -114,60 +113,83 @@ public class MainActivity extends AppCompatActivity {
             }
             if (v == btn_num_7) {
                 txt = txt + "7";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_num_8) {
                 txt = txt + "8";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_num_9) {
                 txt = txt + "9";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_resta) {
-                txt = txt + "-";
-                num_1 = Double.parseDouble(txt.substring(0, txt.length() - 1));
-                index = txt.length();
                 signo = '-';
-
+                num_1 = Double.parseDouble(txt);
+                txt = " ";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_num_4) {
                 txt = txt + "4";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_num_5) {
                 txt = txt + "5";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_num_6) {
                 txt = txt + "6";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_suma) {
-                txt = txt + "+";
-                num_1 = Double.parseDouble(txt.substring(0, txt.length() - 1));
-                index = txt.length();
                 signo = '+';
+                num_1 = Double.parseDouble(txt);
+                txt = " ";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_num_1) {
                 txt = txt + "1";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_num_2) {
                 txt = txt + "2";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_num_3) {
                 txt = txt + "3";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_igual) {
-                clicked_igual = true;
-                num_2 = Double.parseDouble(txt.substring(index, txt.length()));
-                operaciones();
-                txt = Double.toString(num_result);
+                if (cont_igual == 0) {
+                    num_2 = Double.parseDouble(txt);
+                    operaciones();
+                    txt = Double.toString(num_result);
+                    cont_igual++;
+                }
             }
             if (v == btn_num_0) {
                 txt = txt + "0";
+                cont_igual = 0;
+                cont_punto = 0;
             }
             if (v == btn_punto) {
-                txt = txt + ".";
+                if (cont_punto == 0) {
+                    txt = txt + ".";
+                    cont_punto++;
+                }
             }
             tv_numero.setText(txt);
-            if (clicked_igual) {
-                txt = "";
-            }
         }
 
         public void operaciones() {
