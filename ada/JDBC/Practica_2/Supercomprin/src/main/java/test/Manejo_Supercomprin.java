@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author singh
  */
 public class Manejo_Supercomprin {
-
+    //var
     private static Connection conexion;
     private static ClienteDAO clientedao;
     private static CompraDAO compradao;
@@ -48,10 +48,10 @@ public class Manejo_Supercomprin {
                     update_cliente();
                     break;
                 case 4:
-                    listar_clientes();
+                    recagar_euros();
                     break;
                 case 5:
-                    recagar_euros(conexion);
+                    listar_clientes();
                     break; 
                 case 6:
                     listar_productos();
@@ -63,7 +63,7 @@ public class Manejo_Supercomprin {
                     listar_compra();
                     break;
                 case 9:
-                    pagar_con_puntos(conexion);
+                    pagar_con_puntos();
                     break;
                 case 10:
                     listar_compra_puntos();
@@ -94,8 +94,8 @@ public class Manejo_Supercomprin {
         System.out.println("|        1. Insertar cliente               |");
         System.out.println("|        2. Eliminar cliente               |");
         System.out.println("|        3. Actualizar datos               |");
-        System.out.println("|        4. Listar los cliente             |");
-        System.out.println("|        5. Recargar en euros              |");
+        System.out.println("|        4. Recargar en euros              |");
+        System.out.println("|        5. Listar los cliente             |");
         System.out.println("|        6. Listar los productos           |");
         System.out.println("|        7. Pagar compra                   |");
         System.out.println("|        8. Listar compra                  |");
@@ -125,7 +125,6 @@ public class Manejo_Supercomprin {
 
             ex.printStackTrace(System.out);
         }
-
     }
 
     //metodo para eliminar cliente de bd
@@ -170,152 +169,9 @@ public class Manejo_Supercomprin {
             ex.printStackTrace(System.out);
         }
     }
-
-    //metodo para listar_clientes
-    public static void listar_clientes() {
-
-        List<Cliente> list_cliente;
-        list_cliente = clientedao.select();
-        list_cliente.forEach(Cliente -> {
-
-            System.out.println("Cliente: " + Cliente);
-        });
-    }
-    //metodo para listar_producto
-    public static void listar_productos() {
-
-        List<Producto> list_Productos;
-        list_Productos = productodao.select();
-        list_Productos.forEach(Producto -> {
-
-            System.out.println("Producto: " + Producto);
-        });
-    }
-    //metodo para listar_compra
-    public static void listar_compra() {
-
-        List<Compra> list_Compra;
-        list_Compra = compradao.select();
-        list_Compra.forEach(Compra -> {
-
-            System.out.println("Compra: " + Compra);
-        });
-    }
     
-    //metodo para listar_compra con puntos
-    public static void listar_compra_puntos() {
-
-        List<Compra_puntos> list_Compra_puntos;
-        list_Compra_puntos = compra_puntosdao.select();
-        list_Compra_puntos.forEach(Compra_puntos -> {
-
-            System.out.println("Compra Puntos: " + Compra_puntos);
-        });
-    }
-    //metodo para listar_devuelto
-    public static void listar_devuelto() {
-
-        List<Devuelve> list_devuelve;
-        list_devuelve = devuelvedao.select();
-        list_devuelve.forEach(Devuelve -> {
-
-            System.out.println("Devuelve: " + Devuelve);
-        });
-    }
-
-    public static boolean existe_DNI(String DNI) {
-
-        List<Cliente> list_cliente;
-        list_cliente = clientedao.select();
-
-        String DNI_aux;
-        boolean existe = false;
-
-        for (Cliente c : list_cliente) {
-
-            DNI_aux = c.getDNI();
-
-            if (DNI.equals(DNI_aux)) {
-                existe = true;
-            }
-        }
-        return existe;
-    }
-
-    //metodo para pagar compra con euros
-    public static void pagar_compra() throws SQLException {
-
-        try {
-            //var 
-            Compra compra_1;
-
-            compra_1 = (Compra) teclado_compra_devuelve("compra"); //llamando metodo teclado_compra_devuelve
-            compradao.insert(compra_1);//llamando metodo insert donde de verdad agregaremos a la bd la compra
-
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        }
-    }
-
-    //metodo para pagar compra con puntos 
-    public static void pagar_con_puntos(Connection con) {
-        //var
-        Compra_puntos compra_puntos_1;
-        Cliente c_aux;
-        boolean transaction_ok = false;
-
-        try {
-            //autocommit a false
-            if (con.getAutoCommit()) {
-
-                con.setAutoCommit(false);
-
-            }
-            compra_puntos_1 = (Compra_puntos) teclado_compra_devuelve("compra_puntos");//llamamos al metodo teclado_compra_devuelve en el cual el usaurio introducira datos
-            compra_puntosdao.insert(compra_puntos_1);//insert a compra_puntos  
-            c_aux = new Cliente(compra_puntos_1.getDNI_cliente());//cliente con el DNI de la compra
-            c_aux = clientedao.select_DNI(c_aux);//cogemos todos los datos del cliente con el DNI que tenga la compra
-
-            //si la compra es mayor de 5 euros            
-            if (compra_puntos_1.getImporte() > 5) {
-                //si la resta de puntos es mayor a 5 
-                if (c_aux.getPuntos() - compra_puntos_1.getPuntos() > 5) {
-                    c_aux.setPuntos(c_aux.getPuntos() - compra_puntos_1.getPuntos());
-                    clientedao.update_puntos(c_aux);
-                    con.commit();
-                    transaction_ok = true;
-                    System.out.println("Se ha hecho el commit");
-                }
-            }
-            //si no se ha hecho bien la transaction hacemos rollback
-            if (!transaction_ok) {
-                con.rollback();
-                System.out.println("Entramos al rollback, la compra tiene que ser superior a 5 euros y al hacer resta puntos tiene que haber 5 puntos");
-            }
-
-        } catch (SQLException e) {
-
-            e.printStackTrace(System.out);
-        }
-    }
-
-    //metodo para devolver compra
-    public static void devolver_compra() throws SQLException {
-
-        try {
-            //var 
-            Devuelve devuelve_1;
-
-            devuelve_1 = (Devuelve) teclado_compra_devuelve("devuelve"); //llamando metodo teclado_compra_devuelve
-            devuelvedao.insert(devuelve_1);//llamando metodo insert donde de verdad agregaremos a la bd la compra
-
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        }
-    }
-
-    //metodo para pagar compra con puntos 
-    public static void recagar_euros(Connection con) {
+     //metodo para recargar euros 
+    public static void recagar_euros() {
         //var
         Scanner sc = new Scanner(System.in);
         Cliente c;
@@ -342,9 +198,9 @@ public class Manejo_Supercomprin {
 
         try {
             //autocommit a false
-            if (con.getAutoCommit()) {
+            if (conexion.getAutoCommit()) {
 
-                con.setAutoCommit(false);
+                conexion.setAutoCommit(false);
             }
             c = new Cliente(DNI);//cliente con el DNI recibido por teclado
             c = clientedao.select_DNI(c);//cogemos todos los datos del cliente con el DNI introducido user
@@ -354,13 +210,13 @@ public class Manejo_Supercomprin {
             //si dia mes esta entre 1 y 5            
             if (fecha.get(Calendar.DAY_OF_MONTH) <= 5) {
 
-                con.commit();
+                conexion.commit();
                 transaction_ok = true;
                 System.out.println("Se ha hecho el commit");
             }
             //si no se ha hecho bien la transaction hacemos rollback
             if (!transaction_ok) {
-                con.rollback();
+                conexion.rollback();
                 System.out.println("Entramos al rollback, solo se puede recargar entre el dia 1 - 5 del mes");
             }
         } catch (SQLException e) {
@@ -368,7 +224,153 @@ public class Manejo_Supercomprin {
             e.printStackTrace(System.out);
         }
     }
+   
+    //metodo para listar_clientes
+    public static void listar_clientes() {
 
+        List<Cliente> list_cliente;
+        list_cliente = clientedao.select();
+        list_cliente.forEach(Cliente -> {
+
+            System.out.println("Cliente: " + Cliente);
+        });
+    }
+
+    //metodo para listar_producto
+    public static void listar_productos() {
+
+        List<Producto> list_Productos;
+        list_Productos = productodao.select();
+        list_Productos.forEach(Producto -> {
+
+            System.out.println("Producto: " + Producto);
+        });
+    }
+    
+     //metodo para pagar compra con euros
+    public static void pagar_compra() throws SQLException {
+
+        try {
+            //var 
+            Compra compra_1;
+
+            compra_1 = (Compra) teclado_compra_devuelve("compra"); //llamando metodo teclado_compra_devuelve
+            compradao.insert(compra_1);//llamando metodo insert donde de verdad agregaremos a la bd la compra
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }
+    
+     //metodo para listar_compra
+    public static void listar_compra() {
+
+        List<Compra> list_Compra;
+        list_Compra = compradao.select();
+        list_Compra.forEach(Compra -> {
+
+            System.out.println("Compra: " + Compra);
+        });
+    }
+    
+    //metodo para pagar compra con puntos 
+    public static void pagar_con_puntos() {
+        //var
+        Compra_puntos compra_puntos_1;
+        Cliente c_aux;
+        boolean transaction_ok = false;
+
+        try {
+            //autocommit a false
+            if (conexion.getAutoCommit()) {
+
+                conexion.setAutoCommit(false);
+
+            }
+            compra_puntos_1 = (Compra_puntos) teclado_compra_devuelve("compra_puntos");//llamamos al metodo teclado_compra_devuelve en el cual el usaurio introducira datos
+            compra_puntosdao.insert(compra_puntos_1);//insert a compra_puntos
+            c_aux = new Cliente(compra_puntos_1.getDNI_cliente());//cliente con el DNI de la compra
+            c_aux = clientedao.select_DNI(c_aux);//cogemos todos los datos del cliente con el DNI que tenga la compra
+
+            //si la compra es mayor de 5 euros            
+            if (compra_puntos_1.getImporte() > 5) {
+                //si la resta de puntos es mayor a 5 
+                if (c_aux.getPuntos() - compra_puntos_1.getPuntos() > 5) {
+                    c_aux.setPuntos(c_aux.getPuntos() - compra_puntos_1.getPuntos());
+                    clientedao.update_puntos(c_aux);
+                    conexion.commit();
+                    transaction_ok = true;
+                    System.out.println("Se ha hecho el commit");
+                }
+            }
+            //si no se ha hecho bien la transaction hacemos rollback
+            if (!transaction_ok) {
+                conexion.rollback();
+                System.out.println("Entramos al rollback, la compra tiene que ser superior a 5 euros y al hacer resta puntos tiene que haber 5 puntos");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace(System.out);
+        }
+    }
+
+    //metodo para listar_compra con puntos
+    public static void listar_compra_puntos() {
+
+        List<Compra_puntos> list_Compra_puntos;
+        list_Compra_puntos = compra_puntosdao.select();
+        list_Compra_puntos.forEach(Compra_puntos -> {
+
+            System.out.println("Compra Puntos: " + Compra_puntos);
+        });
+    }
+    //metodo para listar_devuelto
+    public static void listar_devuelto() {
+
+        List<Devuelve> list_devuelve;
+        list_devuelve = devuelvedao.select();
+        list_devuelve.forEach(Devuelve -> {
+
+            System.out.println("Devuelve: " + Devuelve);
+        });
+    }
+    
+    //metodo para devolver compra
+    public static void devolver_compra() throws SQLException {
+
+        try {
+            //var 
+            Devuelve devuelve_1;
+
+            devuelve_1 = (Devuelve) teclado_compra_devuelve("devuelve"); //llamando metodo teclado_compra_devuelve
+            devuelvedao.insert(devuelve_1);//llamando metodo insert donde de verdad agregaremos a la bd la compra
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(System.out);
+        }
+    }
+
+    //metodo para comprobar si existe DNI introducido por user en bd
+    public static boolean existe_DNI(String DNI) {
+
+        List<Cliente> list_cliente;
+        list_cliente = clientedao.select();
+
+        String DNI_aux;
+        boolean existe = false;
+
+        for (Cliente c : list_cliente) {
+
+            DNI_aux = c.getDNI();
+
+            if (DNI.equals(DNI_aux)) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+   
     //metodo para leer datos cliente por teclado
     public static Cliente teclado_cliente(String aux) {
         //variables
@@ -430,7 +432,7 @@ public class Manejo_Supercomprin {
         return c1;
     }
 
-    //leer por teclado datos compra o devulve por teclado
+    //leer por teclado datos compra/compra_puntos o devulve por teclado
     public static Object teclado_compra_devuelve(String aux) {
         //variables
         Scanner sc = new Scanner(System.in);
@@ -492,8 +494,7 @@ public class Manejo_Supercomprin {
 
                     devuelve_1 = new Devuelve(DNI_cliente, id_producto, Fecha, Puntos, Importe);
                     ob_aux = devuelve_1;
-                }
-                
+                }      
             }
             
             if (!existe_producto) {
