@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 txt = "";
             }
             if (v == btn_clear) {
+                num_1 = 0;
                 txt = "0 ";
             }
             if (v == btn_dividir) {
@@ -98,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 cont_punto = 0;
             }
             if (v == btn_multi) {
-                Toast.makeText(MainActivity.this, txt, Toast.LENGTH_SHORT).show();
                 signo = 'x';
                 num_1 = Double.parseDouble(txt);
                 txt = " ";
