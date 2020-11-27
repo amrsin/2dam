@@ -10,7 +10,7 @@ public class Devuelve {
     private int id_devuelve;
     private String DNI_cliente;
     private int id_producto;
-    private Date Fehca;
+    private Date Fecha;
     private int Puntos;
     private double Importe;
 
@@ -24,21 +24,21 @@ public class Devuelve {
         this.id_devuelve = id_devuelve;   
     }
     //Constructor con todos los datos menos id_compra para insert
-    public Devuelve(String DNI_cliente, int id_producto, Date Fehca, int Puntos, double Importe) {
+    public Devuelve(String DNI_cliente, int id_producto, Date Fecha, int Puntos, double Importe) {
         
         this.DNI_cliente = DNI_cliente;
         this.id_producto = id_producto;
-        this.Fehca = Fehca;
+        this.Fecha= Fecha;
         this.Puntos = Puntos;
         this.Importe = Importe;
     }
     //Constructor con todos los datos para update
-    public Devuelve(int id_devuelve, String DNI_cliente, int id_producto, Date Fehca, int Puntos, double Importe) {
+    public Devuelve(int id_devuelve, String DNI_cliente, int id_producto, Date Fecha, int Puntos, double Importe) {
         
         this.id_devuelve = id_devuelve;
         this.DNI_cliente = DNI_cliente;
         this.id_producto = id_producto;
-        this.Fehca = Fehca;
+        this.Fecha = Fecha;
         this.Puntos = Puntos;
         this.Importe = Importe;
     }
@@ -67,12 +67,12 @@ public class Devuelve {
         this.id_producto = id_producto;
     }
 
-    public Date getFehca() {
-        return Fehca;
+    public Date getFecha() {
+        return Fecha;
     }
 
-    public void setFehca(Date Fehca) {
-        this.Fehca = Fehca;
+    public void setFecha(Date Fecha) {
+        this.Fecha= Fecha;
     }
 
     public int getPuntos() {
@@ -90,4 +90,9 @@ public class Devuelve {
     public void setImporte(double Importe) {
         this.Importe = Importe;
     }
+
+    @Override
+    public String toString() {
+        return "Id devuelve: " + id_devuelve + ", DNI cliente: " + DNI_cliente + ", Id producto: " + id_producto + ", Fecha: " + Fecha + ", Puntos: " + Puntos + ", Importe: " + Importe;
+    }    
 }

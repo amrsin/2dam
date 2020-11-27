@@ -10,7 +10,7 @@ public class Compra_puntos {
     private int id_compra;
     private String DNI_cliente;
     private int id_producto;
-    private Date Fehca;
+    private Date Fecha;
     private int Puntos;
     private double Importe;
 
@@ -24,21 +24,21 @@ public class Compra_puntos {
         this.id_compra = id_compra;   
     }
     //Constructor con todos los datos menos id_compra para insert
-    public Compra_puntos(String DNI_cliente, int id_producto, Date Fehca, int Puntos, double Importe) {
+    public Compra_puntos(String DNI_cliente, int id_producto, Date Fecha, int Puntos, double Importe) {
         
         this.DNI_cliente = DNI_cliente;
         this.id_producto = id_producto;
-        this.Fehca = Fehca;
+        this.Fecha = Fecha;
         this.Puntos = Puntos;
         this.Importe = Importe;
     }
     //Constructor con todos los datos para update
-    public Compra_puntos(int id_compra, String DNI_cliente, int id_producto, Date Fehca, int Puntos, double Importe) {
+    public Compra_puntos(int id_compra, String DNI_cliente, int id_producto, Date Fecha, int Puntos, double Importe) {
         
         this.id_compra = id_compra;
         this.DNI_cliente = DNI_cliente;
         this.id_producto = id_producto;
-        this.Fehca = Fehca;
+        this.Fecha = Fecha;
         this.Puntos = Puntos;
         this.Importe = Importe;
     }
@@ -67,12 +67,12 @@ public class Compra_puntos {
         this.id_producto = id_producto;
     }
 
-    public Date getFehca() {
-        return Fehca;
+    public Date getFecha() {
+        return Fecha;
     }
 
-    public void setFehca(Date Fehca) {
-        this.Fehca = Fehca;
+    public void setFecha(Date Fecha) {
+        this.Fecha = Fecha;
     }
 
     public int getPuntos() {
@@ -93,7 +93,7 @@ public class Compra_puntos {
 
     @Override
     public String toString() {
-        return "Compra_puntos{" + "id_compra=" + id_compra + ", DNI_cliente=" + DNI_cliente + ", id_producto=" + id_producto + ", Fehca=" + Fehca + ", Puntos=" + Puntos + ", Importe=" + Importe + '}';
+        return "Id compra: " + id_compra + ", DNI cliente: " + DNI_cliente + ", Id producto: " + id_producto + ", Fecha: " + Fecha + ", Puntos=" + Puntos + ", Importe=" + Importe + '}';
     }
     
     

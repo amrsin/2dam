@@ -28,10 +28,11 @@ public class Manejo_Supercomprin {
         compradao = new CompraDAO(conexion);
         productodao = new ProductoDAO(conexion);
         compra_puntosdao = new Compra_puntosDAO(conexion);
+        devuelvedao = new DevuelveDAO(conexion);
 
         int op_menu = 0;
 
-        while (op_menu != 10) {
+        while (op_menu != 13) {
 
             op_menu = menu();
 
@@ -59,12 +60,21 @@ public class Manejo_Supercomprin {
                     pagar_compra();
                     break;
                 case 8:
-                    pagar_con_puntos(conexion);
+                    listar_compra();
                     break;
                 case 9:
-                    devolver_compra();
+                    pagar_con_puntos(conexion);
                     break;
                 case 10:
+                    listar_compra_puntos();
+                    break;
+                case 11:
+                    devolver_compra();
+                    break;
+                case 12:
+                    listar_devuelto();
+                    break;
+                case 13:
                     System.out.println("Gracias por usar el menu");
                     break;
                 default:
@@ -85,12 +95,15 @@ public class Manejo_Supercomprin {
         System.out.println("|        2. Eliminar cliente               |");
         System.out.println("|        3. Actualizar datos               |");
         System.out.println("|        4. Listar los cliente             |");
-        System.out.println("|        5. Recargar euros                 |");
+        System.out.println("|        5. Recargar en euros              |");
         System.out.println("|        6. Listar los productos           |");
         System.out.println("|        7. Pagar compra                   |");
-        System.out.println("|        8. Pagar compra con puntos        |");
-        System.out.println("|        9. Devolver producto              |");
-        System.out.println("|        10. Salir                          |");
+        System.out.println("|        8. Listar compra                  |");
+        System.out.println("|        9. Pagar compra con puntos        |");
+        System.out.println("|        10.Listar compra con puntos       |");
+        System.out.println("|        11.Devolver producto              |");
+        System.out.println("|        12.Listar productos devueltos     |");
+        System.out.println("|        13.Salir                          |");
         System.out.println("|------------------------------------------|");
         System.out.print("|        Introduza opcion del menu:        |");
         op_menu = sc.nextInt();
@@ -176,6 +189,37 @@ public class Manejo_Supercomprin {
         list_Productos.forEach(Producto -> {
 
             System.out.println("Producto: " + Producto);
+        });
+    }
+    //metodo para listar_compra
+    public static void listar_compra() {
+
+        List<Compra> list_Compra;
+        list_Compra = compradao.select();
+        list_Compra.forEach(Compra -> {
+
+            System.out.println("Compra: " + Compra);
+        });
+    }
+    
+    //metodo para listar_compra con puntos
+    public static void listar_compra_puntos() {
+
+        List<Compra_puntos> list_Compra_puntos;
+        list_Compra_puntos = compra_puntosdao.select();
+        list_Compra_puntos.forEach(Compra_puntos -> {
+
+            System.out.println("Compra Puntos: " + Compra_puntos);
+        });
+    }
+    //metodo para listar_devuelto
+    public static void listar_devuelto() {
+
+        List<Devuelve> list_devuelve;
+        list_devuelve = devuelvedao.select();
+        list_devuelve.forEach(Devuelve -> {
+
+            System.out.println("Devuelve: " + Devuelve);
         });
     }
 
