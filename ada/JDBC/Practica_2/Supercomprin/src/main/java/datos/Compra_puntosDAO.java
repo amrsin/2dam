@@ -35,12 +35,14 @@ public class Compra_puntosDAO {
         List<Compra_puntos> list_compra_puntos = new ArrayList<>();
 
         try {
-            //get connection si conexionTrasaccional es null
-            con = Conexion.getConnection();
+           //get connection si conexionTrasaccional es null
+             con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
+
             stmt = con.prepareStatement(SQL_SELECT); //indicamos la consulta a hacer
             rs = stmt.executeQuery(); //ejecutamos la consulta
             //mientras tengamos obejetos en resultSet
-            //creando Objeto Usuario y lo agregamos en list_usuarios
+            //creando Objeto Usuario y lo agregamos en list_compra_puntos
             while (rs.next()) {
                 
                 int id_compra = rs.getInt("id_compra");
@@ -61,9 +63,11 @@ public class Compra_puntosDAO {
 
                 Conexion.close(rs); //cerramos resultSet
                 Conexion.close(stmt); //cerramos statament
-                Conexion.close(con); //cerramos connexion
+                if (conexionTrasaccional == null) {
 
+                    Conexion.close(con);
 
+                }
             } catch (SQLException ex) {
 
                 ex.printStackTrace(System.out);
@@ -82,11 +86,11 @@ public class Compra_puntosDAO {
         PreparedStatement stmt = null;
         int registros = 0;
 
-        try {
-            
-            
-            con = this.conexionTrasaccional != null
+        try { 
+            //get connection si conexionTrasaccional es null
+             con = this.conexionTrasaccional != null
                     ? this.conexionTrasaccional : Conexion.getConnection();
+
             stmt = con.prepareStatement(SQL_INSERT);//consulta
             //identificamos los ? segun la consulta
             stmt.setString(1, c.getDNI_cliente());

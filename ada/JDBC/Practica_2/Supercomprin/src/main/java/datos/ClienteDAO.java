@@ -39,12 +39,14 @@ public class ClienteDAO {
         List<Cliente> list_clientes = new ArrayList<>();
 
         try {
-            //get connection si conexionTrasaccional es null
-            con = Conexion.getConnection();
+             //get connection si conexionTrasaccional es null
+             con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
+
             stmt = con.prepareStatement(SQL_SELECT); //indicamos la consulta a hacer
             rs = stmt.executeQuery(); //ejecutamos la consulta
             //mientras tengamos obejetos en resultSet
-            //creando Objeto Usuario y lo agregamos en list_usuarios
+            //creando Objeto Usuario y lo agregamos en list_clientes
             while (rs.next()) {
 
                 String DNI = rs.getString("DNI");
@@ -66,8 +68,11 @@ public class ClienteDAO {
 
                 Conexion.close(rs); //cerramos resultSet
                 Conexion.close(stmt); //cerramos statament
-                Conexion.close(con); //cerramos connexion
+                if (conexionTrasaccional == null) {
 
+                    Conexion.close(con);
+
+                }
 
             } catch (SQLException ex) {
 
@@ -89,13 +94,14 @@ public class ClienteDAO {
 
         try {
             //get connection si conexionTrasaccional es null
-            con = Conexion.getConnection();
+             con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
 
             stmt = con.prepareStatement(SQL_SELECT_DNI); //indicamos la consulta a hacer
             stmt.setString(1, c_aux.getDNI());
             rs = stmt.executeQuery(); //ejecutamos la consulta
             //mientras tengamos obejetos en resultSet
-            //creando Objeto Usuario y lo agregamos en list_usuarios
+            //creando Objeto Usuario y lo agregamos en list_clientes
             while (rs.next()) {
 
                 String DNI = rs.getString("DNI");
@@ -114,14 +120,17 @@ public class ClienteDAO {
 
             try {
 
-                Conexion.close(con); //cerramos connexion
                 Conexion.close(rs); //cerramos resultSet
                 Conexion.close(stmt); //cerramos statament
+                if (conexionTrasaccional == null) {
+
+                    Conexion.close(con);
+
+                }
 
             } catch (SQLException ex) {
 
                 ex.printStackTrace(System.out);
-
             }
         }
         return c;

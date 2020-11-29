@@ -33,11 +33,13 @@ public class DevuelveDAO {
 
         try {
             //get connection si conexionTrasaccional es null
-            con = Conexion.getConnection();
+            con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
+            
             stmt = con.prepareStatement(SQL_SELECT); //indicamos la consulta a hacer
             rs = stmt.executeQuery(); //ejecutamos la consulta
             //mientras tengamos obejetos en resultSet
-            //creando Objeto Usuario y lo agregamos en list_usuarios
+            //creando Objeto Usuario y lo agregamos en list_devuelve
             while (rs.next()) {
                 
                 int id_devuelve = rs.getInt("id_devuelve");
@@ -58,8 +60,11 @@ public class DevuelveDAO {
 
                 Conexion.close(rs); //cerramos resultSet
                 Conexion.close(stmt); //cerramos statament
-                Conexion.close(con); //cerramos connexion
+               if (conexionTrasaccional == null) {
 
+                    Conexion.close(con);
+
+                }
 
             } catch (SQLException ex) {
 
@@ -80,7 +85,7 @@ public class DevuelveDAO {
         int registros = 0;
 
         try {
-
+            //get connection si conexionTrasaccional es null
             con = this.conexionTrasaccional != null
                     ? this.conexionTrasaccional : Conexion.getConnection();
 

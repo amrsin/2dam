@@ -88,26 +88,26 @@ public class Manejo_Supercomprin {
 
         Scanner sc = new Scanner(System.in);
         int op_menu;
-        System.out.println("____________________________________________");
-        System.out.println("|        Bienvenido/a Supercomprin         |");
-        System.out.println("|------------------------------------------|");
-        System.out.println("|        1. Insertar cliente               |");
-        System.out.println("|        2. Eliminar cliente               |");
-        System.out.println("|        3. Actualizar datos               |");
-        System.out.println("|        4. Recargar en euros              |");
-        System.out.println("|        5. Listar los cliente             |");
-        System.out.println("|        6. Listar los productos           |");
-        System.out.println("|        7. Pagar compra                   |");
-        System.out.println("|        8. Listar compra                  |");
-        System.out.println("|        9. Pagar compra con puntos        |");
-        System.out.println("|        10.Listar compra con puntos       |");
-        System.out.println("|        11.Devolver producto              |");
-        System.out.println("|        12.Listar productos devueltos     |");
-        System.out.println("|        13.Salir                          |");
-        System.out.println("|------------------------------------------|");
-        System.out.print("|        Introduza opcion del menu:        |");
+        System.out.println("_______________________________________________");
+        System.out.println("|          Bienvenido/a Supercomprin          |");
+        System.out.println("|---------------------------------------------|");
+        System.out.println("|         1. Insertar cliente                 |");
+        System.out.println("|         2. Eliminar cliente                 |");
+        System.out.println("|         3. Actualizar datos                 |");
+        System.out.println("|         4. Recargar en euros                |");
+        System.out.println("|         5. Listar los cliente               |");
+        System.out.println("|         6. Listar los productos             |");
+        System.out.println("|         7. Pagar compra                     |");
+        System.out.println("|         8. Listar compra                    |");
+        System.out.println("|         9. Pagar compra con puntos          |");
+        System.out.println("|         10.Listar compra con puntos         |");
+        System.out.println("|         11.Devolver producto (tabla compra) |");
+        System.out.println("|         12.Listar productos devueltos       |");
+        System.out.println("|         13.Salir                            |");
+        System.out.println("|---------------------------------------------|");
+        System.out.print("|        Introduza opcion del menu:           |");
         op_menu = sc.nextInt();
-        System.out.println("--------------------------------------------");
+        System.out.println("-----------------------------------------------");
         return op_menu;
     }
 
@@ -345,7 +345,9 @@ public class Manejo_Supercomprin {
             Devuelve devuelve_1;
 
             devuelve_1 = (Devuelve) teclado_compra_devuelve("devuelve"); //llamando metodo teclado_compra_devuelve
-            devuelvedao.insert(devuelve_1);//llamando metodo insert donde de verdad agregaremos a la bd la compra
+            if (devuelve_1 != null) {
+               devuelvedao.insert(devuelve_1);//llamando metodo insert donde de verdad agregaremos a la bd la compra   
+            }
 
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -450,6 +452,7 @@ public class Manejo_Supercomprin {
         Compra compra_1 = null;
         Compra_puntos compra_puntos_1 = null;
         Devuelve devuelve_1 = null;
+        boolean existe_compra = false;
 
         //datos requeridos por user
         while (!existe_dni) {
@@ -492,9 +495,16 @@ public class Manejo_Supercomprin {
                 }
 
                 if (aux.equals("devuelve")) {
-
-                    devuelve_1 = new Devuelve(DNI_cliente, id_producto, Fecha, Puntos, Importe);
-                    ob_aux = devuelve_1;
+                    
+                    Compra compra_aux = new Compra(DNI_cliente, id_producto);
+                    existe_compra = compradao.select_id(compra_aux);
+                    if (existe_compra) {
+                      devuelve_1 = new Devuelve(DNI_cliente, id_producto, Fecha, Puntos, Importe);
+                      ob_aux = devuelve_1;
+                    }else {  
+                        System.out.println("El cliente con DNI " + DNI_cliente + " no ha comprado producto " + id_producto);
+                    }
+                    
                 }      
             }
             

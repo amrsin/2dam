@@ -93,8 +93,6 @@ public class Compra_puntos {
 
     @Override
     public String toString() {
-        return "Id compra: " + id_compra + ", DNI cliente: " + DNI_cliente + ", Id producto: " + id_producto + ", Fecha: " + Fecha + ", Puntos=" + Puntos + ", Importe=" + Importe + '}';
-    }
-    
-    
+        return "Id compra: " + id_compra + ", DNI cliente: " + DNI_cliente + ", Id producto: " + id_producto + ", Fecha: " + Fecha + ", Puntos: " + Puntos + ", Importe: " + Importe;
+    }   
 }

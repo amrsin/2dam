@@ -38,7 +38,8 @@ public class ProductoDAO {
 
         try {
             //get connection si conexionTrasaccional es null
-            con = Conexion.getConnection();
+             con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
 
             stmt = con.prepareStatement(SQL_SELECT); //indicamos la consulta a hacer
             rs = stmt.executeQuery(); //ejecutamos la consulta
@@ -60,9 +61,13 @@ public class ProductoDAO {
 
             try {
 
-                Conexion.close(con); //cerramos connexion
                 Conexion.close(rs); //cerramos resultSet
                 Conexion.close(stmt); //cerramos statament
+                if (conexionTrasaccional == null) {
+
+                    Conexion.close(con);
+
+                }
 
             } catch (SQLException ex) {
 
@@ -84,14 +89,15 @@ public class ProductoDAO {
         
 
         try {
-            //get connection si conexionTrasaccional es null
-            con = Conexion.getConnection();
+           //get connection si conexionTrasaccional es null
+             con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
 
             stmt = con.prepareStatement(SQL_SELECT_ID); //indicamos la consulta a hacer
             stmt.setInt(1, id);
             rs = stmt.executeQuery(); //ejecutamos la consulta
             //mientras tengamos obejetos en resultSet
-            //creando Objeto Usuario y lo agregamos en list_usuarios
+            //creando Objeto Usuario y lo agregamos en list_producto
             while (rs.next()) {
 
                 int id_producto = rs.getInt("id_producto");
@@ -107,9 +113,13 @@ public class ProductoDAO {
 
             try {
 
-                Conexion.close(con); //cerramos connexion
                 Conexion.close(rs); //cerramos resultSet
                 Conexion.close(stmt); //cerramos statament
+                if (conexionTrasaccional == null) {
+
+                    Conexion.close(con);
+
+                }
 
             } catch (SQLException ex) {
 

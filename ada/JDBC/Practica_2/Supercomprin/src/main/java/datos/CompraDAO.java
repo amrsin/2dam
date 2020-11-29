@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class CompraDAO {
     
+    private static final String SQL_SELECT_id = "Select * from Compra where DNI_cliente = ? and id_producto = ?";
     private static final String SQL_SELECT = "SELECT * FROM Compra";
     private static final String SQL_INSERT = "INSERT INTO Compra(DNI_cliente, id_producto, Fecha, Puntos, Importe) VALUES (?,?,?,?,?)"; 
 
@@ -35,11 +36,13 @@ public class CompraDAO {
 
         try {
             //get connection si conexionTrasaccional es null
-            con = Conexion.getConnection();
+             con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
+
             stmt = con.prepareStatement(SQL_SELECT); //indicamos la consulta a hacer
             rs = stmt.executeQuery(); //ejecutamos la consulta
             //mientras tengamos obejetos en resultSet
-            //creando Objeto Usuario y lo agregamos en list_usuarios
+            //creando Objeto Usuario y lo agregamos en list_compra
             while (rs.next()) {
                 
                 int id_compra = rs.getInt("id_compra");
@@ -60,8 +63,11 @@ public class CompraDAO {
 
                 Conexion.close(rs); //cerramos resultSet
                 Conexion.close(stmt); //cerramos statament
-                Conexion.close(con); //cerramos connexion
+                if (conexionTrasaccional == null) {
 
+                    Conexion.close(con);
+
+                }
 
             } catch (SQLException ex) {
 
@@ -72,6 +78,52 @@ public class CompraDAO {
         return list_compra;
     }
    
+     //metodo para selecte segun id
+    public boolean select_id(Compra c_aux) {
+
+        //variables
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean exite_compra = false;
+        
+
+        try {
+            //get connection si conexionTrasaccional es null
+             con = this.conexionTrasaccional != null
+                    ? this.conexionTrasaccional : Conexion.getConnection();
+
+            stmt = con.prepareStatement(SQL_SELECT_id); //indicamos la consulta a hacer
+            stmt.setString(1, c_aux.getDNI_cliente());
+            stmt.setInt(2, c_aux.getId_producto());
+            rs = stmt.executeQuery(); //ejecutamos la consulta
+            if (rs.next()) {
+                exite_compra = true;
+                
+            }
+        } catch (SQLException ex) {
+
+            ex.printStackTrace(System.out);
+        } finally {
+
+            try {
+
+                Conexion.close(rs); //cerramos resultSet
+                Conexion.close(stmt);//cerramos stmt
+                if (conexionTrasaccional == null) {
+
+                    Conexion.close(con);
+                }
+
+            } catch (SQLException ex) {
+
+                ex.printStackTrace(System.out);
+
+            }
+        }
+        return exite_compra;
+    }
+
     //metodo para insertar
     public int insert(Compra c) throws SQLException {
 
@@ -82,10 +134,10 @@ public class CompraDAO {
 
         try {
             
-            
-            con = this.conexionTrasaccional != null
+            //get connection si conexionTrasaccional es null
+             con = this.conexionTrasaccional != null
                     ? this.conexionTrasaccional : Conexion.getConnection();
-            
+
             stmt = con.prepareStatement(SQL_INSERT);//consulta
             //identificamos los ? segun la consulta
             stmt.setString(1, c.getDNI_cliente());
@@ -93,7 +145,6 @@ public class CompraDAO {
             stmt.setDate(3, c.getFecha());
             stmt.setInt(4, c.getPuntos());
             stmt.setDouble(5, c.getImporte());
-            System.out.println(c.toString());
             registros = stmt.executeUpdate();
             //si registros es distinto 0 es que se ha insetado cliente bien, sino algo ha fallado
             if (registros != 0) {

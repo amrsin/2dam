@@ -25,6 +25,12 @@ public class Compra {
         
         this.id_compra = id_compra;   
     }
+    //Constructor con DNI_cliente y id_producto
+    public Compra (String DNI_cliente, int id_producto) {
+        
+        this.id_producto= id_producto;   
+        this.DNI_cliente = DNI_cliente;
+    }
     //Constructor con todos los datos menos id_compra para insert
     public Compra(String DNI_cliente, int id_producto, Date Fecha, int Puntos, double Importe) {
         
