@@ -93,7 +93,7 @@ public class CompraDAO {
             stmt.setDate(3, c.getFecha());
             stmt.setInt(4, c.getPuntos());
             stmt.setDouble(5, c.getImporte());
-            
+            System.out.println(c.toString());
             registros = stmt.executeUpdate();
             //si registros es distinto 0 es que se ha insetado cliente bien, sino algo ha fallado
             if (registros != 0) {

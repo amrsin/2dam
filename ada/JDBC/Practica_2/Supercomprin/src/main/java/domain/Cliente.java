@@ -103,6 +103,6 @@ public class Cliente {
     //toString
     @Override
     public String toString() {
-        return "DNI: " + DNI + ", Nombre: " + Nombre + ", Apellidos: " + Apellidos + ", Email: " + Email + ", Fecha_nacimineto: " + Fecha_nacimineto + ", Puntos: " + Puntos + ", Saldos: " + Saldos;
+        return "DNI: " + DNI + ", Nombre: " + Nombre + ", Apellidos: " + Apellidos + ", Email: " + Email + ", Fecha_nacimineto: " + Fecha_nacimineto + ", Puntos: " + Puntos + ", Saldo: " + Saldos;
     }
 }

@@ -219,6 +219,7 @@ public class Manejo_Supercomprin {
                 conexion.rollback();
                 System.out.println("Entramos al rollback, solo se puede recargar entre el dia 1 - 5 del mes");
             }
+          conexion.setAutoCommit(true);
         } catch (SQLException e) {
 
             e.printStackTrace(System.out);
@@ -308,7 +309,7 @@ public class Manejo_Supercomprin {
                 conexion.rollback();
                 System.out.println("Entramos al rollback, la compra tiene que ser superior a 5 euros y al hacer resta puntos tiene que haber 5 puntos");
             }
-
+          conexion.setAutoCommit(true);
         } catch (SQLException e) {
 
             e.printStackTrace(System.out);
