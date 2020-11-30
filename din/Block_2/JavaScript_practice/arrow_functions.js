@@ -12,10 +12,13 @@ let data = [
     let add_person  = new Promise ((resolve, reject) => {
         let result = data.filter (person => person.telephone != newPerson.telephone);
 
-        if (result.length > 0)
-        
-        resolve (result);
-        
+        if (result.length > 0) {
+
+            data.push(newPerson);
+            resolve (newPerson);
+            
+        }
+       
         
         else
         
@@ -23,11 +26,11 @@ let data = [
         
         });
         
-        add_person.then(result => {
+        add_person.then(newPerson => {
         // If we are here the promise has been correctly processed
         
         console.log("added:");
-        data.push(newPerson);
+      
         console.log(data);
 
         }).catch(error => {
@@ -36,4 +39,5 @@ let data = [
         console.log("Error:", error);
         })  
     
+        
 
