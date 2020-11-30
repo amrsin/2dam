@@ -87,10 +87,12 @@ public class MainActivity extends AppCompatActivity {
             if (txt.equals("0 ")) {
                 txt = "";
             }
+
             if (v == btn_clear) {
                 num_1 = 0;
                 txt = "0 ";
             }
+
             if (v == btn_dividir) {
                 signo = '/';
                 num_1 = Double.parseDouble(txt);
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_multi) {
                 signo = 'x';
                 num_1 = Double.parseDouble(txt);
@@ -105,27 +108,32 @@ public class MainActivity extends AppCompatActivity {
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == bnt_borar) {
 
                 if (txt.length() > 0) {
                     txt = txt.substring(0, txt.length() - 1);
                 }
             }
+
             if (v == btn_num_7) {
                 txt = txt + "7";
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_num_8) {
                 txt = txt + "8";
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_num_9) {
                 txt = txt + "9";
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_resta) {
                 signo = '-';
                 num_1 = Double.parseDouble(txt);
@@ -133,21 +141,25 @@ public class MainActivity extends AppCompatActivity {
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_num_4) {
                 txt = txt + "4";
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_num_5) {
                 txt = txt + "5";
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_num_6) {
                 txt = txt + "6";
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_suma) {
                 signo = '+';
                 num_1 = Double.parseDouble(txt);
@@ -155,34 +167,41 @@ public class MainActivity extends AppCompatActivity {
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_num_1) {
                 txt = txt + "1";
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_num_2) {
                 txt = txt + "2";
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_num_3) {
                 txt = txt + "3";
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_igual) {
                 if (cont_igual == 0) {
+
                     num_2 = Double.parseDouble(txt);
                     operaciones();
                     txt = Double.toString(num_result);
                     cont_igual++;
                 }
             }
+
             if (v == btn_num_0) {
                 txt = txt + "0";
                 cont_igual = 0;
                 cont_punto = 0;
             }
+
             if (v == btn_punto) {
                 if (cont_punto == 0) {
                     txt = txt + ".";

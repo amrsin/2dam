@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -14,6 +14,10 @@
         <item name="android:layout_margin">1dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+
+
+
+
     </style>
 
     <style name="AppTheme.BotonCalculadora.Primary_orange" parent="AppTheme.BotonCalculadora">
@@ -26,6 +30,7 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@color/colorPrimaryDark</item>
     </style>
+
 
 
 </resources>

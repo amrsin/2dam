@@ -9,7 +9,7 @@
     android:layout_alignParentTop="true"
     tools:context=".MainActivity">
 
-    <!--Textview para poner nuemros + signos que el usuario pulse segun btn-->
+    <!--Textview para poner nuemros segun btn pulsado-->
     <TextView
         android:id="@+id/tv_numero"
         android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
 
         <Button
             android:id="@+id/btn_multi"
-            style="@style/AppTheme.BotonCalculadora.Primary_white"
+            style="@style/AppTheme.BotonCalculadora.Primary_orange"
             android:layout_row="0"
             android:layout_column="2"
             android:text="@string/btn_multi" />
@@ -150,7 +150,7 @@
 
         <Button
             android:id="@+id/btn_num_0"
-            style="@style/AppTheme.BotonCalculadora.Primary_orange"
+            style="@style/AppTheme.BotonCalculadora.Primary_white"
             android:layout_columnSpan="2"
             android:layout_row="4"
             android:layout_columnWeight="2"
