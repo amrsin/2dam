@@ -5,39 +5,43 @@ let data = [
     {name: "Laura", telephone: "633663366", age: 17}
     ];
     
-    let newPerson = {name: "Juan", phone: "965661564", age: 60};
+    let newPerson = {name: "Juan", telephone: "965661564", age: 60};
     let newPerson2 = {name: "Rodolfo", telephone: "910011001", age: 20};
     
+    add(newPerson);
+    add(newPerson2);
+    add(newPerson);
+    console.log(data);
+
+    function add(newPerson) {
+
+        add_person  = new Promise ((resolve, reject) => {
+            let result = data.filter (person => person.telephone == newPerson.telephone);
+            if (result.length == 0) {
     
-    let add_person  = new Promise ((resolve, reject) => {
-        let result = data.filter (person => person.telephone != newPerson.telephone);
-
-        if (result.length > 0) {
-
-            data.push(newPerson);
-            resolve (newPerson);
+                data.push(newPerson);
+                resolve (newPerson);
+                
+            }
+           
             
-        }
-       
-        
-        else
-        
-        reject ("exist in vector");
-        
-        });
-        
-        add_person.then(newPerson => {
-        // If we are here the promise has been correctly processed
-        
-        console.log("added:");
-      
-        console.log(data);
+            else
+            
+            reject ("exist in vector");
+            
+            });
+            
+            add_person.then(newPerson => {
+            // If we are here the promise has been correctly processed
+            
+            console.log("added");
+            console.log(newPerson)
+            }).catch(error => {
+            // if we are here there was an error
+            
+            console.log("Error:", error);
+            console.log(newPerson)
 
-        }).catch(error => {
-        // if we are here there was an error
-        
-        console.log("Error:", error);
-        })  
-    
-        
-
+            })  
+    }
+   
