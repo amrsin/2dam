@@ -5,13 +5,15 @@ let data = [
     {name: "Laura", telephone: "633663366", age: 17}
     ];
     
-    let newPerson = {name: "Juan", telephone: "965661564", age: 60};
-    let newPerson2 = {name: "Rodolfo", telephone: "910011001", age: 20};
+    let new_Person = {name: "Juan", telephone: "965661564", age: 60};
+    let new_Person2 = {name: "Rodolfo", telephone: "910011001", age: 20};
+    let deletePerson = {telephone: "910011001"};
     
-    add(newPerson);
-    add(newPerson2);
-    add(newPerson);
+    add(new_Person);
+    add(new_Person2);
+    add(new_Person);
     console.log(data);
+    remove(deletePerson);
 
     function add(newPerson) {
 
@@ -44,4 +46,32 @@ let data = [
 
             })  
     }
-   
+
+    function remove(deletePerson) {
+
+        remove_person = new Promise ((resolve, reject) => {
+            let result = data.filter (person => person.telephone != deletePerson.telephone);
+            console.log(result.length);
+            if (result.length > 0) {
+    
+                resolve (result);
+                
+            }
+
+            else
+            
+            reject ("The telefone doesn't exist in data");
+            
+            });
+            
+            remove_person.then(result => {
+            // If we are here the promise has been correctly processed
+            
+            console.log(result)
+            }).catch(error => {
+            // if we are here there was an error
+            
+            console.log("Error:", error);
+
+            })  
+    }
