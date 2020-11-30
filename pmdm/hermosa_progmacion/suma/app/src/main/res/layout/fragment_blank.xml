@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/num_2"
         />
-    <!--TextView para el resultado suma-->
+    <!--TextView para el resultado suma -->
     <TextView
         android:id="@+id/tv_result"
         android:layout_width="wrap_content"
