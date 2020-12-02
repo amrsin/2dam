@@ -59,6 +59,6 @@ function remove(deletePerson) {
         })  
 }
 module.exports = {
-    Add: Add,
-    Subtract: Subtract
+    add: add,
+    remove: remove
     };

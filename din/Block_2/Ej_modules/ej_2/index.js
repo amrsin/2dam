@@ -1,4 +1,4 @@
-const utilidades = require('./people.js');
+const people = require('./people.js');
 
 let data = [
     {name: "Nacho", telephone: "966112233", age: 40},
@@ -11,8 +11,8 @@ let data = [
     let new_Person2 = {name: "Rodolfo", telephone: "910011001", age: 20};
     let deletePerson = {telephone: "910011001"};
     
-    add(new_Person);
-    add(new_Person2);
-    add(new_Person);
+    people.add(new_Person);
+    people.add(new_Person2);
+    people.add(new_Person);
     console.log(data);
-    remove(deletePerson);
+    people.remove(deletePerson);
