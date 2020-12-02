@@ -1,4 +1,4 @@
-function add(newPerson) {
+function add(newPerson, data) {
 
     add_person  = new Promise ((resolve, reject) => {
         let result = data.filter (person => person.telephone == newPerson.telephone);
@@ -8,29 +8,26 @@ function add(newPerson) {
             resolve (newPerson);
             
         }
-       
-        
+         
         else
         
-        reject ("exist in vector");
+        reject ("Telefone exists in vector");
         
         });
         
         add_person.then(newPerson => {
         // If we are here the promise has been correctly processed
         
-        console.log("added");
-        console.log(newPerson)
+        console.log("added ", newPerson);
         }).catch(error => {
         // if we are here there was an error
         
-        console.log("Error:", error);
-        console.log(newPerson)
+        console.log("Error:", error, newPerson);
 
         })  
 }
 
-function remove(deletePerson) {
+function remove(deletePerson, data) {
 
     remove_person = new Promise ((resolve, reject) => {
         let result = data.filter (person => person.telephone != deletePerson.telephone);
@@ -50,7 +47,9 @@ function remove(deletePerson) {
         remove_person.then(result => {
         // If we are here the promise has been correctly processed
         
-        console.log(result)
+        console.log("Without ", deletePerson);
+        console.log(result);
+        
         }).catch(error => {
         // if we are here there was an error
         

@@ -11,8 +11,8 @@ let data = [
     let new_Person2 = {name: "Rodolfo", telephone: "910011001", age: 20};
     let deletePerson = {telephone: "910011001"};
     
-    people.add(new_Person);
-    people.add(new_Person2);
-    people.add(new_Person);
-    console.log(data);
-    people.remove(deletePerson);
+    people.add(new_Person, data);
+    people.add(new_Person2, data);
+    people.add(new_Person, data);
+    people.remove(new_Person2, data);
+
