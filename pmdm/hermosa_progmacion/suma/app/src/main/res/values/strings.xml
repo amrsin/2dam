@@ -4,6 +4,8 @@
     <string name="num_2">Introduzca num_2</string>
     <string name="result">Resultado</string>
     <string name="btn_suma">SUMAR</string>
+
+    <string name="btm_frag">ADD fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
