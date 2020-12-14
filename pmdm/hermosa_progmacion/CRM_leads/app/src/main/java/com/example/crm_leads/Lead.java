@@ -6,12 +6,15 @@ import java.util.UUID;
  * Entidad Lead
  */
 public class Lead {
+
+    //var
     private String mId;
     private String mName;
     private String mTitle;
     private String mCompany;
     private int mImage;
 
+    //constructor con todos las variables
     public Lead(String name, String title, String company, int image) {
         mId = UUID.randomUUID().toString();
         mName = name;
@@ -20,6 +23,7 @@ public class Lead {
         mImage = image;
     }
 
+    //getters y setters
     public String getId() {
         return mId;
     }
@@ -60,6 +64,7 @@ public class Lead {
         this.mImage = mImage;
     }
 
+    // metodo toString
     @Override
     public String toString() {
         return "Lead{" +

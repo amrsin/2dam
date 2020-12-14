@@ -23,8 +23,8 @@ public class LeadsFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    /*private String mParam1;
+    private String mParam2;*/
     ListView mLeadsList;
     LeadsAdapter mLeadsAdapter;
 
@@ -32,7 +32,7 @@ public class LeadsFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
+   /* /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
@@ -75,10 +75,7 @@ public class LeadsFragment extends Fragment {
         mLeadsAdapter = new LeadsAdapter(getActivity(),
                 LeadsRepository.getInstance().getLeads());
         //Relacionando la lista con el adaptador
-
         mLeadsList.setAdapter(mLeadsAdapter);
-
-
 
         // Inflate the layout for this fragment
         return view;

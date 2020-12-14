@@ -8,11 +8,15 @@
     android:paddingBottom="8dp"
     android:paddingTop="8dp">
 
+    <!--ImagenView para cargar la imagen del empleado-->
+
     <ImageView
         android:id="@+id/iv_avatar"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_centerVertical="true" />
+
+    <!--TextView para nombre del empleado-->
 
     <TextView
         android:id="@+id/tv_name"
@@ -23,6 +27,8 @@
         android:textAppearance="?attr/textAppearanceListItem"
         tools:text="Alexander Pierrot" />
 
+    <!--TextView para titulo del empleado-->
+
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
@@ -32,6 +38,7 @@
         android:text="Cargo"
         tools:text="CEO" />
 
+    <!--TextView para compañia del empleado-->
     <TextView
         android:id="@+id/tv_company"
         android:layout_width="wrap_content"

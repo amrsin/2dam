@@ -1,7 +1,6 @@
 package com.example.crm_leads;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,9 +53,10 @@ public class LeadsAdapter extends ArrayAdapter<Lead> {
         Lead lead = getItem(position);
 
         //Setup
-        Glide.with(getContext()).load(lead.getImage()).into(avatar);
-        name.setText(lead.getTitle());
-        title.setText(lead.getCompany());
+        Glide.with(getContext()).load(lead.getImage()).into(avatar); //cargamos imágenes de forma asíncrona
+        name.setText(lead.getName()); //getName de nombre
+        title.setText(lead.getTitle()); //getTitle de titulo
+        company.setText(lead.getCompany()); //getCompany de compañia
 
         return convertView;
     }

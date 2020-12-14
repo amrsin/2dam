@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         LeadsFragment leadsFragment = (LeadsFragment)
                 getSupportFragmentManager().findFragmentById(R.id.leads_container);
 
+        //si leadsFragment esta a null cargamos la instancia.
         if (leadsFragment == null) {
 
             leadsFragment = LeadsFragment.newInstance();
