@@ -6,13 +6,12 @@
     android:id="@+id/contenedor"
     >
 
-
+    <!--Button al hacer click se carga el fragmento-->
     <Button
         android:id="@+id/btn_frag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btm_frag"
-
         />
 
 </LinearLayout>
