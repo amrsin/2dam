@@ -1,0 +1,200 @@
+en.wikipedia.org" redirects here. For the Main Page, see Main Page.
+English Wikipedia
+85%
+Logo of the English Wikipedia
+Screenshot
+Type of site	Internet encyclopedia
+Owner	Wikimedia Foundation
+Created by	Jimmy Wales, Larry Sanger[1]
+URL	en.wikipedia.org
+Commercial	No
+Registration	Optional, but required for certain tasks including
+• protected page edit  
+• non-talk page creation (autoconfrmed for articles) 
+• file upload (autoconfirmed) 
+• page move (autoconfirmed) 
+Users	40,510,944 users, 1,118 administrators as of 14 December 2020
+Launched	15 January 2001; 19 years ago
+Content license	Creative Commons Attribution/
+Share-Alike 3.0 (most text also dual-licensed under GFDL)
+Media licensing varies
+The English Wikipedia is the English-language edition of the free online encyclopedia Wikipedia. Founded on 15 January 2001, it is the first edition of Wikipedia and, as of November 2020, has the most articles of any edition.[2] As of December 2020, 11% of articles in all Wikipedias belong to the English-language edition. This share has gradually declined from more than 50 percent in 2003, due to the growth of Wikipedias in other languages.[3] As of 14 December 2020, there are 6,207,582 articles on the site,[4] having surpassed the 6 million mark on 23 January 2020.[5] In August 2019, the total volume of the compressed texts of the English Wikipedia's articles amounted to 16.1 gigabytes.[6]
+
+The Simple English Wikipedia (simplewiki) is a variation in which most articles use only basic English vocabulary. There is also the Old English (Ænglisc/Anglo-Saxon) Wikipedia (angwiki), and a test incubator version for the Middle English Wikipedia (enmwiki). Community-produced news publications include The Signpost.[7]
+
+
+Contents
+1	Pioneering edition
+2	Users and editors
+3	Wikipedians
+3.1	Arbitration committee
+4	Controversies
+4.1	English varieties
+4.2	Disputed articles
+4.3	Threats against high schools
+5	Wikiprojects, and assessments of articles' importance and quality
+6	Graphics
+7	Internal news publications
+8	See also
+9	Footnotes
+10	References
+11	External links
+Pioneering edition
+See also: Wikipedia:Milestones
+The English Wikipedia was the first Wikipedia edition and has remained the largest. It has pioneered many ideas as conventions, policies or features which were later adopted by Wikipedia editions in some of the other languages. These ideas include "featured articles",[8] the neutral-point-of-view policy,[9] navigation templates,[10] the sorting of short "stub" articles into sub-categories,[11] dispute resolution mechanisms such as mediation and arbitration,[12] and weekly collaborations.[13]
+
+The English Wikipedia has adopted features from Wikipedias in other languages. These features include verified revisions from the German Wikipedia and town population-lookup templates from the Dutch Wikipedia.
+
+Although the English Wikipedia stores images and audio files, as well as text files, many of the images have been moved to Wikimedia Commons with the same name, as passed-through files. However, the English Wikipedia also has fair-use images and audio/video files (with copyright restrictions), most of which are not allowed on Commons.
+
+Many of the most active participants in the Wikimedia Foundation, and the developers of the MediaWiki software that powers Wikipedia, are English users.
+
+Users and editors
+
+Steven Pruitt, as of January 2020, has made more edits on the English Wikipedia than any other editor
+English Wikipedia statistics
+Number of user accounts	Number of articles	Number of files	Number of administrators
+40,510,944	6,207,582	892,382	1,118
+Wikipedians
+The English Wikipedia reached 4,000,000 registered user accounts on 1 April 2007,[14] just a little over a year since the millionth Wikipedian registered an account in late February 2006.[15]
+
+Over 1,100,000 editors have edited Wikipedia more than 10 times.[16] Over 30,000 editors perform more than 5 edits per month, and a little over 3,000 perform more than 100 edits per month.[17] By 24 November 2011, a total of 500 million edits had been performed on the English Wikipedia.[citation needed]
+
+As the largest Wikipedia edition, and because English is such a widely used language, the English Wikipedia draws many users and editors whose native language is not English. Such users may seek information from the English Wikipedia rather than the Wikipedia of their native language because the English Wikipedia tends to contain more information about general subjects. Often bringing in new perspectives, a strong motivation to contribute for them is to increase the coverage of topics outside the English world for an international audience and to enrich existing topics with missing information from non-English countries, thereby helping to reduce systemic bias. Successful collaborations have been developed between non-native English speakers who successfully add content to the English Wikipedia and native English speakers who act as copyeditors for them.[citation needed]
+
+Arbitration committee
+Main article: Arbitration Committee
+The English Wikipedia has an arbitration committee (also known as ArbCom) that consists of a panel of editors that imposes binding rulings with regard to disputes between other editors of the online encyclopedia.[18] The committee was created by Jimmy Wales on 4 December 2003 as an extension of the decision-making power he had formerly held as owner of the site.[19][20]
+
+When initially founded, the committee consisted of 12 arbitrators divided into three groups of four members each.[19][21] Since then, the committee has gradually expanded its membership to 18 arbitrators.[22][failed verification]
+
+As with other aspects of the English Wikipedia, some of Wikipedia's sister projects have emulated the arbitration committee with their own similar versions.[23] For instance, in 2007, an arbitration committee was founded on the German Wikipedia called the Schiedsgericht [de].[24]
+
+Controversies
+Main article: Criticism of Wikipedia
+See also: Wikipedia Seigenthaler biography incident and Essjay controversy
+English varieties
+One controversy in the English Wikipedia concerns which national variety of the English language is to be preferred, with the most commonly advocated candidates being American English and British English.[25] Perennial suggestions range from standardizing upon a single form of English to forking the English Wikipedia project. A style guideline states, "the English Wikipedia has no general preference for a major national variety of the language" and "an article on a topic that has strong ties to a particular English-speaking nation uses the appropriate variety of English for that nation".[26] An article should use spelling and grammar variants consistently; for example, color and colour are not to be used in the same article, since they represent American and British English, respectively. The guide also states that an article must remain in its original national variant.
+
+There has been a similar issue in the Chinese-language Wikipedia concerning regional differences in writing. Efforts toward a language fork for Portuguese Wikipedia have failed, but those regarding Norwegian Wikipedia succeeded.
+
+Andrew Lih wrote that the English Wikipedia "didn't have the chance to go through a debate over whether there should be a British English Wikipedia or an American English Wikipedia" because the English Wikipedia was the original edition.[27][clarification needed] Editors agreed to use U.S. spellings for primarily American topics and British spellings for primarily British topics. In 2009 Lih wrote, "No doubt, American spellings tend to dominate by default just because of sheer numbers."[28]
+
+Disputed articles
+A 2013 study from Oxford University concluded that the most disputed articles on the English Wikipedia tended to be broader issues, while on other language Wikipedias the most disputed articles tended to be regional issues; this is due to the English language's status as a global lingua franca, which means that many who edit the English Wikipedia do not speak English as a native language.[clarification needed] The study stated that the most disputed entries on the English Wikipedia were: George W. Bush, anarchism, Muhammad, list of WWE personnel, global warming, circumcision, United States, Jesus, race and intelligence, and Christianity.[29]
+
+Threats against high schools
+Several incidents of threats of violence against high schools on Wikipedia have been reported in the mainstream press.[30][31][32] The Glen A. Wilson High School was the subject of such a threat in 2008,[30][31][32] and a 14-year-old was arrested for making a threat against Niles West High School on Wikipedia in 2006.[33]
+
+Wikiprojects, and assessments of articles' importance and quality
+Main article: WikiProject
+A "WikiProject" is a group of contributors who want to work together as a team to improve Wikipedia. These groups often focus on a specific topic area (for example, women's history), a specific location or a specific kind of task (for example, checking newly created pages). The English Wikipedia currently has over 2,000 WikiProjects and activity varies.[34]
+
+In 2007, in preparation for producing a print version, the English Wikipedia introduced an assessment scale of the quality of articles.[35] Articles are rated by WikiProjects. The range of quality classes begins with "Stub" (very short pages), followed by "Start", "C" and "B" (in increasing order of quality). Community peer review is needed for the article to enter one of the highest quality classes: either "good article", "A" or the highest, "featured article". Of the about 4.4 million articles and lists assessed as of March 2015, a little more than 5,000 (0.12%) are featured articles, and fewer than 2,000 (0.04%) are featured lists. One featured article per day, as selected by editors, appears on the main page of Wikipedia.[36][37]
+
+The articles can also be rated as per "importance" as judged by a WikiProject. Currently, there are 5 importance categories: "low", "mid", "high", "top", and "???" for unclassified/uncertain level. For a particular article, different WikiProjects may assign different importance levels.
+
+The Wikipedia Version 1.0 Editorial Team has developed a table (shown below) that displays data of all rated articles by quality and importance, on the English Wikipedia. If an article or list receives different ratings by two or more WikiProjects, then the highest rating is used in the table, pie-charts, and bar-chart. The software regularly auto-updates the data.
+
+Researcher Giacomo Poderi found that articles tend to reach featured status via the intensive work of a few editors.[38] A 2010 study found unevenness in quality among featured articles and concluded that the community process is ineffective in assessing the quality of articles.[39]
+
+Quality-wise distribution of over 5.5 million articles and lists on the English Wikipedia, as of 29 January 2017[40]
+
+  Featured articles (0.11%)
+  Featured lists (0.04%)
+  A class (0.03%)
+  Good articles (0.50%)
+  B class (2.00%)
+  C class (4.32%)
+  Start class (26.41%)
+  Stub class (53.01%)
+  Lists (3.65%)
+  Unassessed (9.94%)
+Importance-wise distribution of over 5.5 million articles and lists on the English Wikipedia, as of 29 January 2017[40]
+
+  Top (0.91%)
+  High (3.20%)
+  Medium (12.21%)
+  Low (51.68%)
+  ??? (32.00%)
+All rated articles by quality and importance
+Quality	Importance
+Top	High	Mid	Low	???	Total
+Featured article FA	1,358	2,157	2,089	1,443	172	7,219
+Featured list FL	159	595	661	587	104	2,106
+A-Class article A	283	595	744	478	90	2,190
+ GA	2,628	6,012	11,977	14,241	1,739	36,597
+B	14,005	27,089	42,958	41,147	16,954	142,153
+C	13,692	42,072	100,401	169,813	65,339	391,317
+Start	18,325	86,193	364,748	1,146,673	371,196	1,987,135
+Stub	4,483	32,418	273,040	2,383,344	872,996	3,566,281
+List	3,966	14,369	43,734	135,128	75,653	272,850
+Assessed	58,899	211,500	840,352	3,892,854	1,404,243	6,407,848
+Unassessed	119	527	2,090	16,363	438,026	457,125
+Total	59,018	212,027	842,442	3,909,217	1,842,269	6,864,973
+500,0001,000,0001,500,0002,000,0002,500,0003,000,000TopHighMediumLow???
+  Featured articles
+  Featured lists
+  A-class articles
+  Good articles
+  B-class articles
+  C-class articles
+  Start-class articles
+  Stub articles
+  Lists
+  Unassessed articles and lists
+[Note: The table above (prepared by the Wikipedia Version 1.0 Editorial Team) is automatically updated daily by User:WP 1.0 bot, but the bar-chart and the two pie-charts are not auto-updated. In them, new data has to be entered by a Wikipedia editor (i.e. user).]
+
+Graphics
+
+Percentages of articles written in various language families. In March 2013, 16.76% of articles were in English.
+
+ 
+
+The countries in which the English Wikipedia is the most popular language version of Wikipedia are shown in blue.
+
+ 
+
+Top 25 contributor countries to the English Wikipedia. Dark green: Native English speaking countries; light green: countries with English as a foreign language.[41]
+
+ 
+File:Wiki feel stupid v2.ogv
+In April 2009, the Wikimedia Foundation conducted a usability study on the English Wikipedia, questioning users about the editing mechanism.[42]
+
+ 
+File:Wikipedia 5 million articles milestone video November 2015.ogv
+Video marking English Wikipedia's milestone of five million articles on 1 November 2015
+
+Bar chart, origin of edits
+Internal news publications
+See also: The Signpost
+
+Community-produced news publications include The Signpost.[7] The Signpost (previously known as The Wikipedia Signpost[44]) is the English Wikipedia's newspaper.[7][45][46] It is managed by the Wikipedia community and is published online weekly.[7][47] Each edition contains stories and articles related to the Wikipedia community.[48][49] A wide range of editors contribute articles and other pieces.[7] Some of the editors make minor changes in the existing contributions.
+
+The publication was founded in January 2005 by Wikipedia administrator and later Chair of the Wikimedia Foundation Board of Trustees, Michael Snow.[7][44][50] Originally titled The Wikipedia Signpost, it was later shortened to simply The Signpost.[44][51] The newspaper reports on Wikipedia events including Arbitration Committee rulings,[52] Wikimedia Foundation issues,[53] and other Wikipedia-related projects.[54] Snow continued to contribute as a writer to The Signpost until his appointment to the Board of Trustees of the Wikimedia Foundation in February 2008.[55]
+
+Investigative journalism by The Signpost in 2015 on changes to freedom of panorama copyright restrictions in Europe was covered by publications in multiple languages including German,[56] Italian,[57] Polish,[58] and Russian.[59] Wikipedia users Gamaliel and Go Phightins! became editors-in-chief of The Signpost in January 2015; prior editor-in-chief The ed17 noted that during his tenure the publication expanded its scope by including more reporting on the wider Wikimedia movement and English Wikipedia itself.[60] In a letter to readers upon the newspaper's tenth anniversary, the new co-editors-in-chief stressed the importance of maintaining independence from the Wikimedia Foundation in their reporting.[61]
+
+The Signpost has been the subject of academic analysis in publications including Sociological Forum,[62] the social movements journal Interface,[63] and New Review of Academic Librarianship;[64] and was consulted for data on Wikipedia by researchers from Los Alamos National Laboratory and Dartmouth College.[65] It has garnered generally positive reception from media publications including The New York Times,[66] The Register,[67] Nonprofit Quarterly,[68] and Heise Online.[69] John Broughton's 2008 book Wikipedia: The Missing Manual called The Signpost "essential reading for ambitious new Wikipedia editors".[70]
+
+Other past and present community news publications include the "WikiWorld" web comic, the Wikipedia Weekly podcast, and newsletters of specific WikiProjects like The Bugle from WikiProject Military History and the monthly newsletter from The Guild of Copy Editors. There are also a number of publications from the Wikimedia Foundation and multilingual publications such as the Wikimedia Blog and This Month in Education.
+
+See also
+	Wikipedia portal
+icon	Internet portal
+English Wikipedia blackout
+History of Wikipedia
+Reliability of Wikipedia
+Wikipedia for Schools
+Wikipedia community
+Wikipedia:Milestone statistics
+Footnotes
+ There is controversy over who founded Wikipedia. Wales considers himself to be the sole founder of Wikipedia and has told the Boston Globe that "it's preposterous" to call Sanger the co-founder.[citation needed] However, Sanger strongly contests that description. He was identified as a co-founder of Wikipedia as early as September 2001 and referred to himself as being founder as early as January 2002.[citation needed]* Sidener, Jonathan (6 December 2004). "Everyone's Encyclopedia". San Diego Union Tribune. Archived from the original on 14 January 2016. Retrieved 15 October 2006.* Meyers, Peter (20 September 2001). "Fact-Driven? Collegial? This Site Wants You". New York Times. Retrieved 15 October 2006.* Sanger, Larry. "What Wikipedia is and why it matters". Retrieved 12 April 2006.
+ About 10 percent more than the next in rank, the Cebuano Wikipedia. See m:List of Wikipedias.
+ Wikimedia Meta-Wiki (21 September 2008). "List of Wikipedias". Retrieved 21 September 2008.
+ The number of articles on the English Wikipedia is shown by the MediaWiki variable {{NUMBEROFARTICLES}}, with all Wikipedias as total {{NUMBEROF|ARTICLES|total}} = 55,386,604.
+ "Wikipedia:Six million articles". Wikipedia. Wikimedia Foundation. Retrieved 6 June 2020.
+ See size of downloads at Wikipedia:Database download and a list of historical sizes here
+ Phoebe Ayers; Charles Matthews; Ben Yates (2008). How Wikipedia Works: And how You Can be a Part of it. No Starch Press. pp. 345–. ISBN 978-1-59327-176-3.
+ English Wikipedia (30 January 2007). "Featured articles". Retrieved 30 January 2007.
+ English Wikipedia (25 January 2007). "Neutral point of view". Retrieved 30 January 2007.
