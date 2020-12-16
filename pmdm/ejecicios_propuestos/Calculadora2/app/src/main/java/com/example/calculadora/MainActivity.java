@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    //variables
     String txt = "";
     double num_1 = 0;
     int cont_igual = 0;
@@ -76,13 +76,13 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
 
             try {
-                btn(view);
+                funcion_btn(view);//llamamos al metodo funcion_btn
             } catch (Exception e) {
 
             }
         }
-
-        public void btn(View v) {
+        //metodo para dar dar funcion a cada btn
+        public void funcion_btn(View v) {
 
             if (txt.equals("0 ")) {
                 txt = "";
@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
             }
             tv_numero.setText(txt);
         }
-
+        //metodo para realizar operaciones según signo
         public void operaciones() {
 
             switch (signo) {
