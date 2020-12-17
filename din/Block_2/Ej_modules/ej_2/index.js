@@ -15,4 +15,3 @@ let data = [
     people.add(new_Person2, data);
     people.add(new_Person, data);
     people.remove(new_Person2, data);
-
