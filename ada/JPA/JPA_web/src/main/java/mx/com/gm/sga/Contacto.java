@@ -8,6 +8,8 @@ import javax.persistence.*;
  *
  * @author amrsin
  */
+@Entity
+@Table(name="contactos")
 public class Contacto implements Serializable {
     
     private static final long SerialVersionUID=1L;
@@ -17,14 +19,26 @@ public class Contacto implements Serializable {
     private int idContacto;
     private String nombre;
     private String email;
-    private int telefono;
+    private String telefono;
 
     public Contacto() {
     }
-
-    public Contacto(int idContacto, String nombre, String email, int telefono) {
+    
+    public Contacto(int idContacto) {
         
         this.idContacto = idContacto;
+    }
+
+    public Contacto(int idContacto, String nombre, String email, String telefono) {
+        
+        this.idContacto = idContacto;
+        this.nombre = nombre;
+        this.email = email;
+        this.telefono = telefono;
+    }
+    
+    public Contacto(String nombre, String email, String telefono) {
+        
         this.nombre = nombre;
         this.email = email;
         this.telefono = telefono;
@@ -54,11 +68,11 @@ public class Contacto implements Serializable {
         this.email = email;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
