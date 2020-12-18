@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mx.com.gm.sga</groupId>
-    <artifactId>JPAWeb</artifactId>
+    <artifactId>JPA_web</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>JPAWeb</name>
+    <name>JPA_web</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
