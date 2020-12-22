@@ -34,8 +34,7 @@ public class EliminarAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idContacto=Integer.parseInt(request.getParameter("idContacto"));
 		GestionContactos gcontactos=new GestionContactos();
-                Contacto c = new Contacto(idContacto);
-		gcontactos.eliminar_contacto(c);
+		gcontactos.eliminar_contacto(idContacto);
 		request.getRequestDispatcher("RecuperarAction").forward(request, response);
 	}
 }

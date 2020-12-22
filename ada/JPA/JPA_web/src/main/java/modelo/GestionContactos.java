@@ -37,7 +37,7 @@ public class GestionContactos {
    
     }
     
-    public static void eliminar_contacto(Contacto c) {
+    public static void eliminar_contacto(int idContacto) {
        
        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
        EntityManager em = emf.createEntityManager();
@@ -45,6 +45,7 @@ public class GestionContactos {
        
        //empezamos la transcción
        tx.begin();
+       Contacto c = em.find(Contacto.class, idContacto);
        //remove del objeto     
        em.remove(c);
        //teminamos la transacción
@@ -53,20 +54,27 @@ public class GestionContactos {
        em.close();
     }
     
-     public static List<Contacto> recupar_contactos(Contacto c) {
+     public static List<Contacto> recupar_contactos() {
        
        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
        EntityManager em = emf.createEntityManager();
        EntityTransaction tx = em.getTransaction();
        
+      
        //empezamos la transcción
        tx.begin();
-       //remove del objeto     
-       em.remove(c);
+       
+       //hacermos el Query
+       String jpql = "Select c from Contacto c";
+       TypedQuery<Contacto> qr = em.createQuery(jpql,Contacto.class);
+       
+       List<Contacto> contacts = qr.getResultList();
+       
        //teminamos la transacción
        tx.commit();
        //cerramos el objeto EntityManeger
        em.close();
-        return null;
+        
+      return contacts;
     }
 }

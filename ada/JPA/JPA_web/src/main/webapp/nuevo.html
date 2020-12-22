@@ -26,13 +26,18 @@
 </head>
 <body>
 <form action="Controller?op=doAlta" method="post" onsubmit="return comprobar();">
-	Nombre:<input id="nombre" type="text" name="nombre"/>
+	
+    <br>
+    <p><center>Nombre: &nbsp;<input id="nombre" type="text" name="nombre" size="20"/></center>
+
 	<br/>
-	Email:<input id="email" type="text" name="email"/>
+        <p><center>Email:  &nbsp; &nbsp; &nbsp;<input id="email" type="text" name="email" size="20"/></center>
 	<br/>
-        Telefono:<input id="telefono" onblur="comprobarTelf();" type="text" name="telefono"/>
+        <p><center>Telefono:  &nbsp;<input id="telefono" onblur="comprobarTelf();" type="text" name="telefono" size="20"/></center>
 	<br/>
-	<input type="submit" value="Guardar"/>
+        <br/>
+        <center><input type="submit" value="Guardar"/></center>
 </form>
+    <center><a href="Controller?op=toMenu">Menu</a></center>
 </body>
 </html>
