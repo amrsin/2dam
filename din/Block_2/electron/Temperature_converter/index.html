@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Hello Grid</title>
+    <title>Temperture converter</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
 
@@ -11,20 +11,36 @@
     <div class="wrapper">
         <div>
 
-        <label for="Celsius Grades">:</label>
-        <input type="text" name="text_celsius" id="text">
-
-
-        <label for="Kelvin Grades">:</label>
-        <input type="text" name="text_kelvin" id="text">
+        <label for="Celsius Grades">Celsius Grades: </label>
 
         </div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
+        <div>
+
+            <input type="text" name="text_celsius" id="text_celsius">
+
+        </div>
+        <div>
+
+            <label for="Kelvin Grades">Kelvin Grades:</label>
+
+        </div>
+        <div>
+
+            <input type="text" name="text_kelvin" id="text_kelvin">
+
+        </div>
+        <div>
+
+            <input type="button" value="Convert" name="btn_convert" id="btn_convert">
+
+        </div>
+        <div>
+
+            <input type="button" value="Clean" name="btn_clean" id="btn_clean">
+
+        </div>
     </div>
+    <script src="./functions.js"></script>
 </body>
 
 </html>

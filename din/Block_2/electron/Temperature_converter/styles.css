@@ -1,17 +1,23 @@
-.wrapper {
-    border: 2px solid #f76707;
-    border-radius: 5px;
-    background-color: #fff4e6;
-    }
-    
-.wrapper > div {
-    border: 2px solid #ffa94d;
-    border-radius: 5px;
+body {
+
+    margin: 35px;
+    margin-top: 45px;
+
+}
+ 
+/*.wrapper > div {
+    border: 2px solid #000000;
+    border-radius: 2px;
     background-color: #ffd8a8;
     padding: 1em;
     Colour: #d9480f;
-    }
+    }*/
 .wrapper {
+
+    border: 2px solid #000000;
+    padding: 30px;
+    text-align: center;
+    margin: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
