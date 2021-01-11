@@ -2,23 +2,39 @@ body {
 
     margin: 35px;
     margin-top: 45px;
+    background-color: #37474f;
 
 }
- 
-/*.wrapper > div {
-    border: 2px solid #000000;
-    border-radius: 2px;
-    background-color: #ffd8a8;
-    padding: 1em;
-    Colour: #d9480f;
-    }*/
+    
 .wrapper {
 
-    border: 2px solid #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    font-family: "Times New Roman", Times, serif;
     padding: 30px;
     text-align: center;
     margin: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
-    }
+
+}
+
+.btn {
+
+    background-color: #922B21;
+    border: 1px solid #000000;
+    color: white;
+    padding: 4px 4px;
+    margin: 2px;
+    text-align: center;
+    font-size: 14px;
+    
+}
+
+.input {
+
+  width: 70%;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
