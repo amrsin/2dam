@@ -40,9 +40,7 @@
 						
 						
 						</c:forEach>
-						
-						
-						
+								
 			</table></center>
 		</c:when>
 		<c:otherwise>

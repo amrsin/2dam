@@ -22,7 +22,7 @@ public class GestionContactos {
     
     public static void alta_contacto(Contacto c) {
        
-       EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("WebPU");
        EntityManager em = emf.createEntityManager();
        EntityTransaction tx = em.getTransaction();
        
@@ -39,7 +39,7 @@ public class GestionContactos {
     
     public static void eliminar_contacto(int idContacto) {
        
-       EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("WebPU");
        EntityManager em = emf.createEntityManager();
        EntityTransaction tx = em.getTransaction();
        
@@ -56,7 +56,7 @@ public class GestionContactos {
     
      public static List<Contacto> recupar_contactos() {
        
-       EntityManagerFactory emf = Persistence.createEntityManagerFactory("ContactoPU");
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("WebPU");
        EntityManager em = emf.createEntityManager();
        EntityTransaction tx = em.getTransaction();
        
