@@ -37,9 +37,8 @@ public class Controller extends HttpServlet {
 			case "toMenu":
 				url="menu.html";
 				break;
-                        
                         case "doLogin":
-                                url="login.html";
+                                url="LoginAction";
                                 break;
 			
 			
