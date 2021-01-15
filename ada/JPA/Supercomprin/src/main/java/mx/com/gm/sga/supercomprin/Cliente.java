@@ -1,12 +1,34 @@
 package mx.com.gm.sga.supercomprin;
+
 import java.io.Serializable;
 import java.sql.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
 /**
  *
  * @author singh
  */
+
+@Entity
+@Table(name = "cliente")
+@NamedQueries({
+    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c"),
+    //@NamedQuery(name = "Usuario.findByUserAndPwd", query = "SELECT u FROM Usuario u where u.usuario=?1 and u.password=?2")
+})
+
 public class Cliente implements Serializable {
-    
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String DNI;
     private String Nombre;
     private String Apellidos;
@@ -18,7 +40,7 @@ public class Cliente implements Serializable {
     //Constructor por defecto
     public Cliente() {
     }
-    
+
     //getters y setters
     public String getDNI() {
         return DNI;
@@ -75,6 +97,7 @@ public class Cliente implements Serializable {
     public void setSaldos(double Saldos) {
         this.Saldos = Saldos;
     }
+
     //toString
     @Override
     public String toString() {
