@@ -21,6 +21,7 @@ public class GestionUsuarios {
     }
 
     public boolean autenticar(String usuario, String pwd) {
+        
         EntityManager em = getEntityManager();
         boolean res = false;
         TypedQuery<Usuario> qr = em.createNamedQuery("Usuario.findByUserAndPwd", Usuario.class);
