@@ -13,26 +13,20 @@ import mx.com.gm.sga.Usuario;
  * @author amrsin
  */
 public class GestionUsuarios {
+    //método que permite obtener el objeto EntityManager
 
-    //metodo que permite obtener el objeto EntityManeger
     private EntityManager getEntityManager() {
-
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("WebPU");
         return factory.createEntityManager();
     }
 
     public boolean autenticar(String usuario, String pwd) {
-
         EntityManager em = getEntityManager();
         boolean res = false;
-
         TypedQuery<Usuario> qr = em.createNamedQuery("Usuario.findByUserAndPwd", Usuario.class);
-
         qr.setParameter(1, usuario);
         qr.setParameter(2, pwd);
-
         try {
-
             qr.getSingleResult();
             res = true;
         } catch (Exception ex) {

@@ -24,6 +24,7 @@ public class LoginAction extends HttpServlet {
         String user = request.getParameter("user");
         String pwd = request.getParameter("pwd");
         GestionUsuarios gusuarios = new GestionUsuarios();
+        
         if (gusuarios.autenticar(user, pwd)) {
             //guardamos el nombre de usuario en un atributo de sesión
             HttpSession s = request.getSession();
