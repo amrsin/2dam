@@ -26,10 +26,11 @@ public class GestionClientes {
        tx.commit();
        //cerramos el objeto EntityManeger
        em.close();
+       
    
     }
     
-    public static void eliminar_cliente(int idCliente) {
+    public static void eliminar_cliente(String DNI) {
        
        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SupercomprinPU");
        EntityManager em = emf.createEntityManager();
@@ -37,7 +38,7 @@ public class GestionClientes {
        
        //empezamos la transcción
        tx.begin();
-       Cliente c = em.find(Cliente.class, idCliente);
+       Cliente c = em.find(Cliente.class, DNI);
        //remove del objeto     
        em.remove(c);
        //teminamos la transacción

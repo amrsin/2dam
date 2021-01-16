@@ -19,18 +19,39 @@ public class Cliente implements Serializable{
     
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-	
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private String DNI;
     private String Nombre;
     private String Apellidos;
     private String Email;
-    private Date Fecha_nacimiento;
+    Date Fecha_nacimiento;
     private int Puntos;
     private double Saldo;
 
     //Constructor por defecto
     public Cliente() {
+    }
+    
+    //Constructor para insert
+    public Cliente(String DNI, String Nombre, String Apellidos, String Email, Date Fecha_nacimiento) {
+        this.DNI = DNI;
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Email = Email;
+        this.Fecha_nacimiento= Fecha_nacimiento;
+        this.Puntos = 0;
+        this.Saldo = 0;
+    }
+    
+    //Constructor con todos 
+    public Cliente(String DNI, String Nombre, String Apellidos, String Email, Date Fecha_nacimiento, int Puntos, double Saldo) {
+        this.DNI = DNI;
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Email = Email;
+        this.Fecha_nacimiento= Fecha_nacimiento;
+        this.Puntos = Puntos;
+        this.Saldo = Saldo;
     }
     
     //getters y setters

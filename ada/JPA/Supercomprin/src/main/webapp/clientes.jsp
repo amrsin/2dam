@@ -45,7 +45,7 @@
                                 <td>${cli.fecha_nacimiento}</td>
                                 <td>${cli.puntos}</td>
                                 <td>${cli.saldo}</td>
-                                <td><a href="Controller?op=doEliminar&idCliente=${cli.DNI}">Eliminar</button></td>
+                                <td><a href="Controller?op=doEliminar_cliente&DNI=${cli.DNI}">Eliminar</button></td>
                           </tr>
                             </c:forEach>
 

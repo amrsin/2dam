@@ -29,12 +29,12 @@ public class Controller extends HttpServlet {
         String op = request.getParameter("op");
         String url = "";
         switch (op) {
-            /*case "doAlta":
-                url = "AltaAction";
+            case "doAlta_cliente":
+                url = "AltaAction_cliente";
                 break;
-            case "doEliminar":
-                url = "EliminarAction";
-                break;*/
+            case "doEliminar_cliente":
+                url = "EliminarAction_cliente";
+                break;
             case "doRecuperar_cliente":
                 url = "RecuperarAction_clientes";
                 break;
