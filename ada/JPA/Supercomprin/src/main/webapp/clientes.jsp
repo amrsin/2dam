@@ -19,7 +19,14 @@
         <c:set var="clientes" value="${requestScope.clientes}"/>
 
         <br/><br/><br/>
-        <center><button onclick="new_cliente()">Insertar cliente</center></button>
+        <center><div>
+            
+            <button onclick="new_cliente()">Insertar cliente</button>
+            <button onclick="refresh()">Refresh</button>
+
+            
+        </center></div>
+        
         <br><br>
         <c:choose>
 
@@ -64,6 +71,11 @@
             function new_cliente() {
                 window.open("new_cliente.html", "windowName", "width=500,height=500", false);
 
+            }
+            
+            function refresh() {
+                location.reload();
+    
             }
         </script>
 

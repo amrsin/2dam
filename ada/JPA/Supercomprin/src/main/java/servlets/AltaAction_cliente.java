@@ -49,11 +49,11 @@ public class AltaAction_cliente extends HttpServlet {
                 
 		//creamos un objeto de la capa de lgica de negocio
 		//y llamamos al método encargado de hacer el alta
-		GestionClientes g_clieCliente =new GestionClientes();
+		GestionClientes gestion_clientes =new GestionClientes();
                 Cliente c = new Cliente(DNI, Nombre, Apellidos, Email, Fecha_nacimiento);
-		g_clieCliente.alta_cliente(c);
+		gestion_clientes.alta_cliente(c);
                 
-                request.getRequestDispatcher("new_cliente.html").forward(request, response);
+                request.getRequestDispatcher("close.html").forward(request, response);
 
 	}
 }

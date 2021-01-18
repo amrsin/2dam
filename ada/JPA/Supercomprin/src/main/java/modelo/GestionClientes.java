@@ -36,6 +36,7 @@ public class GestionClientes {
        EntityManager em = emf.createEntityManager();
        EntityTransaction tx = em.getTransaction();
        
+       
        //empezamos la transcción
        tx.begin();
        Cliente c = em.find(Cliente.class, DNI);

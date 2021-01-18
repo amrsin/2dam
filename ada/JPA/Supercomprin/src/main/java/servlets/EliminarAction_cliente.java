@@ -28,8 +28,8 @@ public class EliminarAction_cliente extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String DNI =(request.getParameter("DNI"));
-		GestionClientes g_clientes=new GestionClientes();
-		g_clientes.eliminar_cliente(DNI);
+		GestionClientes gestion_clientes=new GestionClientes();
+		gestion_clientes.eliminar_cliente(DNI);
 		request.getRequestDispatcher("RecuperarAction_clientes").forward(request, response);
 	}
 }
