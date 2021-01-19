@@ -40,8 +40,10 @@ public class GestionClientes {
        //empezamos la transcción
        tx.begin();
        Cliente c = em.find(Cliente.class, DNI);
-       //remove del objeto     
-       em.remove(c);
+       //remove del objeto 
+       if(c!=null){
+	  em.remove(c);
+	}
        //teminamos la transacción
        tx.commit();
        //cerramos el objeto EntityManeger
