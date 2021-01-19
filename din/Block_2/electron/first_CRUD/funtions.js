@@ -32,8 +32,8 @@ btn_first.addEventListener('click', () => {
 btn_back.addEventListener('click', () => {
 
 
-    if (position > 0) {
-        position--;
+    if (pos > 0) {
+        pos--;
     }
     showCliente();
 });
@@ -41,12 +41,22 @@ btn_back.addEventListener('click', () => {
 
 btn_forward.addEventListener('click', () => {
 
-
+    
     pos ++
-    if (pos == clients.longitud()) {
+    if (pos == clients.length) {
         pos--;
     }
     showCliente();
+
+
+});
+
+btn_last.addEventListener('click', () => {
+
+    
+    pos = clients.length - + 1;
+    showCliente();
+
 
 });
 
