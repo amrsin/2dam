@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CRUD app</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/photon.min.css">
+   
+  </head>
+
+  <body>
+    <div class="window">
+      <header class="toolbar toolbar-header">
+        <h1 class="title">Clients</h1>
+      </header>
+
+      <div class="window-content">
+        <div class="padded-more">
+            
+            <form>
+            
+             <div class="form-group">
+                <label>DNI</label>
+                <input type="text" class="form-control" placeholder="DNI", id="DNI">
+                <label>Name</label>
+                <input type="text" class="form-control" placeholder="Name", id="Name">
+                <label>Telefone</label>
+                <input type="number" class="form-control" placeholder="Telefone", id="Telefone">
+
+            </div>
+        </form>
+
+            <button id="btn_first" class="active btn btn-primary btn-default">
+                <span class="icon icon-to-start"></span>
+            </button>
+
+            <button id="btn_back" class="active btn btn-primary btn-default">
+                <span class="icon icon-left"></span>
+            </button>
+
+            <button id="btn_forward" class="active btn btn-primary btn-default">
+                <span class="icon icon-right"></span>
+            </button>
+
+            <button id="btn_last" class="active btn btn-primary btn-default">
+                <span class="icon icon-to-end"></span>
+            </button>
+
+            <button id="btn_dlt" class="active btn btn-primary btn-default">
+                <span class="icon icon-erase"></span>
+            </button>
+
+            <button id="btn_insert" class="active btn btn-primary btn-default">
+                <span class="icon icon-floppy"></span>
+            </button>
+            
+        </div>
+      </div>
+   
+    <footer class="toolbar toolbar-footer">
+        <h1 class="title">Footer</h1>
+      </footer>
+    </div>   
+      <script src="funtions.js" charset="utf-8"></script>
+  </body>
+</html>
