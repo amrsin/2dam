@@ -46,9 +46,11 @@ private static void printContent(URL url){
 		String str = String.copyValueOf(cbuf, 0, caractersLlegits);
 		System.out.print(str);
 		caractersLlegits = inr.read(cbuf);
+		
+		Thread.sleep(1000);
   }
 	System.out.println();
- } catch (IOException ex) {
+ } catch (Exception ex) {
 	
 	System.out.println(ex);
 	}
