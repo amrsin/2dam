@@ -1,4 +1,4 @@
-package com.example.shopping_room;
+package com.example.shopping_room.shoppinglists;
 
 import android.app.Application;
 
@@ -7,6 +7,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+
+import com.example.shopping_room.data.ShoppingList;
+import com.example.shopping_room.data.ShoppingListRepository;
 
 public class ShoppingListViewModel extends AndroidViewModel {
 

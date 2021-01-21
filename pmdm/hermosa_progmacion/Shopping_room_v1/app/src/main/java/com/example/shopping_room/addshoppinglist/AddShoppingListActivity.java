@@ -1,10 +1,16 @@
-package com.example.shopping_room;
+package com.example.shopping_room.addshoppinglist;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.widget.EditText;
+
+import com.example.shopping_room.R;
+import com.example.shopping_room.data.ShoppingList;
+import com.example.shopping_room.shoppinglists.ShoppingListViewModel;
+
+import java.util.UUID;
 
 public class AddShoppingListActivity extends AppCompatActivity {
 

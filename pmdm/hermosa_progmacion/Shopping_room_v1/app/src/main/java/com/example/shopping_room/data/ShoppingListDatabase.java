@@ -1,4 +1,4 @@
-package com.example.shopping_room;
+package com.example.shopping_room.data;
 
 import android.content.Context;
 

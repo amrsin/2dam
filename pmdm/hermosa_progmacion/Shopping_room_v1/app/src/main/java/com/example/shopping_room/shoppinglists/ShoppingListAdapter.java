@@ -1,13 +1,16 @@
-package com.example.shopping_room;
+package com.example.shopping_room.shoppinglists;
 
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.shopping_room.data.ShoppingList;
+
 import java.util.List;
 
-public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListViewHolder> {
+public class ShoppingListAdapter
+        extends RecyclerView.Adapter<ShoppingListViewHolder> {
 
     private List<ShoppingList> mShoppingLists;
 
@@ -16,7 +19,6 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListViewHo
     public ShoppingListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return ShoppingListViewHolder.create(parent);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ShoppingListViewHolder holder, int position) {

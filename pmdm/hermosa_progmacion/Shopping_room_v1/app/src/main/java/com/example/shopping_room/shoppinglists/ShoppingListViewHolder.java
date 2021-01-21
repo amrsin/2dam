@@ -1,4 +1,4 @@
-package com.example.shopping_room;
+package com.example.shopping_room.shoppinglists;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.shopping_room.R;
+import com.example.shopping_room.data.ShoppingList;
 
 public class ShoppingListViewHolder extends RecyclerView.ViewHolder {
 
