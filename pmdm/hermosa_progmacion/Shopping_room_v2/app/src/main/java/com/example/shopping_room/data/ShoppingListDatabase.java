@@ -35,6 +35,7 @@ public abstract  class ShoppingListDatabase extends RoomDatabase {
                             context.getApplicationContext(), ShoppingListDatabase.class,
                             DATABASE_NAME)
                             .addCallback(mRoomCallback)
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }
@@ -51,11 +52,11 @@ public abstract  class ShoppingListDatabase extends RoomDatabase {
             dbExecutor.execute(() -> {
                 ShoppingListDao dao = INSTANCE.shoppingListDao();
 
-                ShoppingList list1 = new ShoppingList("1", "Lista de ejemplo");
-                ShoppingList list2 = new ShoppingList("2", "Banquete de Navidad");
+                /*ShoppingList list1 = new ShoppingList("1", "Lista de ejemplo", mCategory, mCreatedDate, mLastUpdated);
+                ShoppingList list2 = new ShoppingList("2", "Banquete de Navidad", mCategory, mCreatedDate, mLastUpdated);
 
                 dao.insert(list1);
-                dao.insert(list2);
+                dao.insert(list2);*/
             });
         }
     };

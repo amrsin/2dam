@@ -2,7 +2,9 @@
     <string name="app_name">Shopping_room</string>
     <string name="create_button">CREAR</string>
     <string name="shopping_list_hint">ITEM</string>
-
+    <string name="filter_1">Fitness</string>
+    <string name="filter_2">Eventos</string>
+    <string name="filter_3">Rápidas</string>
 
 
 
