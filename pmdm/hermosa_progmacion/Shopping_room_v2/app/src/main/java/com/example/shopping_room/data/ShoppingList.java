@@ -28,12 +28,13 @@ public class ShoppingList {
     @ColumnInfo(name = "last_updated", defaultValue = "CURRENT_TIMESTAMP")
     private final String mLastUpdated;
 
-    public ShoppingList(@NonNull String id, @NonNull String name, @Nullable String mCategory, String mCreatedDate, String mLastUpdated) {
+    public ShoppingList(@NonNull String id, @NonNull String name,
+                        @Nullable String category, String createdDate, String lastUpdated) {
         mId = id;
         mName = name;
-        this.mCategory = mCategory;
-        this.mCreatedDate = mCreatedDate;
-        this.mLastUpdated = mLastUpdated;
+        mCategory = category;
+        mCreatedDate = createdDate;
+        mLastUpdated = lastUpdated;
     }
 
     public String getId() {
@@ -44,15 +45,15 @@ public class ShoppingList {
         return mName;
     }
 
-    public String getmCategory() {
+    public String getCategory() {
         return mCategory;
     }
 
-    public String getmCreatedDate() {
+    public String getCreatedDate() {
         return mCreatedDate;
     }
 
-    public String getmLastUpdated() {
+    public String getLastUpdated() {
         return mLastUpdated;
     }
 }
