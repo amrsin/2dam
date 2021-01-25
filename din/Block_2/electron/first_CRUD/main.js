@@ -2,10 +2,11 @@
 const { app, BrowserWindow } = require('electron')
 function createWindow() {
     let mainWindow = new BrowserWindow({
-        width: 500,
+        width: 700,
         height:500,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true
         }
     })
     // remove default chromium menu
