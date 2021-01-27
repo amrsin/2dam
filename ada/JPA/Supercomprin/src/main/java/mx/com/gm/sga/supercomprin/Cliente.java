@@ -20,12 +20,19 @@ public class Cliente implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="DNI")
     private String DNI;
+    @Column(name="Nombre")
     private String Nombre;
+    @Column(name="Apellidos")
     private String Apellidos;
+    @Column(name="Email")
     private String Email;
+    @Column(name="Fecha_nacimiento")
     Date Fecha_nacimiento;
+    @Column(name="Puntos")
     private int Puntos;
+    @Column(name="Saldo")
     private double Saldo;
 
     //Constructor por defecto
