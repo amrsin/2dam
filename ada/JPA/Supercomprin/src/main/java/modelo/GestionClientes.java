@@ -90,7 +90,7 @@ public class GestionClientes {
         qr.setParameter(3, c.getEmail());
         qr.setParameter(4, c.getFecha_nacimiento());
         qr.setParameter(5, c.getDNI());
-                
+           
         qr.executeUpdate();
         //teminamos la transacción
         tx.commit();

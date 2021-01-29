@@ -1,6 +1,15 @@
-<HTML>
-    <HEAD>
-    </HEAD>
-    <BODY onLoad="javascript:window.close();"></BODY>
-</HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script>
+            function close_update() {
+                opener.location.reload();
+                window.close()
+            }
+        </script>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Guardado con exito</title>
+    </head>
 
+    <body onload="close_update()">
+    </body>
+</html>
