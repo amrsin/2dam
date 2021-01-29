@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=en>
+
+    <html>
+        <head>
+            <title>Update Cliente</title>
+            <meta charset="UTF-8" />
+            <script type="text/javascript">
+                function comprobar() {
+                    if (document.getElementById("DNI").value == "" || document.getElementById("nombre").value == "" ||
+                            document.getElementById("apellidos").value == "" || document.getElementById("email").value == "" ||
+                            document.getElementById("fecha_nacimiento").value == "") {
+                        alert("Faltan datos");
+                        return false;
+
+
+                    } else {
+                        return true;
+                    }
+
+                }
+                /*function comprobarTelf(){
+                 if(isNaN(document.getElementById("telefono").value)){
+                 alert("El teléfono debe ser numérico");
+                 document.getElementById("edad").value="";
+                 }
+                 }*/
+            </script>
+        </head>
+        <body>
+            <form action="Controller?op=doUpdate_cliente" method="post" onsubmit="return comprobar();">
+
+                <br>
+                <p><center>DNI: &nbsp;<input id="DNI" type="text" name="DNI" size="20"/></center>
+                <br/>
+                <p><center>Nombre:  &nbsp; &nbsp; &nbsp;<input id="nombre" type="text" name="nombre" size="20"/></center>
+                <br/>
+                <p><center>Apellidos:  &nbsp; &nbsp; &nbsp;<input id="apellidos" type="text" name="apellidos" size="20"/></center>
+                <br/>
+                <p><center>Email:  &nbsp; &nbsp; &nbsp;<input id="email" type="text" name="email" size="20"/></center>
+                <br/>
+                <p><center>Fecha nacimiento:  &nbsp; &nbsp; &nbsp <input id="fecha_nacimiento" type="text"  name="fecha_nacimiento" size="20" >
+                </center>
+                <br/>
+                <center><input type="submit" value="Guardar"/></center>
+            </form>
+        </body>
+    </html>

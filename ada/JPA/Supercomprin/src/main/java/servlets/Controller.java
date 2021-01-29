@@ -32,12 +32,16 @@ public class Controller extends HttpServlet {
             case "doAlta_cliente":
                 url = "AltaAction_cliente";
                 break;
+            case "doUpdate_cliente":
+                url = "UpdateAction_cliente";
+                break;
             case "doEliminar_cliente":
                 url = "EliminarAction_cliente";
                 break;
             case "doRecuperar_cliente":
                 url = "RecuperarAction_clientes";
                 break;
+            
             /*case "toNuevo":
                 url = "nuevo.html";
                 break;*/

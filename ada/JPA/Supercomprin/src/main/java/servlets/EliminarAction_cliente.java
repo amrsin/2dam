@@ -16,9 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.GestionClientes;
 import mx.com.gm.sga.supercomprin.Cliente;
 
-/**
- * Servlet implementation class EliminaContacto
- */
 @WebServlet("/EliminarAction_cliente")
 public class EliminarAction_cliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;

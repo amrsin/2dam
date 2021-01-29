@@ -72,4 +72,32 @@ public class GestionClientes {
         
       return clientes;
     }
+     
+     
+    public void update_cliente(Cliente c) {
+        
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("SupercomprinPU");
+       EntityManager em = emf.createEntityManager();
+       EntityTransaction tx = em.getTransaction();
+
+       //empezamos la transcción
+       tx.begin();
+
+       TypedQuery<Cliente> qr = em.createNamedQuery("Cliente.update", Cliente.class);
+       
+        qr.setParameter(1, c.getNombre());
+        qr.setParameter(2, c.getApellidos());
+        qr.setParameter(3, c.getEmail());
+        qr.setParameter(4, c.getFecha_nacimiento());
+        qr.setParameter(5, c.getDNI());
+                
+        qr.executeUpdate();
+        //teminamos la transacción
+        tx.commit();
+        //cerramos el objeto EntityManeger
+        em.close();
+
+
+        
+    } 
 }

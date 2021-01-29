@@ -23,6 +23,8 @@
             
             <button onclick="new_cliente()">Insertar cliente</button>
             <button onclick="refresh()">Refresh</button>
+            <button onclick="update_cliente()">Actualizar</button>
+
 
             
         </center></div>
@@ -41,6 +43,7 @@
                             <th>Fecha nacimiento</th>
                             <th>Puntos</th>
                             <th>Saldo</th>
+                            <th></th>
                             <th></th>
                         </tr>
 
@@ -69,10 +72,15 @@
 
         <script>
             function new_cliente() {
-                window.open("new_cliente.html", "windowName", "width=500,height=500", false);
+                window.open("new_cliente.html", "new_cliente", "width=500,height=500", false);
 
             }
-            
+           
+            function update_cliente() {
+                window.open("update_cliente.html", "update_cliente", "width=500,height=500", false);
+
+            }
+           
             function refresh() {
                 location.reload();
     

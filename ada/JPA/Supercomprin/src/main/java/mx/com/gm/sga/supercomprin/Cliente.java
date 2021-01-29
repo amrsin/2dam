@@ -3,6 +3,7 @@ package mx.com.gm.sga.supercomprin;
 
 import java.io.Serializable;
 import java.sql.*;
+import java.util.List;
 import javax.persistence.*;
 /**
  *
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Table(name="Cliente")
 @NamedQueries({
 	@NamedQuery(name="Cliente.findAll", query="SELECT c FROM Cliente c"),
-	//@NamedQuery(name="Usuario.findByUserAndPwd", query="SELECT u FROM Usuario u where u.usuario=?1 and u.password=?2")
+	@NamedQuery(name="Cliente.update", query="UPDATE Cliente c SET c.Nombre =?1, c.Apellidos =?2, c.Email =?3, c.Fecha_nacimiento =?4 WHERE c.DNI=?5")
 })
 
 public class Cliente implements Serializable{
@@ -35,6 +36,8 @@ public class Cliente implements Serializable{
     @Column(name="Saldo")
     private double Saldo;
 
+    @OneToMany(mappedBy="cliente")
+    private List<Compra> compras;
     //Constructor por defecto
     public Cliente() {
     }
