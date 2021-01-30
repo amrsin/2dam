@@ -23,35 +23,36 @@ import mx.com.gm.sga.supercomprin.Cliente;
  *
  * @author singh
  */
-
 @WebServlet("/UpdateAction_cliente")
 public class UpdateAction_cliente extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String DNI =(request.getParameter("DNI"));
-                String Nombre=request.getParameter("nombre");
-                String Apellidos=request.getParameter("apellidos");
-		String Email=request.getParameter("email");
-                String Fecha_nacimento_str = request.getParameter("fecha_nacimiento");
-                
-                 java.util.Date Fecha_util;
-                java.sql.Date Fecha_nacimiento = null;
-                
-            try {
-                Fecha_util = new SimpleDateFormat("yyyy-MM-dd").parse(Fecha_nacimento_str);
-                Fecha_nacimiento =  new java.sql.Date(Fecha_util.getTime());
+    private static final long serialVersionUID = 1L;
 
-            } catch (ParseException ex) {
-                Logger.getLogger(AltaAction_cliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
-		GestionClientes gestion_clientes=new GestionClientes();
-                Cliente c = new Cliente(DNI, Nombre, Apellidos, Email, Fecha_nacimiento);
-                
-		gestion_clientes.update_cliente(c);
-		request.getRequestDispatcher("close.html").forward(request, response);
-	}
+    /**
+     * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String DNI = (request.getParameter("DNI"));
+        String Nombre = request.getParameter("nombre");
+        String Apellidos = request.getParameter("apellidos");
+        String Email = request.getParameter("email");
+        String Fecha_nacimento_str = request.getParameter("fecha_nacimiento");
+
+        java.util.Date Fecha_util;
+        java.sql.Date Fecha_nacimiento = null;
+
+        try {
+            Fecha_util = new SimpleDateFormat("yyyy-MM-dd").parse(Fecha_nacimento_str);
+            Fecha_nacimiento = new java.sql.Date(Fecha_util.getTime());
+
+        } catch (ParseException ex) {
+            Logger.getLogger(AltaAction_cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        GestionClientes gestion_clientes = new GestionClientes();
+        Cliente c = new Cliente(DNI, Nombre, Apellidos, Email, Fecha_nacimiento);
+
+        gestion_clientes.update_cliente(c);
+        request.getRequestDispatcher("close.html").forward(request, response);
+    }
 }

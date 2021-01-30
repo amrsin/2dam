@@ -1,29 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mx.com.gm.sga.supercomprin;
 
 import java.sql.Date;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
  * @author singh
  */
+
 @Entity
-@Table(name = "Compra")
+@Table(name = "Devuelve")
 @NamedQueries({
-    @NamedQuery(name = "Compra.findAll", query = "SELECT c FROM Compra c"),})
+    @NamedQuery(name = "Devuelve.findAll", query = "SELECT d FROM Devuelve d"),})
 
-public class Compra {
-
+public class Devuelve {
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private int id_compra;
+    private int id_devuelve;
     @ManyToOne
     @JoinColumn(name = "DNI_cliente")
     private Cliente cliente;
@@ -33,37 +37,27 @@ public class Compra {
     private double Importe;
 
     //Constructor por defecto
-    public Compra() {
+    public Devuelve() {
     }
-
-    //Constructor con todos los datos
-    public Compra(Cliente cliente, int id_producto, Date Fecha, int Puntos, double Importe) {
-
+    
+    
+    //Constructor con todos los datos menos id_compra para insert
+    public Devuelve(Cliente cliente, int id_producto, Date Fecha, int Puntos, double Importe) {
+        
         this.cliente = cliente;
         this.id_producto = id_producto;
-        this.Fecha = Fecha;
+        this.Fecha= Fecha;
         this.Puntos = Puntos;
         this.Importe = Importe;
     }
-
-    //Constructor con todos los datos para update
-    public Compra(int id_compra, String DNI_cliente, int id_producto, Date Fecha, int Puntos, double Importe) {
-
-        this.id_compra = id_compra;
-        this.cliente = cliente;
-        this.id_producto = id_producto;
-        this.Fecha = Fecha;
-        this.Puntos = Puntos;
-        this.Importe = Importe;
-    }
-
+    
     //getters and setters
-    public int getId_compra() {
-        return id_compra;
+    public int getId_devuelve() {
+        return id_devuelve;
     }
 
-    public void setId_compra(int id_compra) {
-        this.id_compra = id_compra;
+    public void setId_devuelve(int id_devuelve) {
+        this.id_devuelve = id_devuelve;
     }
 
     public Cliente getCliente() {
@@ -73,7 +67,8 @@ public class Compra {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
+    
+    
     public int getId_producto() {
         return id_producto;
     }
@@ -87,7 +82,7 @@ public class Compra {
     }
 
     public void setFecha(Date Fecha) {
-        this.Fecha = Fecha;
+        this.Fecha= Fecha;
     }
 
     public int getPuntos() {
@@ -104,5 +99,5 @@ public class Compra {
 
     public void setImporte(double Importe) {
         this.Importe = Importe;
-    }
+    }    
 }

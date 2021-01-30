@@ -22,8 +22,7 @@
         <center><div>
             
             <button onclick="new_cliente()">Insertar cliente</button>
-            <button onclick="refresh()">Refresh</button>
-            <button onclick="update_cliente()">Actualizar</button>
+            <button onclick="update_cliente()">Actualizar cliente</button>
 
 
             
@@ -44,7 +43,7 @@
                             <th>Puntos</th>
                             <th>Saldo</th>
                             <th></th>
-                            <th></th>
+                            
                         </tr>
 
                         <c:forEach var="cli" items="${clientes}">
@@ -55,7 +54,7 @@
                                 <td>${cli.fecha_nacimiento}</td>
                                 <td>${cli.puntos}</td>
                                 <td>${cli.saldo}</td>
-                                <td><a href="Controller?op=doEliminar_cliente&DNI=${cli.DNI}">Eliminar</button></td>
+                                <td><button><a href="Controller?op=doEliminar_cliente&DNI=${cli.DNI}">Eliminar</button></td>
                           </tr>
                             </c:forEach>
 
@@ -80,11 +79,7 @@
                 window.open("update_cliente.html", "update_cliente", "width=500,height=500", false);
 
             }
-           
-            function refresh() {
-                location.reload();
-    
-            }
+          
         </script>
 
     </body>

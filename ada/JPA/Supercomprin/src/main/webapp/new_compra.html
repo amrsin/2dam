@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang=en>
+
+    <html>
+        <head>
+            <title>Pagar compra</title>
+            <meta charset="UTF-8" />
+            <script type="text/javascript">
+                function comprobar() {
+                    if (document.getElementById("DNI").value == "" || document.getElementById("nombre").value == "" ||
+                            document.getElementById("apellidos").value == "" || document.getElementById("email").value == "" ||
+                            document.getElementById("fecha_nacimiento").value == "") {
+                        alert("Faltan datos");
+                        return false;
+
+
+                    } else {
+                        return true;
+                    }
+
+                }
+                /*function comprobarTelf(){
+                 if(isNaN(document.getElementById("telefono").value)){
+                 alert("El teléfono debe ser numérico");
+                 document.getElementById("edad").value="";
+                 }
+                 }*/
+            </script>
+        </head>
+        <body>
+            <form action="Controller?op=doAlta_compra" method="post" onsubmit="return comprobar();">
+
+                <br>
+                <p><center>DNI_cliente: &nbsp;<input id="DNI_cliente" type="text" name="DNI_cliente" size="20"/></center>
+                <br>
+                <p><center>id_producto:  &nbsp; &nbsp; &nbsp;<input id="nombre" type="text" name="id_producto" size="4"/></center>
+                <br>
+                <p><center>Puntos:  &nbsp; &nbsp; &nbsp;<input id="puntos" type="text" name="puntos" size="5"/></center>
+                <br>
+                <p><center>Importe:  &nbsp; &nbsp; &nbsp;<input id="importe" type="text" name="importe" size="5"/></center>
+                <br>
+                <center><input type="submit" value="Pagar"/></center>
+            </form>
+        </body>
+    </html>

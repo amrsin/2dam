@@ -42,9 +42,18 @@ public class Controller extends HttpServlet {
                 url = "RecuperarAction_clientes";
                 break;
             
-            /*case "toNuevo":
-                url = "nuevo.html";
-                break;*/
+            case "doAlta_compra":
+                url = "AltaAction_compra";
+                break;
+            
+            case "doEliminar_compra":
+                url = "EliminarAction_compra";
+                break;
+ 
+           case "doRecuperar_compra":
+                url = "RecuperarAction_compras";
+                break;
+            
             case "toMenu":
                 url = "menu.html";
                 break;

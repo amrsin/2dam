@@ -56,7 +56,6 @@ public class GestionClientes {
        EntityManager em = emf.createEntityManager();
        EntityTransaction tx = em.getTransaction();
        
-      
        //empezamos la transcción
        tx.begin();
        
@@ -95,9 +94,6 @@ public class GestionClientes {
         //teminamos la transacción
         tx.commit();
         //cerramos el objeto EntityManeger
-        em.close();
-
-
-        
+        em.close();        
     } 
 }

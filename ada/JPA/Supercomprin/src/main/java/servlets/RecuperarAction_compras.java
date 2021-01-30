@@ -1,26 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package servlets;
 
-/**
- *
- * @author singh
- */
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import modelo.GestionClientes;
-import mx.com.gm.sga.supercomprin.Cliente;
+import modelo.GestionCompras;
+import mx.com.gm.sga.supercomprin.Compra;
 
 /**
- * Servlet implementation class RecuperarAction
+ *
+ * @author singh
  */
-@WebServlet("/RecuperarAction_clientes")
-public class RecuperarAction_clientes extends HttpServlet {
+@WebServlet("/RecuperarAction_compras")
+public class RecuperarAction_compras extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,12 +30,12 @@ public class RecuperarAction_clientes extends HttpServlet {
      */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        GestionClientes gestion_clientes = new GestionClientes();
+        GestionCompras gestion_compras = new GestionCompras();
 
-        List<Cliente> clientes = gestion_clientes.recupar_clientes();
+        List<Compra> compras = gestion_compras.recupar_compras();
         //guardamos contactos en un atributo de peticion
-        request.setAttribute("clientes", clientes);
+        request.setAttribute("compras", compras);
         //trasnferencia de la peticion
-        request.getRequestDispatcher("clientes.jsp").forward(request, response);
+        request.getRequestDispatcher("compras.jsp").forward(request, response);
     }
 }

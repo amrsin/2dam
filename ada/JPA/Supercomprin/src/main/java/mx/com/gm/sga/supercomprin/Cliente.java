@@ -42,6 +42,12 @@ public class Cliente implements Serializable{
     public Cliente() {
     }
     
+    //Constructor por defecto
+    public Cliente(String DNI) {
+        
+        this.DNI = DNI;
+    }
+    
     //Constructor para insert
     public Cliente(String DNI, String Nombre, String Apellidos, String Email, Date Fecha_nacimiento) {
         this.DNI = DNI;
@@ -119,5 +125,12 @@ public class Cliente implements Serializable{
 
     public void setSaldo(double Saldo) {
         this.Saldo = Saldo;
-    }   
+    }
+
+    @Override
+    public String toString() {
+        return DNI;
+    }
+    
+    
 }
