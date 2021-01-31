@@ -26,7 +26,7 @@ public class Compra {
     private int id_compra;
     @ManyToOne
     @JoinColumn(name = "DNI_cliente")
-    private Cliente cliente;
+    private Cliente cliente;  
     private int id_producto;
     private Date Fecha;
     private int Puntos;

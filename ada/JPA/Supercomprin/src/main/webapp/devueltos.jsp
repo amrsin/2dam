@@ -1,12 +1,11 @@
 <%-- 
-    Document   : compra
-    Created on : 30 ene. 2021, 9:22:38
+    Document   : devueltos
+    Created on : 31 ene. 2021, 14:35:07
     Author     : singh
 --%>
 
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" import="modelo.GestionCompras,java.util.ArrayList,mx.com.gm.sga.supercomprin.Compra"%>
+         pageEncoding="ISO-8859-1" import="modelo.GestionDevueltos,java.util.ArrayList,mx.com.gm.sga.supercomprin.Devuelve"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,23 +16,23 @@
     </head>
     <body>
 
-        <c:set var="compras" value="${requestScope.compras}"/>
+        <c:set var="devueltos" value="${requestScope.devueltos}"/>
 
         <br/><br/><br/>
         <center><div>
 
-                <button onclick="new_compra()">Pagar compra</button>
+                <button onclick="new_devuelto()">Devolver compra</button>
 
         </center></div>
 
     <br><br>
     <c:choose>
 
-        <c:when test="${!empty compras}">
+        <c:when test="${!empty devueltos}">
 
             <center><table border="1">
                     <tr>
-                        <th>id_compra</th>
+                        <th>id_devuelto</th>
                         <th>DNI cliente</th>
                         <th>id_producto</th>
                         <th>Fecha</th>
@@ -43,14 +42,13 @@
 
                     </tr>
 
-                    <c:forEach var="com" items="${compras}">
-                        <tr><td>${com.id_compra}</td>
-                            <td>${com.cliente}</td>
-                            <td>${com.id_producto}</td>
-                            <td>${com.fecha}</td>
-                            <td>${com.puntos}</td>
-                            <td>${com.importe}</td>
-                            <td><button><a href="Controller?op=doEliminar_compra&id_compra=${com.id_compra}">Eliminar</button></td>
+                    <c:forEach var="dev" items="${devueltos}">
+                        <tr><td>${dev.id_compra}</td>
+                            <td>${dev.cliente}</td>
+                            <td>${dev.id_producto}</td>
+                            <td>${dev.fecha}</td>
+                            <td>${dev.puntos}</td>
+                            <td>${dev.importe}</td>
                         </tr>
                     </c:forEach>
 
@@ -58,7 +56,7 @@
 
         </c:when>
         <c:otherwise>
-            <center><h1>No hay Compras</h1></center>
+            <center><h1>No hay compras devueltas</h1></center>
             </c:otherwise>
         </c:choose>
     <br/>
@@ -66,8 +64,8 @@
     <center><a href="Controller?op=toMenu">Menu</a></center>
 
     <script>
-        function new_compra() {
-            window.open("new_compra.html", "new_compra", "width=900,height=400", false);
+        function new_devuelto() {
+            window.open("new_devuelto.html", "new_devuelto", "width=900,height=400", false);
 
         }
     </script>

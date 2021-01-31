@@ -71,7 +71,7 @@
 
         <script>
             function new_cliente() {
-                window.open("new_cliente.html", "new_cliente", "width=500,height=500", false);
+                window.open("new_cliente.html", "new_cliente", "width=900,height=400", false);
 
             }
            
