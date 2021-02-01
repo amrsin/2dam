@@ -129,18 +129,15 @@ btn_insert.addEventListener('click', () => {
         }
         clients.push(c_new);
         pos = clients.length -1;
+        updateFile();
         showCliente();
-
+        controllerInsert = false;
         btn_insert.classList.remove("btn.negative");
         btn_insert.classList.add("btn-primary");
     }
-   
 
 
-
-    updateFile();
-    showCliente();
-
+ç
 });
 
 let updateFile = () => {
