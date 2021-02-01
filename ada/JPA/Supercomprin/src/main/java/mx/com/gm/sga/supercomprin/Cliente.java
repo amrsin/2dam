@@ -39,7 +39,7 @@ public class Cliente implements Serializable{
     @OneToMany(mappedBy="cliente")
     private List<Compra> compras;
     
-    @OneToMany(mappedBy="devuelve")
+    @OneToMany(mappedBy="cliente")
     private List<Devuelve> devueltos;
     
     //Constructor por defecto

@@ -7,6 +7,7 @@
             <meta charset="UTF-8" />
             <script type="text/javascript">
                 function comprobar() {
+                            
                     if (document.getElementById("DNI_cliente").value == "" || document.getElementById("id_producto").value == "" ||
                             document.getElementById("puntos").value == "" || document.getElementById("importe").value == "" ) {
                         alert("Faltan datos");
@@ -18,6 +19,7 @@
                     }
 
                 }
+            
                
             </script>
         </head>
@@ -34,6 +36,7 @@
                 <p><center>Importe:  &nbsp; &nbsp; &nbsp;<input id="importe" type="text" name="importe" size="5"/></center>
                 <br>
                 <center><input type="submit" value="Pagar"/></center>
+                <br>
             </form>
         </body>
     </html>
