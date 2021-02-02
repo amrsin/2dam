@@ -1,5 +1,5 @@
 {
-  "name": "mongo_intro",
+  "name": "books",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,10 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ."
   },
-  "author": "",
+  "author": "Amritpal Singh",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^5.11.14",
-    "mongose": "0.0.2-security"
+    "mongoose": "^5.11.14"
   }
 }

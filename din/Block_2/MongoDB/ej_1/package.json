@@ -1,0 +1,18 @@
+{
+  "name": "ej_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^11.2.1",
+    "mongoose": "^5.11.14",
+    "xel": "^0.0.230"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC"
+}
