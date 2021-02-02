@@ -19,27 +19,25 @@
                     }
 
                 }
-                /*function comprobarTelf(){
-                 if(isNaN(document.getElementById("telefono").value)){
-                 alert("El teléfono debe ser numérico");
-                 document.getElementById("edad").value="";
-                 }
-                 }*/
+               
             </script>
         </head>
         <body>
             <form action="Controller?op=doAlta_cliente" method="post" onsubmit="return comprobar();">
 
+                
                 <br>
-                <p><center>DNI: &nbsp;<input id="DNI" type="text" name="DNI" size="20"/></center>
+                <h2>Nuevo Cliente</h2>
+                <br>
+                <p><center>DNI:&nbsp;<input id="DNI" type="text" name="DNI" size="20"/></center>
                 <br/>
-                <p><center>Nombre:  &nbsp; &nbsp; &nbsp;<input id="nombre" type="text" name="nombre" size="20"/></center>
+                <p><center>Nombre:&nbsp; &nbsp; &nbsp;<input id="nombre" type="text" name="nombre" size="20"/></center>
                 <br/>
-                <p><center>Apellidos:  &nbsp; &nbsp; &nbsp;<input id="apellidos" type="text" name="apellidos" size="20"/></center>
+                <p><center>Apellidos:&nbsp; &nbsp; &nbsp;<input id="apellidos" type="text" name="apellidos" size="20"/></center>
                 <br/>
-                <p><center>Email:  &nbsp; &nbsp; &nbsp;<input id="email" type="text" name="email" size="20"/></center>
+                <p><center>Email:&nbsp; &nbsp; &nbsp;<input id="email" type="text" name="email" size="20"/></center>
                 <br/>
-                <p><center>Fecha nacimiento:  &nbsp; &nbsp; &nbsp <input id="fecha_nacimiento" type="text"  name="fecha_nacimiento" size="20" >
+                <p><center>Fecha nacimiento:&nbsp; &nbsp; &nbsp <input id="fecha_nacimiento" type="text"  name="fecha_nacimiento" size="20" placeholder="(yyyy-mm-dd)" >
                 </center>
                 <br/>
                 <center><input type="submit" value="Guardar"/></center>
