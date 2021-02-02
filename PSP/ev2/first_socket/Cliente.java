@@ -8,7 +8,7 @@ class Cliente {
 	public static void main(String[] args) {
 		
 		try {
-		
+			
 		//bytes del missatge a enviar
 		byte[] missatge = "Salutacions".getBytes();
 		//adreça IP del destí
