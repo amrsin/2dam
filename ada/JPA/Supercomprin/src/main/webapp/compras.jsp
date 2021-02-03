@@ -16,6 +16,7 @@
         <title>Gestión de Compras</title>
         <style type="text/css">
 
+
             ul {
                 list-style-type: none;
                 margin: 0;
@@ -37,21 +38,26 @@
             }
 
             li a:hover {
-                background-color: #111;
+                background-color: #922B21;
             }
-            
+
             button {
-                background-color: #5D6D7E; 
-                border: none;
+                background-color: #922B21; 
+                border: 2px solid black;
                 color: white;
-                padding: 10px 10px;
+                padding: 5px 5px;
                 text-align: center;
-                text-decoration: none;
                 display: inline-block;
                 font-size: 14px;
-                margin: 4px 2px;
-                cursor: pointer;
+                margin: 2px 2px;
+                
             }
+            
+            a:link, a:visited, a:active {
+                text-decoration:none;
+                color: white;
+            }
+
         </style>
     </head>
     <body>
@@ -85,7 +91,6 @@
                         <th>Fecha</th>
                         <th>Puntos</th>
                         <th>Importe</th>
-                        <th></th>
 
                     </tr>
 
@@ -96,7 +101,6 @@
                             <td>${com.fecha}</td>
                             <td>${com.puntos}</td>
                             <td>${com.importe}</td>
-                            <td><button><a href="Controller?op=doEliminar_compra&id_compra=${com.id_compra}">Eliminar</button></td>
                         </tr>
                     </c:forEach>
 
@@ -112,7 +116,7 @@
 
     <script>
         function new_compra() {
-            window.open("new_compra.html", "new_compra", "width=900,height=400", false);
+            window.open("new_compra.html", "new_compra", "width=600,height=600", false);
 
         }
     </script>

@@ -5,6 +5,22 @@
         <head>
             <title>Update Cliente</title>
             <meta charset="UTF-8" />
+            <style type="text/css">
+
+                button {
+                    background-color: #922B21; 
+                    border: 2px solid black;
+                    color: white;
+                    padding: 5px 5px;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin: 2px 2px;
+
+                }
+
+            </style>
+
             <script type="text/javascript">
                 function comprobar() {
                     if (document.getElementById("DNI").value == "" || document.getElementById("nombre").value == "" ||
@@ -31,18 +47,20 @@
             <form action="Controller?op=doUpdate_cliente" method="post" onsubmit="return comprobar();">
 
                 <br>
-                <p><center>DNI: &nbsp;<input id="DNI" type="text" name="DNI" size="20"/></center>
+                <center><h2>Actualizar Cliente</h2></center>
+                <br>
+                <p><center>DNI: <input id="DNI" type="text" name="DNI" size="20"/></center>
                 <br/>
-                <p><center>Nombre:  &nbsp; &nbsp; &nbsp;<input id="nombre" type="text" name="nombre" size="20"/></center>
+                <p><center>Nombre: <input id="nombre" type="text" name="nombre" size="20"/></center>
                 <br/>
-                <p><center>Apellidos:  &nbsp; &nbsp; &nbsp;<input id="apellidos" type="text" name="apellidos" size="20"/></center>
+                <p><center>Apellidos: <input id="apellidos" type="text" name="apellidos" size="20"/></center>
                 <br/>
-                <p><center>Email:  &nbsp; &nbsp; &nbsp;<input id="email" type="text" name="email" size="20"/></center>
+                <p><center>Email: <input id="email" type="text" name="email" size="20"/></center>
                 <br/>
-                <p><center>Fecha nacimiento:  &nbsp; &nbsp; &nbsp <input id="fecha_nacimiento" type="text"  name="fecha_nacimiento" size="20" >
+                <p><center>Fecha nacimiento: <input id="fecha_nacimiento" type="text"  name="fecha_nacimiento" size="20" >
                 </center>
                 <br/>
-                <center><input type="submit" value="Guardar"/></center>
+                <center><button>Guardar</button></center>
             </form>
         </body>
     </html>

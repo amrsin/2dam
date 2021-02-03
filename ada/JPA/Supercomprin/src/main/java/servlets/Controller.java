@@ -46,10 +46,6 @@ public class Controller extends HttpServlet {
                 url = "AltaAction_compra";
                 break;
             
-            case "doEliminar_compra":
-                url = "EliminarAction_compra";
-                break;
- 
            case "doRecuperar_compra":
                 url = "RecuperarAction_compras";
                 break;

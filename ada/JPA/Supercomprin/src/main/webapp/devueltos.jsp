@@ -36,20 +36,21 @@
             }
 
             li a:hover {
-                background-color: #111;
+                background-color: #922B21;
             }
             button {
-                background-color: #5D6D7E; 
-                border: none;
+                background-color: #922B21; 
+                border: 2px solid black;
                 color: white;
-                padding: 10px 10px;
+                padding: 5px 5px;
                 text-align: center;
-                text-decoration: none;
                 display: inline-block;
                 font-size: 14px;
-                margin: 4px 2px;
-                cursor: pointer;
+                margin: 2px 2px;
+                
             }
+            
+           
         </style>
     </head>
     <body>
@@ -109,7 +110,7 @@
 
     <script>
         function new_devuelto() {
-            window.open("new_devuelto.html", "new_devuelto", "width=900,height=400", false);
+            window.open("new_devuelve.html", "new_devuelto", "width=600,height=600", false);
 
         }
     </script>

@@ -5,6 +5,22 @@
         <head>
             <title>Devolver compra</title>
             <meta charset="UTF-8" />
+            <style type="text/css">
+
+                button {
+                    background-color: #922B21; 
+                    border: 2px solid black;
+                    color: white;
+                    padding: 5px 5px;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 14px;
+                    margin: 2px 2px;
+
+                }
+
+            </style>
+    
             <script type="text/javascript">
                 function comprobar() {
                     if (document.getElementById("DNI_cliente").value == "" || document.getElementById("id_devuelve").value == "" ||
@@ -25,17 +41,17 @@
             <form action="Controller?op=doAlta_devuelve" method="post" onsubmit="return comprobar();">
 
                 <br>
-                <h2>Devolver compra</h2>
+                <center><h2>Devolver compra</h2></center>
                 <br>
-                <p><center>DNI_cliente: &nbsp;<input id="DNI_cliente" type="text" name="DNI_cliente" size="9"/></center>
+                <p><center>DNI_cliente: <input id="DNI_cliente" type="text" name="DNI_cliente" size="9"/></center>
                 <br>
-                <p><center>id_producto:  &nbsp; &nbsp; &nbsp;<input id="id_devuelve" type="text" name="id_devuelve" size="9"/></center>
+                <p><center>id_producto: <input id="id_devuelve" type="text" name="id_devuelve" size="9"/></center>
                 <br>
-                <p><center>Puntos:  &nbsp; &nbsp; &nbsp;<input id="puntos" type="text" name="puntos" size="9"/></center>
+                <p><center>Puntos: <input id="puntos" type="text" name="puntos" size="9"/></center>
                 <br>
-                <p><center>Importe:  &nbsp; &nbsp; &nbsp;<input id="importe" type="text" name="importe" size="9"/></center>
+                <p><center>Importe: <input id="importe" type="text" name="importe" size="9"/></center>
                 <br>
-                <center><input type="submit" value="Devolver"/></center>
+                <center><button>Devolver</button></center>
             </form>
         </body>
     </html>

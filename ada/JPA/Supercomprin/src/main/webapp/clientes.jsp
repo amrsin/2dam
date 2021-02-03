@@ -36,26 +36,25 @@
             }
 
             li a:hover {
-                background-color: #111;
+                background-color: #922B21;
             }
 
             button {
-                background-color: #5D6D7E; 
-                border: none;
+                background-color: #922B21; 
+                border: 2px solid black;
                 color: white;
-                padding: 10px 10px;
+                padding: 5px 5px;
                 text-align: center;
-                text-decoration: none;
                 display: inline-block;
                 font-size: 14px;
-                margin: 4px 2px;
-                cursor: pointer;
+                margin: 2px 2px;
+                
             }
+            
             .button1 {
                 
-                
+                border: none;
                 padding: 2px 2px;
-                font: 5px;
                 
                 
                 
@@ -130,12 +129,12 @@
 
     <script>
         function new_cliente() {
-            window.open("new_cliente.html", "new_cliente", "width=900,height=400", false);
+            window.open("new_cliente.html", "new_cliente", "width=600,height=600", false);
 
         }
 
         function update_cliente() {
-            window.open("update_cliente.html", "update_cliente", "width=500,height=500", false);
+            window.open("update_cliente.html", "update_cliente", "width=600,height=600", false);
 
         }
 

@@ -34,9 +34,8 @@
                 padding: 14px 16px;
                 text-decoration: none;
             }
-
             li a:hover {
-                background-color: #111;
+                background-color: #922B21;
             }
         </style>
     </head>
