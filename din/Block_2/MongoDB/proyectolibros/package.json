@@ -1,15 +1,17 @@
 {
-  "name": "books",
+  "name": "bookshopv0",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."
+    "start": "electron ."
   },
-  "author": "Amritpal Singh",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^5.11.14"
+    "electron": "^11.2.1",
+    "mongoose": "^5.9.18",
+    "xel": "0.0.220"
   }
 }

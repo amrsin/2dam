@@ -24,7 +24,7 @@ mongoose.connect(url, {
 //scheme
 let booksSchema = new mongoose.Schema({
     title: String,
-    autor: String,
+    author: String,
     img: String
 });
 
@@ -37,7 +37,7 @@ contactSchema = new mongoose.Schema({
         minlength: 1,
         trim: true
     },
-    autor: {
+    author: {
         type: String,
         required: true,
         minlength: 1,
@@ -60,7 +60,7 @@ libros.forEach(book => {
 
     let libro = new books();
     libro.title = book.title;
-    libro.autor = book.autor;
+    libro.author = book.author;
     libro.img = book.img;
     p1 = libro.save().then(result => {
         console.log("Book added:", result);
