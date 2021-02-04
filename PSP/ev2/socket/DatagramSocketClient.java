@@ -17,10 +17,13 @@ public class DatagramSocketClient {
 	public void runClient() throws IOException {
 		byte[] receivedData = new byte[1024];
 		byte[] sendingData;
+		String msg = "noticias";
+	
 		// a lâ€™inici
-		sendingData = getFirstRequest();
 		// el servidor atÃ©n el port indefinidament
-		while (mustContinue(sendingData)) {
+		while (mustContinue(msg)) {
+			
+		    sendingData = msg.getBytes();;
 			DatagramPacket packet = new DatagramPacket(sendingData, sendingData.length, serverIP, serverPort);
 			// enviament de la resposta
 			socket.send(packet);
@@ -30,23 +33,53 @@ public class DatagramSocketClient {
 			socket.receive(packet);
 			// processament de les dades rebudes i obtenciÃ³ de la resposta
 			sendingData = getDataToRequest(packet.getData(), packet.getLength());
+			
+			System.out.println(sendingData);
 		}
 	}
 
-	private byte[] getDataToRequest(byte[] data, int length) {
-		// procÃ©s diferent per cada aplicaciÃ³
-		return null;
+	
+	
+
+	private boolean mustContinue(String data_traducido) {
+		
+		boolean c = true;
+
+
+		if(data_traducido.euqals("Adios")) {
+			
+			c = false;
+		}
+		
+		
+		return c;
+
 	}
+	
+	public static String traducir(byte[] data, int length) {
 
-	private byte[] getFirstRequest() {
-		// procÃ©s diferent per cada aplicaciÃ³
-		return null;
+		String data_traducido = new String(data, 0, length);
+
+		return data_traducido;
 
 	}
-
-	private boolean mustContinue(byte[] sendingData) {
-		// procÃ©s diferent per cada aplicaciÃ³
-		return true;
-
+	
+	public static void main(String[] args) {
+		
+		DatagramSocketClient dc = new DatagramSocketClient();
+		
+		
+		try {
+		ds.init(InetAddress.getByName("localhost"),5555);
+		ds.runCliente(); 
+		
+			}catch(IOException ex)	{
+		
+		System.out.print(ex);
+		
 	}
 }
+}
+
+
+	

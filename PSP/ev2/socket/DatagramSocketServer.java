@@ -43,7 +43,6 @@ public class DatagramSocketServer {
 	}
 
 	private String processData(String data_traducido) {
-		// procÃ©s diferent per cada aplicaciÃ³
 
 		String data = "";
 		switch (data_traducido) {
@@ -73,4 +72,23 @@ public class DatagramSocketServer {
 		return data_traducido;
 
 	}
+	
+	public static void main(String[] args) {
+		
+		DatagramSocketServer ds = new DatagramSocketServer();
+		
+		try {
+		ds.init(5555);
+		ds.runServer(); 
+		
+			}catch(IOException ex)	{
+		
+		System.out.print(ex);
+		
+	}
+
 }
+}
+
+
+
