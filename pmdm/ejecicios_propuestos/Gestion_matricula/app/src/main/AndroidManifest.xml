@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gestion_matricula">
-        <activity android:name=".Alumnos"></activity>
+        <activity android:name=".Alumno.Alumnos" />
         <activity android:name=".Asignaturas" />
         <activity android:name=".MainActivity">
             <intent-filter>

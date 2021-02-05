@@ -1,4 +1,4 @@
-package com.example.gestion_matricula.data_asignatura;
+package com.example.gestion_matricula.data;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,12 +20,12 @@ public class Asignatura {
 
     @Nullable
     @ColumnInfo(name = "num_students")
-    private final String num_students;
+    private final int num_students;
 
-    public Asignatura(@NonNull String id, @NonNull String name, @Nullable String num_students) {
+    public Asignatura(@NonNull String id, @NonNull String name) {
         Id = id;
         Name = name;
-        this.num_students = num_students;
+        this.num_students = 0;
     }
 
     @NonNull
@@ -39,7 +39,7 @@ public class Asignatura {
     }
 
     @Nullable
-    public String getNum_students() {
+    public int getNum_students() {
         return num_students;
     }
 }
