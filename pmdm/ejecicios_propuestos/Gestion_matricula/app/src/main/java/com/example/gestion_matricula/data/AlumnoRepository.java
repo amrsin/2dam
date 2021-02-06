@@ -5,26 +5,34 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.gestion_matricula.Alumno.AlumnoForList;
+import com.example.gestion_matricula.Alumno.AlumnoDNI;
+
 import java.util.List;
 
 public class AlumnoRepository {
-
-    private final LiveData<List<Alumno>> AlumnoLists;
+    //variables
+    private final LiveData<List<AlumnoForList>> AlumnoLists;
     private final AlumnoDao alumnoDao;
-
+    //constructor con los parametros
     public AlumnoRepository(Context context) {
         MatriculaDatabase db = MatriculaDatabase.getInstance(context);
         alumnoDao = db.AlumnoDao();
         AlumnoLists = alumnoDao.getAll();
     }
-
-    public LiveData<List<Alumno>> getAllAlumnos() {
+    //para obtener lista alumnos de db
+    public LiveData<List<AlumnoForList>> getAllAlumnos() {
         return AlumnoLists;
     }
-
-    public void insert(Alumno alumno) {
+    //para insertar alumno a db
+    public void insert(AlumnoInsert alumno) {
         MatriculaDatabase.dbExecutor.execute(
                 () -> alumnoDao.insert(alumno)
+        );
+    }
+    public void deleteAlumno(AlumnoDNI dni) {
+        MatriculaDatabase.dbExecutor.execute(
+                () -> alumnoDao.deleteAlumno(dni)
         );
     }
 }

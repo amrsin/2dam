@@ -30,7 +30,6 @@ public class DialogAlumno extends DialogFragment {
     //interfaz
     public interface OnSimpleDialogListener {
         void onPossitiveButtonClick(String DNI, String name, String surnames);// Eventos Botón Positivo
-
     }
 
     OnSimpleDialogListener listener;
@@ -44,17 +43,15 @@ public class DialogAlumno extends DialogFragment {
     }
 
 
-    //Creamos un diálogo
+    //Creamos diálogo para insertar alumno
 
     public AlertDialog createSimpleDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        // Get the layout inflater
         final LayoutInflater inflater = getActivity().getLayoutInflater();
 
         builder.setMessage(Html.fromHtml("<b>"+"Introduzca alumno"+"</b>"));
         builder.setView(inflater.inflate(R.layout.activity_add_alumno,null))
-                // Add action buttons
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
@@ -75,8 +72,7 @@ public class DialogAlumno extends DialogFragment {
         return builder.create();
     }
 
-
-
+    //metodo para comprobar si se ha implementado metodo en el contexto
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

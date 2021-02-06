@@ -1,29 +1,37 @@
 package com.example.gestion_matricula.Alumno;
 
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-
-import com.example.gestion_matricula.data.Alumno;
+import com.example.gestion_matricula.R;
 
 import java.util.List;
 
 public class AlumnoAdapter
-        extends RecyclerView.Adapter<AlumnoViewHolder> {
+        extends RecyclerView.Adapter<AlumnoAdapter.AlumnoViewHolder> {
 
-    private List<Alumno> Alumnos;
+    private List<AlumnoForList> Alumnos;
+    private ItemListener mItemListener;
+
+
 
     @NonNull
     @Override
     public AlumnoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return AlumnoViewHolder.create(parent);
+        return new AlumnoViewHolder(
+                LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.alumno_list_item, parent, false)
+        );
     }
 
     @Override
     public void onBindViewHolder(@NonNull AlumnoViewHolder holder, int position) {
-        Alumno item = Alumnos.get(position);
+        AlumnoForList item = Alumnos.get(position);
         holder.bind(item);
     }
 
@@ -32,8 +40,61 @@ public class AlumnoAdapter
         return Alumnos == null ? 0 : Alumnos.size();
     }
 
-    public void setItems(List<Alumno> items) {
+    public void setItems(List<AlumnoForList> items) {
         Alumnos = items;
         notifyDataSetChanged();
+    }
+
+    public void setItemListener(ItemListener listener) {
+        mItemListener = listener;
+    }
+
+
+    interface ItemListener {
+        void onClick(AlumnoForList Alumno);
+        void onDeleteIconClicked(AlumnoForList Alumno);
+    }
+
+    public class AlumnoViewHolder extends RecyclerView.ViewHolder {
+        //variables
+        private final TextView NameText;
+        private final TextView surnamesText;
+        private final TextView DNIText;
+        private final ImageView img_dlt;
+        //constructor con los elementos de alumno
+        public AlumnoViewHolder(@NonNull View itemView) {
+            super(itemView);
+            NameText = itemView.findViewById(R.id.name);
+            surnamesText = itemView.findViewById(R.id.surmanes);
+            DNIText = itemView.findViewById(R.id.DNI);
+            img_dlt = itemView.findViewById(R.id.img_dlt);
+
+            // Setear eventos
+            img_dlt.setOnClickListener(this::manageEvents);
+            itemView.setOnClickListener(this::manageEvents);
+
+
+        }
+
+        private void manageEvents(View view) {
+            if (mItemListener != null) {
+                AlumnoForList clickedItem = Alumnos.get(getAdapterPosition());
+
+
+                   if (view.getId() == R.id.img_dlt) {
+                    mItemListener.onDeleteIconClicked(clickedItem);
+                    return;
+                }
+
+                mItemListener.onClick(clickedItem);
+            }
+        }
+
+        //asignamos los datos
+        public void bind(AlumnoForList item) {
+            NameText.setText(item.name);
+            surnamesText.setText(item.surnames);
+            DNIText.setText(item.DNI);
+        }
     }
 }

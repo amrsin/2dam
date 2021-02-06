@@ -6,6 +6,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+//entity con el nombre alumno, con sus correspondientes atributos
 @Entity(tableName = "alumno")
 public class Alumno {
 

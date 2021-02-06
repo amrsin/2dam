@@ -61,41 +61,34 @@
             tools:text="DNI" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/img_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.616"
-            app:layout_constraintStart_toEndOf="@+id/surmanes"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_edit_24" />
+            android:layout_margin="5dp"
+            app:srcCompat="@drawable/ic_baseline_info_24" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/img_dlt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView3"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/img_info"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="5dp"
             app:srcCompat="@drawable/ic_baseline_delete_24" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/img_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintEnd_toStartOf="@+id/img_dlt"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_info_24" />
+            android:layout_margin="5dp"
+            app:srcCompat="@drawable/ic_baseline_edit_24" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

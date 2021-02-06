@@ -52,7 +52,7 @@ public abstract  class MatriculaDatabase extends RoomDatabase {
             dbExecutor.execute(() -> {
                 AlumnoDao dao = INSTANCE.AlumnoDao();
 
-                Alumno a1 = new Alumno("12345", "Juan", "García");
+                AlumnoInsert a1 = new AlumnoInsert("12345", "Juan", "García");
 
                 dao.insert(a1);
             });
