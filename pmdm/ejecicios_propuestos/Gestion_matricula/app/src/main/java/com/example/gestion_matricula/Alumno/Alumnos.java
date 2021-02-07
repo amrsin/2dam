@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gestion_matricula.R;
@@ -19,6 +21,8 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
     private AlumnoViewModel mViewModel;
     private RecyclerView mList;
     private AlumnoAdapter mAdapter;
+    private String icon_identity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,17 +49,22 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
         mList.setAdapter(mAdapter);
 
         mAdapter.setItemListener(new AlumnoAdapter.ItemListener() {
-            @Override
-            public void onClick(AlumnoForList Alumno) {
 
+            @Override
+            public void onEditIconClicked(AlumnoForList Alumno) {
+
+                icon_identity = "edit";
+                DialogAlumno d = new DialogAlumno(Alumno);
+                d.show(getSupportFragmentManager(), "DialogAlumno");
 
             }
 
             @Override
             public void onDeleteIconClicked(AlumnoForList Alumno) {
 
+                String dni = Alumno.DNI;
                 mViewModel.deleteAlumno(Alumno);
-
+                Toast.makeText(getApplication(), "Eliminado " + dni, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -66,11 +75,18 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
     }
     //listener para button flotante
     private void setupFab() {
+
         findViewById(R.id.floating_action_button)
-                .setOnClickListener(view -> addNewAlumno());
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        icon_identity = "add";
+                        Alumno_dialog();
+                    }
+                });
     }
     //obtener instancia del dialogo
-    private void addNewAlumno() {
+    private void Alumno_dialog() {
 
         new DialogAlumno().show(getSupportFragmentManager(), "DialogAlumno"); //instanciamos el dialogo
 
@@ -84,10 +100,24 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
             return;
         }
 
-        // Crear entidad y guardarla
-        AlumnoInsert a = new AlumnoInsert(DNI, name, surnames);
-        mViewModel.insert(a);
+        //si el icono pulsado es añadir
+        if (icon_identity.equals("add")) {
 
+            AlumnoInsert a = new AlumnoInsert(DNI, name, surnames);
+            mViewModel.insert(a);
+            Toast.makeText(this, "Añadido " + DNI, Toast.LENGTH_SHORT).show();
+
+        }
+        //si el icono pulsado es edit
+        if (icon_identity.equals("edit")) {
+
+            AlumnoForList a = new AlumnoForList();
+            a.DNI = DNI;
+            a.name = name;
+            a.surnames = surnames;
+            mViewModel.updateAlumno(a);
+            Toast.makeText(this, "Actualizado " + DNI, Toast.LENGTH_SHORT).show();
+
+        }
     }
-
 }

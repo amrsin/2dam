@@ -30,6 +30,13 @@ public class AlumnoRepository {
                 () -> alumnoDao.insert(alumno)
         );
     }
+
+    public void updateAlumno(AlumnoForList Alumno) {
+        MatriculaDatabase.dbExecutor.execute(
+                () -> alumnoDao.updateAlumno(Alumno)
+        );
+    }
+
     public void deleteAlumno(AlumnoDNI dni) {
         MatriculaDatabase.dbExecutor.execute(
                 () -> alumnoDao.deleteAlumno(dni)

@@ -20,4 +20,8 @@ public interface AlumnoDao {
     //Consulta para eliminar alumno
     @Delete(entity = Alumno.class)
     void deleteAlumno(AlumnoDNI id);
+    //Consulta para actualizar alumno
+    @Update(entity = Alumno.class)
+    void updateAlumno(AlumnoForList Alumno);
+
 }

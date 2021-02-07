@@ -51,7 +51,7 @@ public class AlumnoAdapter
 
 
     interface ItemListener {
-        void onClick(AlumnoForList Alumno);
+        void onEditIconClicked(AlumnoForList Alumno);
         void onDeleteIconClicked(AlumnoForList Alumno);
     }
 
@@ -60,17 +60,22 @@ public class AlumnoAdapter
         private final TextView NameText;
         private final TextView surnamesText;
         private final TextView DNIText;
-        private final ImageView img_dlt;
+        private final ImageView img_dlt, img_edit, img_info;
         //constructor con los elementos de alumno
         public AlumnoViewHolder(@NonNull View itemView) {
             super(itemView);
             NameText = itemView.findViewById(R.id.name);
             surnamesText = itemView.findViewById(R.id.surmanes);
             DNIText = itemView.findViewById(R.id.DNI);
+            img_edit = itemView.findViewById(R.id.img_edit);
+            img_info = itemView.findViewById(R.id.img_info);
             img_dlt = itemView.findViewById(R.id.img_dlt);
 
+
             // Setear eventos
+            img_edit.setOnClickListener(this::manageEvents);
             img_dlt.setOnClickListener(this::manageEvents);
+
             itemView.setOnClickListener(this::manageEvents);
 
 
@@ -80,13 +85,13 @@ public class AlumnoAdapter
             if (mItemListener != null) {
                 AlumnoForList clickedItem = Alumnos.get(getAdapterPosition());
 
-
+                   if (view.getId() == R.id.img_edit) {
+                       mItemListener.onEditIconClicked(clickedItem);
+                   }
                    if (view.getId() == R.id.img_dlt) {
-                    mItemListener.onDeleteIconClicked(clickedItem);
+                       mItemListener.onDeleteIconClicked(clickedItem);
                     return;
                 }
-
-                mItemListener.onClick(clickedItem);
             }
         }
 

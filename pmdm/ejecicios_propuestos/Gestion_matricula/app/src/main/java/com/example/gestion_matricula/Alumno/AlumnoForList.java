@@ -6,4 +6,8 @@ public class AlumnoForList {
     public String surnames;
     public String name;
 
+    @Override
+    public String toString() {
+        return DNI;
+    }
 }
