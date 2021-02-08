@@ -1,0 +1,38 @@
+[
+    {
+        "license_plate": "5748FMR",
+        "brand": "Ford",
+        "model": "Focus",
+        "year": "2018",
+        "color": "red",
+        "kilometres": "10.000",
+        "fuel": "Diesel",
+        "doors": "5",
+        "gear_change": "manual",
+        "seats": "5"
+    },
+    {
+        "license_plate": "4521QDF",
+        "brand": "Skoda",
+        "model": "Octavia",
+        "year": "2019",
+        "color": "Gray",
+        "kilometres": "15.250",
+        "fuel": "Diesel",
+        "doors": "5",
+        "gear_change": "manual",
+        "seats": "5"
+    },
+    {
+        "license_plate": "8547LKJ",
+        "brand": "Volkswagen",
+        "model": "Touran",
+        "year": "2019",
+        "color": "White",
+        "kilometres": "70.550",
+        "fuel": "Diesel",
+        "doors": "5",
+        "gear_change": "manual",
+        "seats": "7"
+    }
+]
