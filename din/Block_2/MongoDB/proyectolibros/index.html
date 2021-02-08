@@ -29,7 +29,50 @@
     <footer class="toolbar toolbar-footer">
       <!--Botón-->
       <x-box>
-        <x-button skin="textured" style="margin-left: 150px;">
+
+
+        <x-button id="btn_home" skin="textured" style="margin-left: 70px;">
+          <x-icon name="home"></x-icon>
+          <x-label>Home</x-label>
+        </x-button>
+
+        <x-button id="btn_add" skin="textured" style="margin-left: 50px;">
+
+          <dialog>
+            <x-box style="margin-left: 50px;margin-top: 20px;">
+              <x-input skin="flat" id="txt_title">
+                <x-icon name="book"></x-icon>
+                <x-label>Title</x-label>
+              </x-input>
+            </x-box>
+
+            <x-box style="margin-left: 50px;margin-top: 20px;">
+              <x-input skin="flat" id="txt_author_new">
+                <x-icon name="person"></x-icon>
+                <x-label>Author</x-label>
+              </x-input>
+            </x-box>
+
+
+            <x-box style="margin-left: 50px;margin-top: 20px;">
+              <x-input skin="flat" id="txt_img">
+                <x-icon name="image"></x-icon>
+                <x-label>Image</x-label>
+              </x-input>
+            </x-box>
+            <x-box style="margin-left: 100px;margin-top: 20px;margin-bottom: 10px;">
+              <button id="btn_save">
+                <x-icon name="save"></x-icon>
+              </button>
+            </x-box>
+          </dialog>
+          <x-box>
+            <x-icon name="add"></x-icon>
+            <x-label>Add book</x-label>
+          </x-box>
+        </x-button>
+
+        <x-button skin="textured" style="margin-left: 50px;">
           <dialog>
             <x-box style="margin-left: 50px;margin-top: 20px;">
               <x-input skin="flat" id="txt_buscar">
@@ -40,6 +83,16 @@
                 <x-icon name="search"></x-icon>
               </button>
             </x-box>
+
+            <x-box style="margin-left: 50px;margin-top: 20px;">
+              <x-input skin="flat" id="txt_author">
+                <x-icon name="search"></x-icon>
+                <x-label>Busqueda por autor</x-label>
+              </x-input>
+              <button id="btn_author">
+                <x-icon name="search"></x-icon>
+              </button>
+            </x-box>
           </dialog>
           <x-box>
             <x-icon name="camera"></x-icon>
@@ -47,15 +100,12 @@
           </x-box>
         </x-button>
 
-        <x-button skin="textured" style="margin-left: 10px;">
-          <x-icon name="home"></x-icon>
-          <x-label>Home</x-label>
       </x-box>
-      </x-button>
       </x-box>
     </footer>
   </div>
 
   <script>require('./app.js')</script>
 </body>
+
 </html>
