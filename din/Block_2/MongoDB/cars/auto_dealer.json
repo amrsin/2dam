@@ -9,7 +9,8 @@
         "fuel": "Diesel",
         "doors": "5",
         "gear_change": "manual",
-        "seats": "5"
+        "seats": "5",
+        "price": "9.500"
     },
     {
         "license_plate": "4521QDF",
@@ -21,10 +22,11 @@
         "fuel": "Diesel",
         "doors": "5",
         "gear_change": "manual",
-        "seats": "5"
+        "seats": "5",
+        "price": "18.800"
     },
     {
-        "license_plate": "8547LKJ",
+        "license_plate": "8547LGO",
         "brand": "Volkswagen",
         "model": "Touran",
         "year": "2019",
@@ -33,6 +35,7 @@
         "fuel": "Diesel",
         "doors": "5",
         "gear_change": "manual",
-        "seats": "7"
+        "seats": "7",
+        "price": "15.800"
     }
 ]

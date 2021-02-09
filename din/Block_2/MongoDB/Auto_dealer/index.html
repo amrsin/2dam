@@ -1,35 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/estilos.css">
-    <link rel="stylesheet" href="node_modules/xel/themes/material.css">
-    <script src="./node_modules/xel/xel.min.js"></script>
-    <title>Auto Dealer</title>
-</head>
-<body>
-    <x-button>
-        <x-label>Add car</x-label>
-        <dialog></dialog>
-      </x-button
-      
-    <div class="window">
-        <header class="toolbar toolbar-header">
-        </header>
-        <div class="window-content">
-          <div>
-    
-            <div>
-              <div class="wrapper" id="wrapper">
-    
 
-              </div>
-            </div>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/estilos.css">
+  <link rel="stylesheet" href="node_modules/xel/themes/material.css">
+  <script src="./node_modules/xel/xel.min.js"></script>
+  <title>Auto Dealer</title>
+</head>
+
+<body style="background-color:#17202A">
+  <br>
+  <div class="window">
+    <header class="card-header" style="color: white; text-align: center; background-color:#B03A2E; font-size: 25px;" >Auto dealer
+    </header>
     
+    <div class="window-content">
+      <div>
+
+        <div>
+          <div class="wrapper" id="wrapper">
+
           </div>
         </div>
-        <script>require('./app.js')</script>
+
+      </div>
+
+      
+      <footer>
+
+        <x-buttons tracking="-1" style="margin-left: 5px;">
+          
+        <x-button >
+          <x-icon name="add"></x-icon>
+      
+          
+          <dialog style="width: 250px; background-color:#e2f1f8">
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_license_plate">
+                <x-icon name="info"></x-icon>
+                <x-label>License plate</x-label>
+              </x-input>
+      
+              
+            </x-box>
+      
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_brand">
+                <x-icon name="info"></x-icon>
+                <x-label>Brand</x-label>
+              </x-input>
+            </x-box>
+      
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_model">
+                <x-icon name="info"></x-icon>
+                <x-label>Model</x-label>
+              </x-input>
+            </x-box>
+      
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_year">
+                <x-icon name="info"></x-icon>
+                <x-label>Year</x-label>
+              </x-input>
+            </x-box>
+      
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_color">
+                <x-icon name="info"></x-icon>
+                <x-label>Color</x-label>
+              </x-input>
+            </x-box>
+      
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_kilometres">
+                <x-icon name="info"></x-icon>
+                <x-label>Kilometres</x-label>
+              </x-input>
+            </x-box>
+      
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_fuel">
+                <x-icon name="info"></x-icon>
+                <x-label>Fuel</x-label>
+              </x-input>
+            </x-box>
+            
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_doors">
+                <x-icon name="info"></x-icon>
+                <x-label>Doors</x-label>
+              </x-input>
+            </x-box>
+      
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_gear_change">
+                <x-icon name="info"></x-icon>
+                <x-label>Gear change</x-label>
+              </x-input>
+            </x-box>
+            
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_seats">
+                <x-icon name="info"></x-icon>
+                <x-label>Seats</x-label>
+              </x-input>
+            </x-box>
+      
+            <x-box style = "margin-left: 50px;margin-top: 20px; margin-bottom: 10px;">
+              <x-input skin="flat" id="txt_price">
+                <x-icon name="info"></x-icon>
+                <x-label>Price</x-label>
+              </x-input>
+            </x-box>
+            
+            <x-button id="btn_save" style="margin-left: 40%; margin-bottom: 10px;"  onclick="this.closest('dialog').close()">
+              <x-icon name="save"></x-icon>
+            <x-/button>
+          </dialog>
+
+        </x-button>
+
+          <x-button  >
+            <x-icon name= "delete"></x-icon>
+
+            <dialog style="width: 240px; background-color:#e2f1f8">
+              <x-box style = "margin-left: 50px;margin-top: 30px; margin-bottom: 10px;">
+                <x-input skin="flat" id="txt_license_plate_dlt">
+                  <x-icon name="info"></x-icon>
+                  <x-label>License plate</x-label>
+                </x-input>
+
+        
+              </x-box>
+
+                <x-icon name="delete" id="btn_dlt" style=" margin: 10px; margin-left: 45%;" onclick="this.closest('dialog').close()"></x-icon>
+        
+            </dialog>
+            
+            
+          </x-button>
+        </x-buttons>
+
+    
+        
+      </footer>
+    </div>
+
+    
+    <script>require('./app.js')</script>
 
 </body>
 

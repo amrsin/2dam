@@ -85,6 +85,13 @@ let auto_dealerSchema = new mongoose.Schema({
         required: true,
         minlength: 1,
         trim: true
+    },
+
+    price: {
+        type: String,
+        required: true,
+        minlength: 1,
+        trim: true
     }
 });
 
@@ -106,6 +113,7 @@ cars.forEach(car_aux => {
     car.doors = car_aux.doors;
     car.gear_change = car_aux.gear_change;
     car.seats = car_aux.seats;
+    car.price = car_aux.price;
     c1 = car.save().then(result => {
         console.log("car added:", result);
     }).catch(error => {
