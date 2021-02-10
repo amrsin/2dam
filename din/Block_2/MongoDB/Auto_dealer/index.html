@@ -154,9 +154,7 @@
                   <x-label>License plate</x-label>
                   
                 </x-input>
-                <x-button id="btn_search" style="margin: 5px;">
-                  <x-icon name="search"></x-icon>
-                <x-/button>
+                  <x-icon name="search" id="btn_search"></x-icon>
         
                 
               </x-box>
@@ -231,7 +229,7 @@
                 </x-input>
               </x-box>
               
-              <x-button id="btn_save" style="margin-left: 40%; margin-bottom: 10px;"  onclick="this.closest('dialog').close()">
+              <x-button id="btn_save_update" style="margin-left: 40%; margin-bottom: 10px;"  onclick="this.closest('dialog').close()">
                 <x-icon name="save"></x-icon>
               <x-/button>
             </dialog>
@@ -256,11 +254,9 @@
           </dialog>
          </x-button>
         </x-buttons>
-
-    
-        
       </footer>
     </div>
+    <x-notification style="background-color:#17202A; color: white;"id="notification" timeout="2500"></x-notification>
     <script>require('./app.js')</script>
 </body>
 </html>
