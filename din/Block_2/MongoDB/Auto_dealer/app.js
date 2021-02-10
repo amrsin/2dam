@@ -1,6 +1,13 @@
 
 const mongoose = require('mongoose');
-btn_save = document.getElementById('btn_save');
+let btn_save = document.getElementById('btn_save');
+let btn_dlt = document.getElementById('btn_dlt');
+let btn_search = document.getElementById('btn_search');
+let agree_button = document.getElementById('agree_button');
+
+
+let txt_license_plate_dlt = document.getElementById('txt_license_plate_dlt');
+
 
 mongoose.Promise = global.Promise;
 //conexión
@@ -122,70 +129,6 @@ btn_save.addEventListener('click', () => {
     });
 });
 
-/*
-btn_buscar.addEventListener('click', () => {
-    let txt_buscar = document.getElementById('txt_buscar').value;
-    Libro.find({ title: { $regex: '.*' + txt_buscar + '.*' } }).then(resultado => {
-        let cadenaDOM = "";
-        resultado.forEach(book => {
-            cadenaDOM +=
-                `<div>
-                    <x-box vertical>
-                        <img src="./images/${book.img}" height="170" width="108">
-                        <x-label><strong>${book.title}</strong></x-label>
-                        <x-label>${book.author}</x-label>
-                    </x-box>
-                </div>`;
-        });
-        document.getElementById("wrapper").innerHTML = cadenaDOM;
-    }).catch(error => {
-        console.log("Error en find");
-    });
-});
-/*
-btn_author.addEventListener('click', () => {
-    let txt_author = document.getElementById('txt_author').value;
-    Libro.find({ author: { $regex: '.*' + txt_author + '.*' } }).then(resultado => {
-        let cadenaDOM = "";
-        resultado.forEach(book => {
-            cadenaDOM +=
-                `<div>
-                    <x-box vertical>
-                        <img src="./images/${book.img}" height="170" width="108">
-                        <x-label><strong>${book.title}</strong></x-label>
-                        <x-label>${book.author}</x-label>
-                    </x-box>
-                </div>`;
-        });
-        document.getElementById("wrapper").innerHTML = cadenaDOM;
-    }).catch(error => {
-        console.log("Error en find");
-    });
-});
-
-btn_home.addEventListener('click', () => {
-
-    let p1 = Libro.find().then(resultado => {
-        let cadenaDOM = "";
-        resultado.forEach(book => {
-            cadenaDOM +=
-                `<div>
-                <x-box vertical>
-                    <img src="./images/${book.img}" height="170" width="108">
-                    <x-label><strong>${book.title}</strong></x-label>
-                    <x-label>${book.author}</x-label>
-                </x-box>
-            </div>`;
-        });
-        document.getElementById("wrapper").innerHTML = cadenaDOM;
-    }).catch(error => {
-        console.log("ERROR en find");
-    });
-});
-
-*/
-let btn_dlt = document.getElementById('btn_dlt');
-let txt_license_plate_dlt = document.getElementById('txt_license_plate_dlt');
 btn_dlt.addEventListener('click', e => {
     
     c_model.find({ license_plate: txt_license_plate_dlt.value }).then(result => {
@@ -205,6 +148,36 @@ btn_dlt.addEventListener('click', e => {
         console.log("ERROR:", error);
     });
    
+});
+
+let txt_license_plate_update = document.getElementById('txt_license_plate_update')
+let txt_model_update = document.getElementById('txt_model_update')
+btn_search.addEventListener('click', e => {
+    
+    
+    c_model.find({ license_plate: txt_license_plate_update.value }).then(result => {
+
+        if(result.length!=0) {
+
+
+            
+        }else {
+            alert("Car with license plate " + txt_license_plate_update.value + " doesn't exist in bd");
+        }
+        
+    }).catch(error => {
+        console.log("ERROR:", error);
+    });
+   
+});
+
+
+
+agree_button.addEventListener('click', e => {
+
+    mongoose.connection.close();
+    window.close()
+
 });
 
 function find() {

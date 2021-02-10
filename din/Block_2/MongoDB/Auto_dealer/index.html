@@ -237,16 +237,30 @@
             </dialog>
   
           </x-button>
+
+          <x-button id="btn_exit">
+            <x-icon name="exit-to-app"></x-icon>
+            <dialog >
+              <main>
+                <h5>Are you sure you want to exit Auto dealer?</h5>
+                <x-box style="align-items: center; justify-content: center; margin: 20px;">
+
+                <x-button id="disagree_button"  onclick="this.closest('dialog').close()">
+                  <x-label>Disagree</x-label>
+                </x-button>
+                <x-button toggled id="agree_button">
+                  <x-label>Agree</x-label>
+                </x-button>
+              </x-box>
+              </main> 
+          </dialog>
+         </x-button>
         </x-buttons>
 
     
         
       </footer>
     </div>
-
-    
     <script>require('./app.js')</script>
-
 </body>
-
 </html>
