@@ -119,4 +119,5 @@ cars.forEach(car_aux => {
     }).catch(error => {
         console.log("ERROR adding  car:", error);
     });
+   
 });
