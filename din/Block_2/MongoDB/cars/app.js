@@ -121,3 +121,7 @@ cars.forEach(car_aux => {
     });
    
 });
+
+c1.then(values=>{
+    mongoose.connection.close();
+    });
