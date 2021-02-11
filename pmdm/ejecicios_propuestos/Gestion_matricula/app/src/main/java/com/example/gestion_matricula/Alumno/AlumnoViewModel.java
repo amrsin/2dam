@@ -1,20 +1,15 @@
 package com.example.gestion_matricula.Alumno;
 
 import android.app.Application;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
-import com.example.gestion_matricula.data.Alumno;
-import com.example.gestion_matricula.data.AlumnoInsert;
-import com.example.gestion_matricula.data.AlumnoRepository;
+import com.example.gestion_matricula.data.Alumno.AlumnoInsert;
+import com.example.gestion_matricula.data.Alumno.AlumnoRepository;
 
 public class AlumnoViewModel extends AndroidViewModel {
 

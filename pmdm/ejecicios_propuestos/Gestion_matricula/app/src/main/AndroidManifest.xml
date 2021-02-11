@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gestion_matricula">
         <activity android:name=".Alumno.Alumnos" />
-        <activity android:name=".Asignaturas" />
+        <activity android:name=".Asignatura.Asignaturas" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

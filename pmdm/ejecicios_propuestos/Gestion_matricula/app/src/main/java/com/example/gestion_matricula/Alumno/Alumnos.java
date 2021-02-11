@@ -4,17 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gestion_matricula.R;
-import com.example.gestion_matricula.data.Alumno;
-import com.example.gestion_matricula.data.AlumnoInsert;
+import com.example.gestion_matricula.data.Alumno.AlumnoInsert;
 
 public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleDialogListener {
 
@@ -44,7 +39,7 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
     }
     //metodo para añadir lista de alumnos
     private void setupList() {
-        mList = findViewById(R.id.list);
+        mList = findViewById(R.id.list_alumnos);
         mAdapter = new AlumnoAdapter();
         mList.setAdapter(mAdapter);
 
@@ -76,7 +71,7 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
     //listener para button flotante
     private void setupFab() {
 
-        findViewById(R.id.floating_action_button)
+        findViewById(R.id.floating_action_button_alumonos)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

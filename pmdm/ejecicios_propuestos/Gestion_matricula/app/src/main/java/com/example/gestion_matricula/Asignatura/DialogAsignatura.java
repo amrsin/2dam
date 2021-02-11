@@ -1,4 +1,4 @@
-package com.example.gestion_matricula.Alumno;
+package com.example.gestion_matricula.Asignatura;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,32 +9,33 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-
 import com.example.gestion_matricula.R;
 
-public class DialogAlumno extends DialogFragment {
+import java.util.List;
 
-    EditText editText_name;
-    EditText editText_surname;
-    EditText editText_DNI;
-    AlumnoForList alumno;
+public class DialogAsignatura extends DialogFragment {
 
-    public DialogAlumno() {
+    EditText editText_name_asignatura;
+    AsignaturaForList asignatura;
+    int id_st;
+    int num_students;
+
+    public DialogAsignatura() {
 
 
     }
 
-    public DialogAlumno(AlumnoForList alumno) {
-        this.alumno = alumno;
+    public DialogAsignatura(AsignaturaForList asignatura) {
+        this.asignatura = asignatura;
     }
 
     //interfaz
     public interface OnSimpleDialogListener {
-        void onPossitiveButtonClick(String DNI, String name, String surnames);// Eventos Botón Positivo
+        void onPossitiveButtonClick(String name_asignatura, int id, int num_students);// Eventos Botón Positivo
+
     }
 
     OnSimpleDialogListener listener;
@@ -54,27 +55,23 @@ public class DialogAlumno extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final LayoutInflater inflater = getActivity().getLayoutInflater();
-        builder.setMessage(Html.fromHtml("<b>" + "Introduzca alumno" + "</b>"));
-        View v = inflater.inflate(R.layout.activity_add_alumno, null);
+        builder.setMessage(Html.fromHtml("<b>" + "Introduzca asignatura" + "</b>"));
+        View v = inflater.inflate(R.layout.activity_add_asignatura, null);
         builder.setView(v);
 
-        editText_DNI = (EditText) v.findViewById(R.id.et_dni);
-        editText_name = (EditText) v.findViewById(R.id.et_name);
-        editText_surname = (EditText) v.findViewById(R.id.et_surname);
-        if (alumno != null) { //si es para modificar establece datos del alumno a modificar en los editText
-            builder.setMessage(Html.fromHtml("<b>" + "Actualiza alumno" + "</b>"));
-            editText_DNI.setText(alumno.DNI);
-            editText_DNI.setKeyListener(null);
-            editText_name.setText(alumno.name);
-            editText_surname.setText(alumno.surnames);
+        editText_name_asignatura = (EditText) v.findViewById(R.id.et_name_asignatura);
+        if (asignatura != null) { //si es para modificar establece datos del alumno a modificar en los editText
+            builder.setMessage(Html.fromHtml("<b>" + "Actualiza asignatura" + "</b>"));
+            editText_name_asignatura.setText(asignatura.name);
+            id_st = asignatura.id;
+            num_students = asignatura.num_students;
         }
-
 
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
 
-                listener.onPossitiveButtonClick(editText_DNI.getText().toString(), editText_name.getText().toString(), editText_surname.getText().toString());
+                listener.onPossitiveButtonClick(editText_name_asignatura.getText().toString(), id_st, num_students);
             }
         })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

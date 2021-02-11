@@ -6,10 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.gestion_matricula.Alumno.Alumnos;
-import com.example.gestion_matricula.data.Alumno;
+import com.example.gestion_matricula.Asignatura.Asignaturas;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
             if (view.equals(btn_asignaturas)) {
 
+                Intent intent = new Intent(MainActivity.this, Asignaturas.class);
+                startActivity(intent);
 
             }
 

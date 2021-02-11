@@ -1,4 +1,4 @@
-package com.example.gestion_matricula.data;
+package com.example.gestion_matricula.data.Alumno;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

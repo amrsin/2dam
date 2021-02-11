@@ -1,4 +1,4 @@
-package com.example.gestion_matricula.data;
+package com.example.gestion_matricula.data.Alumno;
 
 
 import android.content.Context;
@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.gestion_matricula.Alumno.AlumnoForList;
 import com.example.gestion_matricula.Alumno.AlumnoDNI;
+import com.example.gestion_matricula.data.MatriculaDatabase;
 
 import java.util.List;
 
