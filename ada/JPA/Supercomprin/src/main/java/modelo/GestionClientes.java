@@ -96,4 +96,27 @@ public class GestionClientes {
         //cerramos el objeto EntityManeger
         em.close();        
     } 
+    
+    public boolean find_cliente(String DNI) {
+        
+       boolean exist = false; 
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("SupercomprinPU");
+       EntityManager em = emf.createEntityManager();
+       EntityTransaction tx = em.getTransaction();
+       
+       
+       //empezamos la transcción
+       tx.begin();
+       Cliente c = em.find(Cliente.class, DNI);
+       //remove del objeto 
+       if(c!=null){
+	  exist = true;
+	}
+       //teminamos la transacción
+       tx.commit();
+       //cerramos el objeto EntityManeger
+       em.close();
+       
+        return exist;      
+    }
 }

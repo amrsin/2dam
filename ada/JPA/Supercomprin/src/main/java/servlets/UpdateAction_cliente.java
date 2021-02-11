@@ -7,10 +7,13 @@ package servlets;
 
 import com.mysql.cj.xdevapi.Client;
 import java.io.IOException;
+import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +41,7 @@ public class UpdateAction_cliente extends HttpServlet {
         String Apellidos = request.getParameter("apellidos");
         String Email = request.getParameter("email");
         String Fecha_nacimento_str = request.getParameter("fecha_nacimiento");
-
+        
         java.util.Date Fecha_util;
         java.sql.Date Fecha_nacimiento = null;
 
@@ -49,10 +52,27 @@ public class UpdateAction_cliente extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(AltaAction_cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        GestionClientes gestion_clientes = new GestionClientes();
+        
+       GestionClientes gestion_clientes = new GestionClientes();
+
+       if (!gestion_clientes.find_cliente(DNI)) {
+
+        response.setContentType("text/html");
+        PrintWriter pw=response.getWriter();
+        pw.println("<script type=\"text/javascript\">");
+        pw.println("alert('DNI no existe en bd');");
+        pw.println("</script>");
+        RequestDispatcher rd=request.getRequestDispatcher("update_cliente.html");
+        rd.include(request, response);
+
+       }else {
+           
         Cliente c = new Cliente(DNI, Nombre, Apellidos, Email, Fecha_nacimiento);
 
         gestion_clientes.update_cliente(c);
         request.getRequestDispatcher("close.html").forward(request, response);
+
+       }
+        
     }
 }
