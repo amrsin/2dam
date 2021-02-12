@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import mx.com.gm.sga.supercomprin.Cliente;
 import mx.com.gm.sga.supercomprin.Producto;
 
 /**
@@ -39,5 +40,27 @@ public class GestionProductos {
         em.close();
 
         return productos;
-    }   
+    }
+     
+     
+     public Producto find_producto(int id_producto) {
+        
+       boolean exist = false; 
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("SupercomprinPU");
+       EntityManager em = emf.createEntityManager();
+       EntityTransaction tx = em.getTransaction();
+       
+       
+       //empezamos la transcción
+       tx.begin();
+       Producto p = em.find(Producto.class, id_producto);     
+       //teminamos la transacción
+       tx.commit();
+       //cerramos el objeto EntityManeger
+       em.close();
+       
+        return p;      
+    }
+     
+    
 }

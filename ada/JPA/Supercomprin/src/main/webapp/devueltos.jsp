@@ -89,7 +89,7 @@
                     </tr>
 
                     <c:forEach var="dev" items="${devueltos}">
-                        <tr><td>${dev.id_compra}</td>
+                        <tr><td>${dev.id_devuelve}</td>
                             <td>${dev.cliente}</td>
                             <td>${dev.id_producto}</td>
                             <td>${dev.fecha}</td>
@@ -110,7 +110,7 @@
 
     <script>
         function new_devuelto() {
-            window.open("new_devuelve.html", "new_devuelto", "width=600,height=600", false);
+            window.open("new_devuelve.html", "new_devuelto", "width=600,height=300", false);
 
         }
     </script>

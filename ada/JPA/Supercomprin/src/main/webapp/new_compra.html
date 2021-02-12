@@ -24,8 +24,8 @@
             <script type="text/javascript">
                 function comprobar() {
 
-                    if (document.getElementById("DNI_cliente").value == "" || document.getElementById("id_producto").value == "" ||
-                            document.getElementById("puntos").value == "" || document.getElementById("importe").value == "") {
+                    if (document.getElementById("DNI_cliente").value == "" || document.getElementById("id_producto").value == "" 
+                            /*document.getElementById("puntos").value == "" || document.getElementById("importe").value == ""*/) {
                         alert("Faltan datos");
                         return false;
 
@@ -48,10 +48,10 @@
                 <br>
                 <p><center>id_producto: <input id="id_producto" type="text" name="id_producto" size="9"/></center>
                 <br>
-                <p><center>Puntos: <input id="puntos" type="text" name="puntos" size="9"/></center>
+                <!--<p><center>Puntos: <input id="puntos" type="text" name="puntos" size="9"/></center>
                 <br>
                 <p><center>Importe: <input id="importe" type="text" name="importe" size="9"/></center>
-                <br>
+                <br>-->
                 <center><button>Pagar</button></center>
                 <br>
             </form>

@@ -116,7 +116,7 @@
 
     <script>
         function new_compra() {
-            window.open("new_compra.html", "new_compra", "width=600,height=600", false);
+            window.open("new_compra.html", "new_compra", "width=600,height=300", false);
 
         }
     </script>

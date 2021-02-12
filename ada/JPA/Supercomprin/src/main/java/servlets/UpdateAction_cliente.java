@@ -5,10 +5,8 @@
  */
 package servlets;
 
-import com.mysql.cj.xdevapi.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
