@@ -66,6 +66,7 @@
         </style>
     </head>
     <body>
+        
 
         <ul>
             <li><a href="menu.html">Home</a></li>
@@ -88,6 +89,7 @@
         </center></div>
 
     <br><br>
+    
     <c:choose>
 
         <c:when test="${!empty clientes}">
