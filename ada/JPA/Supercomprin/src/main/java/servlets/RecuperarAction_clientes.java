@@ -30,6 +30,7 @@ public class RecuperarAction_clientes extends HttpServlet {
      */
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+
         GestionClientes gestion_clientes = new GestionClientes();
 
         List<Cliente> clientes = gestion_clientes.recupar_clientes();

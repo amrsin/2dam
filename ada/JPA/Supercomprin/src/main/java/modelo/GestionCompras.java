@@ -24,7 +24,7 @@ public class GestionCompras {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SupercomprinPU");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
-
+        
         //empezamos la transcción
         tx.begin();
         //persistimos el objeto     
@@ -33,7 +33,7 @@ public class GestionCompras {
         tx.commit();
         //cerramos el objeto EntityManeger
         em.close();
-
+        
     }
 
     public static void eliminar_compra(int id_compra) {

@@ -84,7 +84,6 @@
                         <th>Fecha</th>
                         <th>Puntos</th>
                         <th>Importe</th>
-                        <th></th>
 
                     </tr>
 
