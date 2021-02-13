@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 let btn_save = document.getElementById('btn_save');
 let btn_dlt = document.getElementById('btn_dlt');
 let btn_search = document.getElementById('btn_search');
+let btn_save_update = document.getElementById('btn_save_update');
 let agree_button = document.getElementById('agree_button');
 let txt_license_plate_dlt = document.getElementById('txt_license_plate_dlt');
 let txt_license_plate_update = document.getElementById('txt_license_plate_update')
@@ -17,6 +18,9 @@ let txt_gear_change_update = document.getElementById('txt_gear_change_update')
 let txt_seats_update = document.getElementById('txt_seats_update')
 let txt_price_update = document.getElementById('txt_price_update')
 let notification = document.querySelector("#notification");
+let input = document.querySelector("#input");
+let id_car;
+
             
 mongoose.Promise = global.Promise;
 //conexión
@@ -30,6 +34,7 @@ let auto_dealerSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 1,
+        unique: true,
         trim: true
     },
     brand: {
@@ -130,7 +135,7 @@ btn_save.addEventListener('click', () => {
     });
 
     let c = new_car.save().then(result => {
-        notification.innerHTML = "Car added";
+        notification.innerHTML = "Car added " + txt_license_plate;
         notification.opened = true;
         console.log('Car added');
         find();
@@ -148,7 +153,7 @@ btn_dlt.addEventListener('click', e => {
 
         if(result.length!=0) {
             c_model.remove({ license_plate: txt_license_plate_dlt.value }).then(result => {
-                notification.innerHTML = "Car deleted";
+                notification.innerHTML = "Car deleted " + txt_license_plate_dlt.value;
                 notification.opened = true;
                 console.log("Car deleted")
                 find()
@@ -179,7 +184,7 @@ btn_search.addEventListener('click', e => {
         if(result.length!=0) {
 
             result.forEach(car =>{
-                 
+                id_car = `${car.id}`; 
                 txt_model_update.value = `${car.model}`;
                 txt_brand_update.value = `${car.brand}`;
                 txt_year_update.value = `${car.year}`;
@@ -202,7 +207,25 @@ btn_search.addEventListener('click', e => {
     });  
 });
 
-agree_button.addEventListener('click', e => {
+btn_save_update.addEventListener('click', () => {
+
+    c_model.findByIdAndUpdate(id_car,
+    { license_plate: txt_license_plate_update.value,brand: txt_brand_update.value, model: txt_model_update.value,
+    year: txt_year_update.value, color: txt_color_update.value, kilometres: txt_kilometres_update.value,
+    fuel: txt_fuel_update.value, door: txt_doors_update.value, gear_change: txt_gear_change_update.value,
+    seats: txt_seats_update.value, price: txt_price_update.value}, { new: true })
+    .then(result => {
+        notification.innerHTML = "Car modified " + txt_license_plate_update.value;
+        notification.opened = true;
+        find();
+        console.log("Modified car:", result);
+    }).catch(error => {
+        notification.innerHTML = "Error modifying car";
+        notification.opened = true;
+        console.log("ERROR:", error);
+    });
+});
+agree_button.addEventListener('click', () => {
 
     mongoose.connection.close();
     window.close()
