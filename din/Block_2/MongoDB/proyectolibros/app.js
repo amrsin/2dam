@@ -4,6 +4,7 @@ let btn_buscar = document.getElementById("btn_buscar");
 let btn_author = document.getElementById("btn_author");
 let btn_home = document.getElementById("btn_home");
 let btn_save = document.getElementById("btn_save");
+let progress = document.getElementById("progress")
 
 mongoose.Promise = global.Promise;
 //conexión
@@ -51,6 +52,7 @@ let p1 = Libro.find().then(resultado => {
             </div>`;
     });
     document.getElementById("wrapper").innerHTML = cadenaDOM;
+    progress.style.display = 'none';
 }).catch(error => {
     console.log("ERROR en find");
 });
