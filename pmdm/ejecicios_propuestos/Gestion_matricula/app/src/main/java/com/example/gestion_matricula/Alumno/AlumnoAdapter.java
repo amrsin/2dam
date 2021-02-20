@@ -18,8 +18,6 @@ public class AlumnoAdapter
     private List<AlumnoForList> Alumnos;
     private ItemListener mItemListener;
 
-
-
     @NonNull
     @Override
     public AlumnoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -49,10 +47,11 @@ public class AlumnoAdapter
         mItemListener = listener;
     }
 
-
     interface ItemListener {
         void onEditIconClicked(AlumnoForList Alumno);
         void onDeleteIconClicked(AlumnoForList Alumno);
+        void onInfoIconClicked(AlumnoForList Alumno);
+
     }
 
     public class AlumnoViewHolder extends RecyclerView.ViewHolder {
@@ -71,16 +70,15 @@ public class AlumnoAdapter
             img_info = itemView.findViewById(R.id.img_info);
             img_dlt = itemView.findViewById(R.id.img_dlt);
 
-
             // Setear eventos
             img_edit.setOnClickListener(this::manageEvents);
             img_dlt.setOnClickListener(this::manageEvents);
+            img_info.setOnClickListener(this::manageEvents);
 
             itemView.setOnClickListener(this::manageEvents);
 
-
         }
-
+        //metodo para manejar eventos
         private void manageEvents(View view) {
             if (mItemListener != null) {
                 AlumnoForList clickedItem = Alumnos.get(getAdapterPosition());
@@ -88,6 +86,9 @@ public class AlumnoAdapter
                    if (view.getId() == R.id.img_edit) {
                        mItemListener.onEditIconClicked(clickedItem);
                    }
+                    if (view.getId() == R.id.img_info) {
+                    mItemListener.onInfoIconClicked(clickedItem);
+                    }
                    if (view.getId() == R.id.img_dlt) {
                        mItemListener.onDeleteIconClicked(clickedItem);
                     return;

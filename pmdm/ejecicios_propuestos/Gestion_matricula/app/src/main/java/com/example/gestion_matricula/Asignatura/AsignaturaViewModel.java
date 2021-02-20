@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.gestion_matricula.data.Asignatura.AsignaturaInsert;
 import com.example.gestion_matricula.data.Asignatura.AsignaturaRepository;
+import com.example.gestion_matricula.data.MatriculaDatabase;
 
 import java.util.List;
 
@@ -38,5 +39,14 @@ public class AsignaturaViewModel extends AndroidViewModel {
     public void deleteAsignatura(AsignaturaForList Asignatura) {
         AsignaturaId id = new AsignaturaId(Asignatura.id);
         mRepository.deleteAsignatura(id);
+    }
+    //para actualizar num_students incrementando 1
+    public void updatest_sum(int id ) {
+        mRepository.updatest_sum(id);
+    }
+
+    //para actualizar num_students desincrementando 1
+    public void updatest_res(int id ) {
+        mRepository.updatest_res(id);
     }
 }

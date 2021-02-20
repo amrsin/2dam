@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Asignatura.Asignaturas">
+    tools:context=".AlumnoWithAsignatura.MainAlumno_asig">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_asignaturas"
+        android:id="@+id/list_alumno_asignaturas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="28dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_button_asignaturas"
+        android:id="@+id/floating_action_button_alumno_asignaturas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

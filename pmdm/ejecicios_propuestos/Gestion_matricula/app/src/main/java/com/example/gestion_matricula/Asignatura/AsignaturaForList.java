@@ -6,5 +6,4 @@ public class AsignaturaForList {
     public String name;
     public int num_students;
 
-
 }

@@ -2,7 +2,6 @@ package com.example.gestion_matricula.data;
 
 
 import android.content.Context;
-import android.text.style.AbsoluteSizeSpan;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -10,9 +9,13 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.gestion_matricula.AlumnoWithAsignatura.alu_asig_insert;
 import com.example.gestion_matricula.data.Alumno.Alumno;
 import com.example.gestion_matricula.data.Alumno.AlumnoDao;
 import com.example.gestion_matricula.data.Alumno.AlumnoInsert;
+import com.example.gestion_matricula.data.AlumnoWithAsignatura.Alu_asigDAO;
+import com.example.gestion_matricula.data.AlumnoWithAsignatura.Alu_asigRepository;
+import com.example.gestion_matricula.data.AlumnoWithAsignatura.AlumnoAsignaturaCrossRef;
 import com.example.gestion_matricula.data.Asignatura.Asignatura;
 import com.example.gestion_matricula.data.Asignatura.AsignaturaDao;
 
@@ -22,14 +25,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = {Alumno.class, Asignatura.class}, version = 2, exportSchema = false)
+@Database(entities = {Alumno.class, Asignatura.class, AlumnoAsignaturaCrossRef.class}, version = 5, exportSchema = false)
 public abstract  class MatriculaDatabase extends RoomDatabase {
 
     // Exposición de DAOs
     public abstract AlumnoDao AlumnoDao();
     public abstract AsignaturaDao AsignaturaDao();
+    public abstract Alu_asigDAO alu_asigDAO();
 
-    private static final String DATABASE_NAME = "Matricula-bd";
+    private static final String DATABASE_NAME = "gestion-matricula";
 
     private static MatriculaDatabase INSTANCE;
 
@@ -44,7 +48,7 @@ public abstract  class MatriculaDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(
                             context.getApplicationContext(), MatriculaDatabase.class,
-                            DATABASE_NAME)
+                            DATABASE_NAME).allowMainThreadQueries()
                             .addCallback(mRoomCallback)
                             .build();
                 }
@@ -63,7 +67,9 @@ public abstract  class MatriculaDatabase extends RoomDatabase {
                 //var
                 AlumnoDao dao_alumno = INSTANCE.AlumnoDao();
                 AsignaturaDao dao_asignatura = INSTANCE.AsignaturaDao();
+                Alu_asigDAO alu_asigDAO = INSTANCE.alu_asigDAO();
                 List<Asignatura> list_asignataras = new ArrayList<>();
+
                 //insert de predefinido en tabla alumno
                 AlumnoInsert a1 = new AlumnoInsert("12345", "Juan", "García");
                 dao_alumno.insert(a1);
@@ -83,6 +89,14 @@ public abstract  class MatriculaDatabase extends RoomDatabase {
                 list_asignataras.add(asig6);
 
                 dao_asignatura.insertAsignaturas(list_asignataras);
+
+                alu_asig_insert alu_asig_insert = new alu_asig_insert("12345", 1);
+                alu_asig_insert alu_asig_insert_1 = new alu_asig_insert("12345", 2);
+
+                alu_asigDAO.insertAlumnoAsignatura(alu_asig_insert);
+                alu_asigDAO.insertAlumnoAsignatura(alu_asig_insert_1);
+                dao_asignatura.up_numst_sum(alu_asig_insert.id);
+                dao_asignatura.up_numst_sum(alu_asig_insert_1.id);
             });
         }
     };

@@ -17,17 +17,17 @@ import androidx.fragment.app.DialogFragment;
 import com.example.gestion_matricula.R;
 
 public class DialogAlumno extends DialogFragment {
-
+    //variables
     EditText editText_name;
     EditText editText_surname;
     EditText editText_DNI;
     AlumnoForList alumno;
 
+    //constructor por defecto
     public DialogAlumno() {
-
-
     }
 
+    //constructor con objeto alumno
     public DialogAlumno(AlumnoForList alumno) {
         this.alumno = alumno;
     }
@@ -39,7 +39,6 @@ public class DialogAlumno extends DialogFragment {
 
     OnSimpleDialogListener listener;
 
-
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -48,28 +47,26 @@ public class DialogAlumno extends DialogFragment {
     }
 
 
-    //Creamos diálogo para insertar alumno
-
+    //Creamos diálogo para insertar/editar alumno
     public AlertDialog createSimpleDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final LayoutInflater inflater = getActivity().getLayoutInflater();
-        builder.setMessage(Html.fromHtml("<b>" + "Introduzca alumno" + "</b>"));
+        builder.setTitle("Introduzca alumno");
         View v = inflater.inflate(R.layout.activity_add_alumno, null);
         builder.setView(v);
+
 
         editText_DNI = (EditText) v.findViewById(R.id.et_dni);
         editText_name = (EditText) v.findViewById(R.id.et_name);
         editText_surname = (EditText) v.findViewById(R.id.et_surname);
         if (alumno != null) { //si es para modificar establece datos del alumno a modificar en los editText
-            builder.setMessage(Html.fromHtml("<b>" + "Actualiza alumno" + "</b>"));
+            builder.setTitle(Html.fromHtml("<b>" + "Actualize alumno" + "</b>"));
             editText_DNI.setText(alumno.DNI);
             editText_DNI.setKeyListener(null);
             editText_name.setText(alumno.name);
             editText_surname.setText(alumno.surnames);
         }
-
-
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
@@ -85,7 +82,6 @@ public class DialogAlumno extends DialogFragment {
                 });
         return builder.create();
     }
-
 
     //metodo para comprobar si se ha implementado metodo en el contexto
     @Override

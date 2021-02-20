@@ -8,24 +8,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.gestion_matricula.Alumno.AlumnoForList;
 import com.example.gestion_matricula.R;
-import com.example.gestion_matricula.data.Alumno.AlumnoInsert;
 import com.example.gestion_matricula.data.Asignatura.AsignaturaInsert;
 
 public class Asignaturas extends AppCompatActivity implements DialogAsignatura.OnSimpleDialogListener {
-
-
+    //variables
     private AsignaturaViewModel mViewModel;
     private RecyclerView mList;
     private AsignaturaAdapter mAdapter;
     private String icon_identity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asignaturas);
 
         getSupportActionBar().setTitle("Asignaturas");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ViewModelProvider.AndroidViewModelFactory factory =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
@@ -34,17 +33,16 @@ public class Asignaturas extends AppCompatActivity implements DialogAsignatura.O
                 .get(AsignaturaViewModel.class);
 
         setupList();
-
         setupFab();
 
-
     }
+
     //metodo para añadir lista de alumnos
     private void setupList() {
         mList = findViewById(R.id.list_asignaturas);
         mAdapter = new AsignaturaAdapter();
         mList.setAdapter(mAdapter);
-
+        //metodos interfaz
         mAdapter.setItemListener(new AsignaturaAdapter.ItemListener() {
 
             @Override
@@ -59,17 +57,15 @@ public class Asignaturas extends AppCompatActivity implements DialogAsignatura.O
             @Override
             public void onDeleteIconClicked(AsignaturaForList Asignatura) {
 
-                int id = Asignatura.id;
                 mViewModel.deleteAsignatura(Asignatura);
-                Toast.makeText(getApplication(), "Eliminado " + id, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "Eliminado asignatura con id " + Asignatura.id, Toast.LENGTH_SHORT).show();
 
             }
         });
         // Observar cambios de listas alumnos
         mViewModel.getAllAsignaturas().observe(this, mAdapter::setItems);
-
-
     }
+
     //listener para button flotante
     private void setupFab() {
 
@@ -82,18 +78,22 @@ public class Asignaturas extends AppCompatActivity implements DialogAsignatura.O
                     }
                 });
     }
+
     //obtener instancia del dialogo
     private void Asignatura_dialog() {
 
         new DialogAsignatura().show(getSupportFragmentManager(), "DialogAsignatura"); //instanciamos el dialogo
 
     }
+
     //metodo dialogo al hacer click guardar
     @Override
     public void onPossitiveButtonClick(String name_asignatura, int id, int num_students) {
 
         // Ignorar acción si hay 0 caracteres
         if (name_asignatura.isEmpty()) {
+
+            Toast.makeText(this, "Los campos no pueden estar vacios", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -102,7 +102,7 @@ public class Asignaturas extends AppCompatActivity implements DialogAsignatura.O
 
             AsignaturaInsert a = new AsignaturaInsert(name_asignatura);
             mViewModel.insert(a);
-            Toast.makeText(this, "Añadido " + name_asignatura, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Añadido asignatura nombre " + name_asignatura, Toast.LENGTH_SHORT).show();
 
         }
         //si el icono pulsado es edit
@@ -113,7 +113,12 @@ public class Asignaturas extends AppCompatActivity implements DialogAsignatura.O
             a.id = id;
             a.num_students = num_students;
             mViewModel.updateAsignatura(a);
-            Toast.makeText(this, "Actualizado " + a.id, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Actualizado asignatura con id " + a.id, Toast.LENGTH_SHORT).show();
         }
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

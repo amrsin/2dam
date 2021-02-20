@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //identificamos los elementos por su id's
+        getSupportActionBar().setTitle("Gestion Matricula");
         btn_asignaturas = (Button) findViewById(R.id.btn_asignaturas);
         btn_alumnos = (Button) findViewById(R.id.btn_alumnos);
 

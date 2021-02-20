@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.gestion_matricula.Alumno.AlumnoForList;
 import com.example.gestion_matricula.Alumno.AlumnoDNI;
+import com.example.gestion_matricula.AlumnoWithAsignatura.alu_asig_insert;
 import com.example.gestion_matricula.data.MatriculaDatabase;
 
 import java.util.List;
@@ -31,13 +32,13 @@ public class AlumnoRepository {
                 () -> alumnoDao.insert(alumno)
         );
     }
-
+    //para actulizar datos alumno
     public void updateAlumno(AlumnoForList Alumno) {
         MatriculaDatabase.dbExecutor.execute(
                 () -> alumnoDao.updateAlumno(Alumno)
         );
     }
-
+    //para eliminar alumno
     public void deleteAlumno(AlumnoDNI dni) {
         MatriculaDatabase.dbExecutor.execute(
                 () -> alumnoDao.deleteAlumno(dni)

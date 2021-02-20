@@ -9,25 +9,25 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
 import com.example.gestion_matricula.R;
 
 import java.util.List;
 
 public class DialogAsignatura extends DialogFragment {
-
+    //variables
     EditText editText_name_asignatura;
     AsignaturaForList asignatura;
     int id_st;
     int num_students;
-
+    //constructor por defecto
     public DialogAsignatura() {
-
-
     }
-
+    //constructor con objeto AsignaturaForList
     public DialogAsignatura(AsignaturaForList asignatura) {
         this.asignatura = asignatura;
     }
@@ -44,24 +44,22 @@ public class DialogAsignatura extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-
         return createSimpleDialog();
     }
 
 
-    //Creamos diálogo para insertar alumno
-
+    //Creamos diálogo para insertar/modificar asignatura
     public AlertDialog createSimpleDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final LayoutInflater inflater = getActivity().getLayoutInflater();
-        builder.setMessage(Html.fromHtml("<b>" + "Introduzca asignatura" + "</b>"));
+        builder.setTitle("Introduzca asignatura" + "\n\n");
         View v = inflater.inflate(R.layout.activity_add_asignatura, null);
         builder.setView(v);
 
         editText_name_asignatura = (EditText) v.findViewById(R.id.et_name_asignatura);
         if (asignatura != null) { //si es para modificar establece datos del alumno a modificar en los editText
-            builder.setMessage(Html.fromHtml("<b>" + "Actualiza asignatura" + "</b>"));
+            builder.setTitle("Actualize asignatura" + "\n\n");
             editText_name_asignatura.setText(asignatura.name);
             id_st = asignatura.id;
             num_students = asignatura.num_students;

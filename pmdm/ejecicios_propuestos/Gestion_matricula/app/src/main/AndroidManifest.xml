@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gestion_matricula">
+        <activity android:name=".AlumnoWithAsignatura.MainAlumno_asig"></activity>
         <activity android:name=".Alumno.Alumnos" />
         <activity android:name=".Asignatura.Asignaturas" />
         <activity android:name=".MainActivity">

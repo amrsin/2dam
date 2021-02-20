@@ -4,20 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.gestion_matricula.AlumnoWithAsignatura.MainAlumno_asig;
 import com.example.gestion_matricula.R;
 import com.example.gestion_matricula.data.Alumno.AlumnoInsert;
 
 public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleDialogListener {
 
+    //variables
     private AlumnoViewModel mViewModel;
     private RecyclerView mList;
     private AlumnoAdapter mAdapter;
     private String icon_identity;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
         setContentView(R.layout.activity_alumnos);
 
         getSupportActionBar().setTitle("Alumnos");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ViewModelProvider.AndroidViewModelFactory factory =
                 ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
 
@@ -32,17 +36,16 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
                 .get(AlumnoViewModel.class);
 
         setupList();
-
         setupFab();
 
-
     }
+
     //metodo para añadir lista de alumnos
     private void setupList() {
         mList = findViewById(R.id.list_alumnos);
         mAdapter = new AlumnoAdapter();
         mList.setAdapter(mAdapter);
-
+        //metodos de la intefaz
         mAdapter.setItemListener(new AlumnoAdapter.ItemListener() {
 
             @Override
@@ -59,15 +62,28 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
 
                 String dni = Alumno.DNI;
                 mViewModel.deleteAlumno(Alumno);
-                Toast.makeText(getApplication(), "Eliminado " + dni, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplication(), "Eliminado alumno con DNI " + dni, Toast.LENGTH_SHORT).show();
 
+            }
+
+            @Override
+            public void onInfoIconClicked(AlumnoForList Alumno) {
+
+                Bundle bundle = new Bundle();
+                String dni = Alumno.DNI;
+                String name = Alumno.name;
+                bundle.putString("dni", dni);
+                Intent intent = new Intent(Alumnos.this, MainAlumno_asig.class);
+                intent.putExtra("dni", dni);
+                intent.putExtra("name", name);
+                startActivity(intent);
             }
         });
         // Observar cambios de listas alumnos
         mViewModel.getAllAlumnos().observe(this, mAdapter::setItems);
 
-
     }
+
     //listener para button flotante
     private void setupFab() {
 
@@ -80,18 +96,22 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
                     }
                 });
     }
+
     //obtener instancia del dialogo
     private void Alumno_dialog() {
 
         new DialogAlumno().show(getSupportFragmentManager(), "DialogAlumno"); //instanciamos el dialogo
 
     }
+
     //metodo dialogo al hacer click guardar
     @Override
     public void onPossitiveButtonClick(String DNI, String name, String surnames) {
 
         // Ignorar acción si hay 0 caracteres
         if (name.isEmpty() || DNI.isEmpty() || surnames.isEmpty()) {
+
+            Toast.makeText(this, "Los campos no pueden estar vacios", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -100,7 +120,7 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
 
             AlumnoInsert a = new AlumnoInsert(DNI, name, surnames);
             mViewModel.insert(a);
-            Toast.makeText(this, "Añadido " + DNI, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Añadido alumno con DNI " + DNI, Toast.LENGTH_SHORT).show();
 
         }
         //si el icono pulsado es edit
@@ -111,8 +131,12 @@ public class Alumnos extends AppCompatActivity implements DialogAlumno.OnSimpleD
             a.name = name;
             a.surnames = surnames;
             mViewModel.updateAlumno(a);
-            Toast.makeText(this, "Actualizado " + DNI, Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(this, "Actualizado alumno con DNI " + DNI, Toast.LENGTH_SHORT).show();
         }
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

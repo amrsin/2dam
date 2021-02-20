@@ -32,5 +32,11 @@ public interface AsignaturaDao {
     //Consulta para actualizar asignatura
     @Update(entity = Asignatura.class)
     void updateAsignatura(AsignaturaForList Asignatura);
+    //para sumar numero estudiantres atras asignar un alumno a asignatura
+    @Query("UPDATE Asignatura SET num_students = num_students + 1 WHERE id = :id")
+    void up_numst_sum(int id);
+    //para restar numero estudiantres atras asignar un alumno a asignatura
+    @Query("UPDATE Asignatura SET num_students = num_students - 1 WHERE id = :id")
+    void up_numst_res(int id);
 }
 
